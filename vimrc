@@ -58,13 +58,40 @@ set autoindent
 noremap % v%
 " autocomplete for matching brace (activated upon pressing enter)
 inoremap {<CR>  {<CR>}<Esc>O<TAB>
-" CTRL-J and CTRL-K no jump half a page up and down, respectively
-nnoremap J <C-d>
-nnoremap K <C-u>
+" Capital H now goes to the top of the visible screen
+" Capital L now goes to the bottom of the visible screen
+nnoremap H L
+nnoremap L H
 " set matching parenthesis/brace/bracket to be underlined
 hi MatchParen cterm=underline ctermbg=none ctermfg=none
 " enable code folding (minimize chunks of code into one-liners)
 set foldmethod=indent
+" have folds open by default
+set nofoldenable
+" don't wrap back to the top after searching
+set nowrapscan
+
+" press CTRL-n to toggle between number mode and relative number mode
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set nornu
+  else
+    set rnu
+  endif
+endfunc
+
+" press CTRL-j/CTRL-k to go down/up half a page, respectively
+nnoremap <C-j> <C-D>
+nnoremap <C-k> <C-U>
+
+" auto set relative number mode
+nnoremap <C-n> :call NumberToggle()<cr>
+set rnu
+
+" auto comments for /* (javadoc style comments) 
+set comments=sl:/*,mb:\ *,elx:\ */
+" auto comment when pressing enter, o, or O
+set formatoptions+=rco
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
