@@ -36,8 +36,16 @@ endif
 "  filetype plugin indent on
 "endif
 
+
+
+
+
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""" where my additions to the vimrc file begin """"""""""""""
 
 set showcmd			" Show (partial) command in status line.
 " set showmatch		" Show matching brackets. 
@@ -50,24 +58,32 @@ set autowrite		" Automatically save before commands like :next and :make
 set hidden			" Hide buffers when they are abandoned
 " set mouse=a		" Enable mouse usage (all modes)
 					" (DISABLED) originally forced using mouse into Visual mode
-set tabstop=4
+
+" tab settings
+set tabstop=4 
 set shiftwidth=4
 set autoindent
 
 " press % to visually highlight in-between brace/bracket/parentheses 
 noremap % v%
+
 " autocomplete for matching brace (activated upon pressing enter)
 inoremap {<CR>  {<CR>}<Esc>O<TAB>
+
 " Capital H now goes to the top of the visible screen
 " Capital L now goes to the bottom of the visible screen
 nnoremap H L
 nnoremap L H
+
 " set matching parenthesis/brace/bracket to be underlined
 hi MatchParen cterm=underline ctermbg=none ctermfg=none
+
 " enable code folding (minimize chunks of code into one-liners)
 set foldmethod=indent
+
 " have folds open by default
 set nofoldenable
+
 " don't wrap back to the top after searching
 set nowrapscan
 
@@ -92,6 +108,9 @@ set rnu
 set comments=sl:/*,mb:\ *,elx:\ */
 " auto comment when pressing enter, o, or O
 set formatoptions+=rco
+
+" capital K now undoes a capital J
+nnoremap K i<CR><TAB><ESC>f}i<CR><BS><ESC>
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
