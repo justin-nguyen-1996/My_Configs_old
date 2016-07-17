@@ -48,21 +48,44 @@ endif
 """"""""""" where my additions to the vimrc file begin """"""""""""""
 
 set showcmd			" Show (partial) command in status line.
+
 " set showmatch		" Show matching brackets. 
-					" (DISABLED) bc too hard to find cursor
+					" (DISABLED) because too hard to find cursor
+
 set ignorecase		" Do case insensitive matching
+
 set smartcase		" Do smart case matching
+
 " set incsearch		" Incremental search
 					" (DISABLED) personal choice, your decision
-set autowrite		" Automatically save before commands like :next and :make
-set hidden			" Hide buffers when they are abandoned
-" set mouse=a		" Enable mouse usage (all modes)
-					" (DISABLED) originally forced using mouse into Visual mode
 
-" tab settings
-set tabstop=4 
-set shiftwidth=4
-set autoindent
+set autowrite		" Automatically save before commands like :make
+
+set hidden			" Hide buffers when they are abandoned
+
+" set mouse=a		" Enable mouse usage (all modes)
+					" (DISABLED) originally made using the
+					"  mouse go into Visual mode
+
+set tabstop=4 		" tab length is 4 spaces
+set shiftwidth=4	" indentation length is 4 spaces
+set autoindent		" auto indent
+
+" type 'Sys' then press TAB to easily output 'System.out.println('
+inoremap Sys<TAB> System.out.println(
+
+" typing gg still retains its functionality of jumping to a line
+" but now it also centers the screen on that line
+nnoremap gg ggzz
+
+" map the jump-to-mark command 'm so that the 
+" command centers the screen upon jumping
+nnoremap 'm 'mzz
+
+" retain original indentation when pasting from another application
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
 
 " press % to visually highlight in-between brace/bracket/parentheses 
 noremap % v%
@@ -78,11 +101,24 @@ nnoremap L H
 " set matching parenthesis/brace/bracket to be underlined
 hi MatchParen cterm=underline ctermbg=none ctermfg=none
 
-" enable code folding (minimize chunks of code into one-liners)
-set foldmethod=indent
+" have folds open (not folded) by default
+" set nofoldenable
 
-" have folds open by default
-set nofoldenable
+set foldmethod=manual
+" auto save code folds (first one for saving code folds)
+"					   (second one for loading code folds)
+" enable code folding (minimize chunks of code into one-liners)
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview 
+
+""""" this doesn't work well with the javadoc style comments
+" pressing CTRL-c no longer undoes the auto-indent
+" set indentexpr=GetIndent()
+" function GetIndent()
+" 	let lnum = prevnonblank(v:lnum - 1)
+" 	let ind = indent(lnum)
+" 	return ind
+" endfunction
 
 " don't wrap back to the top after searching
 set nowrapscan
@@ -96,16 +132,17 @@ function! NumberToggle()
   endif
 endfunc
 
-" press CTRL-j/CTRL-k to go down/up half a page, respectively
-nnoremap <C-j> <C-D>
-nnoremap <C-k> <C-U>
-
 " auto set relative number mode
 nnoremap <C-n> :call NumberToggle()<cr>
 set rnu
 
+" press CTRL-j/CTRL-k to go down/up half a page, respectively
+noremap <C-j> <C-D>
+noremap <C-k> <C-U>
+
 " auto comments for /* (javadoc style comments) 
 set comments=sl:/*,mb:\ *,elx:\ */
+
 " auto comment when pressing enter, o, or O
 set formatoptions+=rco
 
