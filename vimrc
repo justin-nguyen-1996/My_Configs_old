@@ -22,7 +22,7 @@ endif
 
 " If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
-"set background=dark
+" set background=dark
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
@@ -32,9 +32,9 @@ endif
 
 " Uncomment the following to have Vim load indentation rules and plugins
 " according to the detected filetype.
-"if has("autocmd")
-"  filetype plugin indent on
-"endif
+" if has("autocmd")
+"   filetype plugin indent on
+" endif
 
 
 
@@ -49,7 +49,7 @@ endif
 
 set showcmd			" Show (partial) command in status line.
 
-" set showmatch		" Show matching brackets. 
+" set showmatch		" Show matching brackets.
 					" (DISABLED) because too hard to find cursor
 
 set ignorecase		" Do case insensitive matching
@@ -67,9 +67,28 @@ set hidden			" Hide buffers when they are abandoned
 					" (DISABLED) originally made using the
 					"  mouse go into Visual mode
 
+" enable filetype detection:
+" filetype on
+" filetype plugin on
+" filetype indent on " file type based indentation
+
 set tabstop=4 		" tab length is 4 spaces
 set shiftwidth=4	" indentation length is 4 spaces
 set autoindent		" auto indent
+" set expandtab 		" change tabs to spaces
+
+" don't expand tabs to spaces for Makefiles
+" autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
+
+" augroup filetype
+"   autocmd BufNewFile,BufRead */.Postponed/* set filetype=mail
+"   autocmd BufNewFile,BufRead *.txt set filetype=human
+"   autocmd BufNewFile,BufRead *.java set tabstop=4 expandtab
+" augroup END
+
+" for C-like programming language syntaxes
+" autocmd FileType c,cpp,java set formatoptions+=ro expandtab
+" autocmd FileType c set omnifunc=ccomplete#Complete
 
 " type 'Sys' then press TAB to easily output 'System.out.println('
 inoremap Sys<TAB> System.out.println(
@@ -78,16 +97,15 @@ inoremap Sys<TAB> System.out.println(
 " but now it also centers the screen on that line
 nnoremap gg ggzz
 
-" map the jump-to-mark command 'm so that the 
+" map the jump-to-mark command 'm so that the
 " command centers the screen upon jumping
 nnoremap 'm 'mzz
 
 " retain original indentation when pasting from another application
-nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>
+nnoremap ;p :set invpaste paste?<CR>
 set showmode
 
-" press % to visually highlight in-between brace/bracket/parentheses 
+" press % to visually highlight in-between brace/bracket/parentheses
 noremap % v%
 
 " autocomplete for matching brace (activated upon pressing enter)
@@ -109,16 +127,7 @@ set foldmethod=manual
 "					   (second one for loading code folds)
 " enable code folding (minimize chunks of code into one-liners)
 autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview 
-
-""""" this doesn't work well with the javadoc style comments
-" pressing CTRL-c no longer undoes the auto-indent
-" set indentexpr=GetIndent()
-" function GetIndent()
-" 	let lnum = prevnonblank(v:lnum - 1)
-" 	let ind = indent(lnum)
-" 	return ind
-" endfunction
+autocmd BufWinEnter *.* silent loadview
 
 " don't wrap back to the top after searching
 set nowrapscan
@@ -133,18 +142,33 @@ function! NumberToggle()
 endfunc
 
 " auto set relative number mode
-nnoremap <C-n> :call NumberToggle()<cr>
+nnoremap ;n :call NumberToggle()<cr>
 set rnu
 
 " press CTRL-j/CTRL-k to go down/up half a page, respectively
 noremap <C-j> <C-D>
 noremap <C-k> <C-U>
 
-" auto comments for /* (javadoc style comments) 
-set comments=sl:/*,mb:\ *,elx:\ */
+" auto comments for /* (javadoc style comments)
+" set comments=sl:/*,mb:\ *,elx:\ */
 
 " auto comment when pressing enter, o, or O
 set formatoptions+=rco
+
+" DUMBEST HACK EVER (but I'm so happy it works)
+" normally pressing CTRL-c undoes your auto-indent on a blank line
+" solutions to this is to make a new line that is auto-indented for you
+" 	and then type some random character, delete it, then press CTRL-c
+" so, that's exactly what this hack does
+inoremap <C-c> l<BS><ESC>
+
+" remove trailing whitespace press ';w' (semicolon then 'w')
+fun! TrimWhitespace()
+    let l:save_cursor = getpos('.')
+    %s/\s\+$//e
+    call setpos('.', l:save_cursor)
+endfun
+nnoremap ;w :call TrimWhitespace()<CR>
 
 " capital K now undoes a capital J
 nnoremap K i<CR><TAB><ESC>f}i<CR><BS><ESC>
