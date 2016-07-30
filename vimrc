@@ -30,12 +30,6 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-" Uncomment the following to have Vim load indentation rules and plugins
-" according to the detected filetype.
-" if has("autocmd")
-"   filetype plugin indent on
-" endif
-
 
 
 
@@ -77,6 +71,11 @@ set shiftwidth=4	" indentation length is 4 spaces
 set autoindent		" auto indent
 " set expandtab 		" change tabs to spaces
 
+set tw=75			" set text width for automatic word wrapping
+"set fo+=t
+set wrap
+set linebreak
+
 " don't expand tabs to spaces for Makefiles
 " autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
@@ -100,10 +99,6 @@ nnoremap gg ggzz
 " map the jump-to-mark command 'm so that the
 " command centers the screen upon jumping
 nnoremap 'm 'mzz
-
-" retain original indentation when pasting from another application
-nnoremap ;p :set invpaste paste?<CR>
-set showmode
 
 " press % to visually highlight in-between brace/bracket/parentheses
 noremap % v%
@@ -155,6 +150,13 @@ noremap <C-k> <C-U>
 " auto comment when pressing enter, o, or O
 set formatoptions+=rco
 
+" capital K now undoes a capital J
+nnoremap K i<CR><TAB><ESC>f}i<CR><BS><ESC>
+
+" use CTRL-h and CTRL-L to switch between Vim tabs
+nnoremap <C-h> gT
+nnoremap <C-l> gt
+
 " DUMBEST HACK EVER (but I'm so happy it works)
 " normally pressing CTRL-c undoes your auto-indent on a blank line
 " solutions to this is to make a new line that is auto-indented for you
@@ -162,7 +164,16 @@ set formatoptions+=rco
 " so, that's exactly what this hack does
 inoremap <C-c> l<BS><ESC>
 
-" remove trailing whitespace press ';w' (semicolon then 'w')
+" -----------------------------------------------------------------"
+" -----------------------------------------------------------------"
+" -----------------------------------------------------------------"
+" --------------- Begin my custom ';' commands --------------------"
+
+" use ;p to retain original indentation when pasting from another application
+nnoremap ;p :set invpaste paste?<CR>
+set showmode
+
+" use ;w to remove trailing whitespace press ';w' (semicolon then 'w')
 fun! TrimWhitespace()
     let l:save_cursor = getpos('.')
     %s/\s\+$//e
@@ -170,8 +181,17 @@ fun! TrimWhitespace()
 endfun
 nnoremap ;w :call TrimWhitespace()<CR>
 
-" capital K now undoes a capital J
-nnoremap K i<CR><TAB><ESC>f}i<CR><BS><ESC>
+" use ;h to toggle highlighted search
+noremap ;h :set hlsearch! hlsearch?<CR>
+
+" use ;/ while in Visual Block mode to comment the selected lines with //
+vnoremap ;/ <C-v>0I// <ESC>
+
+" use ;t and type a file name to open it in a VIM tab (:tabnew)
+nnoremap ;t :tabnew 
+
+" use ;m to run the Makefile in the current directory (:make)
+nnoremap ;m :make<CR>
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
