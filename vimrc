@@ -145,17 +145,19 @@ noremap <C-j> <C-D>
 noremap <C-k> <C-U>
 
 " auto comments for /* (javadoc style comments)
-" set comments=sl:/*,mb:\ *,elx:\ */
+set comments=sl:/*,mb:\ *,elx:\ */
 
 " auto comment when pressing enter, o, or O
 set formatoptions+=rco
 
 " capital K now undoes a capital J
-nnoremap K i<CR><TAB><ESC>f}i<CR><BS><ESC>
+nnoremap K i<CR><TAB><ESC>f}i<CR><BS><BS><BS><BS><ESC>
 
 " use CTRL-h and CTRL-L to switch between Vim tabs
 nnoremap <C-h> gT
+inoremap <C-h> <ESC>gT
 nnoremap <C-l> gt
+inoremap <C-l> <ESC>gt
 
 " DUMBEST HACK EVER (but I'm so happy it works)
 " normally pressing CTRL-c undoes your auto-indent on a blank line
@@ -163,6 +165,13 @@ nnoremap <C-l> gt
 " 	and then type some random character, delete it, then press CTRL-c
 " so, that's exactly what this hack does
 inoremap <C-c> l<BS><ESC>
+
+" lets the tags file to be in a separate directory from the source code
+" basically does the following:
+" 	goes up one directory at a time until it finds a file called '.tags'
+set tags=.tags;/
+
+nnoremap , ;
 
 " -----------------------------------------------------------------"
 " -----------------------------------------------------------------"
@@ -174,24 +183,51 @@ nnoremap ;p :set invpaste paste?<CR>
 set showmode
 
 " use ;w to remove trailing whitespace press ';w' (semicolon then 'w')
-fun! TrimWhitespace()
+function! TrimWhitespace()
     let l:save_cursor = getpos('.')
     %s/\s\+$//e
     call setpos('.', l:save_cursor)
-endfun
+endfunction
 nnoremap ;w :call TrimWhitespace()<CR>
 
 " use ;h to toggle highlighted search
-noremap ;h :set hlsearch! hlsearch?<CR>
+nnoremap ;h :set hlsearch! hlsearch?<CR>
 
-" use ;/ while in Visual Block mode to comment the selected lines with //
-vnoremap ;/ <C-v>0I// <ESC>
+" use ;e to toggle expandtab
+" nnoremap ;e :set expandtab! expandtab?<CR>
+
+vnoremap ;/ :call ToggleComment()<CR>
+function! ToggleComment()
+    if matchstr(getline(line(".")),'^\s*\/\/.*$') == ''
+           :execute "s:^:// :"
+    else
+           :execute "s:^\s*// ::"
+    endif
+endfunction
 
 " use ;t and type a file name to open it in a VIM tab (:tabnew)
 nnoremap ;t :tabnew 
 
 " use ;m to run the Makefile in the current directory (:make)
 nnoremap ;m :make<CR>
+
+" use ;s to source the vimrc file
+nnoremap ;s :source /usr/share/vim/vimrc<CR>
+
+" use ;f to format the file according to C++/Java style
+nnoremap ;f :set expandtab! expandtab?<CR>gg=G''
+
+" use ;x to delete the object along with its member
+nnoremap ;x F.BdW
+
+" use ;i to put the selected lines into an if-statement
+vnoremap ;i dO<TAB>if () {<CR>}<ESC>kp/}<CR>k>i{?{<CR>j0w
+
+" use ;j to jump from a function call to that function's definition
+" use T  to pop from the tag stack and go to that location
+" use in conjuction with ctags
+nnoremap ;j <C-]>
+nnoremap T <C-t>
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
