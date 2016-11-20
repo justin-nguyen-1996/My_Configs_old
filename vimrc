@@ -97,6 +97,9 @@ set linebreak
 " type 'Sys' then press TAB to easily output 'System.out.println('
 inoremap Sys<TAB> System.out.println(
 
+" type 'main' then press TAB to easily output the main for a .java file
+inoremap main<TAB> public static void main(String[] args) {<CR>}<Esc><Esc>O
+
 " typing gg still retains its functionality of jumping to a line
 " but now it also centers the screen on that line
 nnoremap gg ggzz
@@ -109,7 +112,7 @@ nnoremap 'm 'mzz
 noremap % v%
 
 " autocomplete for matching brace (activated upon pressing enter)
-inoremap {<CR>  {<CR>}<Esc>O<TAB>
+inoremap {<CR>  {<CR>}<Esc><Esc>O
 
 " Capital H now goes to the top of the visible screen
 " Capital L now goes to the bottom of the visible screen
@@ -156,7 +159,11 @@ set comments=sl:/*,mb:\ *,elx:\ */
 set formatoptions+=rco
 
 " capital K now undoes a capital J
-nnoremap K i<CR><TAB><ESC>f}i<CR><BS><BS><BS><BS><ESC>
+nnoremap K i<CR><ESC><ESC>f}i<CR><ESC><ESC>kw
+
+" change the orientation of the windows when using :split and :vs
+set splitbelow
+set splitright
 
 " use CTRL-h and CTRL-L to switch between Vim tabs
 nnoremap <C-h> gT
@@ -217,7 +224,7 @@ nnoremap ;t :tabnew
 nnoremap ;m :make<CR>
 
 " use ;s to source the vimrc file
-nnoremap ;s :source /usr/share/vim/vimrc<CR>
+nnoremap ;s :source /etc/vimrc<CR>
 
 " use ;f to format the file according to C++/Java style
 nnoremap ;f :set expandtab! expandtab?<CR>gg=G''
