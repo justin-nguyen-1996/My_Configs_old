@@ -48,17 +48,17 @@
 #set output-meta on
 $if Bash
   # Don't ring bell on completion
-  #set bell-style none
+  set bell-style none
 
   # or, don't beep at me - show me
-  set bell-style visible
+  # set bell-style visible
 
   # Filename completion/expansion
   set completion-ignore-case on
-  set show-all-if-ambiguous on
+  #set show-all-if-ambiguous on
 
   # Expand homedir name
-  set expand-tilde on
+  # set expand-tilde on
 
   # Append "/" to all dirnames
   set mark-directories on
