@@ -184,6 +184,7 @@ inoremap <C-c> l<BS><ESC>
 set tags=.tags;/
 
 nnoremap , ;
+nnoremap < ,
 
 " -----------------------------------------------------------------"
 " -----------------------------------------------------------------"
@@ -209,6 +210,7 @@ nnoremap ;h :set hlsearch! hlsearch?<CR>
 " nnoremap ;e :set expandtab! expandtab?<CR>
 
 vnoremap ;/ :call ToggleComment()<CR>
+nnoremap ;/ :call ToggleComment()<CR>
 function! ToggleComment()
     if matchstr(getline(line(".")),'^\s*\/\/.*$') == ''
            :execute "s:^:// :"
@@ -216,6 +218,9 @@ function! ToggleComment()
            :execute "s:^\s*// ::"
     endif
 endfunction
+
+" use ;l to reload the file
+nnoremap ;l :e<CR>
 
 " use ;t and type a file name to open it in a VIM tab (:tabnew)
 nnoremap ;t :tabnew 
@@ -235,8 +240,8 @@ vnoremap ;i dO<TAB>if () {<CR>}<ESC>kp/}<CR>k>i{?{<CR>j0w
 " use ;j to jump from a function call to that function's definition
 " use T  to pop from the tag stack and go to that location
 " use in conjuction with ctags
-nnoremap ;j <C-]>
-nnoremap T <C-t>
+nnoremap ;j <C-]>zz
+nnoremap T <C-t>zz
 
 " Don't wake up system with blinking cursor:
 " http://www.linuxpowertop.org/known.php
