@@ -241,7 +241,10 @@ nnoremap ;s :source /etc/vimrc<CR>
 nnoremap ;f :set expandtab! expandtab?<CR>gg=G''
 
 " use ;i to put the selected lines into an if-statement
-vnoremap ;i dO<TAB>if () {<CR>}<ESC>kp/}<CR>k>i{?{<CR>j0w
+vnoremap ;i dOif () {<CR>}<ESC>kp/}<CR>k>i{?(<CR>
+vnoremap ;w dOwhile () {<CR>}<ESC>kp/}<CR>k>i{?(<CR>
+vnoremap ;f dOfor () {<CR>}<ESC>kp/}<CR>k>i{?(<CR>
+vnoremap ;d dOdo {<CR>}<ESC>kp/}<CR>k>i{/}<CR>a while ();<ESC>?(<CR>
 
 " use ;j to jump from a function call to that function's definition
 " use T  to pop from the tag stack and go to that location
