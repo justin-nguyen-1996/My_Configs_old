@@ -100,6 +100,12 @@ inoremap Sys<TAB> System.out.println(
 " type 'main' then press TAB to easily output the main for a .java file
 inoremap main<TAB> public static void main(String[] args) {<CR>}<Esc><Esc>O
 
+" type Sys after selecting a var to easily print the var to the console
+vnoremap Sys<TAB> d<ESC>aSystem.out.println(": " + );<ESC>F(f"pf)F p
+
+" type cout after selecting a var to easily print the var to the console
+vnoremap cout<TAB> d<ESC>acout << ": " << ;<ESC>Ftf"pf;F p
+
 " typing gg still retains its functionality of jumping to a line
 " but now it also centers the screen on that line
 nnoremap gg ggzz
@@ -243,6 +249,7 @@ vnoremap ;i dO<TAB>if () {<CR>}<ESC>kp/}<CR>k>i{?{<CR>j0w
 nnoremap ;j <C-]>zz
 nnoremap T <C-t>zz
 
+" use ;y to copy the current text file into the clipboard
 nnoremap ;y myggvG$"*y'y
 
 " Don't wake up system with blinking cursor:
