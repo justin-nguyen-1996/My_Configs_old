@@ -252,6 +252,12 @@ nnoremap T <C-t>zz
 " use ;y to copy the current text file into the clipboard
 nnoremap ;y myggvG$"*y'y
 
+" use ;cout
+nnoremap ;cout<TAB> vbd<ESC>acout << ": " << ;<ESC>Ftf"pf;F p
+
+" use ;Sys
+nnoremap ;Sys<TAB> vbd<ESC>aSystem.out.println(": " + );<ESC>F(f"pf)F p
+
 " Don't wake up system with blinking cursor:
 " http://www.linuxpowertop.org/known.php
 let &guicursor = &guicursor . ",a:blinkon0"
