@@ -104,7 +104,7 @@ inoremap main<TAB> public static void main(String[] args) {<CR>}<Esc><Esc>O
 vnoremap Sys<TAB> d<ESC>aSystem.out.println(": " + );<ESC>F(f"pf)F p
 
 " type cout after selecting a var to easily print the var to the console
-vnoremap cout<TAB> d<ESC>acout << ": " << ;<ESC>Ftf"pf;F p
+vnoremap cout<TAB> d<ESC>acout << ": " <<  << "\n";<ESC>Ftf"pf<f<f p
 
 " typing gg still retains its functionality of jumping to a line
 " but now it also centers the screen on that line
@@ -253,7 +253,7 @@ nnoremap T <C-t>zz
 nnoremap ;y myggvG$"*y'y
 
 " use ;cout
-nnoremap ;cout<TAB> vbd<ESC>acout << ": " << ;<ESC>Ftf"pf;F p
+nnoremap ;cout<TAB> vbd<ESC>acout << ": " <<  << "\n";<ESC>Ftf"pf<f<f p
 
 " use ;Sys
 nnoremap ;Sys<TAB> vbd<ESC>aSystem.out.println(": " + );<ESC>F(f"pf)F p
