@@ -243,6 +243,8 @@ vnoremap ;i dO<TAB>if () {<CR>}<ESC>kp/}<CR>k>i{?{<CR>j0w
 nnoremap ;j <C-]>zz
 nnoremap T <C-t>zz
 
+nnoremap ;y myggvG$"*y'y
+
 " Don't wake up system with blinking cursor:
 " http://www.linuxpowertop.org/known.php
 let &guicursor = &guicursor . ",a:blinkon0"
