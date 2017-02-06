@@ -89,10 +89,9 @@ set shiftwidth=4	" indentation length is 4 spaces
 set autoindent		" auto indent
 " set expandtab 		" change tabs to spaces
 
-set tw=75			" set text width for automatic word wrapping
-"set fo+=t
-set wrap
-set linebreak
+" set tw=75			" set text width for automatic word wrapping
+" set wrap
+" set linebreak
 
 " type 'Sys' then press TAB to easily output 'System.out.println('
 inoremap Sys<TAB> System.out.println(
@@ -109,6 +108,9 @@ vnoremap cout<TAB> d<ESC>acout << ": " <<  << "\n";<ESC>Ftf"pf<f<f p
 " typing gg still retains its functionality of jumping to a line
 " but now it also centers the screen on that line
 nnoremap gg ggzz
+
+" typing '' now also centers the screen
+nnoremap '' ''zz
 
 " map the jump-to-mark command 'm so that the
 " command centers the screen upon jumping
@@ -131,12 +133,16 @@ hi MatchParen cterm=underline ctermbg=none ctermfg=none
 " have folds open (not folded) by default
 " set nofoldenable
 
+" enable code folding (minimize chunks of code into one-liners)
 set foldmethod=manual
+
 " auto save code folds (first one for saving code folds)
 "					   (second one for loading code folds)
-" enable code folding (minimize chunks of code into one-liners)
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
+
+" don't open code folds when doing searches
+:set foldopen-=search
 
 " don't wrap back to the top after searching
 set nowrapscan
@@ -189,8 +195,17 @@ inoremap <C-c> l<BS><ESC>
 " 	goes up one directory at a time until it finds a file called '.tags'
 set tags=.tags;/
 
+" use , to repeat the last find command --> use shift, to go the other way
 nnoremap , ;
+vnoremap , ;
 nnoremap < ,
+
+" a godsend that disables that stupidly annoying beep/bell once and for all
+set belloff=all
+
+" remap the normal paste to align the pasted block with the surrounded text
+nnoremap p ]p
+nnoremap P ]P
 
 " -----------------------------------------------------------------"
 " -----------------------------------------------------------------"
@@ -241,10 +256,11 @@ nnoremap ;s :source /etc/vimrc<CR>
 nnoremap ;f :set expandtab! expandtab?<CR>gg=G''
 
 " use ;i to put the selected lines into an if-statement
-vnoremap ;i dOif () {<CR>}<ESC>kp/}<CR>k>i{?(<CR>
-vnoremap ;w dOwhile () {<CR>}<ESC>kp/}<CR>k>i{?(<CR>
-vnoremap ;f dOfor () {<CR>}<ESC>kp/}<CR>k>i{?(<CR>
-vnoremap ;d dOdo {<CR>}<ESC>kp/}<CR>k>i{/}<CR>a while ();<ESC>?(<CR>
+" vnoremap ;i dOif () {<CR>}<ESC>kp/}<CR>k>i{?(<CR>
+vnoremap ;i dOif () {<CR>}<ESC>kp>i{?(<CR>
+vnoremap ;w dOwhile () {<CR>}<ESC>kp>i{?(<CR>
+vnoremap ;f dOfor () {<CR>}<ESC>kp>i{?(<CR>
+vnoremap ;d dOdo {<CR>} while ();<ESC>kp>i{/(<CR>
 
 " use ;j to jump from a function call to that function's definition
 " use T  to pop from the tag stack and go to that location
@@ -255,11 +271,17 @@ nnoremap T <C-t>zz
 " use ;y to copy the current text file into the clipboard
 nnoremap ;y myggvG$"*y'y
 
+" use ;v to paste from the clipboard
+nnoremap ;v "*p
+
 " use ;cout
-nnoremap ;cout<TAB> vbd<ESC>acout << ": " <<  << "\n";<ESC>Ftf"pf<f<f p
+nnoremap ;cout<TAB> v0wd<ESC>acout << ": " <<  << "\n";<ESC>Ftf"pf<f<f p
 
 " use ;Sys
 nnoremap ;Sys<TAB> vbd<ESC>aSystem.out.println(": " + );<ESC>F(f"pf)F p
+
+" use ;zf to easily fold code that lies in between the braces
+nnoremap ;zf V%zf
 
 " Don't wake up system with blinking cursor:
 " http://www.linuxpowertop.org/known.php
