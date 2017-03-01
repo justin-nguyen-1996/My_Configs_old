@@ -210,6 +210,16 @@ nnoremap P ]P
 " remap the paste function in insert mode to Control-p
 inoremap <C-p> <C-R>"
 
+" remap yb to not move the cursor backwards (repositioning the cursor was annoying)
+nnoremap yb ybw
+
+" remap CTRL-n to move to the next line that has a compile error"
+nnoremap <C-n> :cn<CR>
+
+" remap CTRL-p to move to the previous line that has a compile error"
+" NOTE: can also map this to CTRL-N
+nnoremap <C-p> :cp<CR>
+
 " -----------------------------------------------------------------"
 " -----------------------------------------------------------------"
 " -----------------------------------------------------------------"
@@ -256,14 +266,14 @@ nnoremap ;m :make<CR>
 nnoremap ;s :source /etc/vimrc<CR>
 
 " use ;f to format the file according to C++/Java style
-nnoremap ;f :set expandtab! expandtab?<CR>gg=G''
+nnoremap ;f :set expandtab! expandtab?<CR>gg=G''<ESC>
 
-" use ;i to put the selected lines into an if-statement
-" vnoremap ;i dOif () {<CR>}<ESC>kp/}<CR>k>i{?(<CR>
-vnoremap ;i dOif () {<CR>}<ESC>kp>i{?(<CR>
-vnoremap ;w dOwhile () {<CR>}<ESC>kp>i{?(<CR>
-vnoremap ;f dOfor () {<CR>}<ESC>kp>i{?(<CR>
-vnoremap ;d dOdo {<CR>} while ();<ESC>kp>i{/(<CR>
+" use ;i/w/f/d/t to put the selected lines into an if-statement
+vnoremap ;i dOif () {<CR>}<ESC><ESC>kp>i{?(<CR>
+vnoremap ;w dOwhile () {<CR>}<ESC><ESC>kp>i{?(<CR>
+vnoremap ;f dOfor () {<CR>}<ESC><ESC>kp>i{?(<CR>
+vnoremap ;d dOdo {<CR>} while ();<ESC><ESC>kp>i{/while (<CR>f(
+vnoremap ;t dOtry {<CR>} catch () {<CR><CR>}<ESC><ESC>kkkp>i{/catch ()<CR>f(
 
 " use ;j to jump from a function call to that function's definition
 " use T  to pop from the tag stack and go to that location
