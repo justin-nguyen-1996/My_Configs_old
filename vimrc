@@ -223,6 +223,9 @@ nnoremap <C-n> :cn<CR>
 " NOTE: can also map this to CTRL-N
 nnoremap <C-p> :cp<CR>
 
+" remap ~ to U for easier uppercasing/lowercasing
+nnoremap U ~
+
 " -----------------------------------------------------------------"
 " -----------------------------------------------------------------"
 " -----------------------------------------------------------------"
@@ -298,6 +301,9 @@ nnoremap ;Sys<TAB> vbd<ESC>aSystem.out.println(": " + );<ESC>F(f"pf)F p
 
 " use ;zf to easily fold code that lies in between the braces
 nnoremap ;zf V%zf
+
+" use ;r in visual mode to replace the visually selected word
+vnoremap ;r y:%s/<C-F>pa/
 
 " Don't wake up system with blinking cursor:
 " http://www.linuxpowertop.org/known.php
