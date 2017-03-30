@@ -51,6 +51,7 @@ endif
 "  set hlsearch
 "endif
 
+syntax enable
 filetype plugin on
 
 if &term=="xterm"
@@ -78,11 +79,6 @@ set hidden			" Hide buffers when they are abandoned
 " set mouse=a		" Enable mouse usage (all modes)
 					" (DISABLED) originally made using the
 					"  mouse go into Visual mode
-
-" enable filetype detection:
-" filetype on
-" filetype plugin on
-" filetype indent on " file type based indentation
 
 set tabstop=4 		" tab length is 4 spaces
 set shiftwidth=4	" indentation length is 4 spaces
@@ -225,6 +221,13 @@ nnoremap <C-p> :cp<CR>
 
 " remap ~ to U for easier uppercasing/lowercasing
 nnoremap U ~
+
+" searches down into subfolders
+" provides tab-completion for all file-related tasks
+set path+=**
+
+" display all matching files when you tab-complete
+set wildmenu
 
 " -----------------------------------------------------------------"
 " -----------------------------------------------------------------"
