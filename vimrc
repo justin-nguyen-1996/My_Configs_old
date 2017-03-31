@@ -206,6 +206,12 @@ nnoremap P ]P
 " remap the paste function in insert mode to Control-p
 inoremap <C-p> <C-R>"
 
+" remap the autocomplete feature in vim to only look in the current file
+inoremap <C-n> <C-x><C-n>
+
+" remap the autocomplete feature for files to Control-m in insert mode
+inoremap <C-m> <C-x><C-f>
+
 " remap yb to not move the cursor backwards (repositioning the cursor was annoying)
 nnoremap yb ybw
 
