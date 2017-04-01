@@ -210,7 +210,7 @@ inoremap <C-p> <C-R>"
 inoremap <C-n> <C-x><C-n>
 
 " remap the autocomplete feature for files to Control-m in insert mode
-inoremap <C-m> <C-x><C-f>
+inoremap <C-k> <C-x><C-f>
 
 " remap yb to not move the cursor backwards (repositioning the cursor was annoying)
 nnoremap yb ybw
@@ -234,6 +234,11 @@ set path+=**
 
 " display all matching files when you tab-complete
 set wildmenu
+
+" tweaks for file browsing
+let g:netrw_browse_split=4   " open in prior window
+let g:netrw_altv=1           " open splits to the right
+let g:netrw_liststyles=3     " tree view
 
 " -----------------------------------------------------------------"
 " -----------------------------------------------------------------"
