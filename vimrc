@@ -238,7 +238,13 @@ set wildmenu
 " tweaks for file browsing
 let g:netrw_browse_split=4   " open in prior window
 let g:netrw_altv=1           " open splits to the right
-let g:netrw_liststyles=3     " tree view
+let g:netrw_liststyle=3      " tree view
+
+" restore color scheme --> this is not actually mapped to something
+" set filetype=____   (e.g. :set filetype=cpp)
+
+" zipping files
+" zip -r file_name.zip *
 
 " -----------------------------------------------------------------"
 " -----------------------------------------------------------------"
