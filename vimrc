@@ -246,6 +246,15 @@ let g:netrw_liststyle=3      " tree view
 " zipping files
 " zip -r file_name.zip *
 
+" macro for turning something like int x = { asdf_0, qwer_0, zxcv_0 }; into int x = { asdf_1, qwer_1, zxcv_1 };
+" usage:
+" 1. put a 1 above the line that you want to start copying
+" 2. mark that line into the m-register using mm
+" 3. copy that 1 into the w-register using "wyw
+" 3. copy the following macro into the q-register: yypmnf_lvwh"wp,lvwh"wp,lvwhh"wp'm'm"wyw'n
+" 4. execute the macro by using <number_here>@q on the line you want to copy
+" 5. (if desired) remove the underscores by selecting the lines and doing a replace
+
 " -----------------------------------------------------------------"
 " -----------------------------------------------------------------"
 " -----------------------------------------------------------------"
