@@ -5,7 +5,6 @@ endif
 set nocompatible	" Use Vim defaults (much better!)
 set bs=indent,eol,start		" allow backspacing over everything in insert mode
 "set ai			" always set autoindenting on
-"set backup		" keep a backup file
 set viminfo='20,\"50	" read/write a .viminfo file, don't store more
 			" than 50 lines of registers
 set history=50		" keep 50 lines of command line history
@@ -88,6 +87,10 @@ set autoindent		" auto indent
 " set tw=75			" set text width for automatic word wrapping
 " set wrap
 " set linebreak
+ 
+" make navigation easier when lines get wrapped
+nnoremap j gj
+nnoremap k gk
 
 " type 'Sys' then press TAB to easily output 'System.out.println('
 inoremap Sys<TAB> System.out.println(
@@ -239,6 +242,21 @@ set wildmenu
 let g:netrw_browse_split=4   " open in prior window
 let g:netrw_altv=1           " open splits to the right
 let g:netrw_liststyle=3      " tree view
+
+if has('persistent_undo')
+  set undolevels=5000
+  call system('mkdir ~/.vim/undo')
+  set undodir=~/.vim/undo
+  set undofile
+endif
+
+call system('mkdir ~/.vim/backups')
+set backupdir=~/.vim/backups/
+
+" The 'n' here is a prefix specifying which viminfo property is being set -
+" in this case, the Name of the viminfo file.
+" :h 'viminfo'
+set viminfo+=n~/.vim/viminfo
 
 " restore color scheme --> this is not actually mapped to something
 " set filetype=____   (e.g. :set filetype=cpp)
