@@ -59,54 +59,75 @@ if &term=="xterm"
      set t_Sf=[3%dm
 endif
 
-set showcmd			" Show (partial) command in status line.
+" ================================================================="
+" ================================================================="
+" ================== Begin my 'set' vimrc things =================="
 
-" set showmatch		" Show matching brackets.
-					" (DISABLED) because too hard to find cursor
+" Show (partial) command in status line
+set showcmd			
 
-set ignorecase		" Do case insensitive matching
+" Do case insensitive matching, smart case matching, don't wrap back to the top after searching
+set ignorecase		
+set smartcase		
+set nowrapscan
 
-set smartcase		" Do smart case matching
+" Automatically save before commands like :make
+set autowrite		
 
-" set incsearch		" Incremental search
-					" (DISABLED) personal choice, your decision
+" Hide buffers when they are abandoned
+set hidden			
 
-set autowrite		" Automatically save before commands like :make
+" set tab length, indentation length, auto indent
+set tabstop=4 		
+set shiftwidth=4
+set autoindent	
 
-set hidden			" Hide buffers when they are abandoned
+" disable swap file generation
+set noswapfile      
 
-" set mouse=a		" Enable mouse usage (all modes)
-					" (DISABLED) originally made using the
-					"  mouse go into Visual mode
+" change the orientation of the windows when using :split and :vs
+set splitbelow
+set splitright
 
-set tabstop=4 		" tab length is 4 spaces
-set shiftwidth=4	" indentation length is 4 spaces
-set autoindent		" auto indent
-" set expandtab 		" change tabs to spaces
+" enable code folding, auto code fold saving, don't open code folds when doing searches
+set foldmethod=manual
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
+:set foldopen-=search
 
-" set tw=75			" set text width for automatic word wrapping
-" set wrap
-" set linebreak
- 
+" auto comments for /* (javadoc style comments)
+set comments=sl:/*,mb:\ *,elx:\ */
+
+" auto comment when pressing enter, o, or O
+set formatoptions+=rco
+
+" lets the tags file to be in a separate directory from the source code
+" basically does the following:
+" 	goes up one directory at a time until it finds a file called '.tags'
+set tags=.tags;/
+
+" a godsend that disables that stupidly annoying beep/bell once and for all
+set belloff=all
+
+" searches down into subfolders
+" provides tab-completion for all file-related tasks
+set path+=**
+
+" display all matching files when you tab-complete
+set wildmenu
+
+" tweaks for file browsing
+let g:netrw_browse_split=4   " open in prior window
+let g:netrw_altv=1           " open splits to the right
+let g:netrw_liststyle=3      " tree view
+
+" ================================================================="
+" ================================================================="
+" =============== Begin my 'nnoremaps' vimrc things ==============="
+
 " make navigation easier when lines get wrapped
 nnoremap j gj
 nnoremap k gk
-
-" type 'Sys' then press TAB to easily output 'System.out.println('
-inoremap Sys<TAB> System.out.println(
-
-" type 'main' then press TAB to easily output the main for a .java file
-inoremap main<TAB> public static void main(String[] args) {<CR>}<Esc><Esc>O
-
-" type Sys after selecting a var to easily print the var to the console
-vnoremap Sys<TAB> d<ESC>aSystem.out.println(": " + );<ESC>F(f"pf)F p
-
-" type cout after selecting a var to easily print the var to the console
-vnoremap cout<TAB> d<ESC>acout << ": " <<  << "\n";<ESC>Ftf"pf<f<f p
-
-" typing gg still retains its functionality of jumping to a line
-" but now it also centers the screen on that line
-nnoremap gg ggzz
 
 " typing '' now also centers the screen
 nnoremap '' ''zz
@@ -118,63 +139,12 @@ nnoremap 'm 'mzz
 " press % to visually highlight in-between brace/bracket/parentheses
 noremap % v%
 
-" autocomplete for matching brace (activated upon pressing enter)
-inoremap {<CR>  {<CR>}<Esc><Esc>O
-
-" Capital H now goes to the top of the visible screen
-" Capital L now goes to the bottom of the visible screen
-nnoremap H L
-nnoremap L H
-
-" set matching parenthesis/brace/bracket to be underlined
-hi MatchParen cterm=underline ctermbg=none ctermfg=none
-
-" have folds open (not folded) by default
-" set nofoldenable
-
-" enable code folding (minimize chunks of code into one-liners)
-set foldmethod=manual
-
-" auto save code folds (first one for saving code folds)
-"					   (second one for loading code folds)
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview
-
-" don't open code folds when doing searches
-:set foldopen-=search
-
-" don't wrap back to the top after searching
-set nowrapscan
-
-" press CTRL-n to toggle between number mode and relative number mode
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set nornu
-  else
-    set rnu
-  endif
-endfunc
-
-" auto set relative number mode
-nnoremap ;n :call NumberToggle()<cr>
-set rnu
-
 " press CTRL-j/CTRL-k to go down/up half a page, respectively
 noremap <C-j> <C-D>
 noremap <C-k> <C-U>
 
-" auto comments for /* (javadoc style comments)
-set comments=sl:/*,mb:\ *,elx:\ */
-
-" auto comment when pressing enter, o, or O
-set formatoptions+=rco
-
 " capital K now undoes a capital J
 nnoremap K i<CR><ESC><ESC>f}i<CR><ESC><ESC>kw
-
-" change the orientation of the windows when using :split and :vs
-set splitbelow
-set splitright
 
 " use CTRL-h and CTRL-L to switch between Vim tabs
 nnoremap <C-h> gT
@@ -182,38 +152,14 @@ inoremap <C-h> <ESC>gT
 nnoremap <C-l> gt
 inoremap <C-l> <ESC>gt
 
-" DUMBEST HACK EVER (but I'm so happy it works)
-" normally pressing CTRL-c undoes your auto-indent on a blank line
-" solutions to this is to make a new line that is auto-indented for you
-" 	and then type some random character, delete it, then press CTRL-c
-" so, that's exactly what this hack does
-inoremap <C-c> l<BS><ESC>
-
-" lets the tags file to be in a separate directory from the source code
-" basically does the following:
-" 	goes up one directory at a time until it finds a file called '.tags'
-set tags=.tags;/
-
 " use , to repeat the last find command --> use shift, to go the other way
 nnoremap , ;
 vnoremap , ;
 nnoremap < ,
 
-" a godsend that disables that stupidly annoying beep/bell once and for all
-set belloff=all
-
 " remap the normal paste to align the pasted block with the surrounded text
 nnoremap p ]p
 nnoremap P ]P
-
-" remap the paste function in insert mode to Control-p
-inoremap <C-p> <C-R>"
-
-" remap the autocomplete feature in vim to only look in the current file
-inoremap <C-n> <C-x><C-n>
-
-" remap the autocomplete feature for files to Control-m in insert mode
-inoremap <C-k> <C-x><C-f>
 
 " remap yb to not move the cursor backwards (repositioning the cursor was annoying)
 nnoremap yb ybw
@@ -231,52 +177,83 @@ nnoremap <C-p> :cp<CR>
 " remap ~ to U for easier uppercasing/lowercasing
 nnoremap U ~
 
-" searches down into subfolders
-" provides tab-completion for all file-related tasks
-set path+=**
+" ================================================================="
+" ================================================================="
+" =============== Begin my 'inoremaps' vimrc things ==============="
 
-" display all matching files when you tab-complete
-set wildmenu
+" type 'Sys' then press TAB to easily output 'System.out.println('
+inoremap Sys<TAB> System.out.println(
 
-" tweaks for file browsing
-let g:netrw_browse_split=4   " open in prior window
-let g:netrw_altv=1           " open splits to the right
-let g:netrw_liststyle=3      " tree view
+" type 'main' then press TAB to easily output the main for a .java file
+inoremap main<TAB> public static void main(String[] args) {<CR>}<Esc><Esc>O
 
+" autocomplete for matching brace (activated upon pressing enter)
+inoremap {<CR>  {<CR>}<Esc><Esc>O
+
+" DUMBEST HACK EVER (but I'm so happy it works)
+" normally pressing CTRL-c undoes your auto-indent on a blank line
+" solutions to this is to make a new line that is auto-indented for you
+" 	and then type some random character, delete it, then press CTRL-c
+" so, that's exactly what this hack does
+inoremap <C-c> l<BS><ESC>
+
+" remap the paste function in insert mode to Control-p
+inoremap <C-p> <C-R>"
+
+" remap the autocomplete feature in vim to only look in the current file
+inoremap <C-n> <C-x><C-n>
+
+" remap the autocomplete feature for files to Control-m in insert mode
+inoremap <C-k> <C-x><C-f>
+
+" ================================================================="
+" ================================================================="
+" =============== Begin my 'vnoremaps' vimrc things ==============="
+
+" type Sys after selecting a var to easily print the var to the console
+vnoremap Sys<TAB> d<ESC>aSystem.out.println(": " + );<ESC>F(f"pf)F p
+
+" type cout after selecting a var to easily print the var to the console
+vnoremap cout<TAB> d<ESC>acout << ": " <<  << "\n";<ESC>Ftf"pf<f<f p
+
+" ================================================================="
+" ================================================================="
+" ============== Begin some 'function' vimrc things ==============="
+
+" now you can close the file, get back in, and still maintain the original undo tree
 if has('persistent_undo')
-  set undolevels=5000
-  call system('mkdir ~/.vim/undo')
-  set undodir=~/.vim/undo
-  set undofile
+    set undolevels=5000
+    call system('mkdir ~/.vim/undo')
+    set undodir=~/.vim/undo
+    set undofile
 endif
 
-call system('mkdir ~/.vim/backups')
-set backupdir=~/.vim/backups/
+" toggle commented lines
+vnoremap ;/ :call ToggleComment()<CR>
+nnoremap ;/ :call ToggleComment()<CR>
+function! ToggleComment()
+	if matchstr(getline(line(".")),'^\s*\/\/.*$') == ''
+		   :execute "s:^:// :"
+	else
+		   :execute "s:^\s*// ::"
+	endif
+endfunction
 
-" The 'n' here is a prefix specifying which viminfo property is being set -
-" in this case, the Name of the viminfo file.
-" :h 'viminfo'
-set viminfo+=n~/.vim/viminfo
 
-" restore color scheme --> this is not actually mapped to something
-" set filetype=____   (e.g. :set filetype=cpp)
-
-" zipping files
-" zip -r file_name.zip *
-
-" macro for turning something like int x = { asdf_0, qwer_0, zxcv_0 }; into int x = { asdf_1, qwer_1, zxcv_1 };
-" usage:
-" 1. put a 1 above the line that you want to start copying
-" 2. mark that line into the m-register using mm
-" 3. copy that 1 into the w-register using "wyw
-" 3. copy the following macro into the q-register: yypmnf_lvwh"wp,lvwh"wp,lvwhh"wp'm'm"wyw'n
-" 4. execute the macro by using <number_here>@q on the line you want to copy
-" 5. (if desired) remove the underscores by selecting the lines and doing a replace
-
-" -----------------------------------------------------------------"
-" -----------------------------------------------------------------"
-" -----------------------------------------------------------------"
-" --------------- Begin my custom ';' commands --------------------"
+" ================================================================="
+" ================================================================="
+" ================= Begin my custom ';' commands =================="
+"
+" use ;n to toggle between number mode and relative number mode
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set nornu
+  else
+    set rnu
+  endif
+endfunc
+nnoremap ;n :call NumberToggle()<cr>
+set rnu
 
 " use ;p to retain original indentation when pasting from another application
 nnoremap ;p :set invpaste paste?<CR>
@@ -284,27 +261,14 @@ set showmode
 
 " use ;w to remove trailing whitespace press ';w' (semicolon then 'w')
 function! TrimWhitespace()
-    let l:save_cursor = getpos('.')
-    %s/\s\+$//e
-    call setpos('.', l:save_cursor)
+	let l:save_cursor = getpos('.')
+	%s/\s\+$//e
+	call setpos('.', l:save_cursor)
 endfunction
 nnoremap ;w :call TrimWhitespace()<CR>
 
 " use ;h to toggle highlighted search
 nnoremap ;h :set hlsearch! hlsearch?<CR>
-
-" use ;e to toggle expandtab
-" nnoremap ;e :set expandtab! expandtab?<CR>
-
-vnoremap ;/ :call ToggleComment()<CR>
-nnoremap ;/ :call ToggleComment()<CR>
-function! ToggleComment()
-    if matchstr(getline(line(".")),'^\s*\/\/.*$') == ''
-           :execute "s:^:// :"
-    else
-           :execute "s:^\s*// ::"
-    endif
-endfunction
 
 " use ;l to reload the file
 nnoremap ;l :e<CR>
@@ -352,6 +316,26 @@ nnoremap ;zf V%zf
 " use ;r in visual mode to replace the visually selected word
 vnoremap ;r y:%s/<C-F>pa/
 
+" ================================================================="
+" ================================================================="
+" ================== Some nice things to remember ================="
+
+" restore color scheme --> this is not actually mapped to something
+" set filetype=____   (e.g. :set filetype=cpp)
+
+" zipping files
+" zip -r file_name.zip *
+
+" macro for turning something like int x = { asdf_0, qwer_0, zxcv_0 }; into int x = { asdf_1, qwer_1, zxcv_1 };
+" usage:
+" 1. put a 1 above the line that you want to start copying
+" 2. mark that line into the m-register using mm
+" 3. copy that 1 into the w-register using "wyw
+" 3. copy the following macro into the q-register: yypmnf_lvwh"wp,lvwh"wp,lvwhh"wp'm'm"wyw'n
+" 4. execute the macro by using <number_here>@q on the line you want to copy
+" 5. (if desired) remove the underscores by selecting the lines and doing a replace
+
 " Don't wake up system with blinking cursor:
 " http://www.linuxpowertop.org/known.php
 let &guicursor = &guicursor . ",a:blinkon0"
+
