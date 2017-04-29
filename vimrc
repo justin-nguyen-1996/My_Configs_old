@@ -93,7 +93,9 @@ set splitright
 set foldmethod=manual
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
-:set foldopen-=search
+set foldopen-=search
+
+set viewoptions=folds,cursor
 
 " auto comments for /* (javadoc style comments)
 set comments=sl:/*,mb:\ *,elx:\ */
