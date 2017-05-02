@@ -123,6 +123,9 @@ let g:netrw_browse_split=4   " open in prior window
 let g:netrw_altv=1           " open splits to the right
 let g:netrw_liststyle=3      " tree view
 
+" set matching parenthesis/brace/bracket to be underlined
+hi MatchParen cterm=underline ctermbg=none ctermfg=none
+
 " ================================================================="
 " ================================================================="
 " =============== Begin my 'nnoremaps' vimrc things ==============="
@@ -240,7 +243,6 @@ function! ToggleComment()
 		   :execute "s:^\s*// ::"
 	endif
 endfunction
-
 
 " ================================================================="
 " ================================================================="
