@@ -90,7 +90,7 @@ set splitbelow
 set splitright
 
 " enable code folding, auto code fold saving, don't open code folds when doing searches
-set foldmethod=manual
+" set foldmethod=manual
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
 set foldopen-=search
@@ -148,8 +148,8 @@ noremap % v%
 noremap <C-j> <C-D>
 noremap <C-k> <C-U>
 
-" capital K now undoes a capital J
-nnoremap K i<CR><ESC><ESC>f}i<CR><ESC><ESC>kw
+" capital K enters a linefeed while maintaining normal mode
+nnoremap K i<CR><ESC>
 
 " use CTRL-h and CTRL-L to switch between Vim tabs
 nnoremap <C-h> gT
@@ -247,7 +247,26 @@ endfunction
 " ================================================================="
 " ================================================================="
 " ================= Begin my custom ';' commands =================="
-"
+
+" use ;zf to fold all functions (in C and C++ and Java)
+function! FoldFunctions()
+	:silent! execute "%g/^bool/normal! vf{%zf"
+	:silent! execute "%g/^boolean/normal! vf{%zf"
+	:silent! execute "%g/^int/normal! vf{%zf"
+	:silent! execute "%g/^double/normal! vf{%zf"
+	:silent! execute "%g/^void/normal! vf{%zf"
+	
+	:silent! execute "%g/\tbool/normal! vf{%zf"
+	:silent! execute "%g/\tboolean/normal! vf{%zf"
+	:silent! execute "%g/\tint/normal! vf{%zf"
+	:silent! execute "%g/\tdouble/normal! vf{%zf"
+	:silent! execute "%g/\tvoid/normal! vf{%zf"
+	
+	:silent! execute "%g/\tpublic/normal! vf{%zf"
+	:silent! execute "%g/\tprivate/normal! vf{%zf"
+endfunc
+nnoremap ;zf zE :call FoldFunctions()<CR><ESC>
+
 " use ;n to toggle between number mode and relative number mode
 function! NumberToggle()
   if(&relativenumber == 1)
@@ -256,7 +275,7 @@ function! NumberToggle()
     set rnu
   endif
 endfunc
-nnoremap ;n :call NumberToggle()<cr>
+nnoremap ;n :call NumberToggle()<CR>
 set rnu
 
 " use ;p to retain original indentation when pasting from another application
@@ -315,7 +334,8 @@ nnoremap ;cout<TAB> v0wd<ESC>acout << ": " <<  << "\n";<ESC>Ftf"pf<f<f p
 nnoremap ;Sys<TAB> vbd<ESC>aSystem.out.println(": " + );<ESC>F(f"pf)F p
 
 " use ;zf to easily fold code that lies in between the braces
-nnoremap ;zf V%zf
+" nnoremap ;zf :%g/^bool/normal! vf{%zf
+" v%zf<CR>
 
 " use ;r in visual mode to replace the visually selected word
 vnoremap ;r y:%s/<C-F>pa/
