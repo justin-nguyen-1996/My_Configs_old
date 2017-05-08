@@ -182,6 +182,9 @@ nnoremap <C-p> :cp<CR>
 " remap ~ to U for easier uppercasing/lowercasing
 nnoremap U ~
 
+" remap some code folds stuff to center upon execution
+"nnoremap zo zozz
+
 " ================================================================="
 " ================================================================="
 " =============== Begin my 'inoremaps' vimrc things ==============="
