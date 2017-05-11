@@ -182,9 +182,6 @@ nnoremap <C-p> :cp<CR>
 " remap ~ to U for easier uppercasing/lowercasing
 nnoremap U ~
 
-" remap some code folds stuff to center upon execution
-"nnoremap zo zozz
-
 " ================================================================="
 " ================================================================="
 " =============== Begin my 'inoremaps' vimrc things ==============="
@@ -223,6 +220,9 @@ vnoremap Sys<TAB> d<ESC>aSystem.out.println(": " + );<ESC>F(f"pf)F p
 
 " type cout after selecting a var to easily print the var to the console
 vnoremap cout<TAB> d<ESC>acout << ": " <<  << "\n";<ESC>Ftf"pf<f<f p
+
+" easier uppercasing/lowercasing
+vnoremap U ~
 
 " ================================================================="
 " ================================================================="
