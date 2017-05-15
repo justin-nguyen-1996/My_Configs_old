@@ -221,6 +221,9 @@ vnoremap Sys<TAB> d<ESC>aSystem.out.println(": " + );<ESC>F(f"pf)F p
 " type cout after selecting a var to easily print the var to the console
 vnoremap cout<TAB> d<ESC>acout << ": " <<  << "\n";<ESC>Ftf"pf<f<f p
 
+" type printf after selecting a var to easily print the var to the console
+vnoremap printf<TAB> d<ESC>aprintf(": %d\n", );<ESC>F)hpF";pfd
+
 " easier uppercasing/lowercasing
 vnoremap U ~
 
