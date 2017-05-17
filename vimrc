@@ -4,7 +4,7 @@ endif
 
 set nocompatible	" Use Vim defaults (much better!)
 set bs=indent,eol,start		" allow backspacing over everything in insert mode
-"set ai			" always set autoindenting on
+set ai			" always set autoindenting on
 set viminfo='20,\"50	" read/write a .viminfo file, don't store more
 			" than 50 lines of registers
 set history=50		" keep 50 lines of command line history
@@ -43,13 +43,6 @@ if has("cscope") && filereadable("/usr/bin/cscope")
    set csverb
 endif
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-"if &t_Co > 2 || has("gui_running")
-"  syntax on
-"  set hlsearch
-"endif
-
 syntax enable
 filetype plugin on
 
@@ -64,26 +57,26 @@ endif
 " ================== Begin my 'set' vimrc things =================="
 
 " Show (partial) command in status line
-set showcmd			
+set showcmd
 
 " Do case insensitive matching, smart case matching, don't wrap back to the top after searching
-set ignorecase		
-set smartcase		
+set ignorecase
+set smartcase
 set nowrapscan
 
 " Automatically save before commands like :make
-set autowrite		
+set autowrite
 
 " Hide buffers when they are abandoned
-set hidden			
+set hidden
 
 " set tab length, indentation length, auto indent
-set tabstop=4 		
+set tabstop=4
 set shiftwidth=4
-set autoindent	
+set autoindent
 
 " disable swap file generation
-set noswapfile      
+set noswapfile
 
 " change the orientation of the windows when using :split and :vs
 set splitbelow
@@ -109,7 +102,7 @@ set formatoptions+=rco
 set tags=.tags;/
 
 " a godsend that disables that stupidly annoying beep/bell once and for all
-set belloff=all
+" set belloff=all
 
 " searches down into subfolders
 " provides tab-completion for all file-related tasks
@@ -141,7 +134,7 @@ nnoremap '' ''zz
 " command centers the screen upon jumping
 nnoremap 'm 'mzz
 
-" press % to visually highlight in-between brace/bracket/parentheses
+"" press % to visually highlight in-between brace/bracket/parentheses
 noremap % v%
 
 " press CTRL-j/CTRL-k to go down/up half a page, respectively
@@ -261,13 +254,13 @@ function! FoldFunctions()
 	:silent! execute "%g/^int/normal! vf{%zf"
 	:silent! execute "%g/^double/normal! vf{%zf"
 	:silent! execute "%g/^void/normal! vf{%zf"
-	
+
 	:silent! execute "%g/\tbool/normal! vf{%zf"
 	:silent! execute "%g/\tboolean/normal! vf{%zf"
 	:silent! execute "%g/\tint/normal! vf{%zf"
 	:silent! execute "%g/\tdouble/normal! vf{%zf"
 	:silent! execute "%g/\tvoid/normal! vf{%zf"
-	
+
 	:silent! execute "%g/\tpublic/normal! vf{%zf"
 	:silent! execute "%g/\tprivate/normal! vf{%zf"
 endfunc
@@ -309,7 +302,7 @@ nnoremap ;t :tabnew
 nnoremap ;m :make<CR>
 
 " use ;s to source the vimrc file
-nnoremap ;s :source /etc/vimrc<CR>
+nnoremap ;s :source /usr/share/vim/vimrc<CR>
 
 " use ;f to format the file according to C++/Java style
 nnoremap ;f :set expandtab! expandtab?<CR>gg=G''<ESC>
