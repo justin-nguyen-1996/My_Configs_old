@@ -17,15 +17,18 @@ Plugins Needed:
  - apt-get install make --> I WISH THIS WORKED
 
 Config Files (see Github Repo):
- - vimrc
+ - vimrc (two versions of some commands --> search for stuff with '{')
  - .bashrc (put bash_aliases in here)
  - .inputrc
  - .bash_profile
  - .profile
  
- Symlinks:
-  - C Drive (ln -s /cygdrive/c/ C)
-  - Eclipse (ln -s /drives/C/Users/Justin/Desktop/ Eclipse)
-  - Github  (ln -s /cygdrive/c/Users/Justin/Github/ Github)
-  - Justin  (ln -s /cygdrive/c/Users/Justin/ Justin)
-  - vimrc   (ln -s /usr/share/vim/vimrc vimrc)
+Symlinks:
+ - C Drive (ln -s /cygdrive/c/ C)
+ - Eclipse (ln -s /drives/C/Users/Justin/Desktop/ Eclipse)
+ - Github  (ln -s /cygdrive/c/Users/Justin/Github/ Github)
+ - Justin  (ln -s /cygdrive/c/Users/Justin/ Justin)
+ - vimrc   (ln -s /usr/share/vim/vimrc vimrc)
+
+Miscellaneous Notes:
+ - Make a .vim folder so that the undo tree works properly (mkdir ~/.vim)

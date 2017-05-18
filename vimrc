@@ -183,10 +183,12 @@ nnoremap U ~
 inoremap Sys<TAB> System.out.println(
 
 " type 'main' then press TAB to easily output the main for a .java file
-inoremap main<TAB> public static void main(String[] args) {<CR>}<Esc><Esc>O
+"inoremap main<TAB> public static void main(String[] args) {<CR>}<Esc><Esc>O    --> works in Cygwin
+inoremap main<TAB> public static void main(String[] args) {<CR><TAB><CR>}<ESC>0xk$a
 
 " autocomplete for matching brace (activated upon pressing enter)
-inoremap {<CR>  {<CR>}<Esc><Esc>O
+"inoremap {<CR>  {<TAB><CR>}<Esc><Esc>O    --> works in Cygwin
+inoremap {<CR>  {<CR><TAB><CR>}<ESC>0xk$a
 
 " DUMBEST HACK EVER (but I'm so happy it works)
 " normally pressing CTRL-c undoes your auto-indent on a blank line
@@ -216,6 +218,9 @@ vnoremap cout<TAB> d<ESC>acout << ": " <<  << "\n";<ESC>Ftf"pf<f<f p
 
 " type printf after selecting a var to easily print the var to the console
 vnoremap printf<TAB> d<ESC>aprintf(": %d\n", );<ESC>F)hpF";pfd
+
+" remap the paste function in insert mode to Control-p
+vnoremap <C-p> p
 
 " easier uppercasing/lowercasing
 vnoremap U ~
@@ -308,11 +313,12 @@ nnoremap ;s :source /usr/share/vim/vimrc<CR>
 nnoremap ;f :set expandtab! expandtab?<CR>gg=G''<ESC>
 
 " use ;i/w/f/d/t to put the selected lines into an if-statement
-vnoremap ;i dOif () {<CR>}<ESC><ESC>kp>i{?(<CR>
-vnoremap ;w dOwhile () {<CR>}<ESC><ESC>kp>i{?(<CR>
-vnoremap ;f dOfor () {<CR>}<ESC><ESC>kp>i{?(<CR>
-vnoremap ;d dOdo {<CR>} while ();<ESC><ESC>kp>i{/while (<CR>f(
-vnoremap ;t dOtry {<CR>} catch () {<CR><CR>}<ESC><ESC>kkkp>i{/catch ()<CR>f(
+" might not need the <TAB> if not using MobaXterm
+vnoremap ;i dO<TAB>if () {<CR>}<ESC><ESC>kp>i{?(<CR>
+vnoremap ;w dO<TAB>while () {<CR>}<ESC><ESC>kp>i{?(<CR>
+vnoremap ;f dO<TAB>for () {<CR>}<ESC><ESC>kp>i{?(<CR>
+vnoremap ;d dO<TAB>do {<CR>} while ();<ESC><ESC>kp>i{/while (<CR>f(
+vnoremap ;t dO<TAB>try {<CR>} catch () {<CR><CR>}<ESC><ESC>kkkp>i{/catch ()<CR>f(
 
 " use ;j to jump from a function call to that function's definition
 " use T  to pop from the tag stack and go to that location
