@@ -20,6 +20,8 @@ Config Files (see Github Repo):
  - vimrc
  - .bashrc (put bash_aliases in here)
  - .inputrc
+ - .bash_profile
+ - .profile
  
  Symlinks:
   - C Drive (ln -s /cygdrive/c/ C)
