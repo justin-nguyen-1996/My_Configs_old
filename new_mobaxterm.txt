@@ -13,6 +13,7 @@ Plugins Needed:
  - apt-get install python
  - apt-get install git
  - mobapt gcc
+ - mobapt ctags
  - apt-get install make --> I WISH THIS WORKED
 
 Symlinks:
