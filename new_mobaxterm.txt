@@ -46,4 +46,7 @@ Miscellaneous Notes:
    - copy the whole director into the C:\Users\Justin\Documents\MobaXterm\slash\bin folder
    - copy the entire contents of the bin folder from the zip into the bin folder
      (the make.exe and some dependencies --> libiconv2.dll and libintl3.dll)
+ - Man and Help Pages
+   - pull the doc/ directory from My_Configs
+   - put it in the /usr/share/vim/ directory
 
