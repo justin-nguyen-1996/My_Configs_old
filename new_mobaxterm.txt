@@ -16,12 +16,14 @@ Plugins Needed:
  - mobapt ctags
  - apt-get install make --> I WISH THIS WORKED
 
-Symlinks:
- - C Drive (ln -s /cygdrive/c/ C)
- - Eclipse (ln -s /drives/C/Users/Justin/Desktop/ Eclipse)
- - Github  (ln -s /cygdrive/c/Users/Justin/Github/ Github)
- - Justin  (ln -s //cygdrive/c/Users/Justin/ Justin)
-
 Config Files (see Github Repo):
  - vimrc
- - .bashrc
+ - .bashrc (put bash_aliases in here)
+ - .inputrc
+ 
+ Symlinks:
+  - C Drive (ln -s /cygdrive/c/ C)
+  - Eclipse (ln -s /drives/C/Users/Justin/Desktop/ Eclipse)
+  - Github  (ln -s /cygdrive/c/Users/Justin/Github/ Github)
+  - Justin  (ln -s /cygdrive/c/Users/Justin/ Justin)
+  - vimrc   (ln -s /usr/share/vim/vimrc vimrc)
