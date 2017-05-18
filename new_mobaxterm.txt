@@ -1,0 +1,26 @@
+Settings:
+ - Terminal Tab - uncheck (Backspace sends ^H)
+ - Toolbar Tab  - Session, Tools, Games, Sessions, Split, MultiExec, Packages, Settings, Help
+ - Misc Tab     - Both "Open the following tabs" = (Terminal), Check the (Home tab is replaced) box, Check the (Do not exit Mobaxterm) box
+
+Keyboard Shortcuts:
+ - Start a new tab   = CTRL + T
+ - Close current tab = CTRL + Q
+ - Toggle fullscreen = CTRL + M
+
+Plugins Needed:
+ - apt-get install zip
+ - apt-get install python
+ - apt-get install git
+ - mobapt gcc
+ - apt-get install make --> I WISH THIS WORKED
+
+Symlinks:
+ - C Drive (ln -s /cygdrive/c/ C)
+ - Eclipse (ln -s /drives/C/Users/Justin/Desktop/ Eclipse)
+ - Github  (ln -s /cygdrive/c/Users/Justin/Github/ Github)
+ - Justin  (ln -s //cygdrive/c/Users/Justin/ Justin)
+
+Config Files (see Github Repo):
+ - vimrc
+ - .bashrc
