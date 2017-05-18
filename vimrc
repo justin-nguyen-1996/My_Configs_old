@@ -44,7 +44,7 @@ if has("cscope") && filereadable("/usr/bin/cscope")
 endif
 
 syntax enable
-filetype plugin on
+filetype plugin indent on
 
 if &term=="xterm"
      set t_Co=8
