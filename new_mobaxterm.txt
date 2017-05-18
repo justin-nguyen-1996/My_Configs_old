@@ -1,7 +1,10 @@
 Settings:
  - Terminal Tab - uncheck (Backspace sends ^H)
+ 				- check the (Use Windows PATH environment) box
  - Toolbar Tab  - Session, Tools, Games, Sessions, Split, MultiExec, Packages, Settings, Help
- - Misc Tab     - Both "Open the following tabs" = (Terminal), Check the (Home tab is replaced) box, Check the (Do not exit Mobaxterm) box
+ - Misc Tab     - Both "Open the following tabs" = (Terminal)
+ 				- Check the (Home tab is replaced) box
+				- Check the (Do not exit Mobaxterm) box
 
 Keyboard Shortcuts:
  - Start a new tab   = CTRL + T
@@ -32,3 +35,9 @@ Symlinks:
 
 Miscellaneous Notes:
  - Make a .vim folder so that the undo tree works properly (mkdir ~/.vim)
+ - GVim (if so desired)
+   - download gvim and unpack the zip
+   - copy the whole directory into the C:\Users\Justin\Documents\MobaXterm\slash\bin
+   - copy the executable from the unpacked zip and put it also in the MobaXterm\slash\bin folder
+   - make sure the executable is renamed into gvim
+
