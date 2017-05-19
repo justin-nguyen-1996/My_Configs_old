@@ -59,10 +59,13 @@ endif
 " Show (partial) command in status line
 set showcmd
 
+set fdm=syntax
+
 " Do case insensitive matching, smart case matching, don't wrap back to the top after searching
 set ignorecase
 set smartcase
 set nowrapscan
+set incsearch
 
 " Automatically save before commands like :make
 set autowrite
@@ -83,7 +86,6 @@ set splitbelow
 set splitright
 
 " enable code folding, auto code fold saving, don't open code folds when doing searches
-" set foldmethod=manual
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
 set foldopen-=search
@@ -251,6 +253,8 @@ endfunction
 " ================================================================="
 " ================================================================="
 " ================= Begin my custom ';' commands =================="
+
+" better solution: set fdn=1   set fdm=syntax
 
 " use ;zf to fold all functions (in C and C++ and Java)
 function! FoldFunctions()
