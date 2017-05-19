@@ -1,8 +1,20 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()
+filetype plugin indent on
+
 if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
    set fileencodings=ucs-bom,utf-8,latin1
 endif
 
-set nocompatible	" Use Vim defaults (much better!)
+"set nocompatible	" Use Vim defaults (much better!)
 set bs=indent,eol,start		" allow backspacing over everything in insert mode
 set ai			" always set autoindenting on
 set viminfo='20,\"50	" read/write a .viminfo file, don't store more
@@ -44,7 +56,7 @@ if has("cscope") && filereadable("/usr/bin/cscope")
 endif
 
 syntax enable
-filetype plugin indent on
+"filetype plugin indent on
 
 if &term=="xterm"
      set t_Co=8
@@ -255,6 +267,8 @@ endfunction
 " ================= Begin my custom ';' commands =================="
 
 " better solution: set fdn=1   set fdm=syntax
+set fdn=1
+set fdm=syntax
 
 " use ;zf to fold all functions (in C and C++ and Java)
 function! FoldFunctions()

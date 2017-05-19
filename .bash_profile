@@ -23,6 +23,12 @@
 
 # User dependent .bash_profile file
 
+# Set vimrc location
+export VIM=/usr/share/vim/
+
+# Set Github repo location
+export GIT=~/Github
+
 # source the users bashrc if it exists
 if [ -f "${HOME}/.bashrc" ] ; then
   source "${HOME}/.bashrc"
