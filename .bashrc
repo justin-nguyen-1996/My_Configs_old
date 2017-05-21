@@ -1,10 +1,12 @@
 
 # aliases for editing .bash_aliases and vimrc files
-alias ev='vim /usr/share/vim/vimrc; source ~/usr/share/vim/vimrc'
+alias ev='vim $VIM/vimrc;'
 alias ea='vim ~/.bashrc; source ~/.bashrc && source $HOME/.bashrc'
+alias cpvim='cp $VIM/vimrc ~/Github/My_Configs/vimrc  &&  cd ~/Github/My_Configs &&  ga  &&  gs  &&  gc "update"  &&  gp  && cd -'
 
 # git aliases
-alias ga='source ~/.bashrc && source $HOME/.bashrc && git add .'
+#alias ga='source ~/.bashrc && source $HOME/.bashrc && git add .'
+alias ga='git add .'
 alias gs='git status'
 alias gc='git commit -a -m'
 alias gp='git push'
