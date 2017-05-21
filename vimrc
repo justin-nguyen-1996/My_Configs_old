@@ -1,14 +1,26 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" ================================================================="
+" ================================================================="
+" ==================== Begin my added plugins ====================="
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'vim-syntastic/syntastic'
+Plugin 'luochen1990/rainbow'
+Plugin 'godlygeek/tabular'
+
 " All of your Plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on
+
+" ================================================================="
+" ================================================================="
+" ===================== End my added plugins ======================"
 
 if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
    set fileencodings=ucs-bom,utf-8,latin1
@@ -63,6 +75,44 @@ if &term=="xterm"
      set t_Sb=[4%dm
      set t_Sf=[3%dm
 endif
+
+" ================================================================="
+" ================================================================="
+" ============== Begin additions for Syntastic plugin ============="
+
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_enable_signs=1
+"let g:syntastic_check_on_wq = 0
+"
+"let g:syntastic_auto_loc_list = 2
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_enable_balloons = 0
+"let g:syntastic_error_symbol = '✗'
+"let g:syntastic_ignore_files = ['\.min\.js$', '\.min\.css$']
+"let g:syntastic_loc_list_height = 5
+"let g:syntastic_warning_symbol = '✗'
+"let g:syntastic_style_error_symbol = '∆'
+"let g:syntastic_style_warning_symbol = '∆'
+
+" ================================================================="
+" ================================================================="
+" =========== Begin additions for Rainbow_parens plugin ==========="
+
+" set to zero and use :RainbowToggle to switch between modes
+let g:rainbow_active = 1
+
+" ================================================================="
+" ================================================================="
+" =========== Begin additions for Tabular plugin ==========="
+
+vnoremap ;t :Tabularize /
 
 " ================================================================="
 " ================================================================="
@@ -341,7 +391,9 @@ vnoremap ;i dO<TAB>if () {<CR>}<ESC><ESC>kp>i{?(<CR>
 vnoremap ;w dO<TAB>while () {<CR>}<ESC><ESC>kp>i{?(<CR>
 vnoremap ;f dO<TAB>for () {<CR>}<ESC><ESC>kp>i{?(<CR>
 vnoremap ;d dO<TAB>do {<CR>} while ();<ESC><ESC>kp>i{/while (<CR>f(
-vnoremap ;t dO<TAB>try {<CR>} catch () {<CR><CR>}<ESC><ESC>kkkp>i{/catch ()<CR>f(
+
+" commented out in favor of using ;t in visual mode for the Tabular plugin
+"vnoremap ;t dO<TAB>try {<CR>} catch () {<CR><CR>}<ESC><ESC>kkkp>i{/catch ()<CR>f(
 
 " use ;j to jump from a function call to that function's definition
 " use T  to pop from the tag stack and go to that location
