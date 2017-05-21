@@ -14,7 +14,6 @@ if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
    set fileencodings=ucs-bom,utf-8,latin1
 endif
 
-"set nocompatible	" Use Vim defaults (much better!)
 set bs=indent,eol,start		" allow backspacing over everything in insert mode
 set ai			" always set autoindenting on
 set viminfo='20,\"50	" read/write a .viminfo file, don't store more
@@ -37,6 +36,8 @@ if has("autocmd")
   autocmd BufNewFile,BufReadPre /media/*,/run/media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
   " start with spec file template
   autocmd BufNewFile *.spec 0r /usr/share/vim/vimfiles/template.spec
+  " auto-source the vimrc upon writing to the file
+  autocmd bufwritepost vimrc source %
   augroup END
 endif
 
@@ -56,7 +57,6 @@ if has("cscope") && filereadable("/usr/bin/cscope")
 endif
 
 syntax enable
-"filetype plugin indent on
 
 if &term=="xterm"
      set t_Co=8
@@ -70,8 +70,6 @@ endif
 
 " Show (partial) command in status line
 set showcmd
-
-set fdm=syntax
 
 " Do case insensitive matching, smart case matching, don't wrap back to the top after searching
 set ignorecase
@@ -97,7 +95,7 @@ set noswapfile
 set splitbelow
 set splitright
 
-" enable code folding, auto code fold saving, don't open code folds when doing searches
+" save state of original code folds, don't open code folds when doing searches
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
 set foldopen-=search
@@ -114,6 +112,17 @@ set formatoptions+=rco
 " basically does the following:
 " 	goes up one directory at a time until it finds a file called '.tags'
 set tags=.tags;/
+
+" fold method based on file syntax
+" fold level    = 2 for .java    = 1 for .c
+" min fold level = 0 for folding single lines
+set fdm=syntax
+set fml=0
+if &filetype == 'java'
+	set fdn=2
+elseif &filetype == 'c'
+	set fdn=1
+endif
 
 " a godsend that disables that stupidly annoying beep/bell once and for all
 " set belloff=all
@@ -266,10 +275,6 @@ endfunction
 " ================================================================="
 " ================= Begin my custom ';' commands =================="
 
-" better solution: set fdn=1   set fdm=syntax
-set fdn=1
-set fdm=syntax
-
 " use ;zf to fold all functions (in C and C++ and Java)
 function! FoldFunctions()
 	:silent! execute "%g/^bool/normal! vf{%zf"
@@ -325,7 +330,7 @@ nnoremap ;t :tabnew
 nnoremap ;m :make<CR>
 
 " use ;s to source the vimrc file
-nnoremap ;s :source /usr/share/vim/vimrc<CR>
+nnoremap ;s :source $VIM/vimrc<CR>
 
 " use ;f to format the file according to C++/Java style
 nnoremap ;f :set expandtab! expandtab?<CR>gg=G''<ESC>
@@ -357,7 +362,6 @@ nnoremap ;cout<TAB> v0wd<ESC>acout << ": " <<  << "\n";<ESC>Ftf"pf<f<f p
 nnoremap ;Sys<TAB> vbd<ESC>aSystem.out.println(": " + );<ESC>F(f"pf)F p
 
 " use ;zf to easily fold code that lies in between the braces
-" nnoremap ;zf :%g/^bool/normal! vf{%zf
 " v%zf<CR>
 
 " use ;r in visual mode to replace the visually selected word
