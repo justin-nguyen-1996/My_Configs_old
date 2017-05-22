@@ -37,7 +37,8 @@ Symlinks:
 Snippets:
  - install Vundle first (follow directions on Vundle git page)
  - open vim and run :PluginInstall
- - grab .vim/bundle/vim-snippets/snippets from the My_Configs repo and replace the appropriate snippets folder for the SnipMate plugin
+ - grab after installing the SnipMate plugin replace appropriate snip-files in .vim/bundle/vim-snippets/snippets with the ones from the repo 
+   - c.snippets
 
 Miscellaneous Notes:
  - Make a .vim folder so that the undo tree works properly (mkdir ~/.vim)
