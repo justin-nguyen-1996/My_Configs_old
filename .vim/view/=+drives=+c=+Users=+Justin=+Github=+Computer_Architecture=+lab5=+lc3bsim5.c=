@@ -1,0 +1,490 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+31,31fold
+32,32fold
+33,33fold
+34,34fold
+35,35fold
+59,59fold
+110,110fold
+111,111fold
+112,112fold
+113,113fold
+114,114fold
+115,115fold
+116,116fold
+117,117fold
+118,118fold
+119,119fold
+120,120fold
+121,121fold
+122,122fold
+123,123fold
+124,124fold
+125,125fold
+126,126fold
+127,127fold
+128,128fold
+129,129fold
+130,130fold
+131,131fold
+132,132fold
+133,133fold
+134,134fold
+135,135fold
+136,136fold
+137,137fold
+138,138fold
+139,139fold
+140,140fold
+141,141fold
+142,142fold
+143,143fold
+144,144fold
+145,145fold
+146,146fold
+147,147fold
+148,148fold
+149,149fold
+150,150fold
+151,151fold
+152,152fold
+153,153fold
+154,154fold
+155,155fold
+160,160fold
+173,173fold
+184,184fold
+185,185fold
+189,189fold
+198,198fold
+202,202fold
+204,204fold
+206,206fold
+209,209fold
+210,210fold
+211,211fold
+212,212fold
+213,213fold
+214,214fold
+215,215fold
+216,216fold
+219,219fold
+220,220fold
+221,221fold
+222,222fold
+242,242fold
+251,259fold
+268,279fold
+288,288fold
+288,305fold
+314,325fold
+335,335fold
+335,351fold
+361,361fold
+361,413fold
+422,422fold
+422,465fold
+474,474fold
+474,522fold
+531,531fold
+531,538fold
+547,547fold
+547,611fold
+621,621fold
+621,653fold
+661,683fold
+818,818fold
+819,819fold
+822,822fold
+825,825fold
+825,831fold
+834,834fold
+834,834fold
+834,838fold
+847,847fold
+848,848fold
+848,848fold
+848,848fold
+848,848fold
+848,848fold
+848,893fold
+900,900fold
+900,900fold
+900,904fold
+914,914fold
+914,914fold
+914,914fold
+914,914fold
+914,914fold
+914,914fold
+914,914fold
+914,914fold
+914,914fold
+914,914fold
+914,914fold
+914,914fold
+914,914fold
+914,914fold
+914,914fold
+914,914fold
+914,914fold
+914,914fold
+914,914fold
+914,914fold
+914,914fold
+914,914fold
+914,914fold
+914,1038fold
+1041,1041fold
+1041,1051fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1057fold
+1057,1250fold
+288
+normal! zo
+288
+normal! zc
+335
+normal! zo
+335
+normal! zc
+361
+normal! zo
+422
+normal! zo
+422
+normal! zc
+474
+normal! zo
+474
+normal! zc
+531
+normal! zo
+531
+normal! zc
+547
+normal! zo
+547
+normal! zc
+621
+normal! zo
+621
+normal! zc
+825
+normal! zo
+825
+normal! zc
+834
+normal! zo
+834
+normal! zo
+834
+normal! zc
+834
+normal! zc
+848
+normal! zo
+848
+normal! zo
+848
+normal! zo
+848
+normal! zo
+848
+normal! zo
+848
+normal! zc
+848
+normal! zc
+848
+normal! zc
+848
+normal! zc
+848
+normal! zc
+900
+normal! zo
+900
+normal! zo
+900
+normal! zc
+900
+normal! zc
+914
+normal! zo
+914
+normal! zo
+914
+normal! zo
+914
+normal! zo
+914
+normal! zo
+914
+normal! zo
+914
+normal! zo
+914
+normal! zo
+914
+normal! zo
+914
+normal! zo
+914
+normal! zo
+914
+normal! zo
+914
+normal! zo
+914
+normal! zo
+914
+normal! zo
+914
+normal! zo
+914
+normal! zo
+914
+normal! zo
+914
+normal! zo
+914
+normal! zo
+914
+normal! zo
+914
+normal! zo
+914
+normal! zo
+914
+normal! zc
+914
+normal! zc
+914
+normal! zc
+914
+normal! zc
+914
+normal! zc
+914
+normal! zc
+914
+normal! zc
+914
+normal! zc
+914
+normal! zc
+914
+normal! zc
+914
+normal! zc
+914
+normal! zc
+914
+normal! zc
+914
+normal! zc
+914
+normal! zc
+914
+normal! zc
+914
+normal! zc
+914
+normal! zc
+914
+normal! zc
+914
+normal! zc
+914
+normal! zc
+914
+normal! zc
+914
+normal! zc
+1041
+normal! zo
+1041
+normal! zc
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zo
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+1057
+normal! zc
+let s:l = 371 - ((41 * winheight(0) + 15) / 31)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+371
+normal! 09l
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :
