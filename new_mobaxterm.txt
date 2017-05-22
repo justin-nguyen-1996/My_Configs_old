@@ -34,6 +34,11 @@ Symlinks:
  - Justin  (ln -s /cygdrive/c/Users/Justin/ Justin)
  - vimrc   (ln -s /usr/share/vim/vimrc vimrc)
 
+Snippets:
+ - install Vundle first (follow directions on Vundle git page)
+ - open vim and run :PluginInstall
+ - grab .vim/bundle/vim-snippets/snippets from the My_Configs repo and replace the appropriate snippets folder for the SnipMate plugin
+
 Miscellaneous Notes:
  - Make a .vim folder so that the undo tree works properly (mkdir ~/.vim)
  - GVim (if so desired)
@@ -49,3 +54,4 @@ Miscellaneous Notes:
  - Vim Directory (man and help pages) (syntax files)
    - pull the vim folder from the My_Configs directory
    - open vim and run :scriptnames to see where to put the contents of the pulled vim folder
+   

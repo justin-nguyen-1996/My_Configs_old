@@ -13,6 +13,10 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'luochen1990/rainbow'
 Plugin 'godlygeek/tabular'
+Plugin 'garbas/vim-snipmate'
+	Plugin 'MarcWeber/vim-addon-mw-utils'
+	Plugin 'tomtom/tlib_vim'
+	Plugin 'honza/vim-snippets'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -80,15 +84,15 @@ endif
 " ================================================================="
 " ============== Begin additions for Syntastic plugin ============="
 
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_enable_signs=1
-"let g:syntastic_check_on_wq = 0
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_enable_signs=1
+let g:syntastic_check_on_wq = 0
 "
 "let g:syntastic_auto_loc_list = 2
 "let g:syntastic_check_on_open = 1
@@ -163,16 +167,20 @@ set formatoptions+=rco
 " 	goes up one directory at a time until it finds a file called '.tags'
 set tags=.tags;/
 
+" set manual fold method, min number of lines to make a fold = 1
+set fdm=manual
+set fml=1
+
 " fold method based on file syntax
 " fold level    = 2 for .java    = 1 for .c
 " min fold level = 0 for folding single lines
-set fdm=syntax
-set fml=0
-if &filetype == 'java'
-	set fdn=2
-elseif &filetype == 'c'
-	set fdn=1
-endif
+"set fdm=syntax
+"set fml=0
+"if &filetype == 'java'
+"	set fdn=2
+"elseif &filetype == 'c'
+"	set fdn=1
+"endif
 
 " a godsend that disables that stupidly annoying beep/bell once and for all
 " set belloff=all
@@ -255,10 +263,6 @@ nnoremap U ~
 " type 'Sys' then press TAB to easily output 'System.out.println('
 inoremap Sys<TAB> System.out.println(
 
-" type 'main' then press TAB to easily output the main for a .java file
-"inoremap main<TAB> public static void main(String[] args) {<CR>}<Esc><Esc>O    --> works in Cygwin
-inoremap main<TAB> public static void main(String[] args) {<CR><TAB><CR>}<ESC>0xk$a
-
 " autocomplete for matching brace (activated upon pressing enter)
 "inoremap {<CR>  {<TAB><CR>}<Esc><Esc>O    --> works in Cygwin
 inoremap {<CR>  {<CR><TAB><CR>}<ESC>0xk$a
@@ -289,10 +293,7 @@ vnoremap Sys<TAB> d<ESC>aSystem.out.println(": " + );<ESC>F(f"pf)F p
 " type cout after selecting a var to easily print the var to the console
 vnoremap cout<TAB> d<ESC>acout << ": " <<  << "\n";<ESC>Ftf"pf<f<f p
 
-" type printf after selecting a var to easily print the var to the console
-vnoremap printf<TAB> d<ESC>aprintf(": %d\n", );<ESC>F)hpF";pfd
-
-" remap the paste function in insert mode to Control-p
+" remap the paste function in visual mode to Control-p
 vnoremap <C-p> p
 
 " easier uppercasing/lowercasing
