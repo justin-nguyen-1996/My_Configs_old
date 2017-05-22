@@ -93,7 +93,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs=1
 let g:syntastic_check_on_wq = 0
-"
+
 "let g:syntastic_auto_loc_list = 2
 "let g:syntastic_check_on_open = 1
 "let g:syntastic_check_on_wq = 0
@@ -117,6 +117,12 @@ let g:rainbow_active = 1
 " =========== Begin additions for Tabular plugin ==========="
 
 vnoremap ;t :Tabularize /
+
+" ================================================================="
+" ================================================================="
+" =========== Begin additions for SnipMate plugin ==========="
+
+let g:snippet_version = 1
 
 " ================================================================="
 " ================================================================="
@@ -204,10 +210,6 @@ hi MatchParen cterm=underline ctermbg=none ctermfg=none
 " ================================================================="
 " =============== Begin my 'nnoremaps' vimrc things ==============="
 
-" make navigation easier when lines get wrapped
-nnoremap j gj
-nnoremap k gk
-
 " typing '' now also centers the screen
 nnoremap '' ''zz
 
@@ -255,6 +257,9 @@ nnoremap <C-p> :cp<CR>
 
 " remap ~ to U for easier uppercasing/lowercasing
 nnoremap U ~
+
+" pressing Control-w then Control-c in split windows accidentally closes the window. I dislike this
+nnoremap <C-w><C-c> <ESC>
 
 " ================================================================="
 " ================================================================="
