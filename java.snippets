@@ -1,0 +1,208 @@
+version 1
+
+## Basic Java packages and import
+
+## Class
+snippet cl
+	class `vim_snippets#Filename("$1")` {
+		public static void main(String[] args) {
+			${0}
+		}
+	}
+
+## Comments
+snippet /*
+	/*
+	 * ${0}
+	 */
+
+## Constants
+snippet final
+	public static final ${1:String} ${2:var} = ${3};
+
+## if
+snippet if
+	if (${1:}) {
+		${2}
+	}
+	
+	${0}
+
+## if-else
+snippet ife
+	if (${1:}) {
+		${2:}
+	} else {
+		${3:}
+	}
+
+	${0}
+
+## else-if
+snippet ei
+	else if {
+		${1}
+	} 
+
+## if-else_if-else
+snippet ifee
+	if (${1:}) {
+		${2}
+	} else if (${3:}) {
+		${4:}
+	} else {
+		${5:}
+	}
+
+	${0}
+
+## ternary
+snippet t
+	${1:/* condition */} ? ${2:if_true} : ${3:if_false}
+	${0}
+
+## switch
+snippet sw
+	switch (${1:/* variable */}) {
+		case ${2:}: ${3:} break;
+		default:
+	}
+
+	${0}
+
+## case
+snippet case
+	case ${1:/* variable case */}: ${2:} break;
+
+## for
+snippet for
+	for (int ${1:i} = 0; $1 < ${2:count}; $1++) {
+		${3}
+	}
+
+	${0}
+
+## for (custom)
+snippet forr
+	for (int ${1:i} = ${2:0}; $1 < ${3:count}; $1${4:++}) {
+		${5}
+	}
+
+## while
+snippet wh
+	while (${1:}) {
+		${2}
+	}
+
+## do... while
+snippet do
+	do {
+		${2}
+	} while (${1});
+
+## Declaration for ArrayList
+snippet d.al
+	List<${1:Object}> ${2:list} = new ArrayList<$1>();${0}
+## Declaration for HashMap
+snippet d.hm
+	Map<${1:Object}, ${2:Object}> ${3:map} = new HashMap<$1, $2>();${0}
+## Declaration for HashSet
+snippet d.hs
+	Set<${1:Object}> ${2:set} = new HashSet<$1>();${0}
+## Declaration for Stack
+snippet d.st
+	Stack<${1:Object}> ${2:stack} = new Stack<$1>();${0}
+
+## Error Methods
+snippet err
+	System.err.println("${1:Message}");
+	${0}
+snippet errf
+	System.err.printf("${1:Message}", ${0:exception});
+	${0}
+
+## Exception Handling
+snippet as
+	assert ${1:test} : "${2:Failure message}";
+snippet ae
+	assertEquals("${1:Failure message}", ${2:expected}, ${3:actual});
+snippet aae
+	assertArrayEquals("${1:Failure message}", ${2:expecteds}, ${3:actuals});
+snippet af
+	assertFalse("${1:Failure message}", ${2:condition});
+snippet at
+	assertTrue("${1:Failure message}", ${2:condition});
+snippet an
+	assertNull("${1:Failure message}", ${2:object});
+snippet ann
+	assertNotNull("${1:Failure message}", ${2:object});
+snippet ass
+	assertSame("${1:Failure message}", ${2:expected}, ${3:actual});
+snippet asns
+	assertNotSame("${1:Failure message}", ${2:expected}, ${3:actual});
+snippet fa
+	fail("${1:Failure message}");
+snippet ca
+	catch(${1:Exception} ${2:e}) ${0}
+snippet thr
+	throw ${0}
+snippet ths
+	throws ${0}
+snippet try
+	try {
+		${0:${VISUAL}}
+	} catch(${1:Exception} ${2:e}) {
+	}
+snippet tryf
+	try {
+		${0:${VISUAL}}
+	} catch(${1:Exception} ${2:e}) {
+	} finally {
+	}
+
+## Javadocs
+snippet /**
+	/**
+	 * ${0}
+	 */
+
+## Logger Methods
+snippet debug
+	Logger.debug(${1:param});
+snippet error
+	Logger.error(${1:param});
+snippet info
+	Logger.info(${1:param});
+snippet warn
+	Logger.warn(${1:param});
+
+## Main method
+snippet main
+	public static void main (String[] args) {
+		${0}
+	}
+
+## Print Methods
+snippet Sys
+	System.out.println("${1}: " + $1);
+	${0}
+snippet pr
+	System.out.println("${1}");
+	${0}
+
+## Setter Method
+snippet set
+	public void set(${1:type} ${2:}) {
+		this.$2 = $2;
+	}
+
+	${0}
+
+## Getter Method
+snippet get
+	public ${1:type} get() {
+		return this.${2:};
+	}
+
+	${0}
+

@@ -265,9 +265,6 @@ nnoremap <C-w><C-c> <ESC>
 " ================================================================="
 " =============== Begin my 'inoremaps' vimrc things ==============="
 
-" type 'Sys' then press TAB to easily output 'System.out.println('
-inoremap Sys<TAB> System.out.println(
-
 " autocomplete for matching brace (activated upon pressing enter)
 "inoremap {<CR>  {<TAB><CR>}<Esc><Esc>O    --> works in Cygwin
 inoremap {<CR>  {<CR><TAB><CR>}<ESC>0xk$a
@@ -412,12 +409,6 @@ nnoremap ;y myggvG$"*y'y
 
 " use ;v to paste from the clipboard
 nnoremap ;v "*p
-
-" use ;cout
-nnoremap ;cout<TAB> v0wd<ESC>acout << ": " <<  << "\n";<ESC>Ftf"pf<f<f p
-
-" use ;Sys
-nnoremap ;Sys<TAB> vbd<ESC>aSystem.out.println(": " + );<ESC>F(f"pf)F p
 
 " use ;zf to easily fold code that lies in between the braces
 " v%zf<CR>
