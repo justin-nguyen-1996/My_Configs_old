@@ -84,8 +84,8 @@ endif
 " ================================================================="
 " ============== Begin additions for Syntastic plugin ============="
 
-let &shellpipe = '2>&1| tee'
-let &shellredir = '>%s 2>&1'
+"let &shellpipe = '2>&1| tee'
+"let &shellredir = '>%s 2>&1'
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -330,26 +330,42 @@ endfunction
 " ================================================================="
 " ================= Begin my custom ';' commands =================="
 
+" reformat multiline if-statements into single line if-statements
 fun! s:reformat(line1, line2)
-	
+
 	" Remember number of lines for later 
-    let l:before = line('$')
+	let l:before = line('$')
 
 	" Join the selected lines
-    execute 'normal! ' . (a:line2 - a:line1 + 1) . 'J' 
+	execute 'normal! ' . (a:line2 - a:line1 + 1) . 'J' 
 
-	" Put newline before else
-    :s/else/\r	else/g
+	" Remember column number for later
+	execute 'normal!' '0w'
+	let l:colNum = col('.')
+	
+	" Put a newline before every 'else' 
+	:s/else/\relse/g
+	
+	" Align 'else if' and 'else' with 'if'
+	let c = 0
+	while line('.') > (a:line1)
+		while c < (l:colNum  - 1)
+			execute 'normal!' '>>'
+			let c += 1
+		endwhile
+		let c = 0
+		execute 'normal!' 'k'
+	endwhile
 
 	" Since the number of lines change, we need to calculate the range.
-    let l:line2 = a:line2 - (l:before - line('$'))
+	let l:line2 = a:line2 - (l:before - line('$'))
 
 	" Run tabular; 
-    execute a:line1 . ',' . l:line2 . 'Tabularize /{/' 
+	execute a:line1 . ',' . l:line2 . 'Tabularize /{/' 
 
 	" Align the '(' after the 'if' with the rest of the 'else if' statements
-	execute 'normal!' "f(i     "
-	execute 'normal!' "f{XXXXX0"
+	execute 'normal!' 'f(i     '
+	execute 'normal!' 'f{XXXXX0'
 	
 endfun
 
