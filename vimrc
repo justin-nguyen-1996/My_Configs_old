@@ -84,6 +84,9 @@ endif
 " ================================================================="
 " ============== Begin additions for Syntastic plugin ============="
 
+let &shellpipe = '2>&1| tee'
+let &shellredir = '>%s 2>&1'
+
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -159,7 +162,6 @@ set splitright
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
 set foldopen-=search
-
 set viewoptions=folds,cursor
 
 " auto comments for /* (javadoc style comments)
@@ -327,6 +329,23 @@ endfunction
 " ================================================================="
 " ================================================================="
 " ================= Begin my custom ';' commands =================="
+
+fun! s:reformat(line1, line2)
+    " Remember number of lines for later
+    let l:before = line('$')
+
+    " Join the lines
+    execute 'normal! ' . (a:line2 - a:line1 + 1) . 'J'
+
+    " Put newline before else
+    :s/else/\r	else/g
+
+    " Run tabular; since the number of lines change, we need to calculate the range.
+    let l:line2 = a:line2 - (l:before - line('$'))
+    execute a:line1 . ',' . l:line2 . 'Tabularize /{/'
+endfun
+
+command! -range Reformat :call s:reformat(<line1>, <line2>)
 
 " use ;zf to fold all functions (in C and C++ and Java)
 function! FoldFunctions()
