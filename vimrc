@@ -331,18 +331,26 @@ endfunction
 " ================= Begin my custom ';' commands =================="
 
 fun! s:reformat(line1, line2)
-    " Remember number of lines for later
+	
+	" Remember number of lines for later 
     let l:before = line('$')
 
-    " Join the lines
-    execute 'normal! ' . (a:line2 - a:line1 + 1) . 'J'
+	" Join the selected lines
+    execute 'normal! ' . (a:line2 - a:line1 + 1) . 'J' 
 
-    " Put newline before else
+	" Put newline before else
     :s/else/\r	else/g
 
-    " Run tabular; since the number of lines change, we need to calculate the range.
+	" Since the number of lines change, we need to calculate the range.
     let l:line2 = a:line2 - (l:before - line('$'))
-    execute a:line1 . ',' . l:line2 . 'Tabularize /{/'
+
+	" Run tabular; 
+    execute a:line1 . ',' . l:line2 . 'Tabularize /{/' 
+
+	" Align the '(' after the 'if' with the rest of the 'else if' statements
+	execute 'normal!' "f(i     "
+	execute 'normal!' "f{XXXXX0"
+	
 endfun
 
 command! -range Reformat :call s:reformat(<line1>, <line2>)
