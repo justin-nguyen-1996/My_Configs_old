@@ -84,8 +84,8 @@ endif
 " ================================================================="
 " ============== Begin additions for Syntastic plugin ============="
 
-"let &shellpipe = '2>&1| tee'
-"let &shellredir = '>%s 2>&1'
+let &shellpipe = '2>&1| tee'
+let &shellredir = '>%s 2>&1'
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -314,6 +314,7 @@ if has('persistent_undo')
     set undodir=~/.vim/undo
     set undofile
 endif
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " toggle commented lines
 vnoremap ;/ :call ToggleComment()<CR>
@@ -325,51 +326,66 @@ function! ToggleComment()
 		   :execute "s:^\s*// ::"
 	endif
 endfunction
-
-" ================================================================="
-" ================================================================="
-" ================= Begin my custom ';' commands =================="
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " reformat multiline if-statements into single line if-statements
 fun! s:reformat(line1, line2)
-
-	" Remember number of lines for later 
+	
+	" Remember line locs and numbers (bookkeeping)
+	execute 'normal!' 'me'
 	let l:before = line('$')
-
-	" Join the selected lines
-	execute 'normal! ' . (a:line2 - a:line1 + 1) . 'J' 
-
-	" Remember column number for later
-	execute 'normal!' '0w'
-	let l:colNum = col('.')
 	
-	" Put a newline before every 'else' 
-	:s/else/\relse/g
-	
-	" Align 'else if' and 'else' with 'if'
-	let c = 0
-	while line('.') > (a:line1)
-		while c < (l:colNum  - 1)
-			execute 'normal!' '>>'
-			let c += 1
-		endwhile
-		let c = 0
-		execute 'normal!' 'k'
-	endwhile
+	" Join the selected lines && put a newline before every 'else' 
+	execute 'normal!' . (a:line2 - a:line1 + 1) . 'J' 
+	execute 's/else/\relse/g'
 
-	" Since the number of lines change, we need to calculate the range.
+	" Recalculate the range && run Tabular
 	let l:line2 = a:line2 - (l:before - line('$'))
-
-	" Run tabular; 
+	execute 'normal!' "V'e="
 	execute a:line1 . ',' . l:line2 . 'Tabularize /{/' 
 
 	" Align the '(' after the 'if' with the rest of the 'else if' statements
 	execute 'normal!' 'f(i     '
 	execute 'normal!' 'f{XXXXX0'
-	
 endfun
-
 command! -range Reformat :call s:reformat(<line1>, <line2>)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" unformat single line if-statements into multiline if-statements
+fun! s:unformat(line1, line2)
+
+	" mark line one  &&  keep track of lines selected
+	execute 'normal!' 'me'
+	let l:numDiff = a:line2 - a:line1 + 1
+
+	" delete extraneous white space
+	execute 'normal!' 'f dt(i '
+	let c = 0
+	while c < numDiff - 1
+		execute 'normal!' 'f)f dt{i '
+		execute 'normal!' 'j0w'
+		let c += 1
+	endwhile
+	execute 'normal!' 'f dt{i '
+
+	" Formatting to make the statements span multiple lines
+	execute 'normal!' "'e"
+	execute 'normal!' . (a:line2 - a:line1 + 1) . 'J' 
+	execute 's/{ /{\r/g'
+	execute 'normal!' "'e"
+	let c = 0
+	while c < l:numDiff
+		execute 'normal!' 'j'
+		execute 's/}/\r}/g'
+		let c += 1
+	endwhile
+	execute 'normal!' "V'e="
+endfun
+command! -range Unformat :call s:unformat(<line1>, <line2>)
+
+" ================================================================="
+" ================================================================="
+" ================= Begin my custom ';' commands =================="
 
 " use ;zf to fold all functions (in C and C++ and Java)
 function! FoldFunctions()

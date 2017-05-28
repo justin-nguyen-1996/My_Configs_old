@@ -8,7 +8,7 @@ Settings:
 
 Keyboard Shortcuts:
  - Start a new tab   = CTRL + T
- - Close current tab = CTRL + Q
+ - Close current tab = <none>
  - Toggle fullscreen = CTRL + M
 
 Plugins Needed:
