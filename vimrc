@@ -314,7 +314,8 @@ if has('persistent_undo')
     set undodir=~/.vim/undo
     set undofile
 endif
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"=================================================================="
 
 " toggle commented lines
 vnoremap ;/ :call ToggleComment()<CR>
@@ -326,7 +327,8 @@ function! ToggleComment()
 		   :execute "s:^\s*// ::"
 	endif
 endfunction
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"=================================================================="
 
 " reformat multiline if-statements into single line if-statements
 fun! s:reformat(line1, line2)
@@ -349,7 +351,8 @@ fun! s:reformat(line1, line2)
 	execute 'normal!' 'f{XXXXX0'
 endfun
 command! -range Reformat :call s:reformat(<line1>, <line2>)
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"=================================================================="
 
 " unformat single line if-statements into multiline if-statements
 fun! s:unformat(line1, line2)

@@ -42,6 +42,8 @@ Snippets:
 
 Miscellaneous Notes:
  - Make a .vim folder so that the undo tree works properly (mkdir ~/.vim)
+ - note: might not need to download GVim and GNU Make .exe if have cygwin or .exe already installed
+   - could just point the $PATH variable to where the .exe are already located on the computer
  - GVim (if so desired)
    - download gvim and unpack the zip
    - copy the whole directory into the C:\Users\Justin\Documents\MobaXterm\slash\bin folder
