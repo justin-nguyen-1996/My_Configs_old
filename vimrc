@@ -419,6 +419,7 @@ function! NumberToggle()
 endfunc
 nnoremap ;n :call NumberToggle()<CR>
 set rnu
+set nu
 
 " use ;p to retain original indentation when pasting from another application
 nnoremap ;p :set invpaste paste?<CR>
