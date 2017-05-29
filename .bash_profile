@@ -23,11 +23,38 @@
 
 # User dependent .bash_profile file
 
-# Set vimrc location
-export VIM=/usr/share/vim/
+#######################################################################
+#######################################################################
+#######################################################################
+#######################################################################
+#######################################################################
+
+# if not set, then assume using MobaXTerm
+is_cygwin=1
+
+# set vimrc location
+if [ $is_cygwin ]
+	then export VIM=/etc
+	else export VIM=/usr/share/vim/
+fi
 
 # Set Github repo location
 export GIT=~/Github
+
+# path to 'javac.exe'
+javabin="/cygdrive/c/Program Files/Java/jdk1.8.0_101/bin"
+if ! [[ $PATH =~ "$javabin" ]]; then
+  PATH="$PATH:$javabin"
+fi
+
+# change starting directory
+# cd _____
+
+#######################################################################
+#######################################################################
+#######################################################################
+#######################################################################
+#######################################################################
 
 # source the users bashrc if it exists
 if [ -f "${HOME}/.bashrc" ] ; then
