@@ -30,6 +30,8 @@ Symlinks:
 
 Snippets:
  - install Vundle first (follow directions on Vundle git page)
+   - if the bundle directory wasn't created properly, try just normally cloning the repo and moving/renaming it
+   - if that doesn't work, then just copy the bundle directory from your old computer
  - open vim and run :PluginInstall
  - replace appropriate snip-files in .vim/bundle/vim-snippets/snippets with the ones from the repo 
    - c.snippets
