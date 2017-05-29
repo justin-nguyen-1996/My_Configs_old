@@ -1,3 +1,4 @@
+let is_cygwin = 1             " else assume using MobaXTerm
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -191,7 +192,9 @@ set fml=1
 "endif
 
 " a godsend that disables that stupidly annoying beep/bell once and for all
-" set belloff=all
+if is_cygwin
+	set belloff=all
+endif
 
 " searches down into subfolders
 " provides tab-completion for all file-related tasks
@@ -268,8 +271,11 @@ nnoremap <C-w><C-c> <ESC>
 " =============== Begin my 'inoremaps' vimrc things ==============="
 
 " autocomplete for matching brace (activated upon pressing enter)
-"inoremap {<CR>  {<TAB><CR>}<Esc><Esc>O    --> works in Cygwin
-inoremap {<CR>  {<CR><TAB><CR>}<ESC>0xk$a
+if is_cygwin
+	inoremap {<CR>  {<TAB><CR>}<Esc><Esc>O
+else
+	inoremap {<CR>  {<CR><TAB><CR>}<ESC>0xk$a
+endif
 
 " DUMBEST HACK EVER (but I'm so happy it works)
 " normally pressing CTRL-c undoes your auto-indent on a blank line
@@ -452,12 +458,18 @@ nnoremap ;s :source $VIM/vimrc<CR>
 nnoremap ;f :set expandtab! expandtab?<CR>gg=G''<ESC>
 
 " use ;i/w/f/d/t to put the selected lines into an if-statement
-" might not need the <TAB> if not using MobaXterm
-vnoremap ;i dO<TAB>if () {<CR>}<ESC><ESC>kp>i{?(<CR>
-vnoremap ;w dO<TAB>while () {<CR>}<ESC><ESC>kp>i{?(<CR>
-vnoremap ;f dO<TAB>for () {<CR>}<ESC><ESC>kp>i{?(<CR>
-vnoremap ;d dO<TAB>do {<CR>} while ();<ESC><ESC>kp>i{/while (<CR>f(
-
+if is_cygwin
+	vnoremap ;i dOif () {<CR>}<ESC><ESC>kp>i{?(<CR>
+	vnoremap ;w dOwhile () {<CR>}<ESC><ESC>kp>i{?(<CR>
+	vnoremap ;f dOfor () {<CR>}<ESC><ESC>kp>i{?(<CR>
+	vnoremap ;d dOdo {<CR>} while ();<ESC><ESC>kp>i{/while (<CR>f(
+else
+	vnoremap ;i dO<TAB>if () {<CR>}<ESC><ESC>kp>i{?(<CR>
+	vnoremap ;w dO<TAB>while () {<CR>}<ESC><ESC>kp>i{?(<CR>
+	vnoremap ;f dO<TAB>for () {<CR>}<ESC><ESC>kp>i{?(<CR>
+	vnoremap ;d dO<TAB>do {<CR>} while ();<ESC><ESC>kp>i{/while (<CR>f(
+endif
+	
 " commented out in favor of using ;t in visual mode for the Tabular plugin
 "vnoremap ;t dO<TAB>try {<CR>} catch () {<CR><CR>}<ESC><ESC>kkkp>i{/catch ()<CR>f(
 
