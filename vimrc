@@ -419,8 +419,10 @@ nnoremap ;zf zE :call FoldFunctions()<CR><ESC>
 function! NumberToggle()
   if(&relativenumber == 1)
     set nornu
+	set nonu
   else
     set rnu
+	set nu
   endif
 endfunc
 nnoremap ;n :call NumberToggle()<CR>
