@@ -6,13 +6,7 @@ alias ea='vim ~/.bashrc; source ~/.bashrc && source $HOME/.bashrc'
 # some silly things because I'm really lazy (basically one-shot commands to git commit/push vimr and other config files)
 alias gitupdate='cd ~/Github/My_Configs  &&  ga  &&  gs  &&  gc "update"  &&  gp  && cd -'
 alias cpvim='cp -t ~/Github/My_Configs/ $VIM/vimrc && gitupdate'
-alias cpconfig='cp -t ~/Github/My_Configs/ ~/.bashrc 
-										   ~/.bash_profile 
-										   ~/.profile 
-										   ~/.inputrc 
-										   ~/cpp.snippets 
-										   ~/c.snippets 
-										   ~/java.snippets && gitupdate'
+alias cpconfig='cp -t ~/Github/My_Configs/ ~/.inputrc 
 
 # git aliases
 alias ga='git add .'
