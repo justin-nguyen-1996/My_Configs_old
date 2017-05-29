@@ -2,10 +2,15 @@
 # aliases for editing .bash_aliases and vimrc files
 alias ev='vim $VIM/vimrc;'
 alias ea='vim ~/.bashrc; source ~/.bashrc && source $HOME/.bashrc'
-alias cpvim='cp $VIM/vimrc ~/Github/My_Configs/vimrc  &&  cd ~/Github/My_Configs &&  ga  &&  gs  &&  gc "update"  &&  gp  && cd -'
+
+# some silly things because I'm really lazy (basically one-shot commands to git commit/push vimr and other config files)
+alias gitupdate='cd ~/Github/My_Configs  &&  ga  &&  gs  &&  gc "update"  &&  gp  && cd -'
+alias cpvim='cp -t ~/Github/My_Configs/ $VIM/vimrc && gitupdate'
+alias cpconfig='cp -t ~/Github/My_Configs/ ~/.bashrc 
+										   ~/.bash_profile 
+										   ~/.profile && gitupdate'
 
 # git aliases
-#alias ga='source ~/.bashrc && source $HOME/.bashrc && git add .'
 alias ga='git add .'
 alias gs='git status'
 alias gc='git commit -a -m'
@@ -40,13 +45,4 @@ alias DOS=dos2unix
 
 # easy ls -al
 alias la='ls -al'
-
-# path to 'javac.exe'
-javabin="/cygdrive/c/Program Files/Java/jdk1.8.0_101/bin"
-if ! [[ $PATH =~ "$javabin" ]]; then
-  PATH="$PATH:$javabin"
-fi
-
-# change starting directory
-# cd _____
 
