@@ -8,7 +8,11 @@ alias gitupdate='cd ~/Github/My_Configs  &&  ga  &&  gs  &&  gc "update"  &&  gp
 alias cpvim='cp -t ~/Github/My_Configs/ $VIM/vimrc && gitupdate'
 alias cpconfig='cp -t ~/Github/My_Configs/ ~/.bashrc 
 										   ~/.bash_profile 
-										   ~/.profile && gitupdate'
+										   ~/.profile 
+										   ~/.inputrc 
+										   ~/cpp.snippets 
+										   ~/c.snippets 
+										   ~/java.snippets && gitupdate'
 
 # git aliases
 alias ga='git add .'
