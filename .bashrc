@@ -40,3 +40,13 @@ alias DOS=dos2unix
 
 # easy ls -al
 alias la='ls -al'
+
+# path to 'javac.exe'
+javabin="/cygdrive/c/Program Files/Java/jdk1.8.0_101/bin"
+if ! [[ $PATH =~ "$javabin" ]]; then
+  PATH="$PATH:$javabin"
+fi
+
+# change starting directory
+# cd _____
+
