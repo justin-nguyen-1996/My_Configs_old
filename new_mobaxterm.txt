@@ -55,6 +55,7 @@ Miscellaneous Notes:
    - copy the entire contents of the bin folder from the zip into the bin folder
      (the make.exe and some dependencies --> libiconv2.dll and libintl3.dll)
  - Vim Directory (man and help pages) (syntax files)
+   - also can just download vim and copy the zip's vim folder into the correct place
    - pull the vim folder from the My_Configs directory
    - open vim and run :scriptnames to see where to put the contents of the pulled vim folder
    
