@@ -1,0 +1,38 @@
+
+Packages Needed from setup.exe 
+ - vim
+ - git
+ - ssh
+ - zip
+ - gcc
+ - ctags
+ - gvim
+ - make
+ - 
+   
+Config Files (see Github Repo):
+ - vimrc
+ - .bashrc
+ - .inputrc
+ - .bash_profile
+ - .profile
+ 
+Symlinks:
+ - C       (ln -s /cygdrive/c/ C)
+ - Desktop (ln -s /cygdrive/c/Users/Justin/Desktop/ Desktop)
+ - Eclipse (ln -s /cygdrive/c/Users/Justin/Eclipse-Workspace/ Eclipse))
+ - Github  (ln -s /cygdrive/c/Users/Justin/Github/ Github)
+ - Justin  (ln -s /cygdrive/c/Users/Justin/ Justin)
+ - vimrc   (ln -s /etc/vimrc vimrc)
+
+Snippets:
+ - install Vundle first (follow directions on Vundle git page)
+ - open vim and run :PluginInstall
+ - grab after installing the SnipMate plugin replace appropriate snip-files in .vim/bundle/vim-snippets/snippets with the ones from the repo 
+   - c.snippets
+
+Miscellaneous Notes:
+ - Might need to download vim and just copy the zip's vim folder into the correct place (if man pages and stuff not present)
+ - Extra configuration might be needed to setup the vim undo tree (can't remember at the moment)
+   
+

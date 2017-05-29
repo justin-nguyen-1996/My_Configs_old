@@ -29,7 +29,8 @@ Config Files (see Github Repo):
  
 Symlinks:
  - C Drive (ln -s /cygdrive/c/ C)
- - Eclipse (ln -s /drives/C/Users/Justin/Desktop/ Eclipse)
+ - Desktop (ln -s /drives/C/Users/Justin/Desktop/ Desktop)
+ - Eclipse (ln -s /cygdrive/c/Users/Justin/Eclipse-Workspace/ Eclipse))
  - Github  (ln -s /cygdrive/c/Users/Justin/Github/ Github)
  - Justin  (ln -s /cygdrive/c/Users/Justin/ Justin)
  - vimrc   (ln -s /usr/share/vim/vimrc vimrc)
