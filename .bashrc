@@ -53,3 +53,5 @@ alias DOS=dos2unix
 # easy ls -al
 alias la='ls -al'
 
+# python aliases
+alias p='python'
