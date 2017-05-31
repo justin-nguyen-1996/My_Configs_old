@@ -14,6 +14,7 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 		 alias cp='sudo cp'
 		 alias mv='sudo mv'
 		 alias rm='sudo rm'
+		 alias chmod='sudo chmod'
 fi
 
 # git aliases
@@ -52,3 +53,5 @@ alias DOS=dos2unix
 # easy ls -al
 alias la='ls -al'
 
+# added by Miniconda2 4.0.5 installer
+export PATH="/home/jhn545/miniconda2/bin:$PATH"
