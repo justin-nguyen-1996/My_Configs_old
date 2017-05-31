@@ -7,31 +7,84 @@
 
 # base-files version 4.2-4
 
-# ~/.profile: executed by the command interpreter for login shells.
+# ~/.bash_profile: executed by bash(1) for login shells.
 
 # The latest version as installed by the Cygwin Setup program can
-# always be found at /etc/defaults/etc/skel/.profile
+# always be found at /etc/defaults/etc/skel/.bash_profile
 
-# Modifying /etc/skel/.profile directly will prevent
+# Modifying /etc/skel/.bash_profile directly will prevent
 # setup from updating it.
 
-# The copy in your home directory (~/.profile) is yours, please
+# The copy in your home directory (~/.bash_profile) is yours, please
 # feel free to customise it to create a shell
 # environment to your liking.  If you feel a change
-# would be benificial to all, please feel free to send
+# would be benifitial to all, please feel free to send
 # a patch to the cygwin mailing list.
 
-# User dependent .profile file
+# User dependent .bash_profile file
 
-# Set user-defined locale
-export LANG=$(locale -uU)
+#######################################################################
+#######################################################################
+#######################################################################
+#######################################################################
+#######################################################################
 
-# This file is not read by bash(1) if ~/.bash_profile or ~/.bash_login
-# exists.
-#
-# if running bash
-if [ -n "${BASH_VERSION}" ]; then
-  if [ -f "${HOME}/.bashrc" ]; then
-    source "${HOME}/.bashrc"
-  fi
+# if not set, then assume using MobaXTerm
+export ENV_TYPE="ubuntu"
+
+# set vimrc location
+if [ "$ENV_TYPE" == "cygwin" ]
+	then export VIM=/etc
+elif [ "$ENV_TYPE" == "ubuntu" ]
+	then export VIM=/usr/share/vim/
+elif [ "$ENV_TYPE" == "moba" ]
+	then export VIM=/usr/share/vim/
 fi
+
+# Set Github repo location
+export GIT=~/Github
+
+# path to 'javac.exe'
+if [ "$ENV_TYPE" == "cygwin" ]
+	then PATH="$PATH:/cygdrive/c/Program Files/Java/jdk1.8.0_101/bin"
+elif [ "$ENV_TYPE" == "ubuntu" ]
+	then PATH="$PATH:~/Downloads/Java/jdk1.8.0_101/bin"
+elif [ "$ENV_TYPE" == "moba" ]
+	then PATH="$PATH:/cygdrive/c/Program Files/Java/jdk1.8.0_101/bin"
+fi
+
+# change starting directory
+# cd _____
+
+#######################################################################
+#######################################################################
+#######################################################################
+#######################################################################
+#######################################################################
+
+# source the users bashrc if it exists
+if [ -f "${HOME}/.bashrc" ] ; then
+  source "${HOME}/.bashrc"
+fi
+
+[[ -s ~/.bashrc ]] && source ~/.bashrc
+
+# set PATH so it includes user's private bin directories
+if [ "$ENV_TYPE" == "ubuntu" ]
+	then PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+fi
+
+# Set PATH so it includes user's private bin if it exists
+# if [ -d "${HOME}/bin" ] ; then
+#   PATH="${HOME}/bin:${PATH}"
+# fi
+
+# Set MANPATH so it includes users' private man if it exists
+# if [ -d "${HOME}/man" ]; then
+#   MANPATH="${HOME}/man:${MANPATH}"
+# fi
+
+# Set INFOPATH so it includes users' private info if it exists
+# if [ -d "${HOME}/info" ]; then
+#   INFOPATH="${HOME}/info:${INFOPATH}"
+# fi

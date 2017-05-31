@@ -8,6 +8,14 @@ alias gitupdate='cd ~/Github/My_Configs  &&  ga  &&  gs  &&  gc "update"  &&  gp
 alias cpvim='cp -t ~/Github/My_Configs/ $VIM/vimrc && gitupdate'
 alias cpconfig='cp -t ~/Github/My_Configs/ ~/.inputrc ~/.bashrc ~/.bash_profile ~/.profile ~/c.snippets ~/cpp.snippets ~/java.snippets  &&  gitupdate'
 
+# special aliases for ubuntu (because of stupid sudo)
+if [ "$ENV_TYPE" == "ubuntu" ]
+	then alias vim='sudo vim'
+		 alias cp='sudo cp'
+		 alias mv='sudo mv'
+		 alias rm='sudo rm'
+fi
+
 # git aliases
 alias ga='git add .'
 alias gs='git status'
