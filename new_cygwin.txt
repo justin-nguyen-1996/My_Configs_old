@@ -11,6 +11,7 @@ Packages Needed from setup.exe
  - 
    
 Config Files (see Github Repo):
+ - set variable $ENV_TYPE appropriately in either .profile or .bash_profile
  - vimrc
  - .bashrc
  - .inputrc

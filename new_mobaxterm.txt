@@ -21,6 +21,7 @@ Plugins Needed:
  - see Miscellaneous Notes for GNU Make
 
 Config Files (see Github Repo):
+ - set variable $ENV_TYPE appropriately in either .profile or .bash_profile
  - vimrc (two versions of some commands --> search for stuff with '{')
  - .bashrc (put bash_aliases in here)
  - .inputrc
