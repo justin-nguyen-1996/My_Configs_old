@@ -17,6 +17,7 @@ Config Files (see Github Repo):
  - directly copy over .bashrc, vimrc, .inputrc
  - copy .bash_profile over into .profile
  - set variable $ENV_TYPE appropriately in .profile 
+ - set is_cygwin appropriately in vimrc (=1 in Cygwin and Ubuntu, =0 in MobaXterm)
  
 Symlinks:
  - Make a Github dir (mkdir ~/Github)

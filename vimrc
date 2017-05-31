@@ -1,4 +1,4 @@
-let is_cygwin = 1             " else assume using MobaXTerm
+let is_cygwin = 1
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -192,7 +192,7 @@ set fml=1
 "endif
 
 " a godsend that disables that stupidly annoying beep/bell once and for all
-if is_cygwin
+if (is_cygwin)
 	set belloff=all
 endif
 
