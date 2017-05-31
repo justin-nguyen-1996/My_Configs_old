@@ -3,6 +3,7 @@ Install these packages with sudo apt-get install _______
  - vim
  - git
  - ctags
+ - miniconda stuff (https://askubuntu.com/questions/615700/install-miniconda-python-2-7)
 
 Increase sudo time with
  - sudo visudo
