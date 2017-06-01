@@ -19,6 +19,10 @@ Increase sudo time with
 
 Always be sudo with
  - sudo -s  -->  could put this in .profile (but this is somewhat dangerous) (i.e. you better know what you're doing)
+
+Auto-maximized terminal
+ - open a terminal --> go to the launcher --> right-click and choose "Lock to Launcher"
+ - go to the edits bar (top of the screen) --> then profile preferences --> change initial terminal size to something really big
    
 Config Files (see Github Repo):
  - be careful about what you copy over (trust me)
