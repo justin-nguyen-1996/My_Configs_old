@@ -324,15 +324,26 @@ endif
 "=================================================================="
 
 " toggle commented lines
-vnoremap ;/ :call ToggleComment()<CR>
-nnoremap ;/ :call ToggleComment()<CR>
-function! ToggleComment()
+function! ToggleComment_C()
 	if matchstr(getline(line(".")),'^\s*\/\/.*$') == ''
 		   :execute "s:^:// :"
 	else
 		   :execute "s:^\s*// ::"
 	endif
 endfunction
+vnoremap ;/ :call ToggleComment_C()<CR>
+nnoremap ;/ :call ToggleComment_C()<CR>
+
+" toggle commented lines
+function! ToggleComment_Py()
+	if matchstr(getline(line(".")),'^\s*\#.*$') == ''
+		   :execute "s:^:# :"
+	else
+		   :execute "s:^\s*# ::"
+	endif
+endfunction
+vnoremap ;# :call ToggleComment_Py()<CR>
+nnoremap ;# :call ToggleComment_Py()<CR>
 
 "=================================================================="
 

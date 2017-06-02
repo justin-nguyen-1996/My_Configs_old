@@ -11,6 +11,10 @@ Install these packages with sudo apt-get install _______
 				   pandas
 				   scikit-learn
 				   matplotlib
+				   
+				   gdal
+				   fiona
+				   shapely
 
 Increase sudo time with
  - sudo visudo
