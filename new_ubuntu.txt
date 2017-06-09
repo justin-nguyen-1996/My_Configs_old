@@ -1,3 +1,4 @@
+
 Install these packages with sudo apt-get install _______
  - (but first run sudo apt-get update)
  - vim
@@ -40,6 +41,7 @@ Symlinks:
  - c.snippets    (ln -s ~/.vim/bundle/vim-snippets/snippets/c.snippets)
  - cpp.snippets  (ln -s ~/.vim/bundle/vim-snippets/snippets/cpp.snippets)
  - java.snippets (ln -s ~/.vim/bundle/vim-snippets/snippets/java.snippets)
+ - python.snippets (ln -s ~/.vim/bundle/vim-snippets/snippets/python.snippets)
 
 Snippets:
  - install Vundle first (follow directions on Vundle git page)
@@ -50,6 +52,7 @@ Snippets:
    - c.snippets
    - cpp.snippets
    - java.snippets
+   - python.snippets
 
 Miscellaneous Notes:
 

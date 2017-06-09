@@ -35,6 +35,7 @@ Symlinks:
  - Github  (ln -s /cygdrive/c/Users/Justin/Github/ Github)
  - Justin  (ln -s /cygdrive/c/Users/Justin/ Justin)
  - vimrc   (ln -s /usr/share/vim/vimrc vimrc)
+ - all the snippet files (c, cpp, java, python)
 
 Snippets:
  - install Vundle first (follow directions on Vundle git page)
