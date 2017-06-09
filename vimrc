@@ -168,8 +168,9 @@ set viewoptions=folds,cursor
 " auto comments for /* (javadoc style comments)
 set comments=sl:/*,mb:\ *,elx:\ */
 
-" auto comment when pressing enter, o, or O
-set formatoptions+=rco
+" auto comment when pressing enter
+" remove comment leader when joining lines that are both commented
+set formatoptions+=rcjn
 
 " lets the tags file to be in a separate directory from the source code
 " basically does the following:
