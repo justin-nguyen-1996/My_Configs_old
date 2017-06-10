@@ -30,6 +30,7 @@
 #######################################################################
 
 # if not set, then assume using MobaXTerm
+export asdf="asdfasdf"
 export ENV_TYPE="cygwin"
 
 # set vimrc location
