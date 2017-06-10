@@ -44,4 +44,5 @@ Snippets:
 Miscellaneous Notes:
  - Might need to download vim and just copy the zip's vim folder into the correct place (if man pages and stuff not present)
  - Extra configuration might be needed to setup the vim undo tree (can't remember at the moment)
+ - git config core.autocrlf false
 

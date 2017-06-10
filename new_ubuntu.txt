@@ -55,5 +55,5 @@ Snippets:
    - python.snippets
 
 Miscellaneous Notes:
-
+ - git config core.autocrlf false
 
