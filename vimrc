@@ -75,12 +75,6 @@ endif
 
 syntax enable
 
-if &term=="xterm"
-     set t_Co=8
-     set t_Sb=[4%dm
-     set t_Sf=[3%dm
-endif
-
 " ================================================================="
 " ================================================================="
 " ============== Begin additions for Syntastic plugin ============="
@@ -266,6 +260,9 @@ nnoremap U ~
 
 " pressing Control-w then Control-c in split windows accidentally closes the window. I dislike this
 nnoremap <C-w><C-c> <ESC>
+
+" using 'x' will now put the 'cut' letter(s) in the black hole register "_
+nnoremap x "_x
 
 " ================================================================="
 " ================================================================="
@@ -471,17 +468,19 @@ nnoremap ;s :source $VIM/vimrc<CR>
 " use ;f to format the file according to C++/Java style
 nnoremap ;f :set expandtab! expandtab?<CR>gg=G''<ESC>
 
+" use ;d to put deleted stuff in the black hole register "_
+nnoremap ;d "_dd
+vnoremap ;d "_d
+
 " use ;i/w/f/d/t to put the selected lines into an if-statement
 if is_cygwin
 	vnoremap ;i dOif () {<CR>}<ESC><ESC>kp>i{?(<CR>
 	vnoremap ;w dOwhile () {<CR>}<ESC><ESC>kp>i{?(<CR>
 	vnoremap ;f dOfor () {<CR>}<ESC><ESC>kp>i{?(<CR>
-	vnoremap ;d dOdo {<CR>} while ();<ESC><ESC>kp>i{/while (<CR>f(
 else
 	vnoremap ;i dO<TAB>if () {<CR>}<ESC><ESC>kp>i{?(<CR>
 	vnoremap ;w dO<TAB>while () {<CR>}<ESC><ESC>kp>i{?(<CR>
 	vnoremap ;f dO<TAB>for () {<CR>}<ESC><ESC>kp>i{?(<CR>
-	vnoremap ;d dO<TAB>do {<CR>} while ();<ESC><ESC>kp>i{/while (<CR>f(
 endif
 	
 " commented out in favor of using ;t in visual mode for the Tabular plugin
@@ -514,15 +513,6 @@ vnoremap ;r y:%s/<C-F>pa/
 
 " zipping files
 " zip -r file_name.zip *
-
-" macro for turning something like int x = { asdf_0, qwer_0, zxcv_0 }; into int x = { asdf_1, qwer_1, zxcv_1 };
-" usage:
-" 1. put a 1 above the line that you want to start copying
-" 2. mark that line into the m-register using mm
-" 3. copy that 1 into the w-register using "wyw
-" 3. copy the following macro into the q-register: yypmnf_lvwh"wp,lvwh"wp,lvwhh"wp'm'm"wyw'n
-" 4. execute the macro by using <number_here>@q on the line you want to copy
-" 5. (if desired) remove the underscores by selecting the lines and doing a replace
 
 " Don't wake up system with blinking cursor:
 " http://www.linuxpowertop.org/known.php
