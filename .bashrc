@@ -15,6 +15,7 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 		 alias mv='sudo mv'
 		 alias rm='sudo rm'
 		 alias chmod='sudo chmod'
+		 alias install='sudo apt-get install'
 fi
 
 # git aliases
