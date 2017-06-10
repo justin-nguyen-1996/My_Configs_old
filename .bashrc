@@ -15,6 +15,7 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 		 alias mv='sudo mv'
 		 alias rm='sudo rm'
 		 alias chmod='sudo chmod'
+		 alias DOS='sudo dos2unix'
 		 alias install='sudo apt-get install'
 fi
 
@@ -49,7 +50,9 @@ alias dir='ls --color=auto'
 alias open=cygstart
 
 # easy dos2unix
-alias DOS=dos2unix
+if [ "$ENV_TYPE" != "ubuntu" ]
+	then alias DOS=dos2unix
+fi
 
 # easy ls -al
 alias la='ls -al'
