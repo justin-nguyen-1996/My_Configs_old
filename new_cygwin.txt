@@ -11,11 +11,11 @@ Packages Needed from setup.exe
  - 
    
 Config Files (see Github Repo):
- - set variable $ENV_TYPE appropriately in either .profile or .bash_profile
+ - might need to run dos2unix on files that give weird errors
+ - set variable $ENV_TYPE appropriately in either .profile
  - vimrc
  - .bashrc
  - .inputrc
- - .bash_profile
  - .profile
  
 Symlinks:
@@ -44,5 +44,4 @@ Snippets:
 Miscellaneous Notes:
  - Might need to download vim and just copy the zip's vim folder into the correct place (if man pages and stuff not present)
  - Extra configuration might be needed to setup the vim undo tree (can't remember at the moment)
-   
 

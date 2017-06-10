@@ -30,7 +30,7 @@
 #######################################################################
 
 # if not set, then assume using MobaXTerm
-export ENV_TYPE="ubuntu"
+export ENV_TYPE="cygwin"
 
 # set vimrc location
 if [ "$ENV_TYPE" == "cygwin" ]
