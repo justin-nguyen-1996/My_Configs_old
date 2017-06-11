@@ -206,8 +206,6 @@ let g:netrw_liststyle=3      " tree view
 " set matching parenthesis/brace/bracket to be underlined
 hi MatchParen cterm=underline ctermbg=none ctermfg=none
 
-cnoremap <C-Left> <S-Left>
-
 " ================================================================="
 " ================================================================="
 " =============== Begin my 'nnoremaps' vimrc things ==============="
