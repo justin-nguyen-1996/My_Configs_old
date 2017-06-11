@@ -50,6 +50,9 @@ alias dir='ls --color=auto'
 # alias for opening files
 alias open=cygstart
 
+# alias for grep convenience
+alias grep='grep -rni --color --exclude tags --exclude .tags'
+
 # easy dos2unix
 if [ "$ENV_TYPE" != "ubuntu" ]
 	then alias DOS=dos2unix
