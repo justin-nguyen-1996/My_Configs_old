@@ -64,3 +64,5 @@ alias la='ls -al'
 # python aliases
 alias p='python'
 
+# enable extglob (useful for something like rm !(temp.c))
+shopt -s extglob
