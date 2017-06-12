@@ -206,17 +206,6 @@ let g:netrw_liststyle=3      " tree view
 " set matching parenthesis/brace/bracket to be underlined
 hi MatchParen cterm=underline ctermbg=none ctermfg=none
 
-function! Smart_Delete()	
-	let temp = getreg('"', 1)
-	execute 'normal!' 'dd'
-    if matchstr(@", '\_s*') == @"    " if just whitespace
-		call setreg('"', temp)
-		echo "nice"
-    endif
-endfunction
-nnoremap dd :call Smart_Delete()<CR>
-" vnoremap d  :call Smart_Delete()<CR>
-
 " ================================================================="
 " ================================================================="
 " =============== Begin my 'nnoremaps' vimrc things ==============="
@@ -332,7 +321,7 @@ endif
 
 "=================================================================="
 
-" toggle commented lines
+" toggle commented lines for C-style comments
 function! ToggleComment_C()
 	if matchstr(getline(line(".")),'^\s*\/\/.*$') == ''
 		   :execute "s:^:// :"
@@ -343,7 +332,7 @@ endfunction
 vnoremap ;/ :call ToggleComment_C()<CR>
 nnoremap ;/ :call ToggleComment_C()<CR>
 
-" toggle commented lines
+" toggle commented lines for Python-style comments
 function! ToggleComment_Py()
 	if matchstr(getline(line(".")),'^\s*\#.*$') == ''
 		   :execute "s:^:# :"
@@ -354,7 +343,7 @@ endfunction
 vnoremap ;# :call ToggleComment_Py()<CR>
 nnoremap ;# :call ToggleComment_Py()<CR>
 
-" toggle commented lines
+" toggle commented lines for Vimrc-style comments
 function! ToggleComment_Vimrc()
 	if matchstr(getline(line(".")),'^\s*\".*$') == ''
 		   :execute 's:^:" :'
@@ -422,6 +411,26 @@ fun! s:unformat(line1, line2)
 	execute 'normal!' "V'e="
 endfun
 command! -range Unformat :call s:unformat(<line1>, <line2>)
+
+"=================================================================="
+
+function! Smart_Delete_dd()
+	let temp = getreg('"', 1)
+	execute 'normal!' 'dd'
+	if matchstr(@", '\_s*') == @"    " if just whitespace
+		call setreg('"', temp)
+	endif
+endfunction
+nnoremap <silent> dd :call Smart_Delete_dd()<CR>
+
+function! Smart_Delete_Vd()
+" 	let temp = getreg('"', 1)
+	execute 'normal!' 'd'
+" 	if matchstr(@", '\_s*') == @"    " if just whitespace
+" 		call setreg('"', temp)
+" 	endif
+endfunction
+vnoremap <silent> d :call Smart_Delete_Vd()<CR>
 
 " ================================================================="
 " ================================================================="
