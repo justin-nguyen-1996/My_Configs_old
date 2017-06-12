@@ -423,12 +423,12 @@ function! Smart_Delete_dd()
 endfunction
 nnoremap <silent> dd :call Smart_Delete_dd()<CR>
 
-function! Smart_Delete_Vd()
-" 	let temp = getreg('"', 1)
-	execute 'normal!' 'd'
-" 	if matchstr(@", '\_s*') == @"    " if just whitespace
-" 		call setreg('"', temp)
-" 	endif
+function! Smart_Delete_Vd() range
+	let temp = getreg('"', 1)
+	execute 'normal!' . (a:lastline - a:firstline + 1) . 'dd'
+	if matchstr(@", '\_s*') == @"    " if just whitespace
+		call setreg('"', temp)
+	endif
 endfunction
 vnoremap <silent> d :call Smart_Delete_Vd()<CR>
 
