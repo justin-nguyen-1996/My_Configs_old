@@ -206,6 +206,17 @@ let g:netrw_liststyle=3      " tree view
 " set matching parenthesis/brace/bracket to be underlined
 hi MatchParen cterm=underline ctermbg=none ctermfg=none
 
+function! Smart_Delete()	
+	let temp = getreg('"', 1)
+	execute 'normal!' 'dd'
+    if matchstr(@", '\_s*') == @"    " if just whitespace
+		call setreg('"', temp)
+		echo "nice"
+    endif
+endfunction
+nnoremap dd :call Smart_Delete()<CR>
+" vnoremap d  :call Smart_Delete()<CR>
+
 " ================================================================="
 " ================================================================="
 " =============== Begin my 'nnoremaps' vimrc things ==============="
@@ -342,6 +353,17 @@ function! ToggleComment_Py()
 endfunction
 vnoremap ;# :call ToggleComment_Py()<CR>
 nnoremap ;# :call ToggleComment_Py()<CR>
+
+" toggle commented lines
+function! ToggleComment_Vimrc()
+	if matchstr(getline(line(".")),'^\s*\".*$') == ''
+		   :execute 's:^:" :'
+	else
+		   :execute 's:^\s*" ::'
+	endif
+endfunction
+vnoremap ;" :call ToggleComment_Vimrc()<CR>
+nnoremap ;" :call ToggleComment_Vimrc()<CR>
 
 "=================================================================="
 
