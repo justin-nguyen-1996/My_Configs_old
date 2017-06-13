@@ -19,6 +19,8 @@ Install these packages with sudo apt-get install _______
 				   fiona
 				   shapely
 				   rasterio (https://github.com/conda-forge/rasterio-feedstock)
+				   affine
+				   pyproj
 
 Increase sudo time with
  - sudo visudo
