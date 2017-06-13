@@ -8,7 +8,7 @@ alias gitupdate='cd ~/Github/My_Configs  &&  ga  &&  gs  &&  gc "update"  &&  gp
 alias cpvim='cp -t ~/Github/My_Configs/ $VIM/vimrc && gitupdate'
 alias cpconfig='cp -t ~/Github/My_Configs/ $VIM/vimrc ~/.inputrc ~/.bashrc ~/.profile ~/python.snippets ~/c.snippets ~/cpp.snippets ~/java.snippets  &&  gitupdate'
 
-# special aliases for ubuntu (because of stupid sudo)
+# aliases for Ubuntu (because of stupid sudo)
 if [ "$ENV_TYPE" == "ubuntu" ]
 	then alias vim='sudo vim'
 		 alias cp='sudo cp'
@@ -18,7 +18,18 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 		 alias ls='sudo ls'
 		 alias DOS='sudo dos2unix'
 		 alias install='sudo apt-get install'
+		 alias open='gnome-open'
+		 alias ./='sudo ./'
 fi
+
+# aliases for Cygwin
+if [ "$ENV_TYPE" == "cygwin" ]
+	then alias open='cygstart'
+		 alias DOS='dos2unix'
+fi
+
+# python aliases
+alias p='python'
 
 # git aliases
 alias ga='git add .'
@@ -43,26 +54,20 @@ alias TAGS='ctags -R -f .tags .'
 alias MARIO='ssh jnguyen10@mario.ece.utexas.edu'
 alias GRADER='ssh jnguyen10@grader.ece.utexas.edu'
 
-# make sure ls/dir display files/folders in color
+# nicer & easier ls/dir/la/grep/tar
 alias ls='ls -hF --color=tty'
 alias dir='ls --color=auto'
-
-# alias for opening files
-alias open=cygstart
-
-# alias for grep convenience
-alias grep='grep -rni --color --exclude tags --exclude .tags'
-
-# easy dos2unix
-if [ "$ENV_TYPE" != "ubuntu" ]
-	then alias DOS=dos2unix
-fi
-
-# easy ls -al
 alias la='ls -al'
-
-# python aliases
-alias p='python'
+alias grep='grep -rni --color --exclude tags --exclude .tags'
+alias tar='tar -xzvf'
 
 # enable extglob (useful for something like rm !(temp.c))
 shopt -s extglob
+
+# enable colored prompt
+force_color_prompt=yes
+if [ "$color_prompt" = yes ]; then
+	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;31m\]\w\[\033[00m\]\$ '
+else
+	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
