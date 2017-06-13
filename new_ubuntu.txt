@@ -5,6 +5,7 @@ Install these packages with sudo apt-get install _______
  - git
  - ctags
  - dos2unix
+ - libgnome2-bin
  - miniconda stuff (https://askubuntu.com/questions/615700/install-miniconda-python-2-7)
    - make sure to use wget with the flag --no-check-certificate
    - conda config --set ssl_verify false
