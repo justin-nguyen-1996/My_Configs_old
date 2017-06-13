@@ -18,6 +18,7 @@ Install these packages with sudo apt-get install _______
 				   gdal
 				   fiona
 				   shapely
+				   rasterio (https://github.com/conda-forge/rasterio-feedstock)
 
 Increase sudo time with
  - sudo visudo

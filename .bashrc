@@ -18,8 +18,8 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 		 alias ls='sudo ls'
 		 alias DOS='sudo dos2unix'
 		 alias install='sudo apt-get install'
+		 alias search='sudo apt-cache search'
 		 alias open='gnome-open'
-		 alias ./='sudo ./'
 fi
 
 # aliases for Cygwin
