@@ -261,8 +261,11 @@ nnoremap U ~
 " pressing Control-w then Control-c in split windows accidentally closes the window. I dislike this
 nnoremap <C-w><C-c> <ESC>
 
-" using 'x' will now put the 'cut' letter(s) in the black hole register "_
+" using 'x' will now put the 'cut' letter(s) in the black hole register "_ 
 nnoremap x "_x
+
+" using '' to will now put you at the (last cursor position) instead of the (last row your cursor was in)
+nnoremap '' ``
 
 " ================================================================="
 " ================================================================="
