@@ -265,7 +265,7 @@ nnoremap <C-w><C-c> <ESC>
 nnoremap x "_x
 
 " using '' to will now put you at the (last cursor position) instead of the (last row your cursor was in)
-nnoremap '' ``
+nnoremap '' ``zz
 
 " ================================================================="
 " ================================================================="
