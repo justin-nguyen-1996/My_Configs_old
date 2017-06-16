@@ -551,4 +551,3 @@ vnoremap ;r y:%s/<C-F>pa/
 " Don't wake up system with blinking cursor:
 " http://www.linuxpowertop.org/known.php
 let &guicursor = &guicursor . ",a:blinkon0"
-

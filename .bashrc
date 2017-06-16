@@ -65,9 +65,17 @@ alias tar='tar -xzvf'
 shopt -s extglob
 
 # enable colored prompt
-force_color_prompt=yes
-if [ "$color_prompt" = yes ]; then
-	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;31m\]\w\[\033[00m\]\$ '
-else
-	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+if [ "$ENV_TYPE" == "ubuntu" ]; then
+	force_color_prompt=yes
+	if [ "$color_prompt" = yes ]; then
+		PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;31m\]\w\[\033[00m\]\$ '
+	else
+		PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+	fi
 fi
+
+# cd into a folder and run ls
+# function cdl { cd $1; ls;}
+
+# !- means the previous directory
+# !$ means the last argument in the command line
