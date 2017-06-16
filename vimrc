@@ -124,6 +124,29 @@ let g:snippet_version = 1
 
 " ================================================================="
 " ================================================================="
+" =============== Begin additions for Python files ================"
+ 
+" TODO don't do this, just put this stuff in .vim/after (see Stack Overflow)
+" au FileType python 
+
+" ================================================================="
+" ================================================================="
+" ================== Begin additions for C files =================="
+
+" TODO don't do this either
+" use ;i/w/f/d/t to put the selected lines into an if-statement
+if is_cygwin
+	vnoremap ;i dOif () {<CR>}<ESC><ESC>kp>i{?(<CR>
+	vnoremap ;w dOwhile () {<CR>}<ESC><ESC>kp>i{?(<CR>
+	vnoremap ;f dOfor () {<CR>}<ESC><ESC>kp>i{?(<CR>
+else
+	vnoremap ;i dO<TAB>if () {<CR>}<ESC><ESC>kp>i{?(<CR>
+	vnoremap ;w dO<TAB>while () {<CR>}<ESC><ESC>kp>i{?(<CR>
+	vnoremap ;f dO<TAB>for () {<CR>}<ESC><ESC>kp>i{?(<CR>
+endif
+
+" ================================================================="
+" ================================================================="
 " ================== Begin my 'set' vimrc things =================="
 
 " Show (partial) command in status line
@@ -297,12 +320,6 @@ inoremap <C-k> <C-x><C-f>
 " ================================================================="
 " ================================================================="
 " =============== Begin my 'vnoremaps' vimrc things ==============="
-
-" type Sys after selecting a var to easily print the var to the console
-vnoremap Sys<TAB> d<ESC>aSystem.out.println(": " + );<ESC>F(f"pf)F p
-
-" type cout after selecting a var to easily print the var to the console
-vnoremap cout<TAB> d<ESC>acout << ": " <<  << "\n";<ESC>Ftf"pf<f<f p
 
 " remap the paste function in visual mode to Control-p
 vnoremap <C-p> p
@@ -506,17 +523,6 @@ nnoremap ;f :set expandtab! expandtab?<CR>gg=G''<ESC>
 nnoremap ;d "_dd
 vnoremap ;d "_d
 
-" use ;i/w/f/d/t to put the selected lines into an if-statement
-if is_cygwin
-	vnoremap ;i dOif () {<CR>}<ESC><ESC>kp>i{?(<CR>
-	vnoremap ;w dOwhile () {<CR>}<ESC><ESC>kp>i{?(<CR>
-	vnoremap ;f dOfor () {<CR>}<ESC><ESC>kp>i{?(<CR>
-else
-	vnoremap ;i dO<TAB>if () {<CR>}<ESC><ESC>kp>i{?(<CR>
-	vnoremap ;w dO<TAB>while () {<CR>}<ESC><ESC>kp>i{?(<CR>
-	vnoremap ;f dO<TAB>for () {<CR>}<ESC><ESC>kp>i{?(<CR>
-endif
-	
 " commented out in favor of using ;t in visual mode for the Tabular plugin
 "vnoremap ;t dO<TAB>try {<CR>} catch () {<CR><CR>}<ESC><ESC>kkkp>i{/catch ()<CR>f(
 
@@ -547,6 +553,9 @@ vnoremap ;r y:%s/<C-F>pa/
 
 " zipping files
 " zip -r file_name.zip *
+
+" specific things for filetypes
+" au FileType python 
 
 " Don't wake up system with blinking cursor:
 " http://www.linuxpowertop.org/known.php
