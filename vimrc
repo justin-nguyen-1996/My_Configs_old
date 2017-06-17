@@ -181,11 +181,6 @@ set fml=1
 "	set fdn=1
 "endif
 
-" a godsend that disables that stupidly annoying beep/bell once and for all
-if $ENV_TYPE == "cygwin"
-	set belloff=all
-endif
-
 " searches down into subfolders
 " provides tab-completion for all file-related tasks
 set path+=**
@@ -210,12 +205,9 @@ if !exists('g:os')
     endif
 endif
 
-if g:os =~ 'Windows'
-    " do Windows stuff
-endif
-
+" a godsend that disables that stupidly annoying beep/bell once and for all
 if g:os =~ 'CYGWIN'
-    " do Cygwin stuff
+	set belloff=all
 endif
 
 " ================================================================="
@@ -284,10 +276,10 @@ nnoremap '' ``zz
 " =============== Begin my 'inoremaps' vimrc things ==============="
 
 " autocomplete for matching brace (activated upon pressing enter)
-if $ENV_TYPE == "cygwin"
+if g:os =~ 'CYGWIN'
 	inoremap {<CR>  {<TAB><CR>}<Esc><Esc>O
-elseif $ENV_TYPE == "ubuntu"
-	inoremap {<CR>  {<CR><TAB><CR>}<ESC>0xk$a
+elseif g:os =~ 'Linux'
+	inoremap {<CR>  {<CR>}<ESC>O
 endif
 
 " DUMBEST HACK EVER (but I'm so happy it works)
