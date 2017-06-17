@@ -161,10 +161,6 @@ set viewoptions=folds,cursor
 " auto comments for /* (javadoc style comments)
 set comments=sl:/*,mb:\ *,elx:\ */
 
-" auto comment when pressing enter
-" remove comment leader when joining lines that are both commented
-set formatoptions+=rcjn
-
 " lets the tags file to be in a separate directory from the source code
 " basically does the following:
 " 	goes up one directory at a time until it finds a file called '.tags'
@@ -204,6 +200,23 @@ let g:netrw_liststyle=3      " tree view
 
 " set matching parenthesis/brace/bracket to be underlined
 hi MatchParen cterm=underline ctermbg=none ctermfg=none
+
+" set variable 'g:os' according to development environment
+if !exists('g:os')
+    if has('win32') || has('win16')
+        let g:os = 'Windows'
+    else
+        let g:os = substitute(system('uname'), '\n', '', '')
+    endif
+endif
+
+if g:os =~ 'Windows'
+    " do Windows stuff
+endif
+
+if g:os =~ 'CYGWIN'
+    " do Cygwin stuff
+endif
 
 " ================================================================="
 " ================================================================="

@@ -1,4 +1,9 @@
 
+" auto comment when pressing enter
+" remove comment leader when joining lines that are both commented
+" auto recognize numbered lists
+set formatoptions=rcjn
+
 " use ;i/w/f/d/t to put the selected lines into an if-statement
 if $ENV_TYPE == "cygwin"
 	vnoremap ;i dOif () {<CR>}<ESC><ESC>kp>i{?(<CR>
@@ -9,3 +14,4 @@ elseif $ENV_TYPE == "ubuntu"
 	vnoremap ;w dO<TAB>while () {<CR>}<ESC><ESC>kp>i{?(<CR>
 	vnoremap ;f dO<TAB>for () {<CR>}<ESC><ESC>kp>i{?(<CR>
 endif
+
