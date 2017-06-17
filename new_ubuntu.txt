@@ -60,12 +60,10 @@ Snippets:
    - java.snippets
    - python.snippets
  
-Filetype-Specific:
- - copy these files into ~/.vim/after/ftplugin/  -->  make this folder if needed
- - c.vim
- - cpp.vim
- - java.vim
- - python.vim
+Language-Specific Files:
+ - copy the corresponding files from the repo into ~/.vim/after/ftplugin
+ - copy the corresponding files from the repo into ~/.vim/after/syntax/
+ - NOTE: make the directories if you have to (you probably will)
 
 Miscellaneous Notes:
  - git config core.autocrlf false

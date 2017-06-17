@@ -4,9 +4,14 @@ alias ev='vim $VIM/vimrc;'
 alias ea='vim ~/.bashrc; source ~/.bashrc && source $HOME/.bashrc'
 
 # some silly things because I'm really lazy (basically one-shot commands to git commit/push vimr and other config files)
-alias gitupdate='cd ~/Github/My_Configs  &&  ga  &&  gs  &&  gc "update"  &&  gp  && cd -'
-alias cpvim='cp -t ~/Github/My_Configs/ $VIM/vimrc && gitupdate'
-alias cpconfig='cp -t ~/Github/My_Configs/ $VIM/vimrc ~/.inputrc ~/.bashrc ~/.profile ~/python.snippets ~/c.snippets ~/cpp.snippets ~/java.snippets ~/.vim/after/ftplugin/*  &&  gitupdate'
+alias git_update='cd ~/Github/My_Configs  &&  ga  &&  gs  &&  gc "update"  &&  gp  && cd -'
+alias cp_vim='cp -t ~/Github/My_Configs/ $VIM/vimrc'
+alias cp_dotfiles='cp -t ~/Github/My_Configs/ ~/.inputrc ~/.bashrc ~/.profile'
+alias cp_snippets='cp -t ~/Github/My_Configs/ ~/python.snippets ~/c.snippets ~/cpp.snippets ~/java.snippets'
+alias cp_lang_syntax_files='cp -t ~/Github/My_Configs/.vim/after/syntax  ~/.vim/after/syntax/*'
+alias cp_lang_plugin_files='cp -t ~/Github/My_Configs/.vim/after/ftplugin  ~/.vim/after/ftplugin/*'
+alias cpconfig='cp_vim  &&  cp_dotfiles  &&  cp_snippets  &&  cp_lang_syntax_files  &&  cp_lang_plugin_files  && git_update'
+# alias cpconfig='cp -t ~/Github/My_Configs/ $VIM/vimrc ~/.inputrc ~/.bashrc ~/.profile ~/python.snippets ~/c.snippets ~/cpp.snippets ~/java.snippets ~/.vim/after/ftplugin/*  ~/.vim/after/syntax/*   &&   gitupdate'
 
 # aliases for Ubuntu (because of stupid sudo)
 if [ "$ENV_TYPE" == "ubuntu" ]

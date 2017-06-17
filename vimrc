@@ -210,6 +210,11 @@ if g:os =~ 'CYGWIN'
 	set belloff=all
 endif
 
+" TODO: see if this helps with ubuntu outputting garbage characters
+if g:os =~ 'Linux'
+	set t_RV=
+endif
+
 " ================================================================="
 " ================================================================="
 " =============== Begin my 'nnoremaps' vimrc things ==============="
