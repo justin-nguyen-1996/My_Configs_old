@@ -371,11 +371,8 @@ fun! s:reformat(line1, line2)
 	" Recalculate the range && run Tabular
 	let l:line2 = a:line2 - (l:before - line('$'))
 	execute 'normal!' "V'e="
-	execute a:line1 . ',' . l:line2 . 'Tabularize /{/' 
-
-	" Align the '(' after the 'if' with the rest of the 'else if' statements
 	execute 'normal!' 'f(i     '
-	execute 'normal!' 'f{XXXXX0'
+	execute a:line1 . ',' . l:line2 . 'Tabularize /{/' 
 endfun
 command! -range Reformat :call s:reformat(<line1>, <line2>)
 
