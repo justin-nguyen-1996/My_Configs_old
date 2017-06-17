@@ -1,4 +1,3 @@
-let is_cygwin = 1
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -124,29 +123,6 @@ let g:snippet_version = 1
 
 " ================================================================="
 " ================================================================="
-" =============== Begin additions for Python files ================"
- 
-" TODO don't do this, just put this stuff in .vim/after (see Stack Overflow)
-" au FileType python 
-
-" ================================================================="
-" ================================================================="
-" ================== Begin additions for C files =================="
-
-" TODO don't do this either
-" use ;i/w/f/d/t to put the selected lines into an if-statement
-if is_cygwin
-	vnoremap ;i dOif () {<CR>}<ESC><ESC>kp>i{?(<CR>
-	vnoremap ;w dOwhile () {<CR>}<ESC><ESC>kp>i{?(<CR>
-	vnoremap ;f dOfor () {<CR>}<ESC><ESC>kp>i{?(<CR>
-else
-	vnoremap ;i dO<TAB>if () {<CR>}<ESC><ESC>kp>i{?(<CR>
-	vnoremap ;w dO<TAB>while () {<CR>}<ESC><ESC>kp>i{?(<CR>
-	vnoremap ;f dO<TAB>for () {<CR>}<ESC><ESC>kp>i{?(<CR>
-endif
-
-" ================================================================="
-" ================================================================="
 " ================== Begin my 'set' vimrc things =================="
 
 " Show (partial) command in status line
@@ -210,7 +186,7 @@ set fml=1
 "endif
 
 " a godsend that disables that stupidly annoying beep/bell once and for all
-if (is_cygwin)
+if $ENV_TYPE == "cygwin"
 	set belloff=all
 endif
 
@@ -295,9 +271,9 @@ nnoremap '' ``zz
 " =============== Begin my 'inoremaps' vimrc things ==============="
 
 " autocomplete for matching brace (activated upon pressing enter)
-if is_cygwin
+if $ENV_TYPE == "cygwin"
 	inoremap {<CR>  {<TAB><CR>}<Esc><Esc>O
-else
+elseif $ENV_TYPE == "ubuntu"
 	inoremap {<CR>  {<CR><TAB><CR>}<ESC>0xk$a
 endif
 
@@ -554,7 +530,7 @@ vnoremap ;r y:%s/<C-F>pa/
 " zipping files
 " zip -r file_name.zip *
 
-" specific things for filetypes
+" specific things for filetypes --> actually don't do this --> see ~/.vim/after/ftplugin/
 " au FileType python 
 
 " Don't wake up system with blinking cursor:
