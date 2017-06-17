@@ -40,6 +40,13 @@ Snippets:
    - cpp.snippets
    - java.snippets
    - python.snippets
+ 
+Filetype-Specific:
+ - copy these files into ~/.vim/after/ftplugin/  -->  make this folder if needed
+ - c.vim
+ - cpp.vim
+ - java.vim
+ - python.vim
 
 Miscellaneous Notes:
  - Might need to download vim and just copy the zip's vim folder into the correct place (if man pages and stuff not present)
