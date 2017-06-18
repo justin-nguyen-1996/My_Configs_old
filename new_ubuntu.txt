@@ -1,7 +1,7 @@
 
 Install these packages with sudo apt-get install _______
  - (but first run sudo apt-get update)
- - vim
+ - vim --> install vim-gnome for +clipboard support
  - git
  - ctags
  - dos2unix

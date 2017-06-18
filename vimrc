@@ -215,6 +215,9 @@ if g:os =~ 'Linux'
 	set t_RV=
 endif
 
+" make the clipboard the default register
+set clipboard=unnamed
+
 " ================================================================="
 " ================================================================="
 " =============== Begin my 'nnoremaps' vimrc things ==============="
@@ -383,11 +386,14 @@ command! -range Unformat :call s:unformat(<line1>, <line2>)
 "=================================================================="
 
 " a smarter delete operation (does not copy whitespace into registers)
+" NOTE: this doesn't prevent copying whitespace using 'yy' or 'Vy'
+"       my assumption is that you wanted to copy the whitespace instead of deleting it
 function! Smart_Delete_dd()
 	let temp = getreg('"', 1)
 	execute 'normal!' 'dd'
 	if matchstr(@", '\_s*') == @"    " if just whitespace
 		call setreg('"', temp)
+		call setreg('*', temp)
 	endif
 endfunction
 nnoremap <silent> dd :call Smart_Delete_dd()<CR>
@@ -397,6 +403,7 @@ function! Smart_Delete_Vd() range
 	execute 'normal!' . (a:lastline - a:firstline + 1) . 'dd'
 	if matchstr(@", '\_s*') == @"    " if just whitespace
 		call setreg('"', temp)
+		call setreg('*', temp)
 	endif
 endfunction
 vnoremap <silent> d :call Smart_Delete_Vd()<CR>
