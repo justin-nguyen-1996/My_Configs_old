@@ -21,16 +21,16 @@
 # would be benifitial to all, please feel free to send
 # a patch to the cygwin mailing list.
 
+####################################################################################
+####################################################################################
+####################################################################################
+
+# Ctrl-h to go back a word, Ctrl-l to go forward a word
+# Alt-h to delete a word backwards, Alt-l to delete a word forwards
 "\C-h": backward-word
 "\C-l": forward-word
 "h": backward-kill-word
 "l": kill-word
-
-# Allow 8-bit input/output
-#set meta-flag on
-#set convert-meta off
-#set input-meta on
-#set output-meta on
 
 $if Bash
   # Don't ring bell on completion
