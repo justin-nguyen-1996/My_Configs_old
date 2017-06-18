@@ -327,41 +327,6 @@ endif
 
 "=================================================================="
 
-" toggle commented lines for C-style comments
-function! ToggleComment_C()
-	if matchstr(getline(line(".")),'^\s*\/\/.*$') == ''
-		   :execute "s:^:// :"
-	else
-		   :execute "s:^\s*// ::"
-	endif
-endfunction
-vnoremap ;/ :call ToggleComment_C()<CR>
-nnoremap ;/ :call ToggleComment_C()<CR>
-
-" toggle commented lines for Python-style comments
-function! ToggleComment_Py()
-	if matchstr(getline(line(".")),'^\s*\#.*$') == ''
-		   :execute "s:^:# :"
-	else
-		   :execute "s:^\s*# ::"
-	endif
-endfunction
-vnoremap ;# :call ToggleComment_Py()<CR>
-nnoremap ;# :call ToggleComment_Py()<CR>
-
-" toggle commented lines for Vimrc-style comments
-function! ToggleComment_Vimrc()
-	if matchstr(getline(line(".")),'^\s*\".*$') == ''
-		   :execute 's:^:" :'
-	else
-		   :execute 's:^\s*" ::'
-	endif
-endfunction
-vnoremap ;" :call ToggleComment_Vimrc()<CR>
-nnoremap ;" :call ToggleComment_Vimrc()<CR>
-
-"=================================================================="
-
 " reformat multiline if-statements into single line if-statements
 fun! s:reformat(line1, line2)
 	
@@ -417,6 +382,7 @@ command! -range Unformat :call s:unformat(<line1>, <line2>)
 
 "=================================================================="
 
+" a smarter delete operation (does not copy whitespace into registers)
 function! Smart_Delete_dd()
 	let temp = getreg('"', 1)
 	execute 'normal!' 'dd'

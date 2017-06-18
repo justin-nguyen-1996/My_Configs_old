@@ -9,3 +9,14 @@ vnoremap ;i >Oif :<ESC><ESC>
 vnoremap ;w >Owhile :<ESC><ESC>
 vnoremap ;f >Ofor :<ESC><ESC>
 
+" toggle commented lines for Python-style comments
+function! ToggleComment()
+	if matchstr(getline(line(".")),'^\s*\#.*$') == ''
+		   :execute "s:^:# :"
+	else
+		   :execute "s:^\s*# ::"
+	endif
+endfunction
+vnoremap ;/ :call ToggleComment()<CR>
+nnoremap ;/ :call ToggleComment()<CR>
+

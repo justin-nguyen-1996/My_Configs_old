@@ -23,8 +23,8 @@
 
 "\C-h": backward-word
 "\C-l": forward-word
-"\C-w": backward-kill-word
-"\C-e": kill-word
+"h": backward-kill-word
+"l": kill-word
 
 # Allow 8-bit input/output
 #set meta-flag on
