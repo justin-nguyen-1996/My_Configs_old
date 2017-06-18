@@ -398,6 +398,7 @@ function! Smart_Delete_dd()
 	if matchstr(@", '\_s*') == @"    " if just whitespace
 		call setreg('"', temp)
 		call setreg('*', temp)
+		call setreg('+', temp)
 	endif
 endfunction
 nnoremap <silent> dd :call Smart_Delete_dd()<CR>
@@ -408,6 +409,7 @@ function! Smart_Delete_Vd() range
 	if matchstr(@", '\_s*') == @"    " if just whitespace
 		call setreg('"', temp)
 		call setreg('*', temp)
+		call setreg('+', temp)
 	endif
 endfunction
 vnoremap <silent> d :call Smart_Delete_Vd()<CR>
