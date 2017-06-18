@@ -216,7 +216,11 @@ if g:os =~ 'Linux'
 endif
 
 " make the clipboard the default register
-set clipboard=unnamed
+if has('unnamedplus')
+    set clipboard=unnamed,unnamedplus
+else
+	set clipboard=unnamed
+endif
 
 " ================================================================="
 " ================================================================="
