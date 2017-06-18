@@ -9,7 +9,6 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-
 Plugin 'vim-syntastic/syntastic'
 Plugin 'luochen1990/rainbow'
 Plugin 'godlygeek/tabular'
@@ -17,8 +16,7 @@ Plugin 'garbas/vim-snipmate'
 	Plugin 'MarcWeber/vim-addon-mw-utils'
 	Plugin 'tomtom/tlib_vim'
 	Plugin 'honza/vim-snippets'
-
-" All of your Plugins must be added before the following line
+Plugin 'aperezdc/vim-template'
 call vundle#end()
 filetype plugin indent on
 
@@ -120,6 +118,20 @@ vnoremap ;t :Tabularize /
 " =========== Begin additions for SnipMate plugin ==========="
 
 let g:snippet_version = 1
+
+" ================================================================="
+" ================================================================="
+" ============== Begin additions for Templates plugin ============="
+
+" see :h template.txt
+
+" let g:templates_user_variables = [
+" 	\   ['FULLPATH', 'GetFullPath'],
+" 	\ ]
+" 
+" function! GetFullPath()
+" 	return expand('%:p')
+" endfunction
 
 " ================================================================="
 " ================================================================="
@@ -334,6 +346,30 @@ endif
 
 "=================================================================="
 
+" toggle commented lines for #-style comments
+function! ToggleComment_Py()
+	if matchstr(getline(line(".")),'^\s*\#.*$') == ''
+		   :execute "s:^:# :"
+	else
+		   :execute "s:^\s*# ::"
+	endif
+endfunction
+vnoremap ;# :call ToggleComment_Py()<CR>
+nnoremap ;# :call ToggleComment_Py()<CR>
+
+" toggle commented lines for "-style comments
+function! ToggleComment_Vimrc()
+	if matchstr(getline(line(".")),'^\s*\".*$') == ''
+		   :execute 's:^:" :'
+	else
+		   :execute 's:^\s*" ::'
+	endif
+endfunction
+vnoremap ;" :call ToggleComment_Vimrc()<CR>
+nnoremap ;" :call ToggleComment_Vimrc()<CR>
+
+"=================================================================="
+
 " reformat multiline if-statements into single line if-statements
 fun! s:reformat(line1, line2)
 	
@@ -484,9 +520,6 @@ nnoremap ;f :set expandtab! expandtab?<CR>gg=G''<ESC>
 " use ;d to put deleted stuff in the black hole register "_
 nnoremap ;d "_dd
 vnoremap ;d "_d
-
-" commented out in favor of using ;t in visual mode for the Tabular plugin
-"vnoremap ;t dO<TAB>try {<CR>} catch () {<CR><CR>}<ESC><ESC>kkkp>i{/catch ()<CR>f(
 
 " use ;j to jump from a function call to that function's definition
 " use T  to pop from the tag stack and go to that location
