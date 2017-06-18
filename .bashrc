@@ -62,7 +62,7 @@ alias GRADER='ssh jnguyen10@grader.ece.utexas.edu'
 alias ls='ls -hF --color=tty'
 alias dir='ls --color=auto'
 alias la='ls -al'
-alias grep='grep -rni --color --exclude tags --exclude .tags'
+alias grep='grep -ni --color --exclude tags --exclude .tags'
 alias tar='tar -xzvf'
 
 # enable extglob (useful for something like rm !(temp.c))
