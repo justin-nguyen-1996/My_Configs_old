@@ -2,7 +2,7 @@
 " custom highlight groups for specific keywords
 
 hi WhiteOnRed term=standout,bold ctermfg=White ctermbg=Red
-match WhiteOnRed /REMOVE\|BROKEN?/
+match WhiteOnRed /REMOVE\|BROKEN?\|BROKEN/
 
 hi WhiteOnGreen term=standout,bold ctermfg=White ctermbg=Green
 2match WhiteOnGreen /NOTE/
