@@ -48,6 +48,7 @@ alias cd445L='cd ~/c/Keil/ValvanoWareTM4C123/EE-445L-Labs'
 alias cd460N='cd ~/GitHub/Computer_Architecture/'
 alias cdgit='cd ~/Github'
 alias cdoooe='cd ~/Github/oooe'
+alias cdafter='cd ~/.vim/after/'
 
 # create the ctags file
 alias CT='ctags -R -f .tags .'
