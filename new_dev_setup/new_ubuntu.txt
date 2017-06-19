@@ -1,7 +1,7 @@
 
 Install these packages with sudo apt-get install _______
  - (but first run sudo apt-get update)
- - vim --> install vim-gnome for +clipboard support
+ - vim --> install vim-gnome for vim 8.0 and +clipboard support
  - git
  - ctags
  - dos2unix
@@ -37,10 +37,15 @@ Auto-maximized terminal
    
 Config Files (see Github Repo):
  - be careful about what you copy over (trust me)
- - directly copy over .bashrc, vimrc, .inputrc
- - copy .bash_profile over into .profile
- - set variable $ENV_TYPE appropriately in .profile 
- - set is_cygwin appropriately in vimrc (=1 in Cygwin and Ubuntu, =0 in MobaXterm)
+ - might need to run dos2unix on files that give weird errors
+ - directly copy over .bashrc, .inputrc
+ - copy .profile from repo --> next set variable $ENV_TYPE appropriately in .profile 
+ - copy vimrc from repo
+    - install Vundle (NOTE: DO NOT follow directions on Vundle git page)
+      - just normally clone the repo and move it into the location specified on the Vundle git page
+      - if that doesn't work, then just copy the bundle directory from your old computer
+    - open vim and run :PluginInstall
+ - delete Ubuntu's .bash_profile file
  
 Symlinks:
  - Make a Github dir (mkdir ~/Github)
@@ -50,10 +55,6 @@ Symlinks:
  - python.snippets (ln -s ~/.vim/bundle/vim-snippets/snippets/python.snippets)
 
 Snippets:
- - install Vundle first (follow directions on Vundle git page)
-   - if the bundle directory wasn't created properly, try just normally cloning the repo and moving/renaming it
-   - if that doesn't work, then just copy the bundle directory from your old computer
- - open vim and run :PluginInstall
  - replace appropriate snip-files in .vim/bundle/vim-snippets/snippets with the ones from the repo 
    - c.snippets
    - cpp.snippets
@@ -61,9 +62,12 @@ Snippets:
    - python.snippets
  
 Language-Specific Files:
- - copy the corresponding files from the repo into ~/.vim/after/ftplugin
- - copy the corresponding files from the repo into ~/.vim/after/syntax/
- - NOTE: make the directories if you have to (you probably will)
+ - NOTE: make these directories if you have to (you probably will)
+ - copy the files in ftplugin/* from the repo into ~/.vim/after/ftplugin
+ - copy the files in syntax/* from the repo into ~/.vim/after/syntax/
+
+Template Files:
+ - copy the files in templates/* from the repo into ~/.vim/bundle/vim-template/templates/
 
 Miscellaneous Notes:
  - git config core.autocrlf false

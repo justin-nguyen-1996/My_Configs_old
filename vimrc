@@ -295,6 +295,9 @@ nnoremap x "_x
 " using '' to will now put you at the (last cursor position) instead of the (last row your cursor was in)
 nnoremap '' ``zz
 
+" map Y to act the same as D & C
+nnoremap Y y$
+
 " ================================================================="
 " ================================================================="
 " =============== Begin my 'inoremaps' vimrc things ==============="

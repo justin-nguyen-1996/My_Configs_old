@@ -1,6 +1,6 @@
 
 Packages Needed from setup.exe 
- - vim
+ - vim --> check that this is Vim 8.0 and has +clipboard support (run vim --version)
  - git
  - ssh
  - zip
@@ -8,33 +8,32 @@ Packages Needed from setup.exe
  - ctags
  - gvim
  - make
- - 
    
 Config Files (see Github Repo):
+ - be careful about what you copy over (trust me)
  - might need to run dos2unix on files that give weird errors
- - set variable $ENV_TYPE appropriately in either .profile
- - vimrc
- - .bashrc
- - .inputrc
- - .profile
+ - directly copy over .bashrc, .inputrc
+ - copy .profile from repo --> next set variable $ENV_TYPE appropriately in .profile 
+ - copy vimrc from repo
+    - install Vundle (NOTE: DO NOT follow directions on Vundle git page)
+      - just normally clone the repo and move it into the location specified on the Vundle git page
+      - if that doesn't work, then just copy the bundle directory from your old computer
+    - open vim and run :PluginInstall
+ - delete Ubuntu's .bash_profile file
  
 Symlinks:
- - C             (ln -s /cygdrive/c/ C)
- - Desktop       (ln -s /cygdrive/c/Users/Justin/Desktop/ Desktop)
- - Eclipse       (ln -s /cygdrive/c/Users/Justin/Eclipse-Workspace/ Eclipse))
- - Github        (ln -s /cygdrive/c/Users/Justin/Github/ Github)
- - Justin        (ln -s /cygdrive/c/Users/Justin/ Justin)
- - vimrc         (ln -s /etc/vimrc vimrc)
- - c.snippets    (ln -s ~/.vim/bundle/vim-snippets/snippets/c.snippets)
- - cpp.snippets  (ln -s ~/.vim/bundle/vim-snippets/snippets/cpp.snippets)
- - java.snippets (ln -s ~/.vim/bundle/vim-snippets/snippets/java.snippets)
+ - C               (ln -s /cygdrive/c/ C)
+ - Desktop         (ln -s /cygdrive/c/Users/Justin/Desktop/ Desktop)
+ - Eclipse         (ln -s /cygdrive/c/Users/Justin/Eclipse-Workspace/ Eclipse))
+ - Github          (ln -s /cygdrive/c/Users/Justin/Github/ Github)
+ - Justin          (ln -s /cygdrive/c/Users/Justin/ Justin)
+ - vimrc           (ln -s /etc/vimrc vimrc)
+ - c.snippets      (ln -s ~/.vim/bundle/vim-snippets/snippets/c.snippets)
+ - cpp.snippets    (ln -s ~/.vim/bundle/vim-snippets/snippets/cpp.snippets)
+ - java.snippets   (ln -s ~/.vim/bundle/vim-snippets/snippets/java.snippets)
  - python.snippets (ln -s ~/.vim/bundle/vim-snippets/snippets/python.snippets)
 
 Snippets:
- - install Vundle first (follow directions on Vundle git page)
-   - if the bundle directory wasn't created properly, try just normally cloning the repo and moving/renaming it
-   - if that doesn't work, then just copy the bundle directory from your old computer
- - open vim and run :PluginInstall
  - replace appropriate snip-files in .vim/bundle/vim-snippets/snippets with the ones from the repo 
    - c.snippets
    - cpp.snippets
@@ -42,9 +41,9 @@ Snippets:
    - python.snippets
  
 Language-Specific Files:
+ - NOTE: make these directories if you have to (you probably will)
  - copy the files in ftplugin/* from the repo into ~/.vim/after/ftplugin
  - copy the files in syntax/* from the repo into ~/.vim/after/syntax/
- - NOTE: make the directories if you have to (you probably will)
 
 Template Files:
  - copy the files in templates/* from the repo into ~/.vim/bundle/vim-template/templates/
