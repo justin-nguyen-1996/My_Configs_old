@@ -450,6 +450,14 @@ function! Smart_Delete_Vd() range
 endfunction
 vnoremap <silent> d :call Smart_Delete_Vd()<CR>
 
+"=================================================================="
+
+" insert the full path of the current file 
+fun! s:fullpath()
+	:put =expand('%:p')
+endfun
+command! FullPath :call s:fullpath()
+
 " ================================================================="
 " ================================================================="
 " ================= Begin my custom ';' commands =================="
