@@ -2,11 +2,12 @@
 " custom highlight groups for specific keywords
 
 hi WhiteOnRed term=standout,bold ctermfg=White ctermbg=Red
-match WhiteOnRed /REMOVE\|BROKEN?\|BROKEN/
+let m = matchadd("WhiteOnRed", "REMOVE")
+let m = matchadd("WhiteOnRed", "BROKEN")
+let m = matchadd("WhiteOnRed", "BROKEN?")
 
 hi WhiteOnGreen term=standout,bold ctermfg=White ctermbg=Green
-2match WhiteOnGreen /NOTE/
+let m = matchadd("WhiteOnGreen", "NOTE")
 
 hi WhiteOnMagenta term=standout,bold ctermfg=White ctermbg=Magenta
-3match WhiteOnMagenta /TEST/
-
+let m = matchadd("WhiteOnMagenta", "TEST")

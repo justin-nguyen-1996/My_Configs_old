@@ -67,6 +67,9 @@ alias la='ls -al'
 alias grep='grep -ni --color --exclude tags --exclude .tags'
 alias tar='tar -xzvf'
 
+# for my typos
+alias sl='ls'
+
 # enable extglob (useful for something like rm !(temp.c))
 shopt -s extglob
 
