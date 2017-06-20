@@ -8,6 +8,25 @@ Packages Needed from setup.exe
  - ctags
  - gvim
  - make
+ - dos2unix
+ - unix2dos
+ - miniconda stuff (https://askubuntu.com/questions/615700/install-miniconda-python-2-7)
+   - make sure to use wget with the flag --no-check-certificate
+   - conda config --set ssl_verify false
+   - conda install numpy
+				   scipy
+				   pandas
+				   scikit-learn
+				   matplotlib
+				   
+				   gdal
+				   fiona
+				   shapely
+				   rasterio (https://github.com/conda-forge/rasterio-feedstock)
+				   affine
+				   pyproj
+				   geopandas
+ 
    
 Config Files (see Github Repo):
  - be careful about what you copy over (trust me)

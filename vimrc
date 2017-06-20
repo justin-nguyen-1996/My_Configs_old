@@ -317,7 +317,7 @@ endif
 inoremap <C-c> l<BS><ESC>
 
 " remap the paste function in insert mode to Control-p
-inoremap <C-p> <C-R>"
+inoremap <C-p> <C-R>*
 
 " remap the autocomplete feature in vim to only look in the current file
 inoremap <C-n> <C-x><C-n>
