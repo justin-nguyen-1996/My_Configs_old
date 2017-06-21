@@ -100,6 +100,12 @@ let g:syntastic_check_on_wq = 0
 "let g:syntastic_style_error_symbol = '∆'
 "let g:syntastic_style_warning_symbol = '∆'
 
+" shortcut command for toggling syntastic mode (useful for when I'm just writing test code)
+fun! s:toggle_syntastic()
+	call SyntasticToggleMode()
+endfun
+command! STM :call s:toggle_syntastic()
+
 " ================================================================="
 " ================================================================="
 " =========== Begin additions for Rainbow_parens plugin ==========="
