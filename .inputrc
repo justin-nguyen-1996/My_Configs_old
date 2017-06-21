@@ -25,12 +25,22 @@
 ####################################################################################
 ####################################################################################
 
-# Ctrl-h to go back a word, Ctrl-l to go forward a word
-# Alt-h to delete a word backwards, Alt-l to delete a word forwards
-"\C-h": backward-word
-"\C-l": forward-word
-"h": backward-kill-word
-"l": kill-word
+# use bind -p on the command line to see what is available for mapping
+# make sure to insert these characters using 'Ctrl-v' and the key to map
+# Ctrl-d to delete a char at the cursor (closes the terminal if no text entered)
+# Ctrl-h to delete a word backwards
+# Ctrl-l to delete a word forwards
+# Alt-h to go back a word
+# Alt-H to go back a char
+# Alt-l to go forward a word
+# Alt-L to go forward a char
+"\C-d": delete-char
+"\C-h": backward-kill-word
+"\C-l": kill-word
+"h": backward-word
+"H": backward-char
+"l": forward-word
+"L": forward-char
 
 $if Bash
   # Don't ring bell on completion
