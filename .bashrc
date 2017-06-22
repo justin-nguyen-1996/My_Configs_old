@@ -69,6 +69,7 @@ alias tar='tar -xzvf'
 
 # for my typos
 alias sl='ls'
+alias l='ls'
 
 # enable extglob (useful for something like rm !(temp.c))
 shopt -s extglob
@@ -83,8 +84,11 @@ if [ "$ENV_TYPE" == "ubuntu" ]; then
 	fi
 fi
 
-# cd into a folder and run ls
-# function cdl { cd $1; ls;}
+# map cd --> cd then ls
+cd() { builtin cd "${1-$(echo ~)}" && ls -F; }
+
+# useless but cool 'red' echo
+# echo() { builtin echo -e "\x1B[31m ${1} \x1B[0m"; }
 
 # ~- means the previous directory
 # !$ means the last argument in the command line
