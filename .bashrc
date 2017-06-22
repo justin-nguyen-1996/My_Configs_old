@@ -86,5 +86,5 @@ fi
 # cd into a folder and run ls
 # function cdl { cd $1; ls;}
 
-# !- means the previous directory
+# ~- means the previous directory
 # !$ means the last argument in the command line
