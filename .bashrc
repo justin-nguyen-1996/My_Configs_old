@@ -77,8 +77,11 @@ alias l='ls'
 # enable extglob (useful for something like rm !(temp.c))
 shopt -s extglob
 
-# set the command line prompt to red  -->  '1;31m' is red  -->  change '#' in '1;3#m' to set the color  -->  '3#m' for fainter color
-export PS1="\e[1;31m[\u@\h \W]$ \e[m"
+# set the command line prompt to red  -->  '1;31m' is red  
+# change '#' in '1;3#m' to set the color  -->  '3#m' for fainter color
+if [ "$ENV_TYPE" == "ubuntu" ]; then
+	export PS1="\e[1;31m[\u@\h \W]$ \e[m"
+fi
 
 # map cd --> cd then ls
 cd() { builtin cd "${1-$(echo ~)}" && ls -F; }
