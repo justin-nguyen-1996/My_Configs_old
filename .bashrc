@@ -42,6 +42,9 @@ alias gs='git status'
 alias gc='git commit -a -m'
 alias gp='git push'
 
+# tmux aliases
+alias tmux="TERM=screen-256color-bce tmux"
+
 # jumping to git repos
 alias cd422C='cd ~/Eclipse/EE-422C/'
 alias cd360P='cd ~/Eclipse/EE-360P/'
@@ -74,15 +77,8 @@ alias l='ls'
 # enable extglob (useful for something like rm !(temp.c))
 shopt -s extglob
 
-# enable colored prompt
-if [ "$ENV_TYPE" == "ubuntu" ]; then
-	force_color_prompt=yes
-	if [ "$color_prompt" = yes ]; then
-		PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;31m\]\w\[\033[00m\]\$ '
-	else
-		PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-	fi
-fi
+# set the command line prompt to red  -->  '1;31m' is red  -->  change '#' in '1;3#m' to set the color  -->  '3#m' for fainter color
+export PS1="\e[1;31m[\u@\h \W]$ \e[m"
 
 # map cd --> cd then ls
 cd() { builtin cd "${1-$(echo ~)}" && ls -F; }
