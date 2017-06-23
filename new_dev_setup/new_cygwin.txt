@@ -31,7 +31,7 @@ Packages Needed from setup.exe
 Config Files (see Github Repo):
  - be careful about what you copy over (trust me)
  - might need to run dos2unix on files that give weird errors
- - directly copy over .bashrc, .inputrc
+ - directly copy over .bashrc, .inputrc, .tmux.conf
  - copy .profile from repo --> next set variable $ENV_TYPE appropriately in .profile 
  - copy vimrc from repo
     - install Vundle (NOTE: DO NOT follow directions on Vundle git page)
