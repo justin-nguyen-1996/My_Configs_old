@@ -17,6 +17,7 @@ Plugin 'garbas/vim-snipmate'
 	Plugin 'tomtom/tlib_vim'
 	Plugin 'honza/vim-snippets'
 Plugin 'aperezdc/vim-template'
+Plugin 'tpope/tpope-vim-abolish'
 call vundle#end()
 filetype plugin indent on
 

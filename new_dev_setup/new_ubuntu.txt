@@ -61,10 +61,11 @@ Snippets:
    - java.snippets
    - python.snippets
  
-Language-Specific Files:
+~/.vim/after/ files
  - NOTE: make these directories if you have to (you probably will)
  - copy the files in ftplugin/* from the repo into ~/.vim/after/ftplugin
  - copy the files in syntax/* from the repo into ~/.vim/after/syntax/
+ - copy the files in plugin/* from the repo into ~/.vim/after/plugin/
 
 Template Files:
  - copy the files in templates/* from the repo into ~/.vim/bundle/vim-template/templates/

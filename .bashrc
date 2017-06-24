@@ -8,10 +8,12 @@ alias git_update='cd ~/Github/My_Configs  &&  ga  &&  gs  &&  gc "update"  &&  g
 alias cp_vim='cp -t ~/Github/My_Configs/ $VIM/vimrc'
 alias cp_dotfiles='cp -t ~/Github/My_Configs/ ~/.inputrc ~/.bashrc ~/.profile ~/.tmux.conf'
 alias cp_snippets='cp -t ~/Github/My_Configs/snippets ~/python.snippets ~/c.snippets ~/cpp.snippets ~/java.snippets'
-alias cp_syntax='cp -t ~/Github/My_Configs/syntax  ~/.vim/after/syntax/*'
-alias cp_ftplugin='cp -t ~/Github/My_Configs/ftplugin  ~/.vim/after/ftplugin/*'
+alias cp_after='cp_syntax  &&  cp_ftplugin  &&  cp_plugin'
+	alias cp_syntax='cp -t ~/Github/My_Configs/syntax  ~/.vim/after/syntax/*'
+	alias cp_ftplugin='cp -t ~/Github/My_Configs/ftplugin  ~/.vim/after/ftplugin/*'
+	alias cp_plugin='cp -t ~/Github/My_Configs/plugin/ ~/.vim/after/plugin/*'
 alias cp_templates='cp -t ~/Github/My_Configs/templates/ ~/.vim/bundle/vim-template/templates/*'
-alias cpconfig='cp_vim  &&  cp_dotfiles  &&  cp_snippets  &&  cp_syntax  &&  cp_ftplugin  &&  cp_templates  && git_update'
+alias cpconfig='cp_vim  &&  cp_dotfiles  &&  cp_snippets  &&  cp_after  &&  cp_templates  && git_update'
 
 # aliases for Ubuntu (because of stupid sudo)
 if [ "$ENV_TYPE" == "ubuntu" ]
@@ -43,7 +45,7 @@ alias gc='git commit -a -m'
 alias gp='git push'
 
 # tmux aliases
-alias tmux="TERM=screen-256color-bce tmux"
+# alias tmux="TERM=screen-256color-bce tmux"
 
 # jumping to git repos
 alias cd422C='cd ~/Eclipse/EE-422C/'
