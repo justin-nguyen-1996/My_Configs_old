@@ -215,6 +215,12 @@ let g:netrw_liststyle=3      " tree view
 " set matching parenthesis/brace/bracket to be underlined
 hi MatchParen cterm=underline ctermbg=none ctermfg=none
 
+" make the vim tab bar look prettier
+hi TabLineFill ctermfg=Black ctermbg=Black
+hi TabLine     ctermfg=Blue  ctermbg=Black
+hi TabLineSel  ctermfg=Black ctermbg=Yellow
+hi Title       ctermfg=Black ctermbg=Yellow
+
 " set variable 'g:os' according to development environment
 if !exists('g:os')
     if has('win32') || has('win16')
