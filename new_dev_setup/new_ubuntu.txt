@@ -55,6 +55,7 @@ Symlinks:
  - python.snippets (ln -s ~/.vim/bundle/vim-snippets/snippets/python.snippets)
 
 Snippets:
+ - might need to run dos2unix on files that give weird errors
  - replace appropriate snip-files in .vim/bundle/vim-snippets/snippets with the ones from the repo 
    - c.snippets
    - cpp.snippets
