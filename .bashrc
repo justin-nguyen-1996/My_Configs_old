@@ -81,9 +81,10 @@ shopt -s extglob
 
 # set the command line prompt to red  -->  '1;31m' is red  
 # change '#' in '1;3#m' to set the color  -->  '3#m' for fainter color
-if [ "$ENV_TYPE" == "ubuntu" ]; then
-	export PS1="\e[1;31m[\u@\h \W]$ \e[m"
-fi
+# if [ "$ENV_TYPE" == "ubuntu" ]; then
+	export PS1="\e[1;31m[\u@\h:\w]\n$ \e[m"
+# fi
+# export PS1 = ${debian_chroot:+($debian_chroot)}"\e[1;31m[\u@\h:\w]$ \e[m"\$
 
 # map cd --> cd then ls
 cd() { builtin cd "${1-$(echo ~)}" && ls -F; }
