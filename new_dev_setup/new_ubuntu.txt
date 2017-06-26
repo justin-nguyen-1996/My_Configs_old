@@ -23,6 +23,10 @@ Install these packages with sudo apt-get install _______
 				   pyproj
 				   geopandas
 
+				   fftw
+				   cython
+				   pyfftw
+
 Increase sudo time with
  - sudo visudo
  - Change the defaults line to become 

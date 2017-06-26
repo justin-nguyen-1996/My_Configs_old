@@ -26,6 +26,10 @@ Packages Needed from setup.exe
 				   affine
 				   pyproj
 				   geopandas
+
+				   fftw
+				   cython
+				   pyfftw
  
    
 Config Files (see Github Repo):
