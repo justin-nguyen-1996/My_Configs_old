@@ -13,7 +13,7 @@ alias cp_after='cp_syntax  &&  cp_ftplugin  &&  cp_plugin'
 	alias cp_ftplugin='cp -t ~/Github/My_Configs/ftplugin  ~/.vim/after/ftplugin/*'
 	alias cp_plugin='cp -t ~/Github/My_Configs/plugin/ ~/.vim/after/plugin/*'
 alias cp_templates='cp -t ~/Github/My_Configs/templates/ ~/.vim/bundle/vim-template/templates/*'
-alias cpconfig='cp_vim  &&  cp_dotfiles  &&  cp_snippets  &&  cp_after  &&  cp_templates  && git_update'
+alias cpconfig='cp_vim  &&  cp_dotfiles  &&  cp_snippets  &&  cp_after  &&  cp_templates  &&  git_update'
 
 # aliases for Ubuntu (because of stupid sudo)
 if [ "$ENV_TYPE" == "ubuntu" ]
@@ -79,12 +79,21 @@ alias l='ls'
 # enable extglob (useful for something like rm !(temp.c))
 shopt -s extglob
 
-# set the command line prompt to red  -->  '1;31m' is red  
-# change '#' in '1;3#m' to set the color  -->  '3#m' for fainter color
-# if [ "$ENV_TYPE" == "ubuntu" ]; then
-	export PS1="\e[1;31m[\u@\h:\w]\n$ \e[m"
-# fi
-# export PS1 = ${debian_chroot:+($debian_chroot)}"\e[1;31m[\u@\h:\w]$ \e[m"\$
+# set the command line prompt to red and yellow  -->  '1;31m' is red  
+# change '#' in '1;3#m' to set the color         -->  '3#m' for fainter color (basically just remove the '1;' in front)
+# \e[1;3#m --> start color sequence
+# \u --> user
+# @ --> just an '@' symbol
+# \h --> host
+# : --> just a ':' symbol
+# \e[m --> ending color sequence
+# \w --> working directory
+# \n --> new line
+# $ --> just a '$' symbol
+# example of a spaced out version for clarity --> export PS1="\e[1;31m   \u   @   \h   :   \e[m   \e[1;33m   \w   \e[m   \n   $"
+if [ "$ENV_TYPE" == "ubuntu" ]; then
+	export PS1="\e[1;31m\u@\h:\e[m\e[1;33m\w\e[m\n$"
+fi
 
 # map cd --> cd then ls
 cd() { builtin cd "${1-$(echo ~)}" && ls -F; }
