@@ -81,18 +81,19 @@ shopt -s extglob
 
 # set the command line prompt to red and yellow  -->  '1;31m' is red  
 # change '#' in '1;3#m' to set the color         -->  '3#m' for fainter color (basically just remove the '1;' in front)
-# \e[1;3#m --> start color sequence
-# \u --> user
-# @ --> just an '@' symbol
-# \h --> host
-# : --> just a ':' symbol
-# \e[m --> ending color sequence
-# \w --> working directory
-# \n --> new line
-# $ --> just a '$' symbol
+#   \e[1;3#m  -->  start color sequence
+#   \n        -->  new line
+#   \u        -->  user
+#   @         -->  just an '@' symbol
+#   \h        -->  host
+#   :         -->  just a ':' symbol
+#   \e[m      -->  ending color sequence
+#   \w        -->  working directory
+#   \n        -->  new line
+#   $         -->  just a '$' symbol
 # example of a spaced out version for clarity --> export PS1="\e[1;31m   \u   @   \h   :   \e[m   \e[1;33m   \w   \e[m   \n   $"
 if [ "$ENV_TYPE" == "ubuntu" ]; then
-	export PS1="\e[1;31m\u@\h:\e[m\e[1;33m\w\e[m\n$"
+	export PS1="\e[1;31m\n\u@\h:\e[m\e[1;33m\w\e[m\n$ "
 fi
 
 # map cd --> cd then ls
