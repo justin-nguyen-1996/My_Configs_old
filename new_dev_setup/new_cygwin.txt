@@ -6,6 +6,7 @@ Packages Needed from setup.exe
  - zip
  - gcc
  - ctags
+ - tmux
  - gvim
  - make
  - dos2unix

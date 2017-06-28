@@ -11,3 +11,6 @@ let m = matchadd("WhiteOnGreen", "NOTE")
 
 hi WhiteOnMagenta term=standout,bold ctermfg=White ctermbg=Magenta
 let m = matchadd("WhiteOnMagenta", "TEST")
+
+hi BlackOnYellow term=standout,bold ctermfg=Black ctermbg=Yellow
+let m = matchadd("BlackOnYellow", "HERE")

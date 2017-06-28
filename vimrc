@@ -286,9 +286,6 @@ nnoremap P ]P
 " remap yb to not move the cursor backwards (repositioning the cursor was annoying)
 nnoremap yb ybw
 
-" remap cb to delete the entire previous word
-nnoremap cb cb<DEL>
-
 " remap CTRL-n to move to the next line that has a compile error"
 nnoremap <C-n> :cn<CR>
 
