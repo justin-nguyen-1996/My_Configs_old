@@ -23,6 +23,7 @@ Install these packages with sudo apt-get install _______
 				   affine
 				   pyproj
 				   geopandas
+				   pillow
 
 				   fftw
 				   cython

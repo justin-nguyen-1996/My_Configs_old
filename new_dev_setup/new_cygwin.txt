@@ -27,6 +27,7 @@ Packages Needed from setup.exe
 				   affine
 				   pyproj
 				   geopandas
+				   pillow
 
 				   fftw
 				   cython
