@@ -308,6 +308,12 @@ nnoremap '' ``zz
 " map Y to act the same as D & C
 nnoremap Y y$
 
+" use 'c' with either '[' or ']' or '(' or ')' to change the surrounding brackets/parentheses to the desired
+nnoremap c[ %me%r[`er]%
+nnoremap c] %me%r]`er[%
+nnoremap c( %me%r(`er)%
+nnoremap c) %me%r)`er(%
+
 " ================================================================="
 " ================================================================="
 " =============== Begin my 'inoremaps' vimrc things ==============="
