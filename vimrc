@@ -259,7 +259,7 @@ nnoremap '' ''zz
 nnoremap 'm 'mzz
 
 "" press % to visually highlight in-between brace/bracket/parentheses
-noremap % v%
+" noremap % v%
 
 " press CTRL-j/CTRL-k to go down/up half a page, respectively
 noremap <C-j> <C-D>
@@ -308,12 +308,6 @@ nnoremap '' ``zz
 " map Y to act the same as D & C
 nnoremap Y y$
 
-" use 'c[' or 'c]' or 'c(' or 'c)' to change the surrounding brackets/parentheses
-nnoremap c[ %me%r[`er]%
-nnoremap c] %me%r]`er[%
-nnoremap c( %me%r(`er)%
-nnoremap c) %me%r)`er(%
-
 " use 'df(' or 'd(' to delete the surrounding brackets/parentheses
 nnoremap df( dt(me%x`ex
 nnoremap d( me%x`ex
@@ -322,9 +316,9 @@ nnoremap d[ me%x`ex
 
 " use 'cf(' or 'c(' to use the change operation on the surrounding brackets/parentheses
 nnoremap cf( dt(me%x`exi
-nnoremap c( me%x`exi
+nnoremap c( %me%r(`er)%
 nnoremap cf[ dt[me%x`exi
-nnoremap c[ me%x`exi
+nnoremap c[ %me%r[`er]%
 
 " use 'y(' or 'y[' to yank the surrounding brackets/parentheses
 nnoremap y( v%y
