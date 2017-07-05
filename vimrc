@@ -314,6 +314,12 @@ nnoremap c] %me%r]`er[%
 nnoremap c( %me%r(`er)%
 nnoremap c) %me%r)`er(%
 
+" use 'df(' or 'd(' to delete the surrounding brackets/parentheses
+nnoremap df( dt(me%x`ex
+nnoremap d( me%x`ex
+nnoremap df[ dt[me%x`ex
+nnoremap d[ me%x`ex
+
 " ================================================================="
 " ================================================================="
 " =============== Begin my 'inoremaps' vimrc things ==============="
