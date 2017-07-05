@@ -308,7 +308,7 @@ nnoremap '' ``zz
 " map Y to act the same as D & C
 nnoremap Y y$
 
-" use 'c' with either '[' or ']' or '(' or ')' to change the surrounding brackets/parentheses to the desired
+" use 'c[' or 'c]' or 'c(' or 'c)' to change the surrounding brackets/parentheses
 nnoremap c[ %me%r[`er]%
 nnoremap c] %me%r]`er[%
 nnoremap c( %me%r(`er)%
@@ -319,6 +319,10 @@ nnoremap df( dt(me%x`ex
 nnoremap d( me%x`ex
 nnoremap df[ dt[me%x`ex
 nnoremap d[ me%x`ex
+
+" use 'y(' or 'y[' to yank the surrounding brackets/parentheses
+nnoremap y( v%y
+nnoremap y[ v%y
 
 " ================================================================="
 " ================================================================="
