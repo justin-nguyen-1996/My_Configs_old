@@ -259,7 +259,7 @@ nnoremap '' ''zz
 nnoremap 'm 'mzz
 
 "" press % to visually highlight in-between brace/bracket/parentheses
-" noremap % v%
+noremap % v%
 
 " press CTRL-j/CTRL-k to go down/up half a page, respectively
 noremap <C-j> <C-D>
