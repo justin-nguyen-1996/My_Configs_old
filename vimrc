@@ -293,7 +293,7 @@ nnoremap <C-n> :cn<CR>
 " NOTE: can also map this to CTRL-N
 nnoremap <C-p> :cp<CR>
 
-" remap ~ to U for easier uppercasing/lowercasing
+" remap U to ~ for easier uppercasing/lowercasing
 nnoremap U ~
 
 " pressing Control-w then Control-c in split windows accidentally closes the window. I dislike this
@@ -319,6 +319,12 @@ nnoremap df( dt(me%x`ex
 nnoremap d( me%x`ex
 nnoremap df[ dt[me%x`ex
 nnoremap d[ me%x`ex
+
+" use 'cf(' or 'c(' to use the change operation on the surrounding brackets/parentheses
+nnoremap cf( dt(me%x`exi
+nnoremap c( me%x`exi
+nnoremap cf[ dt[me%x`exi
+nnoremap c[ me%x`exi
 
 " use 'y(' or 'y[' to yank the surrounding brackets/parentheses
 nnoremap y( v%y
