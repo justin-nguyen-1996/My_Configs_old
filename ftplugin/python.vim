@@ -5,9 +5,9 @@
 set formatoptions=rcjn
 
 " easily insert if/while/for statements by selecting the text
-vnoremap ;i >Oif :<ESC><ESC>
-vnoremap ;w >Owhile :<ESC><ESC>
-vnoremap ;f >Ofor :<ESC><ESC>
+vnoremap ;i >O<BS>if :<ESC><ESC>i
+vnoremap ;w >O<BS>while :<ESC><ESC>i
+vnoremap ;f >O<BS>for :<ESC><ESC>i
 
 " toggle commented lines for Python-style comments
 function! ToggleComment()

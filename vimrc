@@ -19,6 +19,7 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'aperezdc/vim-template'
 Plugin 'tpope/tpope-vim-abolish'
 Plugin 'Raimondi/delimitMate'
+Plugin 'tpope/vim-repeat'
 call vundle#end()
 filetype plugin indent on
 
@@ -308,21 +309,25 @@ nnoremap '' ``zz
 " map Y to act the same as D & C
 nnoremap Y y$
 
-" use 'df(' or 'd(' to delete the surrounding brackets/parentheses
+" mappings for easily deleting the surrounding brackets/parentheses
 nnoremap df( dt(me%x`ex
 nnoremap d( me%x`ex
 nnoremap df[ dt[me%x`ex
 nnoremap d[ me%x`ex
 
-" use 'cf(' or 'c(' to use the change operation on the surrounding brackets/parentheses
+" mappings for easily changing the surrounding brackets/parentheses
 nnoremap cf( dt(me%x`exi
 nnoremap c( %me%r(`er)%
 nnoremap cf[ dt[me%x`exi
 nnoremap c[ %me%r[`er]%
 
-" use 'y(' or 'y[' to yank the surrounding brackets/parentheses
+" mappings for easily yanking the surrounding brackets/parentheses
 nnoremap y( v%y
 nnoremap y[ v%y
+
+" mappings for easily replacing the surrounding brackets/parentheses
+nnoremap r( %me%r(`er)%
+nnoremap r[ %me%r[`er]%
 
 " ================================================================="
 " ================================================================="
