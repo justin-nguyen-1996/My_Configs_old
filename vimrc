@@ -366,6 +366,9 @@ vnoremap <C-p> p
 " easier uppercasing/lowercasing
 vnoremap U ~
 
+" so that your default register won't be overwritten when you paste over stuff in visual mode
+vnoremap p "0p
+
 " ================================================================="
 " ================================================================="
 " ============== Begin some 'function' vimrc things ==============="
@@ -598,3 +601,4 @@ vnoremap ;r y:%s/<C-F>pa//g<ESC>F/i
 " Don't wake up system with blinking cursor:
 " http://www.linuxpowertop.org/known.php
 let &guicursor = &guicursor . ",a:blinkon0"
+

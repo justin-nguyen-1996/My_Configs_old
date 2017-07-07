@@ -53,10 +53,11 @@ Symlinks:
  - Github          (ln -s /cygdrive/c/Users/Justin/Github/ Github)
  - Justin          (ln -s /cygdrive/c/Users/Justin/ Justin)
  - vimrc           (ln -s /etc/vimrc vimrc)
- - c.snippets      (ln -s ~/.vim/bundle/vim-snippets/snippets/c.snippets)
- - cpp.snippets    (ln -s ~/.vim/bundle/vim-snippets/snippets/cpp.snippets)
- - java.snippets   (ln -s ~/.vim/bundle/vim-snippets/snippets/java.snippets)
- - python.snippets (ln -s ~/.vim/bundle/vim-snippets/snippets/python.snippets)
+ - c.snippets      (ln -s ~/.vim/bundle/vim-snippets/snippets/c.snippets ~/snippets/c.snippets)
+ - cpp.snippets    (ln -s ~/.vim/bundle/vim-snippets/snippets/cpp.snippets ~/snippets/cpp.snippets)
+ - java.snippets   (ln -s ~/.vim/bundle/vim-snippets/snippets/java.snippets ~/snippets/java.snippets)
+ - python.snippets (ln -s ~/.vim/bundle/vim-snippets/snippets/python.snippets ~/snippets/python.snippets)
+ - conda packages  (ln -s ~/miniconda2/lib/python2.7/site-packages/ conda_packages)
 
 Snippets:
  - might need to run dos2unix on files that give weird errors

@@ -58,11 +58,11 @@ Config Files (see Github Repo):
  - delete Ubuntu's .bash_profile file
  
 Symlinks:
- - Make a Github dir (mkdir ~/Github)
- - c.snippets    (ln -s ~/.vim/bundle/vim-snippets/snippets/c.snippets)
- - cpp.snippets  (ln -s ~/.vim/bundle/vim-snippets/snippets/cpp.snippets)
- - java.snippets (ln -s ~/.vim/bundle/vim-snippets/snippets/java.snippets)
- - python.snippets (ln -s ~/.vim/bundle/vim-snippets/snippets/python.snippets)
+ - c.snippets      (ln -s ~/.vim/bundle/vim-snippets/snippets/c.snippets ~/snippets/c.snippets)
+ - cpp.snippets    (ln -s ~/.vim/bundle/vim-snippets/snippets/cpp.snippets ~/snippets/cpp.snippets)
+ - java.snippets   (ln -s ~/.vim/bundle/vim-snippets/snippets/java.snippets ~/snippets/java.snippets)
+ - python.snippets (ln -s ~/.vim/bundle/vim-snippets/snippets/python.snippets ~/snippets/python.snippets)
+ - conda packages  (ln -s ~/miniconda2/lib/python2.7/site-packages/ conda_packages)
 
 Snippets:
  - might need to run dos2unix on files that give weird errors
