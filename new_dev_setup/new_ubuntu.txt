@@ -1,34 +1,4 @@
 
-Install these packages with sudo apt-get install _______
- - (but first run sudo apt-get update)
- - vim --> install vim-gnome for vim 8.0 and +clipboard support
- - git
- - ctags
- - tmux
- - dos2unix
- - libgnome2-bin
- - miniconda stuff (https://askubuntu.com/questions/615700/install-miniconda-python-2-7)
-   - make sure to use wget with the flag --no-check-certificate
-   - conda config --set ssl_verify false
-   - conda install numpy
-	               scipy
-				   pandas
-				   scikit-learn
-				   matplotlib
-				   
-				   gdal
-				   fiona
-				   shapely
-				   rasterio (https://github.com/conda-forge/rasterio-feedstock)
-				   affine
-				   pyproj
-				   geopandas
-				   pillow
-
-				   fftw
-				   cython
-				   pyfftw
-
 Increase sudo time with
  - sudo visudo
  - Change the defaults line to become 
@@ -38,49 +8,83 @@ System Settings (can search it or click the gear on the left side of the launche
  - Brightness & Lock --> change the time it takes to lock the screen (off and never)
  - Appearance --> change the desktop background
 
-Always be sudo with
- - sudo -s  -->  could put this in .profile (but this is somewhat dangerous) (i.e. you better know what you're doing)
-
 Auto-maximized terminal
  - open a terminal --> go to the launcher --> right-click and choose "Lock to Launcher"
  - go to the edits bar (top of the screen) --> then profile preferences --> change initial terminal size to something really big
+
+Install these packages
+ - sudo apt-get update
+ - sudo apt-get install vim-gnome
+ - sudo apt-get install git
+ - sudo apt-get install ctags
+ - sudo apt-get install tmux
+ - sudo apt-get install dos2unix
+ - sudo apt-get install libgnome2-bin
    
+ - cd ~/  &&  wget -c http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh --no-check-certificate
+ - ~/Miniconda-latest-Linux-x86_64.sh
+ - TODO: Input stuff (https://askubuntu.com/questions/615700/install-miniconda-python-2-7)
+ - conda config --set ssl_verify false
+
+ - conda install numpy
+ - conda install scipy
+ - conda install pandas
+ - conda install scikit-learn
+ - conda install matplotlib
+ -    		   
+ - conda install rasterio (https://github.com/conda-forge/rasterio-feedstock)
+ - conda install gdal
+ - conda install fiona
+ - conda install shapely
+ - conda install affine
+ - conda install pyproj
+ - conda install geopandas
+ - conda install pillow
+
+ - conda install fftw
+ - conda install cython
+ - conda install pyfftw
+
 Config Files (see Github Repo):
- - be careful about what you copy over (trust me)
+ - cp ~/Github/My_Configs/.bashrc ~/
+ - cp ~/Github/My_Configs/.inputrc ~/
+ - cp ~/Github/My_Configs/.tmux.conf ~/
+ - cp ~/Github/My_Configs/.profile ~/
+ - cp ~/Github/My_Configs/vimrc /usr/share/vim/
+ - vim ~/.profile
+   - set variable $ENV_TYPE appropriately in .profile 
+ - cd ~/  &&  git clone https://github.com/VundleVim/Vundle.vim.git 
+   - mv ~/Vundle.vim ~/.vim/bundle/Vundle.vim
+   - open vim and run :PluginInstall
  - might need to run dos2unix on files that give weird errors
- - directly copy over .bashrc, .inputrc, .tmux.conf
- - copy .profile from repo --> next set variable $ENV_TYPE appropriately in .profile 
- - copy vimrc from repo
-    - install Vundle (NOTE: DO NOT follow directions on Vundle git page)
-      - just normally clone the repo and move it into the location specified on the Vundle git page
-      - if that doesn't work, then just copy the bundle directory from your old computer
-    - open vim and run :PluginInstall
- - delete Ubuntu's .bash_profile file
  
 Symlinks:
- - c.snippets      (ln -s ~/.vim/bundle/vim-snippets/snippets/c.snippets ~/snippets/c.snippets)
- - cpp.snippets    (ln -s ~/.vim/bundle/vim-snippets/snippets/cpp.snippets ~/snippets/cpp.snippets)
- - java.snippets   (ln -s ~/.vim/bundle/vim-snippets/snippets/java.snippets ~/snippets/java.snippets)
- - python.snippets (ln -s ~/.vim/bundle/vim-snippets/snippets/python.snippets ~/snippets/python.snippets)
- - conda packages  (ln -s ~/miniconda2/lib/python2.7/site-packages/ conda_packages)
+ - mkdir ~/snippets
+ - ln -s ~/.vim/bundle/vim-snippets/snippets/c.snippets ~/snippets/c.snippets
+ - ln -s ~/.vim/bundle/vim-snippets/snippets/cpp.snippets ~/snippets/cpp.snippets
+ - ln -s ~/.vim/bundle/vim-snippets/snippets/java.snippets ~/snippets/java.snippets
+ - ln -s ~/.vim/bundle/vim-snippets/snippets/python.snippets ~/snippets/python.snippets
+ - ln -s ~/miniconda2/lib/python2.7/site-packages/ conda_packages
 
 Snippets:
+ - rm -rf ~/.vim/bundle/vim-snippets/snippets/*
+ - cp ~/Github/My_Configs/snippets/* ~/.vim/bundle/vim-snippets/snippets/
  - might need to run dos2unix on files that give weird errors
- - replace appropriate snip-files in .vim/bundle/vim-snippets/snippets with the ones from the repo 
-   - c.snippets
-   - cpp.snippets
-   - java.snippets
-   - python.snippets
  
 ~/.vim/after/ files
  - NOTE: make these directories if you have to (you probably will)
- - copy the files in ftplugin/* from the repo into ~/.vim/after/ftplugin
- - copy the files in syntax/* from the repo into ~/.vim/after/syntax/
- - copy the files in plugin/* from the repo into ~/.vim/after/plugin/
+ - mkdir -p ~/.vim/after/syntax/
+ - mkdir -p ~/.vim/after/ftplugin/
+ - mkdir -p ~/.vim/after/plugin/
+ - cp ~/Github/My_Configs/syntax/* ~/.vim/after/syntax/
+ - cp ~/Github/My_Configs/ftplugin/* ~/.vim/after/ftplugin/
+ - cp ~/Github/My_Configs/plugin/* ~/.vim/after/plugin/
 
 Template Files:
- - copy the files in templates/* from the repo into ~/.vim/bundle/vim-template/templates/
+ - rm -rf ~/.vim/bundle/vim-template/templates/*
+ - cp ~/Github/My_Configs/templates/* ~/.vim/bundle/vim-template/templates/
 
 Miscellaneous Notes:
- - git config core.autocrlf false
+ - cd ~/Github/My_Configs/  &&  git config core.autocrlf false
+ - run 'git config core.autocrlf false' on all Github dirs
 

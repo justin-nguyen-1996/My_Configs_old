@@ -104,3 +104,4 @@ cd() { builtin cd "${1-$(echo ~)}" && ls -F; }
 
 # ~- means the previous directory
 # !$ means the last argument in the command line
+
