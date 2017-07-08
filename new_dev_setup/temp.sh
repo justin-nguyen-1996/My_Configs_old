@@ -18,3 +18,6 @@
 # yes yes Y | sudo apt-get install libgnome2-bin
 
 echo | ssh-keygen -t rsa -b 4096 -C "2014justinnguyen@gmail.com"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+xclip -sel clip < ~/.ssh/id_rsa.pub

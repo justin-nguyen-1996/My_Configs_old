@@ -11,6 +11,7 @@ yes yes Y | sudo apt-get install exuberant-ctags
 yes yes Y | sudo apt-get install tmux
 yes yes Y | sudo apt-get install dos2unix
 yes yes Y | sudo apt-get install libgnome2-bin
+yes yes Y | sudo apt-get install xclip
 
 # make directories
 mkdir -p ~/.vim/after/syntax/
