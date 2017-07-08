@@ -9,6 +9,7 @@ printf "\n=========================\ninstall tmux\n=========================\n" 
 printf "\n=========================\ninstall dos2unix\n=========================\n"  ; yes yes Y | sudo apt-get install dos2unix
 printf "\n=========================\ninstall libgnome\n=========================\n"  ; yes yes Y | sudo apt-get install libgnome2-bin
 printf "\n=========================\ninstall xclip\n=========================\n"     ; yes yes Y | sudo apt-get install xclip
+printf "\n=========================\ninstall expect\n=========================\n"    ; yes yes Y | sudo apt-get install expect
 
 # generate and save the new ssh key
 echo
