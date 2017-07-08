@@ -53,7 +53,7 @@ elif [ "$ENV_TYPE" == "moba" ]
 	then PATH="$PATH:/cygdrive/c/Program Files/Java/jdk1.8.0_101/bin"
 fi
 
-# added by Miniconda2 4.0.5 installer
+# path to miniconda libraries
 export PATH="$HOME/miniconda2/bin:$PATH"
 
 # change starting directory
