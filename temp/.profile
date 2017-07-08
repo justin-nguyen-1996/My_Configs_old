@@ -29,7 +29,7 @@
 #######################################################################
 #######################################################################
 
-# NOTE: Must set this appropriately for the current development environment
+# if not set, then assume using MobaXTerm
 export ENV_TYPE="cygwin"
 
 # set vimrc location

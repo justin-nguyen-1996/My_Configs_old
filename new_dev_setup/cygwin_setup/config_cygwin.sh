@@ -12,11 +12,15 @@ printf "\n=========================\ninstall xclip\n=========================\n"
 printf "\n=========================\ninstall expect\n=========================\n"    ; yes yes Y | sudo apt-get install expect
 
 # generate and save the new ssh key
+echo 
+echo "You're about to see a prompt that's going to ask you for a file location and passphrase"
+echo "Just hit 'enter' 3 times"
+
 echo
-echo | ssh-keygen -t rsa -b 4096 -C "2014justinnguyen@gmail.com"
+ssh-keygen -t rsa -b 4096 -C "2014justinnguyen@gmail.com"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
-xclip -sel clip < ~/.ssh/id_rsa.pub
+clip < ~/.ssh/id_rsa.pub
 
 echo
 echo "Just copied the ~/.ssh/id_rsa.pub file into the clipboard. So don't try to copy anything (i.e. don't use Ctrl-c)"
@@ -26,20 +30,20 @@ echo
 while true; do
 read -p "Are you ready? " yn
 case $yn in
-    [Yy]* ) break;;
-    [Nn]* ) ;;
-    * ) echo "Please answer yes or no.";;
+	[Yy]* ) break;;
+	[Nn]* ) ;;
+	* ) echo "Please answer yes or no.";;
 esac
 done
 echo
 
-firefox https://github.com/settings/keys
+cygstart https://github.com/settings/keys
 while true; do
 read -p "Ready for the rest of the instructions? " yn
 case $yn in
-    [Yy]* ) break;;
-    [Nn]* ) ;;
-    * ) echo "Please answer yes or no.";;
+	[Yy]* ) break;;
+	[Nn]* ) ;;
+	* ) echo "Please answer yes or no.";;
 esac
 done
 echo
