@@ -1,4 +1,4 @@
-# config_ubuntu.sh
+# config_cygwin.sh
 
 # update and install packages for command line
 printf "\n=========================\nupdating packages\n=========================\n" ; yes yes Y | sudo apt-get update
