@@ -93,27 +93,25 @@ cp ~/Github/My_Configs/syntax/*     ~/.vim/after/syntax/
 cp ~/Github/My_Configs/ftplugin/*   ~/.vim/after/ftplugin/
 cp ~/Github/My_Configs/plugin/*     ~/.vim/after/plugin/
 
+# miniconda stuff --> python libraries
+cd ~/  &&  wget -c http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh --no-check-certificate
+sudo chmod 755 ~/Miniconda-latest-Linux-x86_64.sh
+~/Miniconda-latest-Linux-x86_64.sh -bp
+conda config --set ssl_verify false
+conda config --add channels conda-forge
+
 # make some symlinks
 ln -s ~/.vim/bundle/vim-snippets/snippets/c.snippets        ~/snippets/c.snippets
 ln -s ~/.vim/bundle/vim-snippets/snippets/cpp.snippets      ~/snippets/cpp.snippets
 ln -s ~/.vim/bundle/vim-snippets/snippets/java.snippets     ~/snippets/java.snippets
 ln -s ~/.vim/bundle/vim-snippets/snippets/python.snippets   ~/snippets/python.snippets
-# TODO
-ln -s ~/miniconda2/lib/python2.7/site-packages/ conda_packages
+ln -s ~/miniconda2/lib/python2.7/site-packages/             conda_packages
 
 # fix the super annoying CRLF warning thing from git
 cd ~/Github/My_Configs/  &&  git config core.autocrlf false
 
 # appropriately set the development environment variable in ~/.profile
 vim -c ":silent! %s/ENV_TYPE=\"cygwin\"/ENV_TYPE=\"ubuntu\"/g" -c ":xa" ~/.profile
-
-# miniconda stuff --> python libraries
-cd ~/  &&  wget -c http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh --no-check-certificate
-sudo chmod 755 ~/Miniconda-latest-Linux-x86_64.sh
-~/Miniconda-latest-Linux-x86_64.sh
-# TODO: Input stuff (https://askubuntu.com/questions/615700/install-miniconda-python-2-7)
-conda config --set ssl_verify false
-conda config --add channels conda-forge
 
 printf "\n=========================\ninstall numpy\n=========================\n"     ; yes yes Y | conda install numpy
 printf "\n=========================\ninstall scipy\n=========================\n"     ; yes yes Y | conda install scipy
