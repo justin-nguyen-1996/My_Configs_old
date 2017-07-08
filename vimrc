@@ -466,6 +466,7 @@ command! -range Unformat :call s:unformat(<line1>, <line2>)
 " a smarter delete operation (does not copy whitespace into registers)
 " NOTE: this doesn't prevent copying whitespace using 'yy' or 'Vy'
 "       my assumption is that you wanted to copy the whitespace instead of deleting it
+ 
 function! Smart_Delete_dd()
 	let temp = getreg('"', 1)
 	execute 'normal!' 'dd'
@@ -473,6 +474,7 @@ function! Smart_Delete_dd()
 		call setreg('"', temp)
 		call setreg('*', temp)
 		call setreg('+', temp)
+		call setreg('0', temp)
 	endif
 endfunction
 nnoremap <silent> dd :call Smart_Delete_dd()<CR>
@@ -484,9 +486,26 @@ function! Smart_Delete_Vd() range
 		call setreg('"', temp)
 		call setreg('*', temp)
 		call setreg('+', temp)
+		call setreg('0', temp)
 	endif
 endfunction
 vnoremap <silent> d :call Smart_Delete_Vd()<CR>
+
+"=================================================================="
+
+" functions for making visual pasting act the way you'd expect it to
+
+function! Visual_Paste_Hack_For_D()
+	execute 'normal!' 'D'
+	call setreg('0', getreg('"'))
+endfunction
+nnoremap <silent> D : call Visual_Paste_Hack_For_D()<CR>
+
+function! Visual_Paste_Hack_For_yy()
+	execute 'normal!' 'yy'
+	call setreg('0', getreg('"'))
+endfunction
+nnoremap <silent> D : call Visual_Paste_Hack_For_yy()<CR>
 
 "=================================================================="
 
