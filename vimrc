@@ -505,7 +505,7 @@ function! Visual_Paste_Hack_For_yy()
 	execute 'normal!' 'yy'
 	call setreg('0', getreg('"'))
 endfunction
-nnoremap <silent> D : call Visual_Paste_Hack_For_yy()<CR>
+nnoremap <silent> yy : call Visual_Paste_Hack_For_yy()<CR>
 
 "=================================================================="
 
