@@ -1,0 +1,18 @@
+
+Increase sudo time with
+ - sudo visudo
+ - Change the defaults line to become 
+   - Defaults        env_reset,timestamp_timeout=120
+
+System Settings (can search it or click the gear on the left side of the launcher)
+ - Brightness & Lock --> change the time it takes to lock the screen (off and never)
+ - Appearance --> change the desktop background
+
+Auto-maximized terminal
+ - open a terminal --> go to the launcher --> right-click and choose "Lock to Launcher"
+ - go to the edits bar (top of the screen) --> then profile preferences --> change initial terminal size to something really big
+ 
+Miscellaneous Notes:
+ - might need to run dos2unix on files that give weird errors
+ - remove unnecessary folders from ~/
+
