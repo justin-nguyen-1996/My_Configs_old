@@ -30,7 +30,7 @@
 #######################################################################
 
 # NOTE: Must set this appropriately for the current development environment
-export ENV_TYPE="ubuntu"
+export ENV_TYPE="cygwin"
 
 # set vimrc location
 if [ "$ENV_TYPE" == "cygwin" ]
