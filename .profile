@@ -30,7 +30,7 @@
 #######################################################################
 
 # NOTE: Must set this appropriately for the current development environment
-export ENV_TYPE="cygwin"
+export ENV_TYPE="ubuntu"
 
 # set vimrc location
 if [ "$ENV_TYPE" == "cygwin" ]
@@ -53,7 +53,7 @@ elif [ "$ENV_TYPE" == "moba" ]
 	then PATH="$PATH:/cygdrive/c/Program Files/Java/jdk1.8.0_101/bin"
 fi
 
-# path to miniconda
+# path to miniconda libraries
 export PATH="$HOME/miniconda2/bin:$PATH"
 
 # change starting directory
