@@ -107,7 +107,7 @@ ln -s /cygdrive/c/Users/Justin/                             Justin
 cd ~/Github/My_Configs/  &&  git config core.autocrlf false
 
 # appropriately set the development environment variable in ~/.profile
-vim -c ":silent! %s/ENV_TYPE=\"cygwin\"/ENV_TYPE=\"ubuntu\"/g" -c ":xa" ~/.profile
+vim -c ":silent! %s/ENV_TYPE=\"ubuntu\"/ENV_TYPE=\"cygwin\"/g" -c ":xa" ~/.profile
 
 # install python libraries through miniconda
 printf "\n=========================\ninstall numpy\n=========================\n"     ; yes yes Y | conda install numpy
