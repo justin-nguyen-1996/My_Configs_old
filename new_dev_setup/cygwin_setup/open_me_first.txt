@@ -1,5 +1,8 @@
 
 Install cygwin packages
+ - for an automated installation:
+   - https://stackoverflow.com/questions/745275/can-i-script-a-cygwin-install-to-include-certain-packages
+   - how to automate cygwin package installation
  - vim --> check that this is Vim 8.0 and has +clipboard support (run vim --version)
  - git
  - ssh
