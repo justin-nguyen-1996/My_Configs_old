@@ -26,9 +26,9 @@ echo
 while true; do
 read -p "Are you ready? " yn
 case $yn in
-    [Yy]* ) break;;
-    [Nn]* ) ;;
-    * ) echo "Please answer yes or no.";;
+	[Yy]* | "" ) break;;
+	[Nn]*      ) ;;
+    *          ) echo "Please press enter  OR  answer yes or no.";;
 esac
 done
 echo
@@ -37,9 +37,9 @@ firefox https://github.com/settings/keys
 while true; do
 read -p "Ready for the rest of the instructions? " yn
 case $yn in
-    [Yy]* ) break;;
-    [Nn]* ) ;;
-    * ) echo "Please answer yes or no.";;
+	[Yy]* | "" ) break;;
+	[Nn]*      ) ;;
+    *          ) echo "Please press enter  OR  answer yes or no.";;
 esac
 done
 echo
@@ -54,9 +54,9 @@ echo
 while true; do
 read -p "Are you done? " yn
 case $yn in
-	[Yy]* ) break;;
-	[Nn]* ) ;;
-	* ) echo "Please answer yes or no.";;
+	[Yy]* | "" ) break;;
+	[Nn]*      ) ;;
+    *          ) echo "Please press enter  OR  answer yes or no.";;
 esac
 done
 echo
@@ -93,7 +93,7 @@ cp ~/Github/My_Configs/syntax/*     ~/.vim/after/syntax/
 cp ~/Github/My_Configs/ftplugin/*   ~/.vim/after/ftplugin/
 cp ~/Github/My_Configs/plugin/*     ~/.vim/after/plugin/
 
-# miniconda stuff --> python libraries
+# grab miniconda script file
 cd ~/  &&  wget -c http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh --no-check-certificate
 sudo chmod 755 ~/Miniconda-latest-Linux-x86_64.sh
 ~/Miniconda-latest-Linux-x86_64.sh -bp
@@ -113,6 +113,7 @@ cd ~/Github/My_Configs/  &&  git config core.autocrlf false
 # appropriately set the development environment variable in ~/.profile
 vim -c ":silent! %s/ENV_TYPE=\"cygwin\"/ENV_TYPE=\"ubuntu\"/g" -c ":xa" ~/.profile
 
+# install python libraries through miniconda
 printf "\n=========================\ninstall numpy\n=========================\n"     ; yes yes Y | conda install numpy
 printf "\n=========================\ninstall scipy\n=========================\n"     ; yes yes Y | conda install scipy
 printf "\n=========================\ninstall pandas\n=========================\n"    ; yes yes Y | conda install pandas
@@ -137,11 +138,12 @@ echo
 while true; do
 read -p "Alright almost done. Ready? " yn
 case $yn in
-    [Yy]* ) break;;
-    [Nn]* ) ;;
-    * ) echo "Please answer yes or no.";;
+    [Yy]* | "" ) break;;
+    [Nn]*      ) ;;
+    *          ) echo "Please press enter  OR  answer yes or no.";;
 esac
 done
+
 echo
 echo "6. Finally, go into ~/Github/ and run git push (yes I know that you might not have stuff to push yet ... just do it)"
 echo "7. You'll probably get some on screen instructions. Follow them to set up your login info"

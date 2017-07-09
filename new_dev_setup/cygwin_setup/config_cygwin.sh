@@ -1,16 +1,5 @@
 # config_cygwin.sh
 
-# update and install packages for command line
-printf "\n=========================\nupdating packages\n=========================\n" ; yes yes Y | sudo apt-get update
-printf "\n=========================\ninstall vim\n=========================\n"       ; yes yes Y | sudo apt-get install vim-gnome
-printf "\n=========================\ninstall git\n=========================\n"       ; yes yes Y | sudo apt-get install git
-printf "\n=========================\ninstall ctags\n=========================\n"     ; yes yes Y | sudo apt-get install exuberant-ctags
-printf "\n=========================\ninstall tmux\n=========================\n"      ; yes yes Y | sudo apt-get install tmux
-printf "\n=========================\ninstall dos2unix\n=========================\n"  ; yes yes Y | sudo apt-get install dos2unix
-printf "\n=========================\ninstall libgnome\n=========================\n"  ; yes yes Y | sudo apt-get install libgnome2-bin
-printf "\n=========================\ninstall xclip\n=========================\n"     ; yes yes Y | sudo apt-get install xclip
-printf "\n=========================\ninstall expect\n=========================\n"    ; yes yes Y | sudo apt-get install expect
-
 # generate and save the new ssh key
 echo 
 echo "You're about to see a prompt that's going to ask you for a file location and passphrase"
@@ -30,9 +19,9 @@ echo
 while true; do
 read -p "Are you ready? " yn
 case $yn in
-	[Yy]* ) break;;
-	[Nn]* ) ;;
-	* ) echo "Please answer yes or no.";;
+	[Yy]* | "" ) break;;
+	[Nn]*      ) ;;
+    *          ) echo "Please press enter  OR  answer yes or no.";;
 esac
 done
 echo
@@ -41,9 +30,9 @@ cygstart https://github.com/settings/keys
 while true; do
 read -p "Ready for the rest of the instructions? " yn
 case $yn in
-	[Yy]* ) break;;
-	[Nn]* ) ;;
-	* ) echo "Please answer yes or no.";;
+	[Yy]* | "" ) break;;
+	[Nn]*      ) ;;
+    *          ) echo "Please press enter  OR  answer yes or no.";;
 esac
 done
 echo
@@ -58,9 +47,9 @@ echo
 while true; do
 read -p "Are you done? " yn
 case $yn in
-	[Yy]* ) break;;
-	[Nn]* ) ;;
-	* ) echo "Please answer yes or no.";;
+	[Yy]* | "" ) break;;
+	[Nn]*      ) ;;
+    *          ) echo "Please press enter  OR  answer yes or no.";;
 esac
 done
 echo
@@ -97,13 +86,22 @@ cp ~/Github/My_Configs/syntax/*     ~/.vim/after/syntax/
 cp ~/Github/My_Configs/ftplugin/*   ~/.vim/after/ftplugin/
 cp ~/Github/My_Configs/plugin/*     ~/.vim/after/plugin/
 
+# grab miniconda script file
+cd ~/  &&  wget -c http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh --no-check-certificate
+sudo chmod 755 ~/Miniconda-latest-Linux-x86_64.sh
+~/Miniconda-latest-Linux-x86_64.sh -bp
+conda config --set ssl_verify false
+conda config --add channels conda-forge
+
 # make some symlinks
 ln -s ~/.vim/bundle/vim-snippets/snippets/c.snippets        ~/snippets/c.snippets
 ln -s ~/.vim/bundle/vim-snippets/snippets/cpp.snippets      ~/snippets/cpp.snippets
 ln -s ~/.vim/bundle/vim-snippets/snippets/java.snippets     ~/snippets/java.snippets
 ln -s ~/.vim/bundle/vim-snippets/snippets/python.snippets   ~/snippets/python.snippets
-# TODO
-ln -s ~/miniconda2/lib/python2.7/site-packages/ conda_packages
+ln -s ~/miniconda2/lib/python2.7/site-packages/             conda_packages
+ln -s /cygdrive/c/                                          C
+ln -s /cygdrive/c/Users/Justin/Desktop/                     Desktop
+ln -s /cygdrive/c/Users/Justin/                             Justin
 
 # fix the super annoying CRLF warning thing from git
 cd ~/Github/My_Configs/  &&  git config core.autocrlf false
@@ -111,14 +109,7 @@ cd ~/Github/My_Configs/  &&  git config core.autocrlf false
 # appropriately set the development environment variable in ~/.profile
 vim -c ":silent! %s/ENV_TYPE=\"cygwin\"/ENV_TYPE=\"ubuntu\"/g" -c ":xa" ~/.profile
 
-# miniconda stuff --> python libraries
-cd ~/  &&  wget -c http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh --no-check-certificate
-sudo chmod 755 ~/Miniconda-latest-Linux-x86_64.sh
-~/Miniconda-latest-Linux-x86_64.sh
-# TODO: Input stuff (https://askubuntu.com/questions/615700/install-miniconda-python-2-7)
-conda config --set ssl_verify false
-conda config --add channels conda-forge
-
+# install python libraries through miniconda
 printf "\n=========================\ninstall numpy\n=========================\n"     ; yes yes Y | conda install numpy
 printf "\n=========================\ninstall scipy\n=========================\n"     ; yes yes Y | conda install scipy
 printf "\n=========================\ninstall pandas\n=========================\n"    ; yes yes Y | conda install pandas
@@ -143,11 +134,12 @@ echo
 while true; do
 read -p "Alright almost done. Ready? " yn
 case $yn in
-    [Yy]* ) break;;
-    [Nn]* ) ;;
-    * ) echo "Please answer yes or no.";;
+    [Yy]* | "" ) break;;
+    [Nn]*      ) ;;
+    *          ) echo "Please press enter  OR  answer yes or no.";;
 esac
 done
+
 echo
 echo "6. Finally, go into ~/Github/ and run git push (yes I know that you might not have stuff to push yet ... just do it)"
 echo "7. You'll probably get some on screen instructions. Follow them to set up your login info"
