@@ -35,17 +35,11 @@ if [ "$ENV_TYPE" == "cygwin" ]
 		 alias DOS='dos2unix'
 fi
 
-# python aliases
-alias p='python'
-
 # git aliases
 alias ga='git add .'
 alias gs='git status'
 alias gc='git commit -a -m'
 alias gp='git push'
-
-# tmux aliases
-# alias tmux="TERM=screen-256color-bce tmux"
 
 # jumping to git repos
 alias cd422C='cd ~/Eclipse/EE-422C/'
@@ -72,9 +66,11 @@ alias la='ls -al'
 alias grep='grep -ni --color --exclude tags --exclude .tags'
 alias tar='tar -xzvf'
 
-# for my typos
+# lazy aliases and typos
 alias sl='ls'
 alias l='ls'
+alias p='python'
+alias ch='chmod 755'
 
 # enable extglob (useful for something like rm !(temp.c))
 shopt -s extglob
@@ -99,7 +95,7 @@ fi
 # map cd --> cd then ls
 cd() { builtin cd "${1-$(echo ~)}" && ls -F; }
 
-# useless but cool 'red' echo
+# cool but useless 'red' echo
 # echo() { builtin echo -e "\x1B[31m ${1} \x1B[0m"; }
 
 # ~- means the previous directory
