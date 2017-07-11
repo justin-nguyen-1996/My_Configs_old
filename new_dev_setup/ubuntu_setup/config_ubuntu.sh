@@ -95,9 +95,12 @@ cp ~/Github/My_Configs/syntax/*     ~/.vim/after/syntax/
 cp ~/Github/My_Configs/ftplugin/*   ~/.vim/after/ftplugin/
 cp ~/Github/My_Configs/plugin/*     ~/.vim/after/plugin/
 
-# set the dev env var in ~/.profile and source it
-vim -c ":silent! %s/ENV_TYPE=\"cygwin\"/ENV_TYPE=\"ubuntu\"/g" -c ":xa" ~/.profile
-source ~/.profile
+# set up git login credentials and other config stuff
+cd ~/
+git config --global user.email "2014justinnguyen@gmail.com"
+git config --global user.name "Justin Nguyen"
+git config --global push.default simple
+git config --global core.autocrlf false
 
 # grab miniconda script file
 cd ~/  &&  wget -c http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh --no-check-certificate
@@ -106,6 +109,9 @@ sudo chmod 755 ~/Miniconda-latest-Linux-x86_64.sh
 conda config --set ssl_verify false
 conda config --add channels conda-forge
 
+# install the python libraries through conda
+./.install_conda_libs.sh
+
 # make some symlinks
 ln -s ~/.vim/bundle/vim-snippets/snippets/c.snippets        ~/snippets/c.snippets
 ln -s ~/.vim/bundle/vim-snippets/snippets/cpp.snippets      ~/snippets/cpp.snippets
@@ -113,30 +119,8 @@ ln -s ~/.vim/bundle/vim-snippets/snippets/java.snippets     ~/snippets/java.snip
 ln -s ~/.vim/bundle/vim-snippets/snippets/python.snippets   ~/snippets/python.snippets
 ln -s ~/miniconda2/lib/python2.7/site-packages/             conda_packages
 
-# install python libraries through miniconda
-printf "\n=========================\ninstall numpy\n=========================\n"     ; yes yes Y | conda install numpy
-printf "\n=========================\ninstall scipy\n=========================\n"     ; yes yes Y | conda install scipy
-printf "\n=========================\ninstall pandas\n=========================\n"    ; yes yes Y | conda install pandas
-printf "\n=========================\ninstall scikit\n=========================\n"    ; yes yes Y | conda install scikit-learn
-printf "\n=========================\ninstall matplt\n=========================\n"    ; yes yes Y | conda install matplotlib
-
-printf "\n=========================\ninstall rasterio\n=========================\n"  ; yes yes Y | conda install rasterio
-printf "\n=========================\ninstall gdal\n=========================\n"      ; yes yes Y | conda install gdal
-printf "\n=========================\ninstall fiona\n=========================\n"     ; yes yes Y | conda install fiona
-printf "\n=========================\ninstall shapely\n=========================\n"   ; yes yes Y | conda install shapely
-printf "\n=========================\ninstall affine\n=========================\n"    ; yes yes Y | conda install affine
-printf "\n=========================\ninstall pyproj\n=========================\n"    ; yes yes Y | conda install pyproj
-printf "\n=========================\ninstall geopandas\n=========================\n" ; yes yes Y | conda install geopandas
-printf "\n=========================\ninstall pillow\n=========================\n"    ; yes yes Y | conda install pillow
-
-printf "\n=========================\ninstall fftw\n=========================\n"      ; yes yes Y | conda install fftw
-printf "\n=========================\ninstall cython\n=========================\n"    ; yes yes Y | conda install cython
-printf "\n=========================\ninstall pyfftw\n=========================\n"    ; yes yes Y | conda install pyfftw
-
-# set up git login credentials and other config stuff
-cd ~/
-git config --global user.email "2014justinnguyen@gmail.com"
-git config --global user.name "Justin Nguyen"
-git config --global push.default simple
-git config --global core.autocrlf false
+# set the dev env var in ~/.profile and source it
+vim -c ":silent! %s/ENV_TYPE=\"cygwin\"/ENV_TYPE=\"ubuntu\"/g" -c ":xa" ~/.profile
+source ~/.profile
+echo "The script sources the ~/.profile but I think you need to actually restart the VM (power off) to have it be permanently sourced"
 

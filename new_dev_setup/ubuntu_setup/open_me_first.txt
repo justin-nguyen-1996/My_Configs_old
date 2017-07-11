@@ -15,4 +15,7 @@ Auto-maximized terminal
 Miscellaneous Notes:
  - might need to run dos2unix on files that give weird errors
  - remove unnecessary folders from ~/
+ - there is a '.install_conda_libs.sh' script in this directory 
+   - don't run it
+   - it's only there to be called by 'config_ubuntu.sh'
 
