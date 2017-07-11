@@ -95,7 +95,8 @@ cp ~/Github/My_Configs/syntax/*     ~/.vim/after/syntax/
 cp ~/Github/My_Configs/ftplugin/*   ~/.vim/after/ftplugin/
 cp ~/Github/My_Configs/plugin/*     ~/.vim/after/plugin/
 
-# source the new '.profile' file
+# set the dev env var in ~/.profile and source it
+vim -c ":silent! %s/ENV_TYPE=\"cygwin\"/ENV_TYPE=\"ubuntu\"/g" -c ":xa" ~/.profile
 source ~/.profile
 
 # grab miniconda script file
@@ -111,9 +112,6 @@ ln -s ~/.vim/bundle/vim-snippets/snippets/cpp.snippets      ~/snippets/cpp.snipp
 ln -s ~/.vim/bundle/vim-snippets/snippets/java.snippets     ~/snippets/java.snippets
 ln -s ~/.vim/bundle/vim-snippets/snippets/python.snippets   ~/snippets/python.snippets
 ln -s ~/miniconda2/lib/python2.7/site-packages/             conda_packages
-
-# appropriately set the development environment variable in ~/.profile
-vim -c ":silent! %s/ENV_TYPE=\"cygwin\"/ENV_TYPE=\"ubuntu\"/g" -c ":xa" ~/.profile
 
 # install python libraries through miniconda
 printf "\n=========================\ninstall numpy\n=========================\n"     ; yes yes Y | conda install numpy
