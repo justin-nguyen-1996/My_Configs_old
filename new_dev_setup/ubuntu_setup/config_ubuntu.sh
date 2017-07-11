@@ -112,9 +112,6 @@ ln -s ~/.vim/bundle/vim-snippets/snippets/java.snippets     ~/snippets/java.snip
 ln -s ~/.vim/bundle/vim-snippets/snippets/python.snippets   ~/snippets/python.snippets
 ln -s ~/miniconda2/lib/python2.7/site-packages/             conda_packages
 
-# fix the super annoying CRLF warning thing from git
-cd ~/Github/My_Configs/  &&  git config core.autocrlf false
-
 # appropriately set the development environment variable in ~/.profile
 vim -c ":silent! %s/ENV_TYPE=\"cygwin\"/ENV_TYPE=\"ubuntu\"/g" -c ":xa" ~/.profile
 
@@ -138,18 +135,10 @@ printf "\n=========================\ninstall fftw\n=========================\n" 
 printf "\n=========================\ninstall cython\n=========================\n"    ; yes yes Y | conda install cython
 printf "\n=========================\ninstall pyfftw\n=========================\n"    ; yes yes Y | conda install pyfftw
 
-# set up git login credentials
-echo
-while true; do
-read -p "Alright almost done. Ready? " yn
-case $yn in
-    [Yy]* | "" ) break;;
-    [Nn]*      ) ;;
-    *          ) echo "Please press enter  OR  answer yes or no.";;
-esac
-done
+# set up git login credentials and other config stuff
+cd ~/
+git config --global user.email "2014justinnguyen@gmail.com"
+git config --global user.name "Justin Nguyen"
+git config --global push.default simple
+git config --global core.autocrlf false
 
-echo
-echo "1. Finally, go into ~/Github/ and run git push (yes I know that you might not have stuff to push yet ... just do it)"
-echo "2. You'll probably get some on screen instructions. Follow them to set up your login info"
-echo "3. Afterwards, you might get a message about 'simple'. Use that one"
