@@ -29,7 +29,7 @@ read -p "Are you ready? " yn
 case $yn in
 	[Yy]* | "" ) break;;
 	[Nn]*      ) ;;
-    *          ) echo "Please press enter  OR  answer yes or no.";;
+	*          ) echo "Please press enter  OR  answer yes or no.";;
 esac
 done
 echo
@@ -40,7 +40,7 @@ read -p "Ready for the rest of the instructions? " yn
 case $yn in
 	[Yy]* | "" ) break;;
 	[Nn]*      ) ;;
-    *          ) echo "Please press enter  OR  answer yes or no.";;
+	*          ) echo "Please press enter  OR  answer yes or no.";;
 esac
 done
 echo
@@ -57,7 +57,7 @@ read -p "Are you done? " yn
 case $yn in
 	[Yy]* | "" ) break;;
 	[Nn]*      ) ;;
-    *          ) echo "Please press enter  OR  answer yes or no.";;
+	*          ) echo "Please press enter  OR  answer yes or no.";;
 esac
 done
 echo
@@ -76,7 +76,7 @@ mv ~/Vundle.vim ~/.vim/bundle/Vundle.vim
 
 # get config directory from my repo
 cd ~/Github/
-~/Github/My_Configs/new_dev_setup/ubuntu_setup/.clone_my_configs.sh
+~/clone_my_configs.sh
 
 # take care of vimrc, plugin installation, and removing bad files
 sudo cp ~/Github/My_Configs/vimrc /usr/share/vim/
@@ -107,6 +107,11 @@ git config --global core.autocrlf false
 cd ~/  &&  wget -c http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh --no-check-certificate
 sudo chmod 755 ~/Miniconda-latest-Linux-x86_64.sh
 ~/Miniconda-latest-Linux-x86_64.sh -b -p $HOME/miniconda2
+
+# source the ~/.profile so that the shell recognizes conda
+source ~/.profile
+
+# do some conda configuration
 conda config --set ssl_verify false
 conda config --add channels conda-forge
 
@@ -124,4 +129,3 @@ ln -s ~/miniconda2/lib/python2.7/site-packages/             conda_packages
 vim -c ":silent! %s/ENV_TYPE=\"cygwin\"/ENV_TYPE=\"ubuntu\"/g" -c ":xa" ~/.profile
 source ~/.profile
 echo "The script sources the ~/.profile but I think you need to actually restart the VM (power off) to have it be permanently sourced"
-
