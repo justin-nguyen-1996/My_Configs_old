@@ -12,13 +12,14 @@ printf "\n=========================\ninstall xclip\n=========================\n"
 printf "\n=========================\ninstall expect\n=========================\n"    ; yes yes Y | sudo apt-get install expect
 
 # generate and save the new ssh key
-echo
+printf "\n====================================================================\n"    
 echo | ssh-keygen -t rsa -b 4096 -C "2014justinnguyen@gmail.com"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 xclip -sel clip < ~/.ssh/id_rsa.pub
 
-echo
+# interactive sript with directions for installing the ssh key
+printf "\n====================================================================\n"    
 echo "Just copied the ~/.ssh/id_rsa.pub file into the clipboard. So don't try to copy anything (i.e. don't use Ctrl-c)"
 echo "A hyperlink will open soon. After it does, go back to these instructions (more will pop up after the link is opened)"
 
@@ -72,26 +73,30 @@ mkdir -p ~/Github
 # get the Vundle plugin
 cd ~/  &&  git clone https://github.com/VundleVim/Vundle.vim.git
 mv ~/Vundle.vim ~/.vim/bundle/Vundle.vim
-vim -c ":PluginInstall" -c ":qa"
-
-# remove bad snippet and template files
-rm -rf ~/.vim/bundle/vim-snippets/snippets/*
-rm -rf ~/.vim/bundle/vim-template/templates/*
 
 # get config directory from my repo
-cd ~/Github/  &&  git clone git@github.com:justin-nguyen-1996/My_Configs.git
+yes | cd ~/Github/  &&  git clone git@github.com:justin-nguyen-1996/My_Configs.git
+
+# take care of vimrc, plugin installation, and removing bad files
+cp ~/Github/My_Configs/vimrc /usr/share/vim/
+vim -c ":PluginInstall" -c ":qa"
+rm -rf ~/.vim/bundle/vim-snippets/snippets/*
+rm -rf ~/.vim/bundle/vim-template/templates/*
+# TODO: add a 'vim -c' thing that goes into the snippets/ dir, runs ';s zE :x' --> removes all those ugly code folds
 
 # copy over some config files
 cp ~/Github/My_Configs/.bashrc      ~/
 cp ~/Github/My_Configs/.inputrc     ~/
 cp ~/Github/My_Configs/.tmux.conf   ~/
 cp ~/Github/My_Configs/.profile     ~/
-cp ~/Github/My_Configs/vimrc        /usr/share/vim/
 cp ~/Github/My_Configs/snippets/*   ~/.vim/bundle/vim-snippets/snippets/
 cp ~/Github/My_Configs/templates/*  ~/.vim/bundle/vim-template/templates/
 cp ~/Github/My_Configs/syntax/*     ~/.vim/after/syntax/
 cp ~/Github/My_Configs/ftplugin/*   ~/.vim/after/ftplugin/
 cp ~/Github/My_Configs/plugin/*     ~/.vim/after/plugin/
+
+# source the new '.profile' file
+source ~/.profile
 
 # grab miniconda script file
 cd ~/  &&  wget -c http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh --no-check-certificate
@@ -145,7 +150,6 @@ esac
 done
 
 echo
-echo "6. Finally, go into ~/Github/ and run git push (yes I know that you might not have stuff to push yet ... just do it)"
-echo "7. You'll probably get some on screen instructions. Follow them to set up your login info"
-echo "8. Afterwards, you might get a message about 'simple'. Use that one"
-
+echo "1. Finally, go into ~/Github/ and run git push (yes I know that you might not have stuff to push yet ... just do it)"
+echo "2. You'll probably get some on screen instructions. Follow them to set up your login info"
+echo "3. Afterwards, you might get a message about 'simple'. Use that one"
