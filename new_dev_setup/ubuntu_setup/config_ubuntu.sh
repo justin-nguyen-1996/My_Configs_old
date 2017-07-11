@@ -85,15 +85,15 @@ rm -rf ~/.vim/bundle/vim-template/templates/*
 # TODO: add a 'vim -c' thing that goes into the snippets/ dir, runs ';s zE :x' --> removes all those ugly code folds
 
 # copy over some config files
-cp ~/Github/My_Configs/.bashrc      ~/
-cp ~/Github/My_Configs/.inputrc     ~/
-cp ~/Github/My_Configs/.tmux.conf   ~/
-cp ~/Github/My_Configs/.profile     ~/
-cp ~/Github/My_Configs/snippets/*   ~/.vim/bundle/vim-snippets/snippets/
-cp ~/Github/My_Configs/templates/*  ~/.vim/bundle/vim-template/templates/
-cp ~/Github/My_Configs/syntax/*     ~/.vim/after/syntax/
-cp ~/Github/My_Configs/ftplugin/*   ~/.vim/after/ftplugin/
-cp ~/Github/My_Configs/plugin/*     ~/.vim/after/plugin/
+sudo cp ~/Github/My_Configs/.bashrc      ~/
+sudo cp ~/Github/My_Configs/.inputrc     ~/
+sudo cp ~/Github/My_Configs/.tmux.conf   ~/
+sudo cp ~/Github/My_Configs/.profile     ~/
+sudo cp ~/Github/My_Configs/snippets/*   ~/.vim/bundle/vim-snippets/snippets/
+sudo cp ~/Github/My_Configs/templates/*  ~/.vim/bundle/vim-template/templates/
+sudo cp ~/Github/My_Configs/syntax/*     ~/.vim/after/syntax/
+sudo cp ~/Github/My_Configs/ftplugin/*   ~/.vim/after/ftplugin/
+sudo cp ~/Github/My_Configs/plugin/*     ~/.vim/after/plugin/
 
 # set up git login credentials and other config stuff
 cd ~/
