@@ -12,13 +12,14 @@ printf "\n=========================\ninstall xclip\n=========================\n"
 printf "\n=========================\ninstall expect\n=========================\n"    ; yes yes Y | sudo apt-get install expect
 
 # generate and save the new ssh key
-echo
+printf "\n====================================================================\n"    
 echo | ssh-keygen -t rsa -b 4096 -C "2014justinnguyen@gmail.com"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 xclip -sel clip < ~/.ssh/id_rsa.pub
 
-echo
+# interactive sript with directions for installing the ssh key
+printf "\n====================================================================\n"    
 echo "Just copied the ~/.ssh/id_rsa.pub file into the clipboard. So don't try to copy anything (i.e. don't use Ctrl-c)"
 echo "A hyperlink will open soon. After it does, go back to these instructions (more will pop up after the link is opened)"
 
