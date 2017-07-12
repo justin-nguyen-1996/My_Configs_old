@@ -128,4 +128,7 @@ ln -s ~/miniconda2/lib/python2.7/site-packages/             conda_packages
 # set the dev env var in ~/.profile and source it
 vim -c ":silent! %s/ENV_TYPE=\"cygwin\"/ENV_TYPE=\"ubuntu\"/g" -c ":xa" ~/.profile
 source ~/.profile
-echo "The script sources the ~/.profile but I think you need to actually restart the VM (power off) to have it be permanently sourced"
+
+# last note about permanently sourcing ~/.profile
+printf "\n\n=================================================================================================================\n\n"
+echo "The script sources ~/.profile but I think you need to actually restart the VM (power off) to have it be permanently sourced"
