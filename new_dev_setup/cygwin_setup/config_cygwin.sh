@@ -3,6 +3,8 @@
 # TODO: you can't just run :PluginInstall for some reason
 #       --> need to manually git clone everything and then run :PluginInstall
 
+# TODO: change the symlink for conda_packages --> ~/miniconda2/lib/site-packages
+
 # generate and save the new ssh key
 echo 
 echo "You're about to see a prompt that's going to ask you for a file location and passphrase"

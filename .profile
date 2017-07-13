@@ -30,7 +30,7 @@
 #######################################################################
 
 # NOTE: Must set this appropriately for the current development environment
-export ENV_TYPE="ubuntu"
+export ENV_TYPE="cygwin"
 
 # set vimrc location
 if [ "$ENV_TYPE" == "cygwin" ]
@@ -54,6 +54,8 @@ elif [ "$ENV_TYPE" == "moba" ]
 fi
 
 # path to miniconda libraries
+export PATH="/home/Justin/miniconda2/Scripts/:$PATH"
+export PATH="/home/Justin/miniconda2/:$PATH"
 export PATH="$HOME/miniconda2/bin:$PATH"
 
 # change starting directory

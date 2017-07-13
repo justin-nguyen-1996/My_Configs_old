@@ -17,8 +17,7 @@ alias cpconfig='cp_vim  &&  cp_dotfiles  &&  cp_snippets  &&  cp_after  &&  cp_t
 
 # aliases for Ubuntu (because of stupid sudo)
 if [ "$ENV_TYPE" == "ubuntu" ]
-	then alias vim='sudo vim'
-		 alias cp='sudo cp'
+	then alias cp='sudo cp'
 		 alias mv='sudo mv'
 		 alias rm='sudo rm'
 		 alias chmod='sudo chmod'
@@ -33,6 +32,7 @@ fi
 if [ "$ENV_TYPE" == "cygwin" ]
 	then alias open='cygstart'
 		 alias DOS='dos2unix'
+		 alias p='python -i'
 fi
 
 # git aliases
@@ -69,7 +69,6 @@ alias tar='tar -xzvf'
 # lazy aliases and typos
 alias sl='ls'
 alias l='ls'
-alias p='python'
 alias ch='chmod 755'
 
 # enable extglob (useful for something like rm !(temp.c))
