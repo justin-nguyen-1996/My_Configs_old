@@ -83,7 +83,6 @@ sudo cp ~/Github/My_Configs/vimrc /usr/share/vim/
 ~/Github/My_Configs/new_dev_setup/ubuntu_setup/.run_plugin_install.sh
 sudo rm -rf ~/.vim/bundle/vim-snippets/snippets/*
 sudo rm -rf ~/.vim/bundle/vim-template/templates/*
-# TODO: add a 'vim -c' thing that goes into the snippets/ dir, runs ';s zE :x' --> removes all those ugly code folds
 
 # copy over some config files
 cp ~/Github/My_Configs/.bashrc      ~/
@@ -132,3 +131,4 @@ source ~/.profile
 # last note about permanently sourcing ~/.profile
 printf "\n\n=================================================================================================================\n\n"
 echo "The script sources ~/.profile but I think you need to actually restart the VM (power off) to have it be permanently sourced"
+echo "Go to the snippets dir in ~/.vim/bundle/vim-snippets/snippets/ and remove all of the code folds manually"
