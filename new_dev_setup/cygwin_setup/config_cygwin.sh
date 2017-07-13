@@ -1,5 +1,8 @@
 # config_cygwin.sh
 
+# TODO: you can't just run :PluginInstall for some reason
+#       --> need to manually git clone everything and then run :PluginInstall
+
 # generate and save the new ssh key
 echo 
 echo "You're about to see a prompt that's going to ask you for a file location and passphrase"
