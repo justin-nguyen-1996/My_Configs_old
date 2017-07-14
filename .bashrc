@@ -15,7 +15,7 @@ alias cp_after='cp_syntax  &&  cp_ftplugin  &&  cp_plugin'
 alias cp_templates='cp -t ~/Github/My_Configs/templates/ ~/.vim/bundle/vim-template/templates/*'
 alias cpconfig='cp_vim  &&  cp_dotfiles  &&  cp_snippets  &&  cp_after  &&  cp_templates  &&  git_update'
 
-# aliases for Ubuntu (because of stupid sudo)
+# aliases for Ubuntu
 if [ "$ENV_TYPE" == "ubuntu" ]
 	then alias cp='sudo cp'
 		 alias mv='sudo mv'
@@ -26,6 +26,7 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 		 alias install='sudo apt-get install'
 		 alias search='sudo apt-cache search'
 		 alias open='gnome-open'
+		 alias p='python'
 fi
 
 # aliases for Cygwin
