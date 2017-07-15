@@ -1,10 +1,17 @@
-# In General
-modules   --> UpperCase
-classes   --> UpperCase
-functions --> upperCase
-variables --> upper_case
 
-# Edge Cases
-class variables     --> Upper_Case
-groups of functions --> Test1_UpperCase
-boolean variables   --> bool_upper_case
+In general, avoid underscores because longer_named_words_can_look_weird.
+Use camelCase because it makes things look like a singleUnit.
+
+Try to only use underscores to group functions together
+ - Test1_Cropped, Test2_Inverted
+ - ADC_Init, ADC_Calibrate
+
+Don't use anything special for boolean variables
+ - like every other function param, the user should just go look at the documentation
+
+Classes, constructors, module names, file names, objects created from custom classes (e.g. by invoking the constructor)
+ - use CamelCase to distinguish their importance
+
+Directory names
+ - use Camel_Case (no good reason other than I happen to think it looks better on Github)
+ 
