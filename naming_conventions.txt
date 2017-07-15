@@ -1,0 +1,10 @@
+# In General
+modules   --> UpperCase
+classes   --> UpperCase
+functions --> upperCase
+variables --> upper_case
+
+# Edge Cases
+class variables     --> Upper_Case
+groups of functions --> Test1_UpperCase
+boolean variables   --> bool_upper_case
