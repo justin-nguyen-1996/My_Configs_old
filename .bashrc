@@ -1,6 +1,5 @@
 
-# aliases for editing .bash_aliases and vimrc files
-alias ev='vim $VIM/vimrc;'
+# aliases for editing .bashrc (ea) and vimrc (ev)
 alias ea='vim ~/.bashrc; source ~/.bashrc && source $HOME/.bashrc'
 
 # some silly things because I'm really lazy (basically one-shot commands to git commit/push vimrc and other config files)
@@ -27,6 +26,7 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 		 alias search='sudo apt-cache search'
 		 alias open='gnome-open'
 		 alias p='python'
+		 alias ev='sudo vim $VIM/vimrc;'
 fi
 
 # aliases for Cygwin
@@ -34,6 +34,7 @@ if [ "$ENV_TYPE" == "cygwin" ]
 	then alias open='cygstart'
 		 alias DOS='dos2unix'
 		 alias p='python -i'
+		 alias ev='vim $VIM/vimrc;'
 fi
 
 # git aliases

@@ -602,8 +602,8 @@ nnoremap ;v "*p
 " v%zf<CR>
 
 " use ;r in visual mode to replace the visually selected word
-nnoremap ;r ye:%s/<C-F>pa//g<ESC>F/i
-vnoremap ;r y:%s/<C-F>pa//g<ESC>F/i
+nnoremap ;r yiw:%s/<C-F>pa//gc<ESC>F/i
+vnoremap ;r y:%s/<C-F>pa//gc<ESC>F/i
 
 " ================================================================="
 " ================================================================="
