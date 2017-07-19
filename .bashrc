@@ -74,6 +74,8 @@ alias sl='ls'
 alias l='ls'
 alias ch='chmod 755'
 
+alias un='unzip'
+
 # enable extglob (useful for something like rm !(temp.c))
 shopt -s extglob
 

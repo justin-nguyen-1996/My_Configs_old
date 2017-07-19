@@ -101,6 +101,7 @@ git config --global user.email "2014justinnguyen@gmail.com"
 git config --global user.name "Justin Nguyen"
 git config --global push.default simple
 git config --global core.autocrlf false
+git config http.postBuffer 52428800
 
 # grab miniconda script file
 cd ~/  &&  wget -c http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh --no-check-certificate
