@@ -54,7 +54,11 @@ elif [ "$ENV_TYPE" == "moba" ]
 fi
 
 # path to miniconda libraries
-export PATH="$HOME/miniconda2/bin:$PATH"
+if [ "$ENV_TYPE" == "cygwin" ]
+	then export PATH="$HOME/miniconda2/Scripts/:$HOME/miniconda2/:$PATH"
+elif [ "$ENV_TYPE" == "ubuntu" ]
+	then export PATH="$HOME/miniconda2/bin:$PATH"
+fi
 
 # change starting directory
 # cd _____

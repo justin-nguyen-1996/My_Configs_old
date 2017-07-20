@@ -1,5 +1,5 @@
 
-# aliases for editing .bash_aliases and vimrc files
+# aliases for editing vimrc and .bashrc
 alias ev='vim $VIM/vimrc;'
 alias ea='vim ~/.bashrc; source ~/.bashrc && source $HOME/.bashrc'
 
@@ -21,18 +21,21 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 		 alias cp='sudo cp'
 		 alias mv='sudo mv'
 		 alias rm='sudo rm'
-		 alias chmod='sudo chmod'
+		 alias mkdir='sudo mkdir'
 		 alias ls='sudo ls'
+		 alias chmod='sudo chmod'
 		 alias DOS='sudo dos2unix'
 		 alias install='sudo apt-get install'
 		 alias search='sudo apt-cache search'
 		 alias open='gnome-open'
+		 alias p='python'
 fi
 
 # aliases for Cygwin
 if [ "$ENV_TYPE" == "cygwin" ]
 	then alias open='cygstart'
 		 alias DOS='dos2unix'
+		 alias p='python -i'
 fi
 
 # git aliases
@@ -69,7 +72,6 @@ alias tar='tar -xzvf'
 # lazy aliases and typos
 alias sl='ls'
 alias l='ls'
-alias p='python'
 alias ch='chmod 755'
 
 # enable extglob (useful for something like rm !(temp.c))
@@ -101,3 +103,5 @@ cd() { builtin cd "${1-$(echo ~)}" && ls -F; }
 # ~- means the previous directory
 # !$ means the last argument in the command line
 
+# added by Anaconda2 4.1.0 installer
+# export PATH="/home/jusnguy/anaconda2/bin:$PATH"
