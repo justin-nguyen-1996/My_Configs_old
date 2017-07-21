@@ -110,3 +110,4 @@ cd() { builtin cd "${1-$(echo ~)}" && ls -F; }
 # `git reset HEAD <commit id>` to remove from git commit --> use `gitlog` to see git commit id's
 #     (shortcut: `git reset HEAD~#` --> # is how many commits to go back --> e.g. `git reset HEAD~1` means undo latest commit)
 # `git checkout` to just quickly check something out and go back
+

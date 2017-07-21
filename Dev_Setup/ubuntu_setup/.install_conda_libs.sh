@@ -2,6 +2,12 @@
 
 set timeout -1
 
+spawn printf "\n=========================\ninstalling ipython\n=========================\n"
+spawn conda install ipython
+expect "Proceed ?"
+send "y\r"
+expect "$ "
+
 spawn printf "\n=========================\ninstalling numpy\n=========================\n"
 spawn conda install numpy
 expect "Proceed ?"
@@ -76,12 +82,6 @@ expect "$ "
 
 spawn printf "\n=========================\ninstalling pyfftw\n=========================\n"
 spawn conda install pyfftw
-expect "Proceed ?"
-send "y\r"
-expect "$ "
-
-spawn printf "\n=========================\ninstalling ipython\n=========================\n"
-spawn conda install ipython
 expect "Proceed ?"
 send "y\r"
 expect "$ "

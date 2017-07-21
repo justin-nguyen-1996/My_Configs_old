@@ -18,4 +18,6 @@ Miscellaneous Notes:
  - there is a '.install_conda_libs.sh' script in this directory 
    - don't run it
    - it's only there to be called by 'config_ubuntu.sh'
+ - if ipython can't find your modules --> compare results of 'which python' and 'which ipython'
+                                      --> if already the same then add exe to the front of the path (i.e. find ipython executable in ~/miniconda2/bin/ipython)
 
