@@ -20,6 +20,7 @@ Plugin 'aperezdc/vim-template'
 Plugin 'tpope/tpope-vim-abolish'
 Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-repeat'
+Plugin 'justinmk/vim-sneak'
 call vundle#end()
 filetype plugin indent on
 
@@ -140,6 +141,21 @@ let g:snippet_version = 1
 " function! GetFullPath()
 " 	return expand('%:p')
 " endfunction
+
+
+" ================================================================="
+" ================================================================="
+" =============== Begin additions for Sneak plugin ================"
+
+" use one-character sneak
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
+
+" remap the repeat-motion key
+map , <Plug>Sneak_;
+map < <Plug>Sneak_,
 
 " ================================================================="
 " ================================================================="
@@ -276,9 +292,9 @@ nnoremap <C-l> gt
 inoremap <C-l> <ESC>gt
 
 " use , to repeat the last find command --> use shift, to go the other way
-nnoremap , ;
-vnoremap , ;
-nnoremap < ,
+" nnoremap , ;
+" vnoremap , ;
+" nnoremap < ,
 
 " remap the normal paste to align the pasted block with the surrounded text
 nnoremap p ]p
@@ -500,6 +516,18 @@ function! Visual_Paste_Hack_For_D()
 	call setreg('0', getreg('"'))
 endfunction
 nnoremap <silent> D : call Visual_Paste_Hack_For_D()<CR>
+
+function! Visual_Paste_Hack_For_dw()
+	execute 'normal!' 'dw'
+	call setreg('0', getreg('"'))
+endfunction
+nnoremap <silent> dw : call Visual_Paste_Hack_For_dw()<CR>
+
+function! Visual_Paste_Hack_For_de()
+	execute 'normal!' 'de'
+	call setreg('0', getreg('"'))
+endfunction
+nnoremap <silent> de : call Visual_Paste_Hack_For_de()<CR>
 
 function! Visual_Paste_Hack_For_yy()
 	execute 'normal!' 'yy'
