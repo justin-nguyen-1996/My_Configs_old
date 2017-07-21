@@ -1,7 +1,7 @@
 
-# aliases for editing .bashrc (ea) and vimrc (ev)
-alias ea='vim ~/.bashrc; source ~/.bashrc && source $HOME/.bashrc'
+# aliases for editing .bash_aliases and vimrc files
 alias ev='vim $VIM/vimrc;'
+alias ea='vim ~/.bashrc; source ~/.bashrc && source $HOME/.bashrc'
 
 # some silly things because I'm really lazy (basically one-shot commands to git commit/push vimrc and other config files)
 alias git_update='cd ~/Github/My_Configs  &&  ga  &&  gs  &&  gc "update"  &&  gp  && cd -'
@@ -15,9 +15,10 @@ alias cp_after='cp_syntax  &&  cp_ftplugin  &&  cp_plugin'
 alias cp_templates='cp -t ~/Github/My_Configs/templates/ ~/.vim/bundle/vim-template/templates/*'
 alias cpconfig='cp_vim  &&  cp_dotfiles  &&  cp_snippets  &&  cp_after  &&  cp_templates  &&  git_update'
 
-# aliases for Ubuntu
+# aliases for Ubuntu (because of stupid sudo)
 if [ "$ENV_TYPE" == "ubuntu" ]
-	then alias cp='sudo cp'
+	then alias vim='sudo vim'
+		 alias cp='sudo cp'
 		 alias mv='sudo mv'
 		 alias rm='sudo rm'
 		 alias chmod='sudo chmod'
@@ -25,17 +26,13 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 		 alias DOS='sudo dos2unix'
 		 alias install='sudo apt-get install'
 		 alias search='sudo apt-cache search'
-		 alias vim='sudo vim'
 		 alias open='gnome-open'
-		 alias p='python'
 fi
 
 # aliases for Cygwin
 if [ "$ENV_TYPE" == "cygwin" ]
 	then alias open='cygstart'
 		 alias DOS='dos2unix'
-		 alias p='python -i'
-		 alias ev='vim $VIM/vimrc;'
 fi
 
 # git aliases
@@ -72,9 +69,8 @@ alias tar='tar -xzvf'
 # lazy aliases and typos
 alias sl='ls'
 alias l='ls'
+alias p='python'
 alias ch='chmod 755'
-
-alias un='unzip'
 
 # enable extglob (useful for something like rm !(temp.c))
 shopt -s extglob
