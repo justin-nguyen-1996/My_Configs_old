@@ -20,7 +20,6 @@ Plugin 'aperezdc/vim-template'
 Plugin 'tpope/tpope-vim-abolish'
 Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-repeat'
-Plugin 'justinmk/vim-sneak'
 call vundle#end()
 filetype plugin indent on
 
@@ -141,21 +140,6 @@ let g:snippet_version = 1
 " function! GetFullPath()
 " 	return expand('%:p')
 " endfunction
-
-
-" ================================================================="
-" ================================================================="
-" =============== Begin additions for Sneak plugin ================"
-
-" use one-character sneak
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
-map t <Plug>Sneak_t
-map T <Plug>Sneak_T
-
-" remap the repeat-motion key
-map , <Plug>Sneak_;
-map < <Plug>Sneak_,
 
 " ================================================================="
 " ================================================================="
