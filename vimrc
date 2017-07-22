@@ -276,9 +276,9 @@ nnoremap <C-l> gt
 inoremap <C-l> <ESC>gt
 
 " use , to repeat the last find command --> use shift, to go the other way
-" nnoremap , ;
-" vnoremap , ;
-" nnoremap < ,
+nnoremap , ;
+vnoremap , ;
+nnoremap < ,
 
 " remap the normal paste to align the pasted block with the surrounded text
 nnoremap p ]p

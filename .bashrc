@@ -28,7 +28,7 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 		 alias install='sudo apt-get install'
 		 alias search='sudo apt-cache search'
 		 alias open='gnome-open'
-		 alias p='python'
+		 alias p='ipython'
 fi
 
 # aliases for Cygwin
