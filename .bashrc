@@ -15,16 +15,11 @@ alias cp_after='cp_syntax  &&  cp_ftplugin  &&  cp_plugin'
 alias cp_templates='cp -t ~/Github/My_Configs/templates/ ~/.vim/bundle/vim-template/templates/*'
 alias cpconfig='cp_vim  &&  cp_dotfiles  &&  cp_snippets  &&  cp_after  &&  cp_templates  &&  git_update'
 
-# aliases for Ubuntu (because of stupid sudo)
+# aliases for Ubuntu
 if [ "$ENV_TYPE" == "ubuntu" ]
-	then alias vim='sudo vim'
-		 alias cp='sudo cp'
-		 alias mv='sudo mv'
-		 alias rm='sudo rm'
-		 alias mkdir='sudo mkdir'
-		 alias ls='sudo ls'
+	then alias ls='sudo ls'
 		 alias chmod='sudo chmod'
-		 alias DOS='sudo dos2unix'
+		 alias chown='sudo chown'
 		 alias install='sudo apt-get install'
 		 alias search='sudo apt-cache search'
 		 alias open='gnome-open'
