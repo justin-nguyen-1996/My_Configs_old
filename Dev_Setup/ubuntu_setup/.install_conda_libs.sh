@@ -80,3 +80,9 @@ expect "Proceed ?"
 send "y\r"
 expect "$ "
 
+spawn printf "\n=========================\ninstalling ipython\n=========================\n"
+spawn conda install ipython
+expect "Proceed ?"
+send "y\r"
+expect "$ "
+
