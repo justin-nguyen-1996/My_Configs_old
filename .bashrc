@@ -1,6 +1,5 @@
 
 # aliases for editing vimrc and .bashrc
-alias ev='vim $VIM/vimrc;'
 alias ea='vim ~/.bashrc; source ~/.bashrc && source $HOME/.bashrc'
 
 # some silly things because I'm really lazy (basically one-shot commands to git commit/push vimrc and other config files)
@@ -18,12 +17,14 @@ alias cpconfig='cp_vim  &&  cp_dotfiles  &&  cp_snippets  &&  cp_after  &&  cp_t
 # aliases for Ubuntu
 if [ "$ENV_TYPE" == "ubuntu" ]
 	then alias ls='sudo ls'
+		 alias rm='sudo rm'
 		 alias chmod='sudo chmod'
 		 alias chown='sudo chown'
 		 alias install='sudo apt-get install'
 		 alias search='sudo apt-cache search'
 		 alias open='gnome-open'
 		 alias p='ipython'
+		 alias ev='sudo vim $VIM/vimrc;'
 fi
 
 # aliases for Cygwin

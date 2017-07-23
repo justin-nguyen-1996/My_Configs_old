@@ -2,7 +2,7 @@
 Increase sudo time with
  - sudo visudo
  - Change the defaults line to become 
-   - Defaults        env_reset,timestamp_timeout=120
+   - Defaults        env_reset,timestamp_timeout=600
 
 System Settings (can search it or click the gear on the left side of the launcher)
  - Brightness & Lock --> change the time it takes to lock the screen (off and never)

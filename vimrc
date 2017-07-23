@@ -1,5 +1,5 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible " required
+filetype off     " required
 
 " ================================================================="
 " ================================================================="
@@ -361,14 +361,11 @@ inoremap <C-k> <C-x><C-f>
 " ================================================================="
 " =============== Begin my 'vnoremaps' vimrc things ==============="
 
-" remap the paste function in visual mode to Control-p
-vnoremap <C-p> p
-
 " easier uppercasing/lowercasing
 vnoremap U ~
 
 " so that your default register won't be overwritten when you paste over stuff in visual mode
-vnoremap p "0p
+xnoremap p "_dP
 
 " ================================================================="
 " ================================================================="
@@ -475,6 +472,11 @@ function! Smart_Delete_dd()
 		call setreg('*', temp)
 		call setreg('+', temp)
 		call setreg('0', temp)
+	elseif matchstr(@", '\_s*') != @" " if not just whitespace
+		call setreg('"', temp)
+		call setreg('*', temp)
+		call setreg('+', temp)
+		call setreg('0', temp)
 	endif
 endfunction
 nnoremap <silent> dd :call Smart_Delete_dd()<CR>
@@ -487,37 +489,14 @@ function! Smart_Delete_Vd() range
 		call setreg('*', temp)
 		call setreg('+', temp)
 		call setreg('0', temp)
+	elseif matchstr(@", '\_s*') != @" " if just whitespace
+		call setreg('"', temp)
+		call setreg('*', temp)
+		call setreg('+', temp)
+		call setreg('0', temp)
 	endif
 endfunction
 vnoremap <silent> d :call Smart_Delete_Vd()<CR>
-
-"=================================================================="
-
-" functions for making visual pasting act the way you'd expect it to
-
-function! Visual_Paste_Hack_For_D()
-	execute 'normal!' 'D'
-	call setreg('0', getreg('"'))
-endfunction
-nnoremap <silent> D : call Visual_Paste_Hack_For_D()<CR>
-
-function! Visual_Paste_Hack_For_dw()
-	execute 'normal!' 'dw'
-	call setreg('0', getreg('"'))
-endfunction
-nnoremap <silent> dw : call Visual_Paste_Hack_For_dw()<CR>
-
-function! Visual_Paste_Hack_For_de()
-	execute 'normal!' 'de'
-	call setreg('0', getreg('"'))
-endfunction
-nnoremap <silent> de : call Visual_Paste_Hack_For_de()<CR>
-
-function! Visual_Paste_Hack_For_yy()
-	execute 'normal!' 'yy'
-	call setreg('0', getreg('"'))
-endfunction
-nnoremap <silent> yy : call Visual_Paste_Hack_For_yy()<CR>
 
 "=================================================================="
 
