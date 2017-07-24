@@ -296,40 +296,40 @@ nnoremap <C-p> :cp<CR>
 
 " mappings for easily deleting the surrounding brackets/parentheses
 " ==========================================================================================================
-nnoremap <silent> <Plug>Map_df( dt(me%x`ex=:silent! call repeat#set("\<Plug>Map_df(", v:count)<CR>
-nmap df( <Plug>Map_df(`e
+nnoremap <silent> <Plug>Map_df( dt(me%x`ex:silent! call repeat#set("\<plug>Map_df(", v:count)<cr>
+nmap df( <Plug>Map_df(
 
-nnoremap <silent> <Plug>Map_d( me%x`ex=:silent! call repeat#set("\<Plug>Map_d(", v:count)<CR>
+nnoremap <silent> <Plug>Map_d( me%x`ex:silent! call repeat#set("\<Plug>Map_d(", v:count)<CR>
 nmap d( <Plug>Map_d(`e
 
-nnoremap <silent> <Plug>Map_df[ dt[me%x`ex=:silent! call repeat#set("\<Plug>Map_df[", v:count)<CR>
+nnoremap <silent> <Plug>Map_df[ dt[me%x`ex:silent! call repeat#set("\<Plug>Map_df[", v:count)<CR>
 nmap df[ <Plug>Map_df[`e
 
-nnoremap <silent> <Plug>Map_d[ me%x`ex=:silent! call repeat#set("\<Plug>Map_d[", v:count)<CR>
+nnoremap <silent> <Plug>Map_d[ me%x`ex:silent! call repeat#set("\<Plug>Map_d[", v:count)<CR>
 nmap d[ <Plug>Map_df[`e
 " ==========================================================================================================
 
 " mappings for easily changing the surrounding brackets/parentheses
 " ==========================================================================================================
-nnoremap <silent> <Plug>Map_cf( dt(me%x`exi=:silent! call repeat#set("\<Plug>Map_cf(", v:count)<CR>
+nnoremap <silent> <Plug>Map_cf( dt(me%x`exi:silent! call repeat#set("\<Plug>Map_cf(", v:count)<CR>
 nmap cf( <Plug>Map_cf(`e
 
-nnoremap <silent> <Plug>Map_c( %me%r(`er)%=:silent! call repeat#set("\<Plug>Map_c(", v:count)<CR>
+nnoremap <silent> <Plug>Map_c( %me%r(`er)%:silent! call repeat#set("\<Plug>Map_c(", v:count)<CR>
 nmap c( <Plug>Map_c(`e
 
-nnoremap <silent> <Plug>Map_cf[ dt[me%x`exi=:silent! call repeat#set("\<Plug>Map_cf[", v:count)<CR>
+nnoremap <silent> <Plug>Map_cf[ dt[me%x`exi:silent! call repeat#set("\<Plug>Map_cf[", v:count)<CR>
 nmap cf[ <Plug>Map_cf[`e
 
-nnoremap <silent> <Plug>Map_c[ %me%r[`er]%=:silent! call repeat#set("\<Plug>Map_c[", v:count)<CR>
+nnoremap <silent> <Plug>Map_c[ %me%r[`er]%:silent! call repeat#set("\<Plug>Map_c[", v:count)<CR>
 nmap c[ <Plug>Map_c[`e
 " ==========================================================================================================
 
 " mappings for easily replacing the surrounding brackets/parentheses
 " ==========================================================================================================
-nnoremap <silent> <Plug>Map_r( %me%r(`er)%=:silent! call repeat#set("\<Plug>Map_r(", v:count)<CR>
+nnoremap <silent> <Plug>Map_r( %me%r(`er)%:silent! call repeat#set("\<Plug>Map_r(", v:count)<CR>
 nmap r( <Plug>Map_r(`e
 
-nnoremap <silent> <Plug>Map_r[ %me%r[`er]%=:silent! call repeat#set("\<Plug>Map_r[", v:count)<CR>
+nnoremap <silent> <Plug>Map_r[ %me%r[`er]%:silent! call repeat#set("\<Plug>Map_r[", v:count)<CR>
 nmap r[ <Plug>Map_r[`e
 " ==========================================================================================================
 
