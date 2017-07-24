@@ -12,7 +12,7 @@ Auto-maximized terminal
  - open a terminal --> go to the launcher --> right-click and choose "Lock to Launcher"
  - go to the edits bar (top of the screen) --> then profile preferences --> change initial terminal size to something really big
  
-Miscellaneous Notes:
+Miscellaneous notes:
  - might need to run dos2unix on files that give weird errors
  - remove unnecessary folders from ~/
  - there is a '.install_conda_libs.sh' script in this directory 
@@ -20,4 +20,21 @@ Miscellaneous Notes:
    - it's only there to be called by 'config_ubuntu.sh'
  - if ipython can't find your modules --> compare results of 'which python' and 'which ipython'
                                       --> if already the same then add exe to the front of the path (i.e. find ipython executable in ~/miniconda2/bin/ipython)
+
+Virtual Box
+ - for guest additions
+     power down vm --> settings --> add optical drive (leave empty)
+     power on vm --> devices --> insert guest additions
+
+ - for copy/paste between host and VM
+     power down vm --> settings --> general --> advanced --> bidirectional for shared clipboard and drag/drop
+
+ - for multiple monitors
+	 power down vm --> settings --> screen --> monitor count = 2 --> video memory increased (e.g. 100 MB)
+
+ - Vbox shared folder
+	 devices --> shared folders --> intuitive setup
+	 then go to here: https://help.ubuntu.com/community/VirtualBox/SharedFolders
+	 sudo mount -t vboxsf -o uid=$UID,gid=$(id -g) sharedFolderName pathOnLinuxVMToSharedFolder
+	   --> example:  sudo mount -t vboxsf -o uid=$UID,gid=$(id -g) newSharedFolder ~/sharedFolder
 
