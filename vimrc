@@ -294,6 +294,45 @@ nnoremap <C-n> :cn<CR>
 " NOTE: can also map this to CTRL-N
 nnoremap <C-p> :cp<CR>
 
+" mappings for easily deleting the surrounding brackets/parentheses
+" ==========================================================================================================
+nnoremap <silent> <Plug>Map_df( dt(me%x`ex=:silent! call repeat#set("\<Plug>Map_df(", v:count)<CR>
+nmap df( <Plug>Map_df(`e
+
+nnoremap <silent> <Plug>Map_d( me%x`ex=:silent! call repeat#set("\<Plug>Map_d(", v:count)<CR>
+nmap d( <Plug>Map_d(`e
+
+nnoremap <silent> <Plug>Map_df[ dt[me%x`ex=:silent! call repeat#set("\<Plug>Map_df[", v:count)<CR>
+nmap df[ <Plug>Map_df[`e
+
+nnoremap <silent> <Plug>Map_d[ me%x`ex=:silent! call repeat#set("\<Plug>Map_d[", v:count)<CR>
+nmap d[ <Plug>Map_df[`e
+" ==========================================================================================================
+
+" mappings for easily changing the surrounding brackets/parentheses
+" ==========================================================================================================
+nnoremap <silent> <Plug>Map_cf( dt(me%x`exi=:silent! call repeat#set("\<Plug>Map_cf(", v:count)<CR>
+nmap cf( <Plug>Map_cf(`e
+
+nnoremap <silent> <Plug>Map_c( %me%r(`er)%=:silent! call repeat#set("\<Plug>Map_c(", v:count)<CR>
+nmap c( <Plug>Map_c(`e
+
+nnoremap <silent> <Plug>Map_cf[ dt[me%x`exi=:silent! call repeat#set("\<Plug>Map_cf[", v:count)<CR>
+nmap cf[ <Plug>Map_cf[`e
+
+nnoremap <silent> <Plug>Map_c[ %me%r[`er]%=:silent! call repeat#set("\<Plug>Map_c[", v:count)<CR>
+nmap c[ <Plug>Map_c[`e
+" ==========================================================================================================
+
+" mappings for easily replacing the surrounding brackets/parentheses
+" ==========================================================================================================
+nnoremap <silent> <Plug>Map_r( %me%r(`er)%=:silent! call repeat#set("\<Plug>Map_r(", v:count)<CR>
+nmap r( <Plug>Map_r(`e
+
+nnoremap <silent> <Plug>Map_r[ %me%r[`er]%=:silent! call repeat#set("\<Plug>Map_r[", v:count)<CR>
+nmap r[ <Plug>Map_r[`e
+" ==========================================================================================================
+
 " remap U to ~ for easier uppercasing/lowercasing
 nnoremap U ~
 
@@ -309,26 +348,6 @@ nnoremap '' ``zz
 
 " map Y to act the same as D & C
 nnoremap Y y$
-
-" mappings for easily deleting the surrounding brackets/parentheses
-nnoremap df( dt(me%x`ex
-nnoremap d( me%x`ex
-nnoremap df[ dt[me%x`ex
-nnoremap d[ me%x`ex
-
-" mappings for easily changing the surrounding brackets/parentheses
-nnoremap cf( dt(me%x`exi
-nnoremap c( %me%r(`er)%
-nnoremap cf[ dt[me%x`exi
-nnoremap c[ %me%r[`er]%
-
-" mappings for easily yanking the surrounding brackets/parentheses
-nnoremap y( v%y
-nnoremap y[ v%y
-
-" mappings for easily replacing the surrounding brackets/parentheses
-nnoremap r( %me%r(`er)%
-nnoremap r[ %me%r[`er]%
 
 " ================================================================="
 " ================================================================="
@@ -472,11 +491,6 @@ function! Smart_Delete_dd()
 		call setreg('*', temp)
 		call setreg('+', temp)
 		call setreg('0', temp)
-	elseif matchstr(@", '\_s*') != @" " if not just whitespace
-		call setreg('"', temp)
-		call setreg('*', temp)
-		call setreg('+', temp)
-		call setreg('0', temp)
 	endif
 endfunction
 nnoremap <silent> dd :call Smart_Delete_dd()<CR>
@@ -485,11 +499,6 @@ function! Smart_Delete_Vd() range
 	let temp = getreg('"', 1)
 	execute 'normal!' . (a:lastline - a:firstline + 1) . 'dd'
 	if matchstr(@", '\_s*') == @"    " if just whitespace
-		call setreg('"', temp)
-		call setreg('*', temp)
-		call setreg('+', temp)
-		call setreg('0', temp)
-	elseif matchstr(@", '\_s*') != @" " if just whitespace
 		call setreg('"', temp)
 		call setreg('*', temp)
 		call setreg('+', temp)

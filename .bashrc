@@ -18,6 +18,7 @@ alias cpconfig='cp_vim  &&  cp_dotfiles  &&  cp_snippets  &&  cp_after  &&  cp_t
 if [ "$ENV_TYPE" == "ubuntu" ]
 	then alias ls='sudo ls'
 		 alias rm='sudo rm'
+		 alias mv='sudo mv'
 		 alias chmod='sudo chmod'
 		 alias chown='sudo chown'
 		 alias install='sudo apt-get install'
@@ -64,6 +65,9 @@ alias dir='ls --color=auto'
 alias la='ls -al'
 alias grep='grep -ni --color --exclude tags --exclude .tags'
 alias tar='tar -xzvf'
+alias gitlog='git log --oneline'
+alias du='du -h'
+alias df='df -h'
 
 # lazy aliases and typos
 alias sl='ls'
@@ -101,3 +105,8 @@ cd() { builtin cd "${1-$(echo ~)}" && ls -F; }
 
 # added by Anaconda2 4.1.0 installer
 # export PATH="/home/jusnguy/anaconda2/bin:$PATH"
+
+# `git reset <filename>` to remove from git add
+# `git reset HEAD <commit id>` to remove from git commit --> use `gitlog` to see git commit id's
+#     (shortcut: `git reset HEAD~#` --> # is how many commits to go back --> e.g. `git reset HEAD~1` means undo latest commit)
+# `git checkout` to just quickly check something out and go back
