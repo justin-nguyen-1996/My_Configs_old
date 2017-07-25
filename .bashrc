@@ -60,7 +60,7 @@ alias MARIO='ssh jnguyen10@mario.ece.utexas.edu'
 alias GRADER='ssh jnguyen10@grader.ece.utexas.edu'
 
 # nicer & easier ls/dir/la/grep/tar
-alias ls='ls -hF --color=tty'
+alias ls='ls -hF --color=tty --hide=*.pyc'
 alias dir='ls --color=auto'
 alias la='ls -al'
 alias grep='grep -ni --color --exclude tags --exclude .tags'
