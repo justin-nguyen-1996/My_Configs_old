@@ -300,37 +300,40 @@ nnoremap <silent> <Plug>Map_df( dt(me%x`ex:silent! call repeat#set("\<plug>Map_d
 nmap df( <Plug>Map_df(
 
 nnoremap <silent> <Plug>Map_d( me%x`ex:silent! call repeat#set("\<Plug>Map_d(", v:count)<CR>
-nmap d( <Plug>Map_d(`e
+nmap d( <Plug>Map_d(
 
 nnoremap <silent> <Plug>Map_df[ dt[me%x`ex:silent! call repeat#set("\<Plug>Map_df[", v:count)<CR>
-nmap df[ <Plug>Map_df[`e
+nmap df[ <Plug>Map_df[
 
 nnoremap <silent> <Plug>Map_d[ me%x`ex:silent! call repeat#set("\<Plug>Map_d[", v:count)<CR>
-nmap d[ <Plug>Map_df[`e
+nmap d[ <Plug>Map_df[
 " ==========================================================================================================
 
 " mappings for easily changing the surrounding brackets/parentheses
 " ==========================================================================================================
 nnoremap <silent> <Plug>Map_cf( dt(me%x`exi:silent! call repeat#set("\<Plug>Map_cf(", v:count)<CR>
-nmap cf( <Plug>Map_cf(`e
+nmap cf( <Plug>Map_cf(
 
 nnoremap <silent> <Plug>Map_c( %me%r(`er)%:silent! call repeat#set("\<Plug>Map_c(", v:count)<CR>
-nmap c( <Plug>Map_c(`e
+nmap c( <Plug>Map_c(
 
 nnoremap <silent> <Plug>Map_cf[ dt[me%x`exi:silent! call repeat#set("\<Plug>Map_cf[", v:count)<CR>
-nmap cf[ <Plug>Map_cf[`e
+nmap cf[ <Plug>Map_cf[
 
 nnoremap <silent> <Plug>Map_c[ %me%r[`er]%:silent! call repeat#set("\<Plug>Map_c[", v:count)<CR>
-nmap c[ <Plug>Map_c[`e
+nmap c[ <Plug>Map_c[
 " ==========================================================================================================
 
 " mappings for easily replacing the surrounding brackets/parentheses
 " ==========================================================================================================
 nnoremap <silent> <Plug>Map_r( %me%r(`er)%:silent! call repeat#set("\<Plug>Map_r(", v:count)<CR>
-nmap r( <Plug>Map_r(`e
+nmap r( <Plug>Map_r(
 
-nnoremap <silent> <Plug>Map_r[ %me%r[`er]%:silent! call repeat#set("\<Plug>Map_r[", v:count)<CR>
-nmap r[ <Plug>Map_r[`e
+nnoremap <silent> <Plug>Map_r] %me%r[`er]%:silent! call repeat#set("\<Plug>Map_r[", v:count)<CR>
+nmap r[ <Plug>Map_r[
+
+nnoremap <silent> <Plug>Map_r] %me%r]`er[%:silent! call repeat#set("\<Plug>Map_r]", v:count)<CR>
+nmap r] <Plug>Map_r]
 " ==========================================================================================================
 
 " remap U to ~ for easier uppercasing/lowercasing
