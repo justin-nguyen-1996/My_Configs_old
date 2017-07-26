@@ -19,6 +19,12 @@ snippet time.time
 	end = time.time
 	print; print("end - start: "); print(end - start)
 
+snippet docs
+	# Notes:  ${1}
+	# Return: 
+	# Params: 
+	${0}
+
 #########################################################################
 #########################################################################
 #########################################################################
@@ -36,16 +42,6 @@ snippet uni
 		${0:representation}
 snippet from
 	from ${1:package} import ${0:module}
-
-# Module Docstring
-snippet docs
-	"""
-	File: ${1:`vim_snippets#Filename('$1.py', 'foo.py')`}
-	Author: `g:snips_author`
-	Email: `g:snips_email`
-	Github: `g:snips_github`
-	Description: ${0}
-	"""
 
 snippet wh
 	while ${1:condition}:
