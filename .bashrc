@@ -19,7 +19,6 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 	then alias ls='sudo ls'
 		 alias rm='sudo rm'
 		 alias mv='sudo mv'
-		 alias cp='sudo cp'
 		 alias chmod='sudo chmod'
 		 alias chown='sudo chown'
 		 alias install='sudo apt-get install'
