@@ -518,6 +518,43 @@ fun! s:fullpath()
 endfun
 command! FullPath :call s:fullpath()
 
+"=================================================================="
+
+" make an incremented list from a column of the same number
+" 1.        2.
+" 1.    --> 3.
+" 1.        4.
+fun! s:AddToList(line1, line2)
+
+	" mark line1  &&  keep track of lines selected
+	execute 'normal!' 'me'
+	let l:numDiff = a:line2 - a:line1
+	let l:colNum  = col('.')
+
+	" loop through and increment the list
+	let i = numDiff
+	let j = 0
+	execute 'normal!' 'j'
+	while i > 0
+		execute 'normal!' 'mr'
+		while j < i
+			execute 'normal!' 'j'
+			while col('.') != l:colNum
+				execute 'normal!' 'h'
+			endwhile
+			let j += 1
+		endwhile
+		execute 'normal!' '`rj'
+		let i -= 1
+		let j = 0
+	endwhile
+
+	" return to the beginning of the list incrementation
+	execute 'normal!' '`e'
+
+endfun
+command! -range Add :call s:AddToList(<line1>, <line2>)
+
 " ================================================================="
 " ================================================================="
 " ================= Begin my custom ';' commands =================="

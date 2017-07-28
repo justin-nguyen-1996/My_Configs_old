@@ -20,3 +20,23 @@ endfunction
 vnoremap ;/ :call ToggleComment()<CR>
 nnoremap ;/ :call ToggleComment()<CR>
 
+" easily wrap the selected text in a time.time() statement for quick timing
+fun! s:PythonTiming(line1, line2)
+
+	" mark line one  &&  keep track of lines selected
+	execute 'normal!' 'me'
+	let l:numDiff = a:line2 - a:line1
+
+	" start timing
+	execute 'normal!' 'Ostart = time.time()'
+
+	" end timing
+	while line('.') < a:line2 + 1
+		execute 'normal!' 'j'
+	endwhile
+	execute 'normal!' 'oend = time.time()'
+	execute 'normal!' 'oprint; print("end - start: "); print(end - start)'
+
+endfun
+command! -range Time :call s:PythonTiming(<line1>, <line2>)
+
