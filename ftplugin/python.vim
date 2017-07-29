@@ -37,6 +37,16 @@ fun! s:PythonTiming(line1, line2)
 	execute 'normal!' 'oend = time.time()'
 	execute 'normal!' 'oprint; print("end - start: "); print(end - start)'
 
+	" add the `import time` statement if not already imported
+	let match = search('import time', 'nw')
+	if match == 0
+		silent! execute 'normal!' 'gg/import/'
+		execute 'normal!' 'oimport time'
+	endif
+
+	" go back to the initial mark
+	execute 'normal!' '`e'
+
 endfun
 command! -range Time :call s:PythonTiming(<line1>, <line2>)
 
