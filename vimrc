@@ -324,18 +324,6 @@ nnoremap <silent> <Plug>Map_c[ %me%r[`er]%:silent! call repeat#set("\<Plug>Map_c
 nmap c[ <Plug>Map_c[
 " ==========================================================================================================
 
-" mappings for easily replacing the surrounding brackets/parentheses
-" ==========================================================================================================
-nnoremap <silent> <Plug>Map_r( %me%r(`er)%:silent! call repeat#set("\<Plug>Map_r(", v:count)<CR>
-nmap r( <Plug>Map_r(
-
-nnoremap <silent> <Plug>Map_r] %me%r[`er]%:silent! call repeat#set("\<Plug>Map_r[", v:count)<CR>
-nmap r[ <Plug>Map_r[
-
-nnoremap <silent> <Plug>Map_r] %me%r]`er[%:silent! call repeat#set("\<Plug>Map_r]", v:count)<CR>
-nmap r] <Plug>Map_r]
-" ==========================================================================================================
-
 " remap U to ~ for easier uppercasing/lowercasing
 nnoremap U ~
 
@@ -351,6 +339,14 @@ nnoremap '' ``zz
 
 " map Y to act the same as D & C
 nnoremap Y y$
+
+" mapping to easily insert spaces on interior sides of matching parentheses
+nnoremap ( %i <ESC>l%a <ESC>h
+nnoremap ) %a <ESC>h%i <ESC>l
+
+" mapping to easily insert spaces on interior sides of matching brackets
+nnoremap [ %i <ESC>l%a <ESC>h
+nnoremap ] %a <ESC>h%i <ESC>l
 
 " ================================================================="
 " ================================================================="
