@@ -15,26 +15,22 @@ Auto-maximized terminal
 Miscellaneous notes:
  - might need to run dos2unix on files that give weird errors
  - remove unnecessary folders from ~/
- - there is a '.install_conda_libs.sh' script in this directory 
-   - don't run it
-   - it's only there to be called by 'config_ubuntu.sh'
  - if ipython can't find your modules --> compare results of 'which python' and 'which ipython'
-                                      --> if already the same then add exe to the front of the path (i.e. find ipython executable in ~/miniconda2/bin/ipython)
+                                      --> if already the same then add the .exe to the front of the path (i.e. find ipython executable in ~/miniconda2/bin/ipython)
 
 Virtual Box
- - for guest additions
-     power down vm --> settings --> add optical drive (leave empty)
-     power on vm --> devices --> insert guest additions
+ - Create New VM
+   click new --> create virtual hard disk --> VDI --> dynamically allocated --> 60 GB of disk space --> create
+   settings --> general --> shared clipboard (bidirectional) --> drag n drop (bidirectional)
+   settings --> display --> video memory (40 MB) --> monitor count (2)
+   settings --> storage --> under controller:IDE 
+                        --> click on the cd that says Empty --> (on the right) click on the cd next to Optical Drive: IDE Secondary Master --> choose the ubuntu .iso option
+   settings --> shared folders --> (on the right) click the folder with the plus on it 
+                               --> folder path (path to a folder on Windows machine) --> folder name (SharedFolder) --> check these boxes (auto-mount && make-permanent)
 
- - for copy/paste between host and VM
-     power down vm --> settings --> general --> advanced --> bidirectional for shared clipboard and drag/drop
+ - For Guest Additions
+   power on VM --> devices --> insert guest additions --> (if it fails) then shutdown the VM and try again
 
- - for multiple monitors
-	 power down vm --> settings --> screen --> monitor count = 2 --> video memory increased (e.g. 100 MB)
-
- - Vbox shared folder
-	 devices --> shared folders --> intuitive setup
-	 then go to here: https://help.ubuntu.com/community/VirtualBox/SharedFolders
-	 sudo mount -t vboxsf -o uid=$UID,gid=$(id -g) sharedFolderName pathOnLinuxVMToSharedFolder
-	   --> example:  sudo mount -t vboxsf -o uid=$UID,gid=$(id -g) newSharedFolder ~/sharedFolder
-
+ - Shared Folder
+   sudo mount -t vboxsf -o uid=$UID,gid=$(id -g) SharedFolder ~/SharedFolder
+ 
