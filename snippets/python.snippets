@@ -25,6 +25,11 @@ snippet as
 snippet plt.imshow
 	plt.imshow(${1}); plt.title('${1}'); plt.show();${0}
 
+snippet pdb
+	# TEMP
+	import pdb
+	pdb.set_trace()
+
 #########################################################################
 #########################################################################
 #########################################################################
@@ -148,10 +153,6 @@ snippet ifmain
 # __magic__
 snippet _
 	__${1:init}__
-# python debugger (pdb)
-snippet pdb
-	import pdb
-	pdb.set_trace()
 # bpython debugger (bpdb)
 snippet bpdb
 	import bpdb

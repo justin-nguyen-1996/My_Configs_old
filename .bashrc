@@ -25,7 +25,7 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 		 alias install='sudo apt-get install'
 		 alias search='sudo apt-cache search'
 		 alias open='gnome-open'
-		 alias p='ipython'
+		 alias p='ipython --pylab='auto' -i'
 		 alias ev='sudo vim $VIM/vimrc;'
 fi
 
