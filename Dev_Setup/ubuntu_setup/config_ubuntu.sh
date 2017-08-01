@@ -118,6 +118,9 @@ conda config --add channels conda-forge
 # install the python libraries through conda
 ~/Github/My_Configs/Dev_Setup/ubuntu_setup/.install_conda_libs.sh
 
+# copy over the ipython config file
+cp ~/Github/My_Configs/ipython_config.py ~/.ipython/profile_default/
+
 # make some symlinks
 ln -s ~/.vim/bundle/vim-snippets/snippets/c.snippets        ~/snippets/c.snippets
 ln -s ~/.vim/bundle/vim-snippets/snippets/cpp.snippets      ~/snippets/cpp.snippets
