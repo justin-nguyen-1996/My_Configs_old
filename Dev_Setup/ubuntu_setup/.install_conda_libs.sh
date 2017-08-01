@@ -8,6 +8,12 @@ expect "Proceed ?"
 send "y\r"
 expect "$ "
 
+spawn printf "\n=========================\ninstalling ipdb\n=========================\n"
+spawn conda install ipdb
+expect "Proceed ?"
+send "y\r"
+expect "$ "
+
 spawn printf "\n=========================\ninstalling numpy\n=========================\n"
 spawn conda install numpy
 expect "Proceed ?"
