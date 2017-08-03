@@ -12,7 +12,9 @@ alias cp_after='cp_syntax  &&  cp_ftplugin  &&  cp_plugin'
 	alias cp_ftplugin='cp -t ~/Github/My_Configs/ftplugin  ~/.vim/after/ftplugin/*'
 	alias cp_plugin='cp -t ~/Github/My_Configs/plugin/ ~/.vim/after/plugin/*'
 alias cp_templates='cp -t ~/Github/My_Configs/templates/ ~/.vim/bundle/vim-template/templates/*'
-alias cpconfig='cp_vim  &&  cp_dotfiles  &&  cp_snippets  &&  cp_after  &&  cp_templates  &&  git_update'
+alias cp_ipython='cp -t ~/Github/My_Configs/ ~/.ipython/profile_default/ipython_config.py'
+alias cp_pdb=' cp-t ~/Github/My_Configs/ ~/.pdbrc'
+alias cpconfig='cp_vim  &&  cp_dotfiles  &&  cp_snippets  &&  cp_after  &&  cp_templates  &&  cp_ipython  &&  cp_pdb  &&  git_update'
 
 # aliases for Ubuntu
 if [ "$ENV_TYPE" == "ubuntu" ]
