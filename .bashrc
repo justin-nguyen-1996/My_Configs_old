@@ -13,7 +13,7 @@ alias cp_after='cp_syntax  &&  cp_ftplugin  &&  cp_plugin'
 	alias cp_plugin='cp -t ~/Github/My_Configs/plugin/ ~/.vim/after/plugin/*'
 alias cp_templates='cp -t ~/Github/My_Configs/templates/ ~/.vim/bundle/vim-template/templates/*'
 alias cp_ipython='cp -t ~/Github/My_Configs/ ~/.ipython/profile_default/ipython_config.py'
-alias cp_pdb=' cp-t ~/Github/My_Configs/ ~/.pdbrc'
+alias cp_pdb=' cp -t ~/Github/My_Configs/ ~/.pdbrc'
 alias cpconfig='cp_vim  &&  cp_dotfiles  &&  cp_snippets  &&  cp_after  &&  cp_templates  &&  cp_ipython  &&  cp_pdb  &&  git_update'
 
 # aliases for Ubuntu
@@ -27,7 +27,8 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 		 alias install='sudo apt-get install'
 		 alias search='sudo apt-cache search'
 		 alias open='gnome-open'
-		 alias p='ipython --pylab='auto' -i'
+		 alias p='ipython -i'
+		 alias ip='ipython --pylab='auto' -i'
 		 alias ev='sudo vim $VIM/vimrc;'
 fi
 
