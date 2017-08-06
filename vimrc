@@ -517,9 +517,10 @@ command! FullPath :call s:fullpath()
 "=================================================================="
 
 " make an incremented list from a column of the same number
-" 1.        2.
-" 1.    --> 3.
-" 1.        4.
+" 1.        1.
+" 1.  -->   2.
+" 1.        3.
+
 fun! s:AddToList(line1, line2)
 
 	" mark line1  &&  keep track of lines selected
@@ -550,6 +551,45 @@ fun! s:AddToList(line1, line2)
 
 endfun
 command! -range Add :call s:AddToList(<line1>, <line2>)
+
+"=================================================================="
+
+" align all the '=' signs when doing something like this:
+" temp = fxn( a = asdf,
+"             b = asdfasdfasdf,
+"             c_asdf = asdf,
+"             d_asdfasdf = asdf )
+"
+" to turn it into this:
+" temp = fxn( a          = asdf,
+"             b          = asdfasdfasdf,
+"             c_asdf     = asdf,
+"             d_asdfasdf = asdf )
+
+fun! s:TabularEquals(line1, line2)
+
+	" mark line1  &&  keep track of lines selected
+	execute 'normal!' 'me'
+	let l:lineDiff = a:line2 - a:line1
+	let l:colNum   = col('.')
+
+	" put the first argument on a new line and line it up with the other arguments 
+	execute 'normal!' '0f=f=Bi'
+	execute 'normal!' 'wd0'
+	execute 'normal!' 'jv^hy'
+	execute 'normal!' 'k0i '
+	execute 'normal!' 'pxO'
+
+	" line up the '=' signs
+	execute 'normal!' 'j'
+	let l:curLine = line('.')
+	execute l:curLine . ',' . l:curLine+l:lineDiff . ' Tabularize /=/'
+
+	" put the aligned arguments back on the first line
+	execute 'normal!' '`eJJ'
+
+endfun
+command! -range TabE :call s:TabularEquals(<line1>, <line2>)
 
 " ================================================================="
 " ================================================================="
