@@ -571,17 +571,30 @@ fun! s:TabularEquals(line1, line2)
 	" mark line1  &&  keep track of lines selected
 	execute 'normal!' 'me'
 	let l:lineDiff = a:line2 - a:line1
-	let l:colNum   = col('.')
 
-	" put the first argument on a new line and line it up with the other arguments 
-	execute 'normal!' '0f=f=Bi'
-	execute 'normal!' 'wd0'
-	execute 'normal!' 'jv^hy'
-	execute 'normal!' 'k0i '
-	execute 'normal!' 'pxO'
+	" put the first argument on a new line and align it with the other arguments 
+	execute 'normal!' '0f=f=B'
+	let l:colNum = col('.')
+	execute 'normal!' 'i'
+
+	" align all of the arguments with where they should be
+	execute 'normal' 'l'
+	let l:curCol = col('.')
+	let l:curLine = line('.')
+	let l:endLine = l:curLine + l:lineDiff
+	while l:curLine < l:endLine+1
+		while l:curCol < l:colNum
+			execute 'normal!' 'i '
+			execute 'normal!' 'l'
+			let l:curCol = col('.')
+		endwhile
+		execute 'normal!' 'j0w'
+		let l:curLine += 1
+		let l:curCol = col('.')
+	endwhile
 
 	" line up the '=' signs
-	execute 'normal!' 'j'
+	execute 'normal!' '`ejw'
 	let l:curLine = line('.')
 	execute l:curLine . ',' . l:curLine+l:lineDiff . ' Tabularize /=/'
 
