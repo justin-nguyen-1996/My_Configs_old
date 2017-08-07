@@ -508,6 +508,21 @@ vnoremap <silent> d :call Smart_Delete_Vd()<CR>
 
 "=================================================================="
 
+" make it easier to jump down to where you stopped the visual copy
+" --> visual copying always puts you back at the top line of the visual range
+"     (but what if you wanted to copy downwards and stay down there?)
+ 
+function! Visual_Copy_Hack() range
+	let l:lineDiff = a:lastline - a:firstline
+	execute a:firstline . ',' . a:lastline . 'y'
+	execute 'normal!' l:lineDiff . 'j'
+	execute 'normal!' 'mj'
+	execute 'normal!' l:lineDiff . 'k'
+endfunction
+vnoremap <silent> y :call Visual_Copy_Hack()<CR>
+
+"=================================================================="
+
 " insert the full path of the current file 
 fun! s:fullpath()
 	:put =expand('%:p')
