@@ -611,7 +611,7 @@ fun! s:TabularEquals(line1, line2)
 	" line up the '=' signs
 	execute 'normal!' '`ejw'
 	let l:curLine = line('.')
-	execute l:curLine . ',' . l:curLine+l:lineDiff . ' Tabularize /=/'
+	execute l:curLine . ',' . (l:curLine+l:lineDiff) . ' Tabularize /=/'
 
 	" put the aligned arguments back on the first line
 	execute 'normal!' '`eJJ'
