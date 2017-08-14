@@ -1,0 +1,11 @@
+cligj
+click-plugins
+six
+munch
+enum34
+
+[calc]
+shapely
+
+[test]
+nose
