@@ -32,10 +32,26 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 		 alias ev='sudo vim $VIM/vimrc;'
 fi
 
+# aliases for redhat
+if [ "$ENV_TYPE" == "redhat" ]
+	then alias ls='sudo ls'
+		 alias rm='sudo rm'
+		 alias mv='sudo mv'
+		 alias cp='sudo cp'
+		 alias chmod='sudo chmod'
+		 alias chown='sudo chown'
+		 # alias install='sudo apt-get install'
+		 # alias search='sudo apt-cache search'
+		 # alias open='gnome-open'
+		 alias rpm='sudo rpm -Ui'
+		 alias p='ipython -i'
+		 alias ip='ipython --pylab='auto' -i'
+		 alias ev='sudo vim $VIM/vimrc;'
+fi
+
 # aliases for Cygwin
 if [ "$ENV_TYPE" == "cygwin" ]
 	then alias open='cygstart'
-		 alias DOS='dos2unix'
 		 alias p='python -i'
 fi
 
@@ -68,7 +84,7 @@ alias ls='ls -hF --color=tty --hide=*.pyc'
 alias dir='ls --color=auto'
 alias la='ls -al'
 alias grep='grep -ni --color --exclude tags --exclude .tags'
-alias tar='tar -xzvf'
+# alias tar='tar -xzvf'
 alias gitlog='git log --oneline'
 alias du='du -h'
 alias df='df -h'
@@ -77,6 +93,7 @@ alias df='df -h'
 alias sl='ls'
 alias l='ls'
 alias ch='chmod 755'
+alias dos='dos2unix'
 
 # enable extglob (useful for something like rm !(temp.c))
 shopt -s extglob
@@ -95,6 +112,8 @@ shopt -s extglob
 #   $         -->  just a '$' symbol
 # example of a spaced out version for clarity --> export PS1="\e[1;31m   \u   @   \h   :   \e[m   \e[1;33m   \w   \e[m   \n   $"
 if [ "$ENV_TYPE" == "ubuntu" ]; then
+	export PS1="\e[1;31m\n\u@\h:\e[m\e[1;33m\w\e[m\n$ "
+elif [ "$ENV_TYPE" == "redhat" ]; then
 	export PS1="\e[1;31m\n\u@\h:\e[m\e[1;33m\w\e[m\n$ "
 fi
 

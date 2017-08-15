@@ -30,13 +30,15 @@
 #######################################################################
 
 # NOTE: Must set this appropriately for the current development environment
-export ENV_TYPE="ubuntu"
+export ENV_TYPE="redhat"
 
 # set vimrc location
 if [ "$ENV_TYPE" == "cygwin" ]
 	then export VIM=/etc
 elif [ "$ENV_TYPE" == "ubuntu" ]
 	then export VIM=/usr/share/vim/
+elif [ "$ENV_TYPE" == "redhat" ]
+	then export VIM=/etc
 elif [ "$ENV_TYPE" == "moba" ]
 	then export VIM=/usr/share/vim/
 fi
@@ -49,6 +51,8 @@ if [ "$ENV_TYPE" == "cygwin" ]
 	then PATH="$PATH:/cygdrive/c/Program Files/Java/jdk1.8.0_101/bin"
 elif [ "$ENV_TYPE" == "ubuntu" ]
 	then PATH="$PATH:~/Downloads/Java/jdk1.8.0_101/bin"
+elif [ "$ENV_TYPE" == "redhat" ]
+	then PATH="$PATH:~/Downloads/Java/jdk1.8.0_101/bin"
 elif [ "$ENV_TYPE" == "moba" ]
 	then PATH="$PATH:/cygdrive/c/Program Files/Java/jdk1.8.0_101/bin"
 fi
@@ -57,6 +61,8 @@ fi
 if [ "$ENV_TYPE" == "cygwin" ]
 	then export PATH="$HOME/miniconda2/Scripts/:$HOME/miniconda2/:$PATH"
 elif [ "$ENV_TYPE" == "ubuntu" ]
+	then export PATH="$HOME/miniconda2/bin:$PATH"
+elif [ "$ENV_TYPE" == "redhat" ]
 	then export PATH="$HOME/miniconda2/bin:$PATH"
 fi
 
@@ -78,6 +84,8 @@ fi
 
 # set PATH so it includes user's private bin directories
 if [ "$ENV_TYPE" == "ubuntu" ]
+	then PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+elif [ "$ENV_TYPE" == "redhat" ]
 	then PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 fi
 
