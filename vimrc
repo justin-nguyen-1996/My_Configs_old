@@ -148,6 +148,9 @@ let g:snippet_version = 1
 " Show (partial) command in status line
 set showcmd
 
+" colorscheme
+set background=dark
+
 " Do case insensitive matching, smart case matching, don't wrap back to the top after searching
 set ignorecase
 set smartcase
@@ -486,10 +489,10 @@ function! Smart_Delete_dd()
 	let temp = getreg('"', 1)
 	execute 'normal!' 'dd'
 	if matchstr(@", '\_s*') == @"    " if just whitespace
-		call setreg('"', temp)
-		call setreg('*', temp)
-		call setreg('+', temp)
-		call setreg('0', temp)
+		silent! call setreg('"', temp)
+		silent! call setreg('*', temp)
+		silent! call setreg('+', temp)
+		silent! call setreg('0', temp)
 	endif
 endfunction
 nnoremap <silent> dd :call Smart_Delete_dd()<CR>
@@ -498,10 +501,10 @@ function! Smart_Delete_Vd() range
 	let temp = getreg('"', 1)
 	execute 'normal!' . (a:lastline - a:firstline + 1) . 'dd'
 	if matchstr(@", '\_s*') == @"    " if just whitespace
-		call setreg('"', temp)
-		call setreg('*', temp)
-		call setreg('+', temp)
-		call setreg('0', temp)
+		silent! call setreg('"', temp)
+		silent! call setreg('*', temp)
+		silent! call setreg('+', temp)
+		silent! call setreg('0', temp)
 	endif
 endfunction
 vnoremap <silent> d :call Smart_Delete_Vd()<CR>
