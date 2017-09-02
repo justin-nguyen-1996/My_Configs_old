@@ -1,15 +1,17 @@
 # config_ubuntu.sh
 
 # update and install packages for command line
-printf "\n=========================\nupdating packages\n=========================\n"   ; yes yes Y | sudo apt-get update
-printf "\n=========================\ninstalling vim\n=========================\n"      ; yes yes Y | sudo apt-get install vim-gnome
-printf "\n=========================\ninstalling git\n=========================\n"      ; yes yes Y | sudo apt-get install git
-printf "\n=========================\ninstalling ctags\n=========================\n"    ; yes yes Y | sudo apt-get install exuberant-ctags
-printf "\n=========================\ninstalling tmux\n=========================\n"     ; yes yes Y | sudo apt-get install tmux
-printf "\n=========================\ninstalling dos2unix\n=========================\n" ; yes yes Y | sudo apt-get install dos2unix
-printf "\n=========================\ninstalling libgnome\n=========================\n" ; yes yes Y | sudo apt-get install libgnome2-bin
-printf "\n=========================\ninstalling xclip\n=========================\n"    ; yes yes Y | sudo apt-get install xclip
-printf "\n=========================\ninstalling expect\n=========================\n"   ; yes yes Y | sudo apt-get install expect
+printf "\n=========================\nadding apt repos \n=========================\n"    ; sudo add-apt-repository ppa:fontforge/fontforge
+printf "\n=========================\nupdating packages\n=========================\n"    ; yes yes Y | sudo apt-get update
+printf "\n=========================\ninstalling vim\n=========================\n"       ; yes yes Y | sudo apt-get install vim-gnome
+printf "\n=========================\ninstalling git\n=========================\n"       ; yes yes Y | sudo apt-get install git
+printf "\n=========================\ninstalling ctags\n=========================\n"     ; yes yes Y | sudo apt-get install exuberant-ctags
+printf "\n=========================\ninstalling tmux\n=========================\n"      ; yes yes Y | sudo apt-get install tmux
+printf "\n=========================\ninstalling dos2unix\n=========================\n"  ; yes yes Y | sudo apt-get install dos2unix
+printf "\n=========================\ninstalling libgnome\n=========================\n"  ; yes yes Y | sudo apt-get install libgnome2-bin
+printf "\n=========================\ninstalling xclip\n=========================\n"     ; yes yes Y | sudo apt-get install xclip
+printf "\n=========================\ninstalling expect\n=========================\n"    ; yes yes Y | sudo apt-get install expect
+printf "\n=========================\ninstalling fontforge\n=========================\n" ; yes yes Y | sudo apt-get install fontforge
 
 # generate and save the new ssh key
 printf "\n====================================================================\n"    
