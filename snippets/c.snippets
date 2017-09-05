@@ -91,21 +91,19 @@ snippet case
 ## for
 snippet for
 	for (int ${1:i} = 0; $1 < ${2:count}; $1++) {
-		${3}
+		${0}
 	}
-
-	${0}
 
 ## for (custom)
 snippet forr
 	for (int ${1:i} = ${2:0}; $1 < ${3:count}; $1${4:++}) {
-		${5}
+		${0}
 	}
-
+	
 ## while
 snippet wh
 	while (${1:}) {
-		${2}
+		${0}
 	}
 
 # do... while
@@ -134,7 +132,7 @@ snippet enum
 
 ## printf
 snippet pr
-	printf("${1:}: %${2}\\n", $1);${0}
+	printf("${1:}: %s${2}\\n", $1);${0}
 snippet fpr
 	fprintf(${1:stderr}, "${2:%s}\\n"${3});${0}
 snippet prd
@@ -145,6 +143,9 @@ snippet prx
 	printf("${1:}: 0x%0.4x\\n", $1);${0}
 snippet prs
 	printf("${1:}\\n");${0}
+
+snippet as
+	assert(3>4); // TEMP
 
 ## TODO section
 
