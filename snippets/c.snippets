@@ -132,7 +132,7 @@ snippet enum
 
 ## printf
 snippet pr
-	printf("${1:}: %s${2}\\n", $1);${0}
+	printf("${1:}: %${2:s}\\n", $1);${0}
 snippet fpr
 	fprintf(${1:stderr}, "${2:%s}\\n"${3});${0}
 snippet prd

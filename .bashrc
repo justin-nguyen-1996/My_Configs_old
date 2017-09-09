@@ -94,6 +94,7 @@ alias sl='ls'
 alias l='ls'
 alias ch='chmod 755'
 alias dos='dos2unix'
+alias jp='jupyter notebook'
 
 # enable extglob (useful for something like rm !(temp.c))
 shopt -s extglob

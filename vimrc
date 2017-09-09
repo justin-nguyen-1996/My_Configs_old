@@ -634,6 +634,12 @@ function! FoldFunctions()
 	:silent! execute "%g/^int/normal! vf{%zf"
 	:silent! execute "%g/^double/normal! vf{%zf"
 	:silent! execute "%g/^void/normal! vf{%zf"
+	
+	:silent! execute "%g/^static bool/normal! vf{%zf"
+	:silent! execute "%g/^static boolean/normal! vf{%zf"
+	:silent! execute "%g/^static int/normal! vf{%zf"
+	:silent! execute "%g/^static double/normal! vf{%zf"
+	:silent! execute "%g/^static void/normal! vf{%zf"
 
 	:silent! execute "%g/\tbool/normal! vf{%zf"
 	:silent! execute "%g/\tboolean/normal! vf{%zf"
