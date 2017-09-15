@@ -5,9 +5,9 @@
 set formatoptions=rcjn
 
 " easily insert if/while/for statements by selecting the text
-vnoremap ;i dOif () {<CR>}<ESC><ESC>kp>i{?(<CR>
-vnoremap ;w dOwhile () {<CR>}<ESC><ESC>kp>i{?(<CR>
-vnoremap ;f dOfor () {<CR>}<ESC><ESC>kp>i{?(<CR>
+vnoremap ;i dOif () {<CR>}<ESC><ESC>kp>i{?(<CR>a
+vnoremap ;w dOwhile () {<CR>}<ESC><ESC>kp>i{?(<CR>a
+vnoremap ;f dOfor () {<CR>}<ESC><ESC>kp>i{?(<CR>a
 
 " toggle commented lines for C-style comments
 function! ToggleComment()
