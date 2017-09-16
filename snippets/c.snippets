@@ -115,11 +115,21 @@ snippet do
 ## Functions
 
 ## typedef
-snippet td
-	typedef ${1:int} ${2:MyCustomType};
 
 ## typedef struct
-snippet tds
+snippet td
+	typedef struct ${1:} { 
+		${2} 
+	} $1;
+	
+## typedef struct
+snippet type
+	typedef struct ${1:} { 
+		${2} 
+	} $1;
+	
+## typedef struct
+snippet typ
 	typedef struct ${1:} { 
 		${2} 
 	} $1;
