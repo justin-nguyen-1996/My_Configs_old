@@ -629,26 +629,34 @@ command! -range TabE :call s:TabularEquals(<line1>, <line2>)
 
 " use ;zf to fold all functions (in C and C++ and Java)
 function! FoldFunctions()
+
+	" fold functions of type (bool, boolean, int, double, void)
 	:silent! execute "%g/^bool/normal! vf{%zf"
 	:silent! execute "%g/^boolean/normal! vf{%zf"
 	:silent! execute "%g/^int/normal! vf{%zf"
 	:silent! execute "%g/^double/normal! vf{%zf"
 	:silent! execute "%g/^void/normal! vf{%zf"
 	
+	" fold same types of functions but they're static equivalents
 	:silent! execute "%g/^static bool/normal! vf{%zf"
 	:silent! execute "%g/^static boolean/normal! vf{%zf"
 	:silent! execute "%g/^static int/normal! vf{%zf"
 	:silent! execute "%g/^static double/normal! vf{%zf"
 	:silent! execute "%g/^static void/normal! vf{%zf"
 
+	" fold same types of functions but they're tabbed equivalents
 	:silent! execute "%g/\tbool/normal! vf{%zf"
 	:silent! execute "%g/\tboolean/normal! vf{%zf"
 	:silent! execute "%g/\tint/normal! vf{%zf"
 	:silent! execute "%g/\tdouble/normal! vf{%zf"
 	:silent! execute "%g/\tvoid/normal! vf{%zf"
 
+	" fold anything that starts with a tab and then public/private
 	:silent! execute "%g/\tpublic/normal! vf{%zf"
 	:silent! execute "%g/\tprivate/normal! vf{%zf"
+
+	" fold anything that starts with 'typedef' (e.g. structs and enums)
+	:silent! execute "%g/^typedef/normal! vf{%zf"
 endfunc
 nnoremap ;zf zE :call FoldFunctions()<CR><ESC>
 
