@@ -66,6 +66,15 @@ elif [ "$ENV_TYPE" == "redhat" ]
 	then export PATH="$HOME/miniconda2/bin:$PATH"
 fi
 
+# path to Pintos
+if [ "$ENV_TYPE" == "cygwin" ]
+	then export PATH="$HOME/Pintos/src/utils/:$PATH"
+elif [ "$ENV_TYPE" == "ubuntu" ]
+	then export PATH="$HOME/Pintos/src/utils/:$PATH"
+elif [ "$ENV_TYPE" == "redhat" ]
+	then export PATH="$HOME/Pintos/src/utils/:$PATH"
+fi
+
 # change starting directory
 # cd _____
 

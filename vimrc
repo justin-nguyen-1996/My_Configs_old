@@ -20,7 +20,7 @@ Plugin 'aperezdc/vim-template'
 Plugin 'tpope/tpope-vim-abolish'
 Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-repeat'
-Plugin 'Yggdroot/indentLine'
+" Plugin 'Yggdroot/indentLine'
 call vundle#end()
 filetype plugin indent on
 

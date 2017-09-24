@@ -83,11 +83,12 @@ alias GRADER='ssh jnguyen10@grader.ece.utexas.edu'
 alias ls='ls -hF --color=tty --hide=*.pyc'
 alias dir='ls --color=auto'
 alias la='ls -al'
-alias grep='grep -ni --color --exclude tags --exclude .tags'
+# alias grep='grep -ni --color --exclude tags --exclude .tags'
 # alias tar='tar -xzvf'
 alias gitlog='git log --oneline'
 alias du='du -h'
 alias df='df -h'
+alias libreoffice='libreoffice 2> /dev/null &'
 
 # lazy aliases and typos
 alias sl='ls'
