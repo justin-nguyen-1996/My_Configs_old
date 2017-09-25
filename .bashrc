@@ -93,12 +93,14 @@ alias sl='ls'
 alias l='ls'
 alias ch='chmod 755'
 alias dos='dos2unix'
-alias jp='jupyter notebook'
+# alias jp='jupyter notebook' # TODO
 alias gdb='gdbtui'
 alias job='jobs'
 
 # enable extglob (useful for something like rm !(temp.c))
 shopt -s extglob
+
+################################################################################################################################
 
 # set the command line prompt to red and yellow  -->  '1;31m' is red  
 # change '#' in '1;3#m' to set the color         -->  '3#m' for fainter color (basically just remove the '1;' in front)
@@ -119,18 +121,18 @@ elif [ "$ENV_TYPE" == "redhat" ]; then
 	export PS1="\e[1;31m\n\u@\h:\e[m\e[1;33m\w\e[m\n$ "
 fi
 
+################################################################################################################################
+
 # map cd --> cd then ls
 cd() { builtin cd "${1-$(echo ~)}" && ls -F; }
 
-# map open to not output junk to stdout
-if [ "$ENV_TYPE" == "ubuntu" ]; then
-	function open() { gnome-open "$1" > /dev/null 2>&1 & }
-fi
+# map open to not output junk to stdout (ubuntu)
+if [ "$ENV_TYPE" == "ubuntu" ]; then function open() { gnome-open "$1" > /dev/null 2>&1 & } fi
 
-# map open to not output junk to stdout
-if [ "$ENV_TYPE" == "cygwin" ]
-	then alias open='cygstart'
-fi
+# map jupyter notebook to not output junk to stdout
+if [ "$ENV_TYPE" == "ubuntu" ]; then function jp() { jupyter notebook "$1" > /dev/null 2>&1 & } fi
+
+################################################################################################################################
 
 # cool but useless 'red' echo
 # echo() { builtin echo -e "\x1B[31m ${1} \x1B[0m"; }
