@@ -20,13 +20,11 @@ alias cpconfig='cp_vim  &&  cp_dotfiles  &&  cp_snippets  &&  cp_after  &&  cp_t
 if [ "$ENV_TYPE" == "ubuntu" ]
 	then alias ls='sudo ls'
 		 alias rm='sudo rm'
-		 alias mv='sudo mv'
-		 alias cp='sudo cp'
 		 alias chmod='sudo chmod'
 		 alias chown='sudo chown'
 		 alias install='sudo apt-get install'
 		 alias search='sudo apt-cache search'
-		 alias open='gnome-open'
+# 		 alias open='gnome-open {$1} > /dev/null 2>&1 &'
 		 alias p='ipython -i'
 		 alias ip='ipython --pylab='auto' -i'
 		 alias ev='sudo vim $VIM/vimrc;'
@@ -88,7 +86,7 @@ alias la='ls -al'
 alias gitlog='git log --oneline'
 alias du='du -h'
 alias df='df -h'
-alias libreoffice='libreoffice 2> /dev/null &'
+alias libreoffice='libreoffice > /dev/null 2>&1 &'
 
 # lazy aliases and typos
 alias sl='ls'
@@ -123,6 +121,16 @@ fi
 
 # map cd --> cd then ls
 cd() { builtin cd "${1-$(echo ~)}" && ls -F; }
+
+# map open to not output junk to stdout
+if [ "$ENV_TYPE" == "ubuntu" ]; then
+	function open() { gnome-open "$1" > /dev/null 2>&1 & }
+fi
+
+# map open to not output junk to stdout
+if [ "$ENV_TYPE" == "cygwin" ]
+	then alias open='cygstart'
+fi
 
 # cool but useless 'red' echo
 # echo() { builtin echo -e "\x1B[31m ${1} \x1B[0m"; }
