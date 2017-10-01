@@ -9,7 +9,7 @@ filetype off     " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-syntastic/syntastic'
+" Plugin 'vim-syntastic/syntastic'
 Plugin 'luochen1990/rainbow'
 Plugin 'godlygeek/tabular'
 Plugin 'garbas/vim-snipmate'
@@ -667,6 +667,11 @@ function! FoldFunctions()
 
 	" fold anything that starts with 'typedef' (e.g. structs and enums)
 	:silent! execute "%g/^typedef/normal! vf{%zf"
+	:silent! execute "%g/^struct/normal! vf{%zf"
+
+	" fold other types
+	:silent! execute "%g/^tid_t/normal! vf{%zf"
+	
 endfunc
 nnoremap ;zf zE :call FoldFunctions()<CR><ESC>
 

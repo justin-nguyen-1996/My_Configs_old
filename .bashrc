@@ -58,6 +58,7 @@ alias ga='git add .'
 alias gs='git status'
 alias gc='git commit -a -m'
 alias gp='git push'
+alias gb='git branch -v'
 
 # jumping to git repos
 alias cd422C='cd ~/Eclipse/EE-422C/'
@@ -69,7 +70,8 @@ alias cdoooe='cd ~/Github/oooe'
 alias cdafter='cd ~/.vim/after/'
 
 # create the ctags file
-alias CT='ctags -R -f .tags .'
+alias CT='ctags -R -f .tags *'
+alias CT..='cd ..  &&  ctags -R -f .tags *  &&  cd -'
 alias CTAGS='ctags -R -f .tags .'
 alias TAGS='ctags -R -f .tags .'
 
@@ -81,7 +83,7 @@ alias GRADER='ssh jnguyen10@grader.ece.utexas.edu'
 alias ls='ls -hF --color=tty --hide=*.pyc'
 alias dir='ls --color=auto'
 alias la='ls -al'
-# alias grep='grep -ni --color --exclude tags --exclude .tags'
+alias grep='grep -ni --color --exclude tags --exclude .tags'
 # alias tar='tar -xzvf'
 alias gitlog='git log --oneline'
 alias du='du -h'
@@ -147,4 +149,7 @@ if [ "$ENV_TYPE" == "ubuntu" ]; then function jp() { jupyter notebook "$1" > /de
 # `git reset HEAD <commit id>` to remove from git commit --> use `gitlog` to see git commit id's
 #     (shortcut: `git reset HEAD~#` --> # is how many commits to go back --> e.g. `git reset HEAD~1` means undo latest commit)
 # `git checkout` to just quickly check something out and go back
+
+# Put pintos in PATH
+alias pintos-gdb='GDBMACROS=/home/jhn545/OSF17project-did-i-gradutate-yet/misc/gdb-macros pintos-gdb'
 
