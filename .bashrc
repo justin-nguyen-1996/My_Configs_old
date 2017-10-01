@@ -98,6 +98,7 @@ alias dos='dos2unix'
 # alias jp='jupyter notebook' # TODO
 alias gdb='gdbtui'
 alias job='jobs'
+alias more='less'
 
 # enable extglob (useful for something like rm !(temp.c))
 shopt -s extglob
