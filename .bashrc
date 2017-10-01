@@ -71,7 +71,7 @@ alias cdafter='cd ~/.vim/after/'
 
 # create the ctags file
 alias CT='ctags -R -f .tags *'
-alias CT..='cd ..  &&  ctags -R -f .tags *  &&  cd -'
+alias CT..='builtin cd ..  &&  ctags -R -f .tags *  &&  builtin cd -'
 alias CTAGS='ctags -R -f .tags .'
 alias TAGS='ctags -R -f .tags .'
 
