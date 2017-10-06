@@ -135,6 +135,9 @@ if [ "$ENV_TYPE" == "ubuntu" ]; then function open() { gnome-open "$1" > /dev/nu
 # map jupyter notebook to not output junk to stdout
 if [ "$ENV_TYPE" == "ubuntu" ]; then function jp() { jupyter notebook "$1" > /dev/null 2>&1 & } fi
 
+# make merge branches onto master easier
+if [ "$ENV_TYPE" == "ubuntu" ]; then function gm() { git checkout master && git merge "$1" && gp && git checkout "$1" && gb; } fi
+
 ################################################################################################################################
 
 # cool but useless 'red' echo
