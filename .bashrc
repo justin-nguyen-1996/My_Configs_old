@@ -89,6 +89,7 @@ alias gitlog='git log --oneline'
 alias du='du -h'
 alias df='df -h'
 alias libreoffice='libreoffice > /dev/null 2>&1 &'
+alias vim='vim -p'
 
 # lazy aliases and typos
 alias sl='ls'
@@ -135,8 +136,9 @@ if [ "$ENV_TYPE" == "ubuntu" ]; then function open() { gnome-open "$1" > /dev/nu
 # map jupyter notebook to not output junk to stdout
 if [ "$ENV_TYPE" == "ubuntu" ]; then function jp() { jupyter notebook "$1" > /dev/null 2>&1 & } fi
 
-# make merge branches onto master easier
+# make merging branches onto/from master easier
 if [ "$ENV_TYPE" == "ubuntu" ]; then function gm() { git checkout master && git merge "$1" && gp && git checkout "$1" && gb; } fi
+if [ "$ENV_TYPE" == "ubuntu" ]; then function gpm() { git checkout master && git pull && git checkout "$1" && git merge master && gp && gb; } fi
 
 ################################################################################################################################
 
