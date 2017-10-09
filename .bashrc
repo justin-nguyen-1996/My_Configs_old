@@ -59,6 +59,7 @@ alias gs='git status'
 alias gc='git commit -a -m'
 alias gp='git push'
 alias gb='git branch -v'
+alias gba='git branch -va'
 
 # jumping to git repos
 alias cd422C='cd ~/Eclipse/EE-422C/'
