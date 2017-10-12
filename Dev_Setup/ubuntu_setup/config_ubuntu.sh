@@ -136,5 +136,4 @@ source ~/.profile
 
 # last note about permanently sourcing ~/.profile
 printf "\n\n=================================================================================================================\n\n"
-echo "The script sources ~/.profile but I think you need to actually restart the VM (power off) to have it be permanently sourced"
-echo "Go to the snippets dir in ~/.vim/bundle/vim-snippets/snippets/ and remove all of the code folds manually"
+echo "Log out and log back in to permanently source the config files"
