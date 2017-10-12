@@ -122,6 +122,7 @@ conda config --add channels conda-forge
 
 # copy over the ipython config file
 cp ~/Github/My_Configs/ipython_config.py ~/.ipython/profile_default/
+vim -c ":q!" ~/.ipython/profile_default/ 
 
 # make some symlinks
 ln -s ~/.vim/bundle/vim-snippets/snippets/c.snippets        ~/snippets/c.snippets
