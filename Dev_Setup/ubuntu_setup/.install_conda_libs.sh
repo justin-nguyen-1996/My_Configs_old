@@ -92,3 +92,9 @@ expect "Proceed ?"
 send "y\r"
 expect "$ "
 
+spawn printf "\n=========================\ninstalling jupyter notebook\n===============\n"
+spawn conda install jupyter
+expect "Proceed ?"
+send "y\r"
+expect "$ "
+

@@ -158,5 +158,5 @@ if [ "$ENV_TYPE" == "ubuntu" ]; then function gpm() { git checkout master && git
 # `git checkout` to just quickly check something out and go back
 
 # Put pintos in PATH
-alias pintos-gdb='GDBMACROS=/home/jhn545/OSF17project-did-i-gradutate-yet/misc/gdb-macros pintos-gdb'
-
+alias pintos-gdb='GDBMACROS=/home/jhn545/Github/OS/Pintos/misc/gdb-macros pintos-gdb'
+# source /home/jhn545/Github/OS/Pintos/.PINTOS_PATH

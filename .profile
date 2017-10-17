@@ -67,17 +67,10 @@ elif [ "$ENV_TYPE" == "redhat" ]
 fi
 
 # path to Pintos
-# if [ "$ENV_TYPE" == "cygwin" ]
-# 	then export PATH="$HOME/Pintos/src/utils/:$PATH"
-# elif [ "$ENV_TYPE" == "ubuntu" ]
-# 	then export PATH="$HOME/Pintos/src/utils/:$PATH"
-# elif [ "$ENV_TYPE" == "redhat" ]
-# 	then export PATH="$HOME/Pintos/src/utils/:$PATH"
-# fi
 if [ "$ENV_TYPE" == "cygwin" ]
 	then export PATH="$HOME/Pintos/src/utils/:$PATH"
 elif [ "$ENV_TYPE" == "ubuntu" ]
-	then export PATH="/home/jhn545/OSF17project-did-i-gradutate-yet/utils/:$PATH"
+	then export PATH="$HOME/Github/OS/Pintos/utils/:$PATH"
 elif [ "$ENV_TYPE" == "redhat" ]
 	then export PATH="$HOME/Pintos/src/utils/:$PATH"
 fi
