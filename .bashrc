@@ -97,7 +97,6 @@ alias sl='ls'
 alias l='ls'
 alias ch='chmod 755'
 alias dos='dos2unix'
-# alias jp='jupyter notebook' # TODO
 alias gdb='gdbtui'
 alias job='jobs'
 alias more='less'
@@ -128,7 +127,7 @@ fi
 
 ################################################################################################################################
 
-# map cd --> cd then ls
+# map cd to `cd && ls`
 cd() { builtin cd "${1-$(echo ~)}" && ls -F; }
 
 # map open to not output junk to stdout (ubuntu)
