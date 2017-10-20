@@ -19,7 +19,6 @@ alias cpconfig='cp_vim  &&  cp_dotfiles  &&  cp_snippets  &&  cp_after  &&  cp_t
 # aliases for Ubuntu
 if [ "$ENV_TYPE" == "ubuntu" ]
 	then alias ls='sudo ls'
-		 alias rm='sudo rm'
 		 alias chmod='sudo chmod'
 		 alias chown='sudo chown'
 		 alias install='sudo apt-get install'
