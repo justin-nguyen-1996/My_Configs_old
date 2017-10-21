@@ -5,4 +5,4 @@
 
 %HERE%
 
-#endif /* !%GUARD% */
+#endif /* %GUARD% */
