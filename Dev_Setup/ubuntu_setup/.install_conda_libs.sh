@@ -98,3 +98,9 @@ expect "Proceed ?"
 send "y\r"
 expect "$ "
 
+spawn printf "\n=========================\ninstalling seaborn\n========================\n"
+spawn conda install seaborn
+expect "Proceed ?"
+send "y\r"
+expect "$ "
+

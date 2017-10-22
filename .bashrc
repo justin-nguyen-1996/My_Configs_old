@@ -135,6 +135,9 @@ if [ "$ENV_TYPE" == "ubuntu" ]; then function open() { gnome-open "$1" > /dev/nu
 # map jupyter notebook to not output junk to stdout
 if [ "$ENV_TYPE" == "ubuntu" ]; then function jp() { jupyter notebook "$1" > /dev/null 2>&1 & } fi
 
+# map gimp to not output junk to stdout
+if [ "$ENV_TYPE" == "ubuntu" ]; then function gimp() { gimp "$1" > /dev/null 2>&1 & } fi
+
 # make merging branches onto/from master easier
 if [ "$ENV_TYPE" == "ubuntu" ]; then function gm() { git checkout master && git merge "$1" && gp && git checkout "$1" && gb; } fi
 if [ "$ENV_TYPE" == "ubuntu" ]; then function gpm() { git checkout master && git pull && git checkout "$1" && git merge master && gp && gb; } fi
