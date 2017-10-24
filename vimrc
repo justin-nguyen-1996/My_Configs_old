@@ -645,6 +645,10 @@ function! FoldFunctions()
 	:silent! execute "%g/^static int/normal! vf{%zf"
 	:silent! execute "%g/^static double/normal! vf{%zf"
 	:silent! execute "%g/^static void/normal! vf{%zf"
+
+	" fold functions of type (uint_t)
+	:silent! execute "%g/^uint/normal! vf{%zf"
+	:silent! execute "%g/^static uint/normal! vf{%zf"
 	
 	" fold same types of functions but they're pointer equivalents
 	:silent! execute "%g/^bool*/normal! vf{%zf"
