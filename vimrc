@@ -9,7 +9,7 @@ filetype off     " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-" Plugin 'vim-syntastic/syntastic'
+Plugin 'vim-syntastic/syntastic'
 Plugin 'luochen1990/rainbow'
 Plugin 'godlygeek/tabular'
 Plugin 'garbas/vim-snipmate'
@@ -219,6 +219,9 @@ let g:netrw_liststyle=3      " tree view
 
 " set matching parenthesis/brace/bracket to be underlined
 hi MatchParen cterm=underline ctermbg=none ctermfg=none
+
+" always show the tabline (tab header bar)
+set showtabline=2
 
 " make the vim tab bar look prettier
 hi TabLineFill ctermfg=Black ctermbg=Black
@@ -658,7 +661,7 @@ function! FoldFunctions()
 	:silent! execute "%g/^double*/normal! vf{%zf"
 	:silent! execute "%g/^void*/normal! vf{%zf"
 
-	" fold same types of functions but they're tabbed equivalents
+	" fold same types of functions but also they're tabbed equivalents
 	:silent! execute "%g/\tbool/normal! vf{%zf"
 	:silent! execute "%g/\tboolean/normal! vf{%zf"
 	:silent! execute "%g/\tint/normal! vf{%zf"
