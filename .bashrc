@@ -99,6 +99,7 @@ alias ch='chmod 755'
 alias dos='dos2unix'
 alias gdb='gdbtui'
 alias job='jobs'
+alias jbos='jobs'
 alias more='less'
 
 # enable extglob (useful for something like rm !(temp.c))

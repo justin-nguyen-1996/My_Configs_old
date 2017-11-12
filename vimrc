@@ -9,7 +9,7 @@ filetype off     " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-syntastic/syntastic'
+" Plugin 'vim-syntastic/syntastic'
 Plugin 'luochen1990/rainbow'
 Plugin 'godlygeek/tabular'
 Plugin 'garbas/vim-snipmate'
