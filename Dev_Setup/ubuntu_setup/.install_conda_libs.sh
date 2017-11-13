@@ -104,3 +104,9 @@ expect "Proceed ?"
 send "y\r"
 expect "$ "
 
+spawn printf "\n=========================\ninstalling xgboost\n========================\n"
+spawn conda install xgboost
+expect "Proceed ?"
+send "y\r"
+expect "$ "
+

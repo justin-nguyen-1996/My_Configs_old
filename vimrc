@@ -675,6 +675,7 @@ function! FoldFunctions()
 	" fold anything that starts with 'typedef' (e.g. structs and enums)
 	:silent! execute "%g/^typedef/normal! vf{%zf"
 	:silent! execute "%g/^struct/normal! vf{%zf"
+	:silent! execute "%g/^static struct/normal! vf{%zf"
 
 	" fold other types
 	:silent! execute "%g/^tid_t/normal! vf{%zf"
