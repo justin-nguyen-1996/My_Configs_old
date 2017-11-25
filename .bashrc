@@ -149,13 +149,12 @@ if [ "$ENV_TYPE" == "ubuntu" ]; then function gpm() { git checkout master && git
 # ~- means the previous directory
 # !$ means the last argument in the command line
 
-# added by Anaconda2 4.1.0 installer
-# export PATH="/home/jusnguy/anaconda2/bin:$PATH"
-
 # `git reset <filename>` to remove from git add
 # `git reset HEAD <commit id>` to remove from git commit --> use `gitlog` to see git commit id's
 #     (shortcut: `git reset HEAD~#` --> # is how many commits to go back --> e.g. `git reset HEAD~1` means undo latest commit)
 # `git checkout` to just quickly check something out and go back
+# `git push -f origin master:justin` --> force push one branch onto another --> <remote> <new branch>:<branch you are pushing to> 
+# `git checkout otherbranch myfile.txt` --> copy a file from another branch onto the current branch
 
 # Put pintos in PATH
 alias pintos-gdb='GDBMACROS=/home/jhn545/Github/OS/Pintos/misc/gdb-macros pintos-gdb'
