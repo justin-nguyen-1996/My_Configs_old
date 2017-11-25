@@ -278,9 +278,7 @@ nnoremap K i<CR><ESC>
 
 " use CTRL-h and CTRL-L to switch between Vim tabs
 nnoremap <C-h> gT
-inoremap <C-h> <ESC>gT
 nnoremap <C-l> gt
-inoremap <C-l> <ESC>gt
 
 " use , to repeat the last find command --> use shift, to go the other way
 nnoremap , ;
