@@ -155,6 +155,8 @@ if [ "$ENV_TYPE" == "ubuntu" ]; then function gpm() { git checkout master && git
 # `git checkout` to just quickly check something out and go back
 # `git push -f origin master:justin` --> force push one branch onto another --> <remote> <new branch>:<branch you are pushing to> 
 # `git checkout otherbranch myfile.txt` --> copy a file from another branch onto the current branch
+# `git branch -D justin` --> delete local branch called justin
+# `git push --delete origin justin` --> delete remote branch called justin
 
 # Put pintos in PATH
 alias pintos-gdb='GDBMACROS=/home/jhn545/Github/OS/Pintos/misc/gdb-macros pintos-gdb'
