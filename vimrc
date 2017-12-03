@@ -390,6 +390,9 @@ vnoremap U ~
 " so that your default register won't be overwritten when you paste over stuff in visual mode
 xnoremap p "_dP
 
+" to avoid triggering that stupidly annoying `man` lookup that is utterly and completely useless
+vnoremap K <NOP>
+
 " ================================================================="
 " ================================================================="
 " ============== Begin some 'function' vimrc things ==============="
