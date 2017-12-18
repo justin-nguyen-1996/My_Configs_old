@@ -3,18 +3,7 @@
 alias ea='vim ~/.bashrc; source ~/.bashrc && source $HOME/.bashrc'
 
 # some silly things because I'm really lazy (basically one-shot commands to git commit/push vimrc and other config files)
-alias git_update='builtin cd ~/Github/My_Configs  &&  ga  &&  gs  &&  gc "update"  &&  gp  && builtin cd -'
-alias cp_vim='cp -t ~/Github/My_Configs/ $VIM/vimrc'
-alias cp_dotfiles='cp -t ~/Github/My_Configs/ ~/.inputrc ~/.bashrc ~/.profile ~/.tmux.conf'
-alias cp_snippets='cp -t ~/Github/My_Configs/snippets ~/snippets/*'
-alias cp_after='cp_syntax  &&  cp_ftplugin  &&  cp_plugin'
-	alias cp_syntax='cp -t ~/Github/My_Configs/syntax  ~/.vim/after/syntax/*'
-	alias cp_ftplugin='cp -t ~/Github/My_Configs/ftplugin  ~/.vim/after/ftplugin/*'
-	alias cp_plugin='cp -t ~/Github/My_Configs/plugin/ ~/.vim/after/plugin/*'
-alias cp_templates='cp -t ~/Github/My_Configs/templates/ ~/.vim/bundle/vim-template/templates/*'
-alias cp_ipython='cp -t ~/Github/My_Configs/ ~/.ipython/profile_default/ipython_config.py'
-alias cp_pdb=' cp -t ~/Github/My_Configs/ ~/.pdbrc'
-alias cpconfig='cp_vim  &&  cp_dotfiles  &&  cp_snippets  &&  cp_after  &&  cp_templates  &&  cp_ipython  &&  cp_pdb  &&  git_update'
+alias cpconfig='builtin cd ~/Github/My_Configs  &&  ga  &&  gs  &&  gc "update"  &&  gp  && builtin cd -'
 
 # aliases for Ubuntu
 if [ "$ENV_TYPE" == "ubuntu" ]
@@ -23,10 +12,10 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 		 alias chown='sudo chown'
 		 alias install='sudo apt-get install'
 		 alias search='sudo apt-cache search'
-# 		 alias open='gnome-open {$1} > /dev/null 2>&1 &'
+		 alias open='gnome-open {$1} > /dev/null 2>&1 &'
 		 alias p='ipython -i'
 		 alias ip='ipython --pylab='auto' -i'
-		 alias ev='sudo vim $VIM/vimrc;'
+		 alias ev='sudo vim ~/.vimrc'
 fi
 
 # aliases for redhat
@@ -50,6 +39,7 @@ fi
 if [ "$ENV_TYPE" == "cygwin" ]
 	then alias open='cygstart'
 		 alias p='python -i'
+		 alias ev='vim ~/.vimrc'
 fi
 
 # git aliases
@@ -62,13 +52,7 @@ alias gba='git branch -va'
 alias gco='git checkout'
 
 # jumping to git repos
-alias cd422C='cd ~/Eclipse/EE-422C/'
-alias cd360P='cd ~/Eclipse/EE-360P/'
-alias cd445L='cd ~/c/Keil/ValvanoWareTM4C123/EE-445L-Labs'
-alias cd460N='cd ~/GitHub/Computer_Architecture/'
 alias cdgit='cd ~/Github'
-alias cdoooe='cd ~/Github/oooe'
-alias cdafter='cd ~/.vim/after/'
 
 # create the ctags file
 alias CT='ctags -R -f .tags *'
@@ -151,12 +135,13 @@ if [ "$ENV_TYPE" == "ubuntu" ]; then function gpm() { git checkout master && git
 
 # `git reset <filename>` to remove from git add
 # `git reset HEAD <commit id>` to remove from git commit --> use `gitlog` to see git commit id's
-#     (shortcut: `git reset HEAD~#` --> # is how many commits to go back --> e.g. `git reset HEAD~1` means undo latest commit)
+#      (shortcut: `git reset HEAD~#` --> # is how many commits to go back --> e.g. `git reset HEAD~1` means undo latest commit)
 # `git checkout` to just quickly check something out and go back
 # `git push -f origin master:justin` --> force push one branch onto another --> <remote> <new branch>:<branch you are pushing to> 
 # `git checkout otherbranch myfile.txt` --> copy a file from another branch onto the current branch
 # `git branch -D justin` --> delete local branch called justin
 # `git push --delete origin justin` --> delete remote branch called justin
+# `git remote set-url origin <url>` --> git remote set-url origin https://bitbucket.org/justins_stuff/college_senior_year
 
 # Put pintos in PATH
 alias pintos-gdb='GDBMACROS=/home/jhn545/Github/OS/Pintos/misc/gdb-macros pintos-gdb'

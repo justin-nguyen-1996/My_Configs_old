@@ -124,17 +124,26 @@ conda config --add channels conda-forge
 cp ~/Github/My_Configs/ipython_config.py ~/.ipython/profile_default/
 vim -c ":q!" ~/.ipython/profile_default/ 
 
-# make some symlinks
-ln -s ~/.vim/bundle/vim-snippets/snippets/c.snippets        ~/snippets/c.snippets
-ln -s ~/.vim/bundle/vim-snippets/snippets/cpp.snippets      ~/snippets/cpp.snippets
-ln -s ~/.vim/bundle/vim-snippets/snippets/java.snippets     ~/snippets/java.snippets
-ln -s ~/.vim/bundle/vim-snippets/snippets/python.snippets   ~/snippets/python.snippets
-ln -s ~/miniconda2/lib/python2.7/site-packages/             conda_packages
+# make symlinks
+ln -s ~/Github/My_Configs/.bashrc                   ~/.bashrc
+ln -s ~/Github/My_Configs/.profile                  ~/.profile
+ln -s ~/Github/My_Configs/.inputrc                  ~/.inputrc
+ln -s ~/Github/My_Configs/vimrc                     ~/.vimrc
+ln -s ~/Github/My_Configs/.tmux.conf                ~/.tmux.conf
+ln -s ~/.vim/bundle/vim-snippets/snippets           ~/snippets/
+ln -s ~/Github/My_Configs/snippets/                 ~/.vim/bundle/vim-snippets/snippets
+ln -s ~/miniconda2/lib/python2.7/site-packages/     ~/conda_packages
+ln -s ~/Github/My_Configs/syntax/                   ~/.vim/after/syntax/
+ln -s ~/Github/My_Configs/ftplugin                  ~/.vim/after/ftplugin/
+ln -s ~/Github/My_Configs/plugin/                   ~/.vim/after/plugin/
+ln -s ~/Github/My_Configs/templates/                ~/.vim/bundle/vim-template/templates/
+ln -s ~/Github/My_Configs/ipython_config.py         ~/.ipython/profile_default/ipython_config.py
+ln -s ~/Github/My_Configs/.pdbrc                    ~/.pdbrc
 
 # set the dev env var in ~/.profile and source it
 vim -c ":silent! %s/ENV_TYPE=\"cygwin\"/ENV_TYPE=\"ubuntu\"/g" -c ":xa" ~/.profile
 source ~/.profile
 
 # last note about permanently sourcing ~/.profile
-printf "\n\n=================================================================================================================\n\n"
+printf "\n\n=================================================================================================\n\n"
 echo "Log out and log back in to permanently source the config files"
