@@ -87,7 +87,7 @@ sudo rm -rf ~/.vim/bundle/vim-snippets/snippets/*
 sudo rm -rf ~/.vim/bundle/vim-template/templates/*
 
 # set up git login credentials and other config stuff
-cd ~/
+cd ~/Github/My_Configs/
 git config --global user.email "2014justinnguyen@gmail.com"
 git config --global user.name "Justin Nguyen"
 git config --global push.default simple
@@ -99,7 +99,9 @@ cd ~/  &&  wget -c http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86
 sudo chmod 755 ~/Miniconda-latest-Linux-x86_64.sh
 ~/Miniconda-latest-Linux-x86_64.sh -b -p $HOME/miniconda2
 
-# source the ~/.profile so that the shell recognizes conda
+# source the ~/.profile so that the shell recognizes conda  &&  set the dev env var
+cp ~/Github/My_Configs/.profile ~/
+vim -c ":silent! %s/ENV_TYPE=\"cygwin\"/ENV_TYPE=\"ubuntu\"/g" -c ":xa" ~/.profile
 source ~/.profile
 
 # do some conda configuration
@@ -144,10 +146,21 @@ ln -s ~/Github/My_Configs/ipython_config.py         ~/.ipython/profile_default/i
 ln -s ~/Github/My_Configs/.pdbrc                    ~/.pdbrc
 cp ~/Github/My_Configs/.profile ~/                  ##### NOTE: don't make a symlink for ~/.profile
 
-# set the dev env var in ~/.profile and source it
-vim -c ":silent! %s/ENV_TYPE=\"cygwin\"/ENV_TYPE=\"ubuntu\"/g" -c ":xa" ~/.profile
+# source the ~/.profile  &&  ~/.inputrc
 source ~/.profile
+
+# remove the useless directories in the home directory
+rm -rf ~/Desktop/
+rm -rf ~/Documents/
+rm -rf ~/Music/
+rm -rf ~/Pictures/
+rm -rf ~/Public/
+rm -rf ~/Templates/
+rm -rf ~/Videos/
+rm -rf ~/examples.desktop
+rm -rf ~/Miniconda-latest-Linux-x86_64.sh
 
 # last note about permanently sourcing ~/.profile
 printf "\n\n=================================================================================================\n\n"
 echo "Log out and log back in to permanently source the config files"
+
