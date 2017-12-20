@@ -134,12 +134,12 @@ ln -s ~/Github/My_Configs/.inputrc                  ~/.inputrc
 ln -s ~/Github/My_Configs/vimrc                     ~/.vimrc
 ln -s ~/Github/My_Configs/.tmux.conf                ~/.tmux.conf
 ln -s ~/Github/My_Configs/snippets/                 ~/.vim/bundle/vim-snippets/snippets
-ln -s ~/.vim/bundle/vim-snippets/snippets           ~/snippets/
+ln -s ~/.vim/bundle/vim-snippets/snippets           ~/snippets
 ln -s ~/miniconda2/lib/python2.7/site-packages/     ~/conda_packages
-ln -s ~/Github/My_Configs/syntax/                   ~/.vim/after/syntax/
-ln -s ~/Github/My_Configs/ftplugin                  ~/.vim/after/ftplugin/
-ln -s ~/Github/My_Configs/plugin/                   ~/.vim/after/plugin/
-ln -s ~/Github/My_Configs/templates/                ~/.vim/bundle/vim-template/templates/
+ln -s ~/Github/My_Configs/syntax/                   ~/.vim/after/syntax
+ln -s ~/Github/My_Configs/ftplugin                  ~/.vim/after/ftplugin
+ln -s ~/Github/My_Configs/plugin/                   ~/.vim/after/plugin
+ln -s ~/Github/My_Configs/templates/                ~/.vim/bundle/vim-template/templates
 ln -s ~/Github/My_Configs/ipython_config.py         ~/.ipython/profile_default/ipython_config.py
 ln -s ~/Github/My_Configs/.pdbrc                    ~/.pdbrc
 cp ~/Github/My_Configs/.profile ~/                  ##### NOTE: don't make a symlink for ~/.profile

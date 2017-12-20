@@ -84,6 +84,7 @@ alias dos='dos2unix'
 alias gdb='gdbtui'
 alias job='jobs'
 alias jbos='jobs'
+alias josb='jobs'
 alias more='less'
 
 # enable extglob (useful for something like rm !(temp.c))
@@ -103,12 +104,9 @@ shopt -s extglob
 #   \w        -->  working directory
 #   \n        -->  new line
 #   $         -->  just a '$' symbol
+
 # example of a spaced out version for clarity --> export PS1="\e[1;31m   \u   @   \h   :   \e[m   \e[1;33m   \w   \e[m   \n   $"
-if [ "$ENV_TYPE" == "ubuntu" ]; then
-	export PS1="\e[1;31m\n\u@\h:\e[m\e[1;33m\w\e[m\n$ "
-elif [ "$ENV_TYPE" == "redhat" ]; then
-	export PS1="\e[1;31m\n\u@\h:\e[m\e[1;33m\w\e[m\n$ "
-fi
+export PS1="\e[1;31m\n\u@\h:\e[m\e[1;33m\w\e[m\n$ "
 
 ################################################################################################################################
 
