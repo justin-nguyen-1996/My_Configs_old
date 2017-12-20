@@ -723,7 +723,7 @@ nnoremap ;t :tabnew
 nnoremap ;m :make<CR>
 
 " use ;s to source the vimrc file
-nnoremap ;s :source $VIM/vimrc<CR>
+nnoremap ;s :source ~/.vimrc<CR>
 
 " use ;f to format the file according to C++/Java style
 nnoremap ;f :set expandtab! expandtab?<CR>gg=G''<ESC>

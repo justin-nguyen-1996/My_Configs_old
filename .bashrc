@@ -1,6 +1,6 @@
 
 # aliases for editing vimrc and .bashrc
-alias ea='vim ~/.bashrc; source ~/.bashrc && source $HOME/.bashrc'
+alias ea='vim ~/.bashrc; source ~/.bashrc'
 
 # some silly things because I'm really lazy (basically one-shot commands to git commit/push vimrc and other config files)
 alias cpconfig='builtin cd ~/Github/My_Configs  &&  ga  &&  gs  &&  gc "update"  &&  gp  && builtin cd -'
@@ -32,7 +32,7 @@ if [ "$ENV_TYPE" == "redhat" ]
 		 alias rpm='sudo rpm -Ui'
 		 alias p='ipython -i'
 		 alias ip='ipython --pylab='auto' -i'
-		 alias ev='sudo vim $VIM/vimrc;'
+		 alias ev='sudo vim ~/.vimrc'
 fi
 
 # aliases for Cygwin

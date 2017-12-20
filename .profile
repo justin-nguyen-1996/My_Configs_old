@@ -32,30 +32,8 @@
 # NOTE: Must set this appropriately for the current development environment
 export ENV_TYPE="ubuntu"
 
-# set vimrc location
-if [ "$ENV_TYPE" == "cygwin" ]
-	then export VIM=/etc
-elif [ "$ENV_TYPE" == "ubuntu" ]
-	then export VIM=/usr/share/vim/
-elif [ "$ENV_TYPE" == "redhat" ]
-	then export VIM=/etc
-elif [ "$ENV_TYPE" == "moba" ]
-	then export VIM=/usr/share/vim/
-fi
-
 # Set Github repo location
 export GIT=~/Github
-
-# path to 'javac.exe'
-if [ "$ENV_TYPE" == "cygwin" ]
-	then PATH="$PATH:/cygdrive/c/Program Files/Java/jdk1.8.0_101/bin"
-elif [ "$ENV_TYPE" == "ubuntu" ]
-	then PATH="$PATH:~/Downloads/Java/jdk1.8.0_101/bin"
-elif [ "$ENV_TYPE" == "redhat" ]
-	then PATH="$PATH:~/Downloads/Java/jdk1.8.0_101/bin"
-elif [ "$ENV_TYPE" == "moba" ]
-	then PATH="$PATH:/cygdrive/c/Program Files/Java/jdk1.8.0_101/bin"
-fi
 
 # path to miniconda libraries
 if [ "$ENV_TYPE" == "cygwin" ]

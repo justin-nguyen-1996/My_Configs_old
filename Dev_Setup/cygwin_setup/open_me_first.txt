@@ -5,15 +5,12 @@ Install cygwin packages
    - how to automate cygwin package installation
  - vim --> check that this is Vim 8.0 and has +clipboard support (run vim --version)
  - git
- - ssh
  - zip
- - gcc
+ - unzip
  - ctags
  - tmux
- - gvim
  - make
  - dos2unix
- - unix2dos
  
  - there are probably more, these were all that I could think of at the top of my head
 

@@ -86,17 +86,6 @@ sudo cp ~/Github/My_Configs/vimrc /usr/share/vim/
 sudo rm -rf ~/.vim/bundle/vim-snippets/snippets/*
 sudo rm -rf ~/.vim/bundle/vim-template/templates/*
 
-# copy over some config files
-cp ~/Github/My_Configs/.bashrc      ~/
-cp ~/Github/My_Configs/.inputrc     ~/
-cp ~/Github/My_Configs/.tmux.conf   ~/
-cp ~/Github/My_Configs/.profile     ~/
-cp ~/Github/My_Configs/snippets/*   ~/.vim/bundle/vim-snippets/snippets/
-cp ~/Github/My_Configs/templates/*  ~/.vim/bundle/vim-template/templates/
-cp ~/Github/My_Configs/syntax/*     ~/.vim/after/syntax/
-cp ~/Github/My_Configs/ftplugin/*   ~/.vim/after/ftplugin/
-cp ~/Github/My_Configs/plugin/*     ~/.vim/after/plugin/
-
 # set up git login credentials and other config stuff
 cd ~/
 git config --global user.email "2014justinnguyen@gmail.com"
@@ -124,14 +113,28 @@ conda config --add channels conda-forge
 cp ~/Github/My_Configs/ipython_config.py ~/.ipython/profile_default/
 vim -c ":q!" ~/.ipython/profile_default/ 
 
+# remove old copies to make room for symlinks
+rm -rf ~/.bashrc
+rm -rf ~/.inputrc
+rm -rf ~/.vimrc
+rm -rf ~/.tmux.conf
+rm -rf ~/snippets
+rm -rf ~/.vim/bundle/vim-snippets/snippets
+rm -rf ~/conda_packages
+rm -rf ~/.vim/after/syntax
+rm -rf ~/.vim/after/ftplugin
+rm -rf ~/.vim/after/plugin
+rm -rf ~/.vim/bundle/vim-template/templates
+rm -rf ~/.ipython/profile_default/ipython_config.py
+rm -rf ~/.pdbrc
+
 # make symlinks
 ln -s ~/Github/My_Configs/.bashrc                   ~/.bashrc
-ln -s ~/Github/My_Configs/.profile                  ~/.profile
 ln -s ~/Github/My_Configs/.inputrc                  ~/.inputrc
 ln -s ~/Github/My_Configs/vimrc                     ~/.vimrc
 ln -s ~/Github/My_Configs/.tmux.conf                ~/.tmux.conf
-ln -s ~/.vim/bundle/vim-snippets/snippets           ~/snippets/
 ln -s ~/Github/My_Configs/snippets/                 ~/.vim/bundle/vim-snippets/snippets
+ln -s ~/.vim/bundle/vim-snippets/snippets           ~/snippets/
 ln -s ~/miniconda2/lib/python2.7/site-packages/     ~/conda_packages
 ln -s ~/Github/My_Configs/syntax/                   ~/.vim/after/syntax/
 ln -s ~/Github/My_Configs/ftplugin                  ~/.vim/after/ftplugin/
@@ -139,6 +142,7 @@ ln -s ~/Github/My_Configs/plugin/                   ~/.vim/after/plugin/
 ln -s ~/Github/My_Configs/templates/                ~/.vim/bundle/vim-template/templates/
 ln -s ~/Github/My_Configs/ipython_config.py         ~/.ipython/profile_default/ipython_config.py
 ln -s ~/Github/My_Configs/.pdbrc                    ~/.pdbrc
+cp ~/Github/My_Configs/.profile ~/                  ##### NOTE: don't make a symlink for ~/.profile
 
 # set the dev env var in ~/.profile and source it
 vim -c ":silent! %s/ENV_TYPE=\"cygwin\"/ENV_TYPE=\"ubuntu\"/g" -c ":xa" ~/.profile
