@@ -10,6 +10,7 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 	then alias ls='sudo ls'
 		 alias chmod='sudo chmod'
 		 alias chown='sudo chown'
+		 alias vim='sudo vim -p'
 		 alias install='sudo apt-get install'
 		 alias search='sudo apt-cache search'
 		 alias open='gnome-open {$1} > /dev/null 2>&1 &'
@@ -33,6 +34,7 @@ if [ "$ENV_TYPE" == "redhat" ]
 		 alias p='ipython -i'
 		 alias ip='ipython --pylab='auto' -i'
 		 alias ev='sudo vim ~/.vimrc'
+		 alias vim='sudo vim -p'
 fi
 
 # aliases for Cygwin
@@ -40,6 +42,7 @@ if [ "$ENV_TYPE" == "cygwin" ]
 	then alias open='cygstart'
 		 alias p='python -i'
 		 alias ev='vim ~/.vimrc'
+		 alias vim='vim -p'
 fi
 
 # git aliases
@@ -74,7 +77,6 @@ alias gitlog='git log --oneline'
 alias du='du -h'
 alias df='df -h'
 alias libreoffice='libreoffice > /dev/null 2>&1 &'
-alias vim='vim -p'
 
 # lazy aliases and typos
 alias sl='ls'
@@ -147,4 +149,3 @@ if [ "$ENV_TYPE" == "ubuntu" ]; then function gpm() { git checkout master && git
 
 # Put pintos in PATH
 alias pintos-gdb='GDBMACROS=/home/jhn545/Github/OS/Pintos/misc/gdb-macros pintos-gdb'
-# source /home/jhn545/Github/OS/Pintos/.PINTOS_PATH

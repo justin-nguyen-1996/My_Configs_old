@@ -160,6 +160,10 @@ rm -rf ~/Videos/
 rm -rf ~/examples.desktop
 rm -rf ~/Miniconda-latest-Linux-x86_64.sh
 
+# update and upgrade existing packages
+sudo apt-get update
+sudo apt-get upgrade -y
+
 # last note about permanently sourcing ~/.profile
 printf "\n\n=================================================================================================\n\n"
 echo "Log out and log back in to permanently source the config files"
