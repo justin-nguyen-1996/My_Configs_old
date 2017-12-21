@@ -131,6 +131,10 @@ if [ "$ENV_TYPE" == "ubuntu" ]; then function gpm() { git checkout master && git
 # ~- means the previous directory
 # !$ means the last argument in the command line
 
+# mount and unmount temporary windows filesystem
+# mkdir -p /media/windows_temp/ && sudo mount -t ntfs-3g -o ro /dev/sda4 /media/windows_temp/
+# sudo umount /media/windows_temp/
+
 # `git reset <filename>` to remove from git add
 # `git reset HEAD <commit id>` to remove from git commit --> use `gitlog` to see git commit id's
 #      (shortcut: `git reset HEAD~#` --> # is how many commits to go back --> e.g. `git reset HEAD~1` means undo latest commit)
