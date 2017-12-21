@@ -13,10 +13,10 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 		 alias vim='sudo vim -p'
 		 alias install='sudo apt-get install'
 		 alias search='sudo apt-cache search'
-		 alias open='gnome-open {$1} > /dev/null 2>&1 &'
 		 alias p='ipython -i'
 		 alias ip='ipython --pylab='auto' -i'
 		 alias ev='sudo vim ~/.vimrc'
+		 alias sp='source ~/.profile'
 fi
 
 # aliases for redhat
@@ -134,6 +134,7 @@ if [ "$ENV_TYPE" == "ubuntu" ]; then function gpm() { git checkout master && git
 # !$ means the last argument in the command line
 
 # mount and unmount temporary windows filesystem
+# sudo fdisk -l
 # mkdir -p /media/windows_temp/ && sudo mount -t ntfs-3g -o ro /dev/sda4 /media/windows_temp/
 # sudo umount /media/windows_temp/
 

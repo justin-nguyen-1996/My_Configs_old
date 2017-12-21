@@ -18,7 +18,7 @@ Auto-maximized terminal
 Reboot the computer after the script updates and upgrades packages
  - then set the zoom level to 120%
 
-Disable touchscreen 
+Disable touchscreen
  - open ~/Github/My_Configs/10-evdev.conf
  - open /usr/share/X11/xorg.conf.d/10-evdev.conf
  - compare the two and look for 'touchscreen'
@@ -30,7 +30,10 @@ Make the grub timeout longer
  - compare the two and change the 'GRUB_HIDDEN_TIMEOUT_QUIET'  &&  'GRUB_TIMEOUT' values
  - run `sudo update-grub`
 
-==================================================================================================================== 
+Fix dual boot time issues (make Linux use 'local' time instead of a hardware clock to match Windows)
+ - run `timedatectl set-local-rtc 1`
+
+====================================================================================================================
 
 Virtual Box
  - Create New VM
