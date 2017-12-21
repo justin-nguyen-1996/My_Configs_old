@@ -57,6 +57,10 @@ fi
 # change starting directory
 # cd _____
 
+# configure touchpad settings
+synclient HorizTwoFingerScroll=0 # disable horizontal scrolling
+synclient VertScrollDelta=-150   # slow down vertical scrolling
+
 #######################################################################
 #######################################################################
 #######################################################################
