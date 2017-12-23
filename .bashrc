@@ -10,12 +10,13 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 	then alias ls='sudo ls'
 		 alias chmod='sudo chmod'
 		 alias chown='sudo chown'
+		 alias vim='sudo vim -p'
 		 alias install='sudo apt-get install'
 		 alias search='sudo apt-cache search'
-		 alias open='gnome-open {$1} > /dev/null 2>&1 &'
 		 alias p='ipython -i'
 		 alias ip='ipython --pylab='auto' -i'
 		 alias ev='sudo vim ~/.vimrc'
+		 alias sp='source ~/.profile'
 fi
 
 # aliases for redhat
@@ -33,6 +34,7 @@ if [ "$ENV_TYPE" == "redhat" ]
 		 alias p='ipython -i'
 		 alias ip='ipython --pylab='auto' -i'
 		 alias ev='sudo vim ~/.vimrc'
+		 alias vim='sudo vim -p'
 fi
 
 # aliases for Cygwin
@@ -40,6 +42,7 @@ if [ "$ENV_TYPE" == "cygwin" ]
 	then alias open='cygstart'
 		 alias p='python -i'
 		 alias ev='vim ~/.vimrc'
+		 alias vim='vim -p'
 fi
 
 # git aliases
@@ -74,7 +77,6 @@ alias gitlog='git log --oneline'
 alias du='du -h'
 alias df='df -h'
 alias libreoffice='libreoffice > /dev/null 2>&1 &'
-alias vim='vim -p'
 
 # lazy aliases and typos
 alias sl='ls'
@@ -131,6 +133,11 @@ if [ "$ENV_TYPE" == "ubuntu" ]; then function gpm() { git checkout master && git
 # ~- means the previous directory
 # !$ means the last argument in the command line
 
+# mount and unmount temporary windows filesystem
+# sudo fdisk -l
+# mkdir -p /media/windows_temp/ && sudo mount -t ntfs-3g -o ro /dev/sda4 /media/windows_temp/
+# sudo umount /media/windows_temp/
+
 # `git reset <filename>` to remove from git add
 # `git reset HEAD <commit id>` to remove from git commit --> use `gitlog` to see git commit id's
 #      (shortcut: `git reset HEAD~#` --> # is how many commits to go back --> e.g. `git reset HEAD~1` means undo latest commit)
@@ -143,4 +150,3 @@ if [ "$ENV_TYPE" == "ubuntu" ]; then function gpm() { git checkout master && git
 
 # Put pintos in PATH
 alias pintos-gdb='GDBMACROS=/home/jhn545/Github/OS/Pintos/misc/gdb-macros pintos-gdb'
-# source /home/jhn545/Github/OS/Pintos/.PINTOS_PATH

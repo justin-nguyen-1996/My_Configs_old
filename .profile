@@ -53,9 +53,11 @@ elif [ "$ENV_TYPE" == "redhat" ]
 	then export PATH="$HOME/Pintos/src/utils/:$PATH"
 fi
 
-
 # change starting directory
 # cd _____
+
+synclient VertScrollDelta=-150   # slow down vertical scrolling
+synclient HorizTwoFingerScroll=0 # disable horizontal scrolling
 
 #######################################################################
 #######################################################################
