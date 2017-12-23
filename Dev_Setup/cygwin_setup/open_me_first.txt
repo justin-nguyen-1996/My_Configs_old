@@ -22,6 +22,11 @@ Terminal Settings
 Read files on Linux partition while still in Windows
  - https://www.diskinternals.com/linux-reader/
 
+Torrent Microsoft Office (Word/Powerpoint/Excel)
+ - https://thepiratebay.org/torrent/9525158/Microsoft_Office_Professional_Plus_[x64]_2013_Activator_Included
+ - click get torrent
+ - get a torrent program first (on the same page --> get bitlord)
+
 Miscellaneous Notes:
  - might need to run dos2unix on files that give weird errors
  - remove unnecessary folders from ~/
