@@ -10,7 +10,6 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 	then alias ls='sudo ls'
 		 alias chmod='sudo chmod'
 		 alias chown='sudo chown'
-		 alias vim='sudo vim -p'
 		 alias install='sudo apt-get install'
 		 alias search='sudo apt-cache search'
 		 alias p='ipython -i'
