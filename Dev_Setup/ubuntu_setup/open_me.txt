@@ -33,6 +33,9 @@ Make the grub timeout longer
 Fix dual boot time issues (make Linux use 'local' time instead of a hardware clock to match Windows)
  - run `timedatectl set-local-rtc 1`
 
+Change terminal font size
+ - edit --> profile preferences --> check 'custom font' --> Ubuntu Mono Regular, 14
+
 ====================================================================================================================
 
 Virtual Box

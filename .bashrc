@@ -93,7 +93,7 @@ alias sp='source ~/.profile'
 # enable extglob (useful for something like rm !(temp.c))
 shopt -s extglob
 
-################################################################################################################################
+########################################################################################################################
 
 # set the command line prompt to red and yellow  -->  '1;31m' is red  
 # change '#' in '1;3#m' to set the color         -->  '3#m' for fainter color (basically just remove the '1;' in front)
@@ -108,10 +108,19 @@ shopt -s extglob
 #   \n        -->  new line
 #   $         -->  just a '$' symbol
 
-# example of a spaced out version for clarity --> export PS1="\e[1;31m   \u   @   \h   :   \e[m   \e[1;33m   \w   \e[m   \n   $"
+# example of a spaced out version for clarity 
+# --> export PS1="\e[1;31m   \u   @   \h   :   \e[m   \e[1;33m   \w   \e[m   \n   $"
 export PS1="\e[1;31m\n\u@\h:\e[m\e[1;33m\w\e[m\n$ "
 
-################################################################################################################################
+########################################################################################################################
+
+# change the ugly green highlight for folders accessible by other partitions
+# 'ow' --> other, writable files
+# 'tw' --> sticky, writable files
+# number;number;number --> bold;font-color;bg-color
+export LS_COLORS=$LS_COLORS:'ow=1;34;40:tw=1;34;40:'
+
+########################################################################################################################
 
 # map cd to `cd && ls`
 cd() { builtin cd "${1-$(echo ~)}" && ls -F; }
@@ -123,10 +132,16 @@ if [ "$ENV_TYPE" == "ubuntu" ]; then function open() { gnome-open "$1" > /dev/nu
 if [ "$ENV_TYPE" == "ubuntu" ]; then function jp() { jupyter notebook "$1" > /dev/null 2>&1 & } fi
 
 # make merging branches onto/from master easier
-if [ "$ENV_TYPE" == "ubuntu" ]; then function gm() { git checkout master && git merge "$1" && gp && git checkout "$1" && gb; } fi
-if [ "$ENV_TYPE" == "ubuntu" ]; then function gpm() { git checkout master && git pull && git checkout "$1" && git merge master && gp && gb; } fi
+if [ "$ENV_TYPE" == "ubuntu" ]; then function gm() { 
+	git checkout master && git merge "$1" && gp && git checkout "$1" && gb; 
+} fi
 
-################################################################################################################################
+# make merging branches onto/from master easier
+if [ "$ENV_TYPE" == "ubuntu" ]; then function gpm() { 
+	git checkout master && git pull && git checkout "$1" && git merge master && gp && gb; 
+} fi
+
+########################################################################################################################
 
 # cool but useless 'red' echo
 # echo() { builtin echo -e "\x1B[31m ${1} \x1B[0m"; }
