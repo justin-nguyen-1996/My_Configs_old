@@ -16,7 +16,6 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 		 alias p='ipython -i'
 		 alias ip='ipython --pylab='auto' -i'
 		 alias ev='sudo vim ~/.vimrc'
-		 alias sp='source ~/.profile'
 fi
 
 # aliases for redhat
@@ -41,6 +40,7 @@ fi
 if [ "$ENV_TYPE" == "cygwin" ]
 	then alias open='cygstart'
 		 alias p='python -i'
+		 alias python='python -i'
 		 alias ev='vim ~/.vimrc'
 		 alias vim='vim -p'
 fi
@@ -88,6 +88,7 @@ alias job='jobs'
 alias jbos='jobs'
 alias josb='jobs'
 alias more='less'
+alias sp='source ~/.profile'
 
 # enable extglob (useful for something like rm !(temp.c))
 shopt -s extglob
