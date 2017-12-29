@@ -722,7 +722,9 @@ nnoremap ;h :set hlsearch! hlsearch?<CR>
 nnoremap ;l :e<CR>
 
 " use ;t and type a file name to open it in a VIM tab (:tabnew)
+" use ;T to open a file from the directory of the current open file
 nnoremap ;t :tabnew 
+nnoremap ;T :tabnew %:p:h/
 
 " use ;m to run the Makefile in the current directory (:make)
 nnoremap ;m :make<CR>
