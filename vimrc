@@ -163,6 +163,11 @@ let g:pymode_indent = 0
 
 " ================================================================="
 " ================================================================="
+" ============== Begin additions for tagbar plugin ================"
+nnoremap ;n :TagbarToggle<CR>
+
+" ================================================================="
+" ================================================================="
 " ================== Begin my 'set' vimrc things =================="
 
 " Show (partial) command in status line
@@ -704,7 +709,7 @@ endfunc
 nnoremap ;zf zE :call FoldFunctions()<CR><ESC>
 
 " use ;n to toggle between number mode and relative number mode
-function! NumberToggle()
+function! s:NumberToggle()
   if(&relativenumber == 1)
     set nornu
 	set nonu
@@ -713,7 +718,7 @@ function! NumberToggle()
 	set nu
   endif
 endfunc
-nnoremap ;n :call NumberToggle()<CR>
+command! NumberToggle :call s:NumberToggle()
 set rnu
 set nu
 
@@ -747,7 +752,12 @@ nnoremap ;m :make<CR>
 nnoremap ;s :source ~/.vimrc<CR>
 
 " use ;f to format the file according to C++/Java style
-nnoremap ;f :set expandtab! expandtab?<CR>gg=G''<ESC>
+function! s:FormatToggle()
+  execute "set expandtab!"
+  execute "set expandtab?"
+  execute 'normal!' "gg=G''"
+endfunc
+command! FormatToggle :call s:FormatToggle()
 
 " use ;d to put deleted stuff in the black hole register "_
 nnoremap ;d "_dd
