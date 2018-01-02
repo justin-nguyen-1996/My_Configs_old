@@ -8,20 +8,21 @@ filetype off     " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-" Plugin 'vim-syntastic/syntastic'
-Plugin 'luochen1990/rainbow'
-Plugin 'godlygeek/tabular'
-Plugin 'garbas/vim-snipmate'
-	Plugin 'MarcWeber/vim-addon-mw-utils'
-	Plugin 'tomtom/tlib_vim'
-	Plugin 'honza/vim-snippets'
-Plugin 'aperezdc/vim-template'
-Plugin 'tpope/tpope-vim-abolish'
-Plugin 'Raimondi/delimitMate'
-Plugin 'tpope/vim-repeat'
-Plugin 'majutsushi/tagbar'
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'VundleVim/Vundle.vim'             " Vundle plugin manager
+Plugin 'vim-syntastic/syntastic'          " syntax checker
+Plugin 'luochen1990/rainbow'              " different colors for different levels of parentheses and braces
+Plugin 'godlygeek/tabular'                " easily align things
+Plugin 'garbas/vim-snipmate'              " snippets for easy code insertion
+	Plugin 'MarcWeber/vim-addon-mw-utils' " helper for snippets
+	Plugin 'tomtom/tlib_vim'              " helper for snippets
+	Plugin 'honza/vim-snippets'           " helper for snippets
+Plugin 'aperezdc/vim-template'            " file templates (.c .py .java etc)
+Plugin 'tpope/tpope-vim-abolish'          " correct typos in insert mode
+Plugin 'Raimondi/delimitMate'             " auto close quotes, parentheses, braces, etc
+Plugin 'tpope/vim-repeat'                 " extend the '.' feature to work with plugins
+Plugin 'ctrlpvim/ctrlp.vim'               " fuzzy file finder
+Plugin 'python-mode/python-mode'          " special plugin for python files
+Plugin 'majutsushi/tagbar'                " TODO:_________
 call vundle#end()
 filetype plugin indent on
 
@@ -139,7 +140,6 @@ let g:snippet_version = 1
 " ============== Begin additions for Templates plugin ============="
 
 " see :h template.txt
-
 " let g:templates_user_variables = [
 " 	\   ['FULLPATH', 'GetFullPath'],
 " 	\ ]
@@ -147,6 +147,19 @@ let g:snippet_version = 1
 " function! GetFullPath()
 " 	return expand('%:p')
 " endfunction
+ 
+" ================================================================="
+" ================================================================="
+" ============== Begin additions for Ctrl-P plugin ================"
+let g:ctrlp_map = '<c-\>'
+let g:ctrlp_cmd = 'CtrlP'
+
+" ================================================================="
+" ================================================================="
+" ============== Begin additions for pymode plugin ================"
+let g:pymode_warnings = 0
+let g:pymode_options_colorcolumn = 0
+let g:pymode_indent = 0
 
 " ================================================================="
 " ================================================================="
@@ -327,10 +340,10 @@ nmap cf( <Plug>Map_cf(
 
 nnoremap <silent> <Plug>Map_c( %me%r(`er)%:silent! call repeat#set("\<Plug>Map_c(", v:count)<CR>
 nmap c( <Plug>Map_c(
-
+ 
 nnoremap <silent> <Plug>Map_cf[ dt[me%x`exi:silent! call repeat#set("\<Plug>Map_cf[", v:count)<CR>
 nmap cf[ <Plug>Map_cf[
-
+ 
 nnoremap <silent> <Plug>Map_c[ %me%r[`er]%:silent! call repeat#set("\<Plug>Map_c[", v:count)<CR>
 nmap c[ <Plug>Map_c[
 " ==========================================================================================================
@@ -355,9 +368,9 @@ nnoremap Y y$
 nnoremap ( %i <ESC>l%a <ESC>h
 nnoremap ) %a <ESC>h%i <ESC>l
 
-" mapping to easily insert spaces on interior sides of matching brackets
-nnoremap [ %i <ESC>l%a <ESC>h
-nnoremap ] %a <ESC>h%i <ESC>l
+" move to next function in C
+nnoremap ]] :call search("^\\(\\w.*\\)\\?{")<CR>
+nnoremap [[ :call search("^\\(\\w.*\\)\\?{", "b")<CR>
 
 " ================================================================="
 " ================================================================="

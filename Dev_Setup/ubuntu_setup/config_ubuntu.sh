@@ -134,6 +134,8 @@ rm -rf ~/.pdbrc
 ln -s ~/Github/My_Configs/.bashrc                   ~/.bashrc
 ln -s ~/Github/My_Configs/.inputrc                  ~/.inputrc
 ln -s ~/Github/My_Configs/vimrc                     ~/.vimrc
+ln -s ~/Github/My_Configs/vimrc                     /usr/share/vim/vimrc
+ln -s ~/Github/My_Configs/vimrc                     /etc/vim/vimrc
 ln -s ~/Github/My_Configs/.tmux.conf                ~/.tmux.conf
 ln -s ~/Github/My_Configs/snippets/                 ~/.vim/bundle/vim-snippets/snippets
 ln -s ~/.vim/bundle/vim-snippets/snippets           ~/snippets
