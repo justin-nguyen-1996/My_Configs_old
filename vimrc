@@ -22,7 +22,7 @@ Plugin 'Raimondi/delimitMate'             " auto close quotes, parentheses, brac
 Plugin 'tpope/vim-repeat'                 " extend the '.' feature to work with plugins
 Plugin 'ctrlpvim/ctrlp.vim'               " fuzzy file finder
 Plugin 'python-mode/python-mode'          " special plugin for python files
-Plugin 'majutsushi/tagbar'                " TODO:_________
+Plugin 'majutsushi/tagbar'                " displays outline of file structure (classes, functions, global variables)
 call vundle#end()
 filetype plugin indent on
 
