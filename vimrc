@@ -166,6 +166,7 @@ let g:pymode_indent = 0
 " ============== Begin additions for tagbar plugin ================"
 nnoremap ;n :TagbarToggle<CR>
 let g:tagbar_show_linenumbers = 2
+let g:tagbar_sort = 0
 
 " ================================================================="
 " ================================================================="
