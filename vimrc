@@ -22,7 +22,7 @@ Plugin 'Raimondi/delimitMate'             " auto close quotes, parentheses, brac
 Plugin 'tpope/vim-repeat'                 " extend the '.' feature to work with plugins
 Plugin 'ctrlpvim/ctrlp.vim'               " fuzzy file finder
 Plugin 'python-mode/python-mode'          " special plugin for python files
-" Plugin 'Yggdroot/indentLine'            " show indentation with vertical lines
+Plugin 'majutsushi/tagbar'                " displays outline of file structure (classes, functions, global variables)
 call vundle#end()
 filetype plugin indent on
 
@@ -164,6 +164,13 @@ let g:pymode_lint_on_fly = 0
 let g:pymode_syntax_indent_errors = 0
 let g:pymode_syntax_space_errors = 0
 let g:pymode_lint_checkers = ['pyflakes']
+
+" ================================================================="
+" ================================================================="
+" ============== Begin additions for tagbar plugin ================"
+nnoremap ;n :TagbarToggle<CR>
+let g:tagbar_show_linenumbers = 2
+let g:tagbar_sort = 0
 
 " ================================================================="
 " ================================================================="
@@ -693,7 +700,7 @@ endfunc
 nnoremap ;zf zE :call FoldFunctions()<CR><ESC>
 
 " use ;n to toggle between number mode and relative number mode
-function! NumberToggle()
+function! s:NumberToggle()
   if(&relativenumber == 1)
     set nornu
 	set nonu
@@ -702,7 +709,7 @@ function! NumberToggle()
 	set nu
   endif
 endfunc
-nnoremap ;n :call NumberToggle()<CR>
+command! NumberToggle :call s:NumberToggle()
 set rnu
 set nu
 
@@ -736,7 +743,12 @@ nnoremap ;m :make<CR>
 nnoremap ;s :source ~/.vimrc<CR>
 
 " use ;f to format the file according to C++/Java style
-nnoremap ;f :set expandtab! expandtab?<CR>gg=G''<ESC>
+function! s:FormatToggle()
+  execute "set expandtab!"
+  execute "set expandtab?"
+  execute 'normal!' "gg=G''"
+endfunc
+command! FormatToggle :call s:FormatToggle()
 
 " use ;d to put deleted stuff in the black hole register "_
 nnoremap ;d "_dd
