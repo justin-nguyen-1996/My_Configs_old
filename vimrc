@@ -160,6 +160,10 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:pymode_warnings = 0
 let g:pymode_options_colorcolumn = 0
 let g:pymode_indent = 0
+let g:pymode_lint_on_fly = 0
+let g:pymode_syntax_indent_errors = 0
+let g:pymode_syntax_space_errors = 0
+let g:pymode_lint_checkers = ['pyflakes']
 
 " ================================================================="
 " ================================================================="
@@ -340,21 +344,6 @@ nnoremap <silent> <Plug>Map_d[ me%x`ex:silent! call repeat#set("\<Plug>Map_d[", 
 nmap d[ <Plug>Map_df[
 " ==========================================================================================================
 
-" mappings for easily changing the surrounding brackets/parentheses
-" ==========================================================================================================
-nnoremap <silent> <Plug>Map_cf( dt(me%x`exi:silent! call repeat#set("\<Plug>Map_cf(", v:count)<CR>
-nmap cf( <Plug>Map_cf(
-
-nnoremap <silent> <Plug>Map_c( %me%r(`er)%:silent! call repeat#set("\<Plug>Map_c(", v:count)<CR>
-nmap c( <Plug>Map_c(
- 
-nnoremap <silent> <Plug>Map_cf[ dt[me%x`exi:silent! call repeat#set("\<Plug>Map_cf[", v:count)<CR>
-nmap cf[ <Plug>Map_cf[
- 
-nnoremap <silent> <Plug>Map_c[ %me%r[`er]%:silent! call repeat#set("\<Plug>Map_c[", v:count)<CR>
-nmap c[ <Plug>Map_c[
-" ==========================================================================================================
-
 " remap U to ~ for easier uppercasing/lowercasing
 nnoremap U ~
 
@@ -376,8 +365,8 @@ nnoremap ( %i <ESC>l%a <ESC>h
 nnoremap ) %a <ESC>h%i <ESC>l
 
 " move to next function in C
-nnoremap ]] :call search("^\\(\\w.*\\)\\?{")<CR>
-nnoremap [[ :call search("^\\(\\w.*\\)\\?{", "b")<CR>
+nnoremap <silent> ]] :call search("^\\(\\w.*\\)\\?{")<CR>
+nnoremap <silent> [[ :call search("^\\(\\w.*\\)\\?{", "b")<CR>
 
 " ================================================================="
 " ================================================================="

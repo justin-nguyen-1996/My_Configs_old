@@ -36,6 +36,10 @@ Fix dual boot time issues (make Linux use 'local' time instead of a hardware clo
 Change terminal font size
  - edit --> profile preferences --> check 'custom font' --> Ubuntu Mono Regular, 14
 
+Change permissions on vim plugins
+ - go to ~/.vim/bundle/
+ - run `sudo chown -R justin:justin *` --> obviously, change 'justin:justin' to 'username:username'
+
 ====================================================================================================================
 
 Virtual Box

@@ -3,7 +3,6 @@
 # update and install packages for command line
 printf "\n=========================\nadding apt repos \n=========================\n"    ; sudo add-apt-repository ppa:fontforge/fontforge
 printf "\n=========================\nupdating packages\n=========================\n"    ; yes yes Y | sudo apt-get update
-printf "\n=========================\ninstalling vim\n=========================\n"       ; yes yes Y | sudo apt-get install vim-gnome
 printf "\n=========================\ninstalling git\n=========================\n"       ; yes yes Y | sudo apt-get install git
 printf "\n=========================\ninstalling ctags\n=========================\n"     ; yes yes Y | sudo apt-get install exuberant-ctags
 printf "\n=========================\ninstalling tmux\n=========================\n"      ; yes yes Y | sudo apt-get install tmux
@@ -72,6 +71,9 @@ mkdir -p ~/.vim/bundle/
 mkdir -p ~/snippets
 mkdir -p ~/Github
 
+# install vim
+~/Github/My_Configs/Dev_Setup/ubuntu_setup/.install_vim.sh
+
 # get the Vundle plugin
 cd ~/  &&  git clone https://github.com/VundleVim/Vundle.vim.git
 mv ~/Vundle.vim ~/.vim/bundle/Vundle.vim
@@ -134,7 +136,6 @@ rm -rf ~/.pdbrc
 ln -s ~/Github/My_Configs/.bashrc                   ~/.bashrc
 ln -s ~/Github/My_Configs/.inputrc                  ~/.inputrc
 ln -s ~/Github/My_Configs/vimrc                     ~/.vimrc
-ln -s ~/Github/My_Configs/vimrc                     /usr/share/vim/vimrc
 ln -s ~/Github/My_Configs/vimrc                     /etc/vim/vimrc
 ln -s ~/Github/My_Configs/.tmux.conf                ~/.tmux.conf
 ln -s ~/Github/My_Configs/snippets/                 ~/.vim/bundle/vim-snippets/snippets
