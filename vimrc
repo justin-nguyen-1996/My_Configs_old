@@ -21,8 +21,8 @@ Plugin 'tpope/tpope-vim-abolish'          " correct typos in insert mode
 Plugin 'Raimondi/delimitMate'             " auto close quotes, parentheses, braces, etc
 Plugin 'tpope/vim-repeat'                 " extend the '.' feature to work with plugins
 Plugin 'ctrlpvim/ctrlp.vim'               " fuzzy file finder
-Plugin 'python-mode/python-mode'          " special plugin for python files
 Plugin 'majutsushi/tagbar'                " displays outline of file structure (classes, functions, global variables)
+" Plugin 'python-mode/python-mode'          " special plugin for python files
 call vundle#end()
 filetype plugin indent on
 
