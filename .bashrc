@@ -8,13 +8,14 @@ alias cpconfig='builtin cd ~/Github/My_Configs  &&  ga  &&  gs  &&  gc "update" 
 # aliases for Ubuntu
 if [ "$ENV_TYPE" == "ubuntu" ]
 	then alias ls='sudo ls'
+		 alias rm='sudo rm'
 		 alias chmod='sudo chmod'
 		 alias chown='sudo chown'
 		 alias install='sudo apt-get install'
 		 alias search='sudo apt-cache search'
 		 alias p='ipython -i'
 		 alias ip='ipython --pylab='auto' -i'
-		 alias ev='sudo vim ~/.vimrc'
+		 alias ev='vim ~/.vimrc'
 fi
 
 # aliases for redhat
