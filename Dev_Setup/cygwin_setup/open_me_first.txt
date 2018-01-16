@@ -27,6 +27,13 @@ Torrent Microsoft Office (Word/Powerpoint/Excel)
  - click get torrent
  - get a torrent program first (on the same page --> get bitlord)
 
+Install these things for X11 Forwarding
+ - xauth
+ - xorg-server
+ - xinit
+ - then run `startxwin &`
+ - then do normal ssh stuff
+
 Miscellaneous Notes:
  - might need to run dos2unix on files that give weird errors
  - remove unnecessary folders from ~/
