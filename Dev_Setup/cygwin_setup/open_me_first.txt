@@ -19,7 +19,7 @@ Terminal Settings
                                 --> shortcut key = Ctrl + Alt + C
 					            --> run = maximized
 
-Read files on Linux partition while still in Windows
+How to read files on Linux partition while still in Windows
  - https://www.diskinternals.com/linux-reader/
 
 Torrent Microsoft Office (Word/Powerpoint/Excel)
@@ -27,12 +27,14 @@ Torrent Microsoft Office (Word/Powerpoint/Excel)
  - click get torrent
  - get a torrent program first (on the same page --> get bitlord)
 
-Install these things for X11 Forwarding
- - xauth
- - xorg-server
- - xinit
- - then run `startxwin &`
- - then do normal ssh stuff
+X11 Forwarding
+ - download X2Go from internet (not Cygwin)
+ - for the desktop environment --> use GNOME instead of KDE --> just ignore the "printer/file sharing" error
+ - shouldn't need to install the following into Cygwin, but I'll leave this here just in case
+   - install xauth
+   - install xorg-server
+   - install xinit
+   - run `startxwin &`
 
 Miscellaneous Notes:
  - might need to run dos2unix on files that give weird errors

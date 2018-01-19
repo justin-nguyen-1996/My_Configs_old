@@ -63,10 +63,6 @@ alias CT..='builtin cd ..  &&  ctags -R -f .tags *  &&  builtin cd -'
 alias CTAGS='ctags -R -f .tags .'
 alias TAGS='ctags -R -f .tags .'
 
-# ssh command for UT LRC
-alias MARIO='ssh jnguyen10@mario.ece.utexas.edu'
-alias GRADER='ssh jnguyen10@grader.ece.utexas.edu'
-
 # nicer & easier ls/dir/la/grep/tar
 alias ls='ls -hF --color=tty --hide=*.pyc'
 alias dir='ls --color=auto'
