@@ -9,7 +9,7 @@ filetype off     " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'             " Vundle plugin manager
-Plugin 'vim-syntastic/syntastic'          " syntax checker
+" Plugin 'vim-syntastic/syntastic'          " syntax checker
 Plugin 'luochen1990/rainbow'              " different colors for different levels of parentheses and braces
 Plugin 'godlygeek/tabular'                " easily align things
 Plugin 'garbas/vim-snipmate'              " snippets for easy code insertion
@@ -373,7 +373,7 @@ nnoremap <silent> [[ :call search("^\\(\\w.*\\)\\?{", "b")<CR>
 
 " autocomplete for matching brace (activated upon pressing enter)
 if g:os =~ 'CYGWIN'
-	inoremap {<CR>  {<TAB><CR>}<Esc><Esc>O
+	inoremap {<CR>  {<CR>}<Esc><Esc>O
 elseif g:os =~ 'Linux'
 	inoremap {<CR>  {<CR>}<ESC>O
 endif

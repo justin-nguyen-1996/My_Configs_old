@@ -7,8 +7,7 @@ alias cpconfig='builtin cd ~/Github/My_Configs  &&  ga  &&  gs  &&  gc "update" 
 
 # aliases for Ubuntu
 if [ "$ENV_TYPE" == "ubuntu" ]
-	then alias ls='sudo ls'
-		 alias rm='sudo rm'
+	then alias rm='sudo rm'
 		 alias chmod='sudo chmod'
 		 alias chown='sudo chown'
 		 alias install='sudo apt-get install'
@@ -20,8 +19,7 @@ fi
 
 # aliases for redhat
 if [ "$ENV_TYPE" == "redhat" ]
-	then alias ls='sudo ls'
-		 alias rm='sudo rm'
+	then alias rm='sudo rm'
 		 alias mv='sudo mv'
 		 alias cp='sudo cp'
 		 alias chmod='sudo chmod'
@@ -64,7 +62,7 @@ alias CTAGS='ctags -R -f .tags .'
 alias TAGS='ctags -R -f .tags .'
 
 # nicer & easier ls/dir/la/grep/tar
-alias ls='ls -hF --color=tty --hide=*.pyc'
+alias ls='ls -hF --color=tty --hide=*.pyc --hide=*.uvgui.* --hide=*.uvopt --hide=*.bak --hide=*.htm --hide=*.dep'
 alias dir='ls --color=auto'
 alias la='ls -al'
 alias grep='grep -ni --color --exclude tags --exclude .tags --exclude *.o --exclude *.bin'
