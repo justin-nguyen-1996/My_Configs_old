@@ -198,6 +198,9 @@ set tabstop=4
 set shiftwidth=4
 set autoindent
 
+" no highlight search
+set nohlsearch
+
 " disable swap file generation
 set noswapfile
 
@@ -461,6 +464,7 @@ fun! s:reformat(line1, line2)
 	execute 'normal!' "V'e="
 	execute 'normal!' 'f(i     '
 	execute a:line1 . ',' . l:line2 . 'Tabularize /{/' 
+	execute a:line1 . ',' . l:line2 . 'Tabularize /}/' 
 endfun
 command! -range Reformat :call s:reformat(<line1>, <line2>)
 

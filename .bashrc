@@ -45,6 +45,7 @@ fi
 
 # git aliases
 alias ga='git add .'
+alias ga..='git add ..'
 alias gs='git status'
 alias gc='git commit -a -m'
 alias gp='git push'
