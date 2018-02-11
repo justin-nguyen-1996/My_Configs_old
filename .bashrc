@@ -66,7 +66,10 @@ alias TAGS='ctags -R -f .tags .'
 alias ls='ls -hF --color=tty --hide=*.pyc --hide=*.uvgui.* --hide=*.uvopt --hide=*.bak --hide=*.htm --hide=*.dep'
 alias dir='ls --color=auto'
 alias la='ls -al'
-alias grep='grep -ni --color --exclude tags --exclude .tags --exclude *.o --exclude *.bin'
+# alias grep='grep -ni --color --exclude tags --exclude .tags --exclude *.o --exclude *.bin --exclude *.bak --exclude *.uvproj'
+alias grep='grep -ni --color --exclude tags     --exclude .tags       --exclude *.o        --exclude *justi\
+                             --exclude *.bin    --exclude *.uvproj    --exclude *.uvopt'
+
 # alias tar='tar -xzvf'
 alias gitlog='git log --oneline -n 10'
 alias du='du -h'
