@@ -62,13 +62,13 @@ alias CT..='builtin cd ..  &&  ctags -R -f .tags *  &&  builtin cd -'
 alias CTAGS='ctags -R -f .tags .'
 alias TAGS='ctags -R -f .tags .'
 
-# nicer & easier ls/dir/la/grep/tar
+# nicer & easier aliases
 alias ls='ls -hF --color=tty --hide=*.pyc --hide=*.uvgui.* --hide=*.uvopt --hide=*.bak --hide=*.htm --hide=*.dep'
 alias dir='ls --color=auto'
 alias la='ls -al'
 alias grep='grep -ni --color --exclude tags --exclude .tags --exclude *.o --exclude *.bin'
 # alias tar='tar -xzvf'
-alias gitlog='git log --oneline'
+alias gitlog='git log --oneline -n 10'
 alias du='du -h'
 alias df='df -h'
 alias libreoffice='libreoffice > /dev/null 2>&1 &'

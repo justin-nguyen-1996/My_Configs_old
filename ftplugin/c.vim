@@ -17,6 +17,6 @@ function! ToggleComment()
            :silent! execute "s:^\s*// ::"
     endif
 endfunction
-vnoremap ;/ :call ToggleComment()<CR>
-nnoremap ;/ :call ToggleComment()<CR>
+vnoremap <silent> ;/ :call ToggleComment()<CR>
+nnoremap <silent> ;/ :call ToggleComment()<CR>
 

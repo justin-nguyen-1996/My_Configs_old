@@ -66,7 +66,7 @@ $if Bash
   # 'Magic Space'
   # Insert a space character then performs
   # a history expansion in the line
-  Space: magic-space
+  # Space: magic-space
 
   # Colored tab completion
   set colored-stats on

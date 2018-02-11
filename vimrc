@@ -9,7 +9,7 @@ filetype off     " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'             " Vundle plugin manager
-" Plugin 'vim-syntastic/syntastic'          " syntax checker
+Plugin 'vim-syntastic/syntastic'          " syntax checker
 Plugin 'luochen1990/rainbow'              " different colors for different levels of parentheses and braces
 Plugin 'godlygeek/tabular'                " easily align things
 Plugin 'garbas/vim-snipmate'              " snippets for easy code insertion
@@ -22,6 +22,7 @@ Plugin 'Raimondi/delimitMate'             " auto close quotes, parentheses, brac
 Plugin 'tpope/vim-repeat'                 " extend the '.' feature to work with plugins
 Plugin 'ctrlpvim/ctrlp.vim'               " fuzzy file finder
 Plugin 'majutsushi/tagbar'                " displays outline of file structure (classes, functions, global variables)
+Plugin 'ARM9/arm-syntax-vim' " TODO
 call vundle#end()
 filetype plugin indent on
 
@@ -75,6 +76,7 @@ if has("cscope") && filereadable("/usr/bin/cscope")
 endif
 
 syntax enable
+au BufNewFile,BufRead *.s,*.S set filetype=arm " arm = armv6/7
 
 " ================================================================="
 " ================================================================="
@@ -679,6 +681,8 @@ function! FoldFunctions()
 	:silent! execute "%g/^int*/normal! vf{%zf"
 	:silent! execute "%g/^double*/normal! vf{%zf"
 	:silent! execute "%g/^void*/normal! vf{%zf"
+	:silent! execute "%g/^unsigned*/normal! vf{%zf"
+	:silent! execute "%g/^long*/normal! vf{%zf"
 
 	" fold same types of functions but also they're tabbed equivalents
 	:silent! execute "%g/\tbool/normal! vf{%zf"
