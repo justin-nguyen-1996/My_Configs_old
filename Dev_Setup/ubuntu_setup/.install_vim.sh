@@ -5,7 +5,9 @@ printf "\n=========================\nremoving vim\n=========================\n" 
 
 printf "\n=========================\ninstalling vim\n=========================\n" ; yes yes Y | sudo apt-get install liblua5.1-dev luajit libluajit-5.1 python-dev ruby-dev libperl-dev libncurses5-dev libatk1.0-dev libx11-dev libxpm-dev libxt-dev
 
-printf "\n=========================\ninstalling check-install\n=========================\n"       ; yes yes Y | sudo apt-get install checkinstall
+printf "\n=========================\ninstalling check-install\n=========================\n" ; yes yes Y | sudo apt-get install checkinstall
+
+printf "\n=========================\ninstalling python3 support\n=========================\n" ; yes yes Y | sudo apt-get install python3-dev
 
 # remove old vim folders
 sudo rm -rf /usr/local/share/vim /usr/bin/vim /etc/vim
@@ -40,5 +42,6 @@ cd vim
 # finish the install
 make && sudo make install
 sudo ln -s /usr/local/bin/vim /usr/bin/vim
+cd ~
 sudo mv ~/vim /etc
 
