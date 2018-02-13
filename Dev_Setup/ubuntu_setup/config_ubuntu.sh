@@ -83,7 +83,8 @@ cd ~/Github/
 ~/clone_my_configs.sh
 
 # take care of vimrc, plugin installation, and removing bad files
-sudo cp ~/Github/My_Configs/vimrc /usr/share/vim/
+sudo ln -s ~/Github/My_Configs/vimrc /etc/vim/
+sudo ln -s ~/Github/My_Configs/vimrc ~/.vimrc
 ~/Github/My_Configs/Dev_Setup/ubuntu_setup/.run_plugin_install.sh
 sudo rm -rf ~/.vim/bundle/vim-snippets/snippets/*
 sudo rm -rf ~/.vim/bundle/vim-template/templates/*
@@ -166,6 +167,9 @@ rm -rf ~/Miniconda-latest-Linux-x86_64.sh
 # update and upgrade existing packages
 sudo apt-get update
 sudo apt-get upgrade -y
+
+# clean up unnecessary package dependencies
+sudo apt-get autoremove
 
 # last note about permanently sourcing ~/.profile
 printf "\n\n=================================================================================================\n\n"
