@@ -168,6 +168,9 @@ rm -rf ~/Miniconda-latest-Linux-x86_64.sh
 sudo apt-get update
 sudo apt-get upgrade -y
 
+# clean up unnecessary package dependencies
+sudo apt-get autoremove
+
 # last note about permanently sourcing ~/.profile
 printf "\n\n=================================================================================================\n\n"
 echo "Log out and log back in to permanently source the config files"
