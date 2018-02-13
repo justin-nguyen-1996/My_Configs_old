@@ -139,6 +139,11 @@ if [ "$ENV_TYPE" == "ubuntu" ]; then function gpm() {
 	git checkout master && git pull && git checkout "$1" && git merge master && gp && gb; 
 } fi
 
+# remove an Ubuntu package and its dependencies
+if [ "$ENV_TYPE" == "ubuntu" ]; then function remove() { 
+	sudo apt-get remove --purge "$1"  &&  sudo apt-get autoremove;
+} fi
+
 ########################################################################################################################
 
 # cool but useless 'red' echo
@@ -152,15 +157,15 @@ if [ "$ENV_TYPE" == "ubuntu" ]; then function gpm() {
 # mkdir -p /media/windows_temp/ && sudo mount -t ntfs-3g -o ro /dev/sda4 /media/windows_temp/
 # sudo umount /media/windows_temp/
 
-# `git reset <filename>` to remove from git add
-# `git reset HEAD <commit id>` to remove from git commit --> use `gitlog` to see git commit id's
-#      (shortcut: `git reset HEAD~#` --> # is how many commits to go back --> e.g. `git reset HEAD~1` means undo latest commit)
-# `git checkout` to just quickly check something out and go back
-# `git push -f origin master:justin` --> force push one branch onto another --> <remote> <new branch>:<branch you are pushing to> 
+# `git reset <filename>`                --> remove from git add
+# `git reset HEAD <commit id>`          --> remove from git commit --> use `gitlog` to see git commit id's
+#      (shortcut: `git reset HEAD~#`    --> # is how many commits to go back --> e.g. `git reset HEAD~1` means undo latest commit)
+# `git checkout`                        --> just quickly check something out and go back
+# `git push -f origin master:justin`    --> force push one branch onto another --> <remote> <new branch>:<branch you are pushing to> 
 # `git checkout otherbranch myfile.txt` --> copy a file from another branch onto the current branch
-# `git branch -D justin` --> delete local branch called justin
-# `git push --delete origin justin` --> delete remote branch called justin
-# `git remote set-url origin <url>` --> git remote set-url origin https://bitbucket.org/justins_stuff/college_senior_year
+# `git branch -D justin`                --> delete local branch called justin
+# `git push --delete origin justin`     --> delete remote branch called justin
+# `git remote set-url origin <url>`     --> git remote set-url origin https://bitbucket.org/justins_stuff/college_senior_year
 
 # Put pintos in PATH
 alias pintos-gdb='GDBMACROS=/home/jhn545/Github/OS/Pintos/misc/gdb-macros pintos-gdb'

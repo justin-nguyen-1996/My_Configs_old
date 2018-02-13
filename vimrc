@@ -17,12 +17,12 @@ Plugin 'garbas/vim-snipmate'              " snippets for easy code insertion
 	Plugin 'tomtom/tlib_vim'              " helper for snippets
 	Plugin 'honza/vim-snippets'           " helper for snippets
 Plugin 'aperezdc/vim-template'            " file templates (.c .py .java etc)
-Plugin 'tpope/tpope-vim-abolish'          " correct typos in insert mode
+"Plugin 'tpope/tpope-vim-abolish'          " correct typos in insert mode
 Plugin 'Raimondi/delimitMate'             " auto close quotes, parentheses, braces, etc
 Plugin 'tpope/vim-repeat'                 " extend the '.' feature to work with plugins
-Plugin 'ctrlpvim/ctrlp.vim'               " fuzzy file finder
-Plugin 'majutsushi/tagbar'                " displays outline of file structure (classes, functions, global variables)
-Plugin 'ARM9/arm-syntax-vim' " TODO
+"Plugin 'ctrlpvim/ctrlp.vim'               " fuzzy file finder
+"Plugin 'majutsushi/tagbar'                " displays outline of file structure (classes, functions, global variables)
+Plugin 'ARM9/arm-syntax-vim'              " enable syntax highlighting for ARM assembly code (tbh this looks ok at best, not amazing)
 call vundle#end()
 filetype plugin indent on
 
@@ -77,6 +77,15 @@ endif
 
 syntax enable
 au BufNewFile,BufRead *.s,*.S set filetype=arm " arm = armv6/7
+
+" WSL yank support
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " default location
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * call system('echo '.shellescape(join(v:event.regcontents, "\<CR>")).' | '.s:clip)
+    augroup END
+end
 
 " ================================================================="
 " ================================================================="
