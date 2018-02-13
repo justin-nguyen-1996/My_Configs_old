@@ -37,8 +37,10 @@ Change terminal font size
  - edit --> profile preferences --> check 'custom font' --> Ubuntu Mono Regular, 14
 
 Change permissions on vim plugins
- - go to ~/.vim/bundle/
- - run `sudo chown -R justin:justin *` --> obviously, change 'justin:justin' to 'username:username'
+ - run `sudo chown -R justin:justin ~/.vim/bundle` --> obviously, change 'justin:justin' to 'username:username'
+
+Change permissions on miniconda packages
+ - run `sudo chown -R justin:justin ~/miniconda2/`
 
 ====================================================================================================================
 
