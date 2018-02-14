@@ -15,6 +15,7 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 		 alias p='ipython -i'
 		 alias ip='ipython --pylab='auto' -i'
 		 alias ev='vim ~/.vimrc'
+		 alias vim='vim -p'
 fi
 
 # aliases for redhat
