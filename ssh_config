@@ -1,0 +1,15 @@
+
+# UT Austin LRC Machines
+Host mario
+    User jnguyen10
+    HostName mario.ece.utexas.edu
+Host bowser
+	User jnguyen10
+	HostName bowser.ece.utexas.edu
+Host yoshi
+	User jnguyen10
+	HostName yoshi.ece.utexas.edu
+Host toad
+	User jnguyen10
+	HostName toad.ece.utexas.edu
+

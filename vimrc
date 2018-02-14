@@ -254,6 +254,7 @@ set path+=**
 
 " display all matching files when you tab-complete
 set wildmenu
+set wildignorecase
 
 " tweaks for file browsing
 let g:netrw_browse_split=4   " open in prior window

@@ -118,6 +118,9 @@ conda config --add channels conda-forge
 cp ~/Github/My_Configs/ipython_config.py ~/.ipython/profile_default/
 vim -c ":q!" ~/.ipython/profile_default/ 
 
+# make sure the ~/.ssh folder exists
+mkdir -p ~/.ssh
+
 # remove old copies to make room for symlinks
 rm -rf ~/.bashrc
 rm -rf ~/.inputrc
@@ -148,6 +151,7 @@ ln -s ~/Github/My_Configs/plugin/                   ~/.vim/after/plugin
 ln -s ~/Github/My_Configs/templates/                ~/.vim/bundle/vim-template/templates
 ln -s ~/Github/My_Configs/ipython_config.py         ~/.ipython/profile_default/ipython_config.py
 ln -s ~/Github/My_Configs/.pdbrc                    ~/.pdbrc
+ln -s ~/Github/My_Configs/ssh_config                ~/.ssh/config
 cp ~/Github/My_Configs/.profile ~/                  ##### NOTE: don't make a symlink for ~/.profile
 
 # source the ~/.profile  &&  ~/.inputrc
