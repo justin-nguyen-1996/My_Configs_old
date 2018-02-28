@@ -7,8 +7,7 @@ alias cpconfig='builtin cd ~/Github/My_Configs  &&  ga  &&  gs  &&  gc "update" 
 
 # aliases for Ubuntu
 if [ "$ENV_TYPE" == "ubuntu" ]
-	then alias rm='sudo rm'
-		 alias chmod='sudo chmod'
+	then alias chmod='sudo chmod'
 		 alias chown='sudo chown'
 		 alias install='sudo apt-get install'
 		 alias search='sudo apt-cache search'
@@ -16,6 +15,7 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 		 alias ip='ipython --pylab='auto' -i'
 		 alias ev='vim ~/.vimrc'
 		 alias vim='vim -p'
+		 #alias rm='sudo rm'
 fi
 
 # aliases for redhat
@@ -167,6 +167,8 @@ if [ "$ENV_TYPE" == "ubuntu" ]; then function remove() {
 # `git branch -D justin`                --> delete local branch called justin
 # `git push --delete origin justin`     --> delete remote branch called justin
 # `git remote set-url origin <url>`     --> git remote set-url origin https://bitbucket.org/justins_stuff/college_senior_year
+# `git fetch <remote> <branch>`         --> pull a remote branch and check it out
+#  && `git checkout <branch>`
 
 # Put pintos in PATH
 alias pintos-gdb='GDBMACROS=/home/jhn545/Github/OS/Pintos/misc/gdb-macros pintos-gdb'
