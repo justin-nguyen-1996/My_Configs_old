@@ -662,9 +662,8 @@ command! -range TabE :call s:TabularEquals(<line1>, <line2>)
 
 " convert a .c file to a .h file
 fun! s:convertC2H()
-	execute 'normal!' 'meggVGy`e'
-	execute 'tabnew %:r.h'
-	execute 'normal!' 'p'
+	w %:r.h
+	tabe %:r.h
  	execute 'g/^\S.*{$/norm $h%s;'
 endfun
 command! ConvertC2H :call s:convertC2H()
