@@ -11,6 +11,7 @@ printf "\n=========================\ninstalling libgnome\n======================
 printf "\n=========================\ninstalling xclip\n=========================\n"     ; yes yes Y | sudo apt-get install xclip
 printf "\n=========================\ninstalling expect\n=========================\n"    ; yes yes Y | sudo apt-get install expect
 printf "\n=========================\ninstalling fontforge\n=========================\n" ; yes yes Y | sudo apt-get install fontforge
+printf "\n=========================\ninstalling fontforge\n=========================\n" ; yes yes Y | sudo apt-get install libqtgui4
 
 # generate and save the new ssh key
 printf "\n====================================================================\n"    

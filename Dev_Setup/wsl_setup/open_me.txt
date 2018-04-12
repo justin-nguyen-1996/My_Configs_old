@@ -44,6 +44,10 @@ Change permissions on vim plugins
 Change permissions on miniconda packages
  - run `sudo chown -R justin:justin ~/miniconda2/`
 
+Matplotlib GUI stuff
+ - https://www.scivision.co/pyqtmatplotlib-in-windows-subsystem-for-linux/
+ - make sure to always have an X11 server running for anything involving GUIs
+
 ====================================================================================================================
 
 Virtual Box

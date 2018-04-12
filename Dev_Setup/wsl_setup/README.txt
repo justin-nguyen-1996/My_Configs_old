@@ -1,6 +1,6 @@
 
 0. Copy and paste these files into ~/ using VI (not vim)
-    - 'config_ubuntu.sh'
+    - 'config_wsl.sh'
     - 'clone_my_configs.sh'
     - '.install_vim.sh'
    (NOTE: make sure the file names are the same)

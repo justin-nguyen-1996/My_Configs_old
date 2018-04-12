@@ -106,6 +106,10 @@ alias sp='source ~/.profile'
 # enable extglob (useful for something like rm !(temp.c))
 shopt -s extglob
 
+# WSL X11 stuff
+DISPLAY=:0.0
+export DISPLAY
+
 ########################################################################################################################
 
 # set the command line prompt to red and yellow  -->  '1;31m' is red  
