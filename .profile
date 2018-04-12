@@ -30,7 +30,7 @@
 #######################################################################
 
 # NOTE: Must set this appropriately for the current development environment
-export ENV_TYPE="ubuntu"
+export ENV_TYPE="wsl"
 
 # Set Github repo location
 export GIT=~/Github
@@ -39,6 +39,8 @@ export GIT=~/Github
 if [ "$ENV_TYPE" == "cygwin" ]
 	then export PATH="$HOME/miniconda2/Scripts/:$HOME/miniconda2/:$PATH"
 elif [ "$ENV_TYPE" == "ubuntu" ]
+	then export PATH="$HOME/miniconda2/bin:$PATH"
+elif [ "$ENV_TYPE" == "wsl" ]
 	then export PATH="$HOME/miniconda2/bin:$PATH"
 elif [ "$ENV_TYPE" == "redhat" ]
 	then export PATH="$HOME/miniconda2/bin:$PATH"
@@ -53,11 +55,22 @@ elif [ "$ENV_TYPE" == "redhat" ]
 	then export PATH="$HOME/Pintos/src/utils/:$PATH"
 fi
 
+# WSL stuff
+if [ "$ENV_TYPE" == "wsl" ]
+	then
+		export c="/mnt/c/"
+		export justin="/mnt/c/Users/Justin/"
+		export classes="/mnt/c/Users/Justin/UT/Classes/"
+		export ee445m="/mnt/c/Users/Justin/UT/Classes/4_Senior/2018_SpringSemester/EE445M_RTOS/"
+		export downloads="/mnt/c/Users/justi/Downloads/"
+		export PATH="$PATH:$HOME/Github/My_Configs/"
+fi
+
 # change starting directory
 # cd _____
 
-synclient VertScrollDelta=-150   # slow down vertical scrolling
-synclient HorizTwoFingerScroll=0 # disable horizontal scrolling
+# synclient VertScrollDelta=-150   # slow down vertical scrolling
+# synclient HorizTwoFingerScroll=0 # disable horizontal scrolling
 
 #######################################################################
 #######################################################################
@@ -74,6 +87,8 @@ fi
 
 # set PATH so it includes user's private bin directories
 if [ "$ENV_TYPE" == "ubuntu" ]
+	then PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+elif [ "$ENV_TYPE" == "wsl" ]
 	then PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 elif [ "$ENV_TYPE" == "redhat" ]
 	then PATH="$HOME/bin:$HOME/.local/bin:$PATH"
