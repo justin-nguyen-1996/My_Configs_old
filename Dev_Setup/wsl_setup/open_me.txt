@@ -1,0 +1,64 @@
+
+Change $ENV_TYPE in `~/.profile` to `wsl`
+
+Increase sudo time with
+ - sudo visudo
+ - Change the defaults line to become
+   - Defaults        env_reset,timestamp_timeout=600
+
+System Settings (can search it or click the gear on the left side of the launcher)
+ - Brightness & Lock --> change the time it takes to lock the screen (off and never)
+ - Appearance --> change the desktop background
+
+Auto-maximized terminal
+ - open a terminal --> go to the launcher --> right-click and choose "Lock to Launcher"
+ - go to the edit bar (top of the screen) --> then profile preferences --> change initial terminal size to something really big
+ - edit --> profile preferences --> colors --> background color : #020F18
+                                           --> text color       : #FFFFFF
+										   --> bold color       : same as text color
+
+Reboot the computer after the script updates and upgrades packages
+ - then set the zoom level to 120%
+
+Disable touchscreen
+ - open ~/Github/My_Configs/10-evdev.conf
+ - open /usr/share/X11/xorg.conf.d/10-evdev.conf
+ - compare the two and look for 'touchscreen'
+ - change the driver from 'evdev' to 'libinput'
+
+Make the grub timeout longer
+ - open ~/Github/My_Configs/grub
+ - open /etc/default/grub
+ - compare the two and change the 'GRUB_HIDDEN_TIMEOUT_QUIET'  &&  'GRUB_TIMEOUT' values
+ - run `sudo update-grub`
+
+Fix dual boot time issues (make Linux use 'local' time instead of a hardware clock to match Windows)
+ - run `timedatectl set-local-rtc 1`
+
+Change terminal font size
+ - edit --> profile preferences --> check 'custom font' --> Ubuntu Mono Regular, 14
+
+Change permissions on vim plugins
+ - run `sudo chown -R justin:justin ~/.vim/bundle` --> obviously, change 'justin:justin' to 'username:username'
+
+Change permissions on miniconda packages
+ - run `sudo chown -R justin:justin ~/miniconda2/`
+
+====================================================================================================================
+
+Virtual Box
+ - Create New VM
+   click new --> create virtual hard disk --> VDI --> dynamically allocated --> 60 GB of disk space --> create
+   settings --> general --> shared clipboard (bidirectional) --> drag n drop (bidirectional)
+   settings --> display --> video memory (40 MB) --> monitor count (2)
+   settings --> storage --> under controller:IDE
+                        --> click on the cd that says Empty --> (on the right) click on the cd next to Optical Drive: IDE Secondary Master --> choose the ubuntu .iso option
+   settings --> shared folders --> (on the right) click the folder with the plus on it
+                               --> folder path (path to a folder on Windows machine) --> folder name (SharedFolder) --> check these boxes (auto-mount && make-permanent)
+
+ - For Guest Additions
+   power on VM --> devices --> insert guest additions --> (if it fails) then shutdown the VM and try again
+
+ - Shared Folder
+   sudo mount -t vboxsf -o uid=$UID,gid=$(id -g) SharedFolder ~/SharedFolder
+

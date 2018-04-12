@@ -18,6 +18,20 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 		 #alias rm='sudo rm'
 fi
 
+# aliases for WSL (Windows Subsystem for Linux)
+if [ "$ENV_TYPE" == "wsl" ]
+	then alias chmod='sudo chmod'
+		 alias chown='sudo chown'
+		 alias install='sudo apt-get install'
+		 alias search='sudo apt-cache search'
+		 alias p='ipython -i'
+		 alias ip='ipython --pylab='auto' -i'
+		 alias ev='vim ~/.vimrc'
+		 alias vim='vim -p'
+		 alias open='wsl-open'
+		 #alias rm='sudo rm'
+fi
+
 # aliases for redhat
 if [ "$ENV_TYPE" == "redhat" ]
 	then alias rm='sudo rm'
@@ -64,11 +78,12 @@ alias CTAGS='ctags -R -f .tags .'
 alias TAGS='ctags -R -f .tags .'
 
 # nicer & easier aliases
-alias ls='ls -hF --color=tty --hide=*.pyc --hide=*.uvgui.* --hide=*.uvopt --hide=*.bak --hide=*.htm --hide=*.dep'
+alias ls='ls -hF --color=tty --hide=*.pyc --hide=*.uvgui.* --hide=*.uvopt --hide=*.bak --hide=*.htm --hide=*.dep --hide=*.lst'
 alias dir='ls --color=auto'
 alias la='ls -al'
-alias grep='grep -ni --color --exclude tags     --exclude .tags       --exclude *.o        --exclude *justi\
-                             --exclude *.bin    --exclude *.uvproj    --exclude *.uvopt'
+# alias grep='grep -ni --color --exclude tags     --exclude .tags       --exclude *.o        --exclude *justi\
+#                              --exclude *.bin    --exclude *.uvproj    --exclude *.uvopt'
+alias grep='grep -ni --color --exclude tags  --exclude .tags --exclude *.map'
 
 # alias tar='tar -xzvf'
 alias gitlog='git log --oneline -n 10'
