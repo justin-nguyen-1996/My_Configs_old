@@ -57,6 +57,7 @@ Cmder (a better console emulator)
    - Under Startup - change the specified task to the bash::ubuntu one
    - Under Startup --> Tasks - change the 1st predefined task to bash::ubuntu - check the box for "default task for new console"
    - Under Features --> Transparency - uncheck the box for "active window transparency"
+   - Under Features --> Transparency - uncheck the box for "use separate transparency value for inactive window"
    - Under Keys & Macros - search for "close" and disable the <Ctrl-W> hotkey
 
 ====================================================================================================================
