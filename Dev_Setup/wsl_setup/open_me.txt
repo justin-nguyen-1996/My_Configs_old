@@ -51,11 +51,13 @@ Matplotlib GUI stuff
 Cmder (a better console emulator)
  - download mini version from here --> http://cmder.net/
  - follow steps from here --> https://gingter.org/2016/11/16/running-windows-10-ubuntu-bash-in-cmder/
- - press Windows Key + Alt + p --> this lets you change the settings
+ - import the settings file (~/Github/My_Configs/Dev_Setup/wsl_setup/cmder_settings.xml)
+ - if importing the settings file didn't work --> press Windows Key + Alt + p
    - Under Main - change size to 19
    - Under Main --> Tab bar - change tabs to "Don't Show"
    - Under Startup - change the specified task to the bash::ubuntu one
    - Under Startup --> Tasks - change the 1st predefined task to bash::ubuntu - check the box for "default task for new console"
+   - Under Features --> Text cursor - set both options to "Block"
    - Under Features --> Transparency - uncheck the box for "active window transparency"
    - Under Features --> Transparency - uncheck the box for "use separate transparency value for inactive window"
    - Under Keys & Macros - search for "close" and disable the <Ctrl-W> hotkey
@@ -68,11 +70,11 @@ Virtual Box
    settings --> general --> shared clipboard (bidirectional) --> drag n drop (bidirectional)
    settings --> display --> video memory (40 MB) --> monitor count (2)
    settings --> storage --> under controller:IDE
-                        --> click on the cd that says Empty 
+                        --> click on the cd that says Empty
 						--> (on the right) click on the cd next to Optical Drive: IDE Secondary Master --> choose the ubuntu .iso option
    settings --> shared folders --> (on the right) click the folder with the plus on it
-                               --> folder path (path to a folder on Windows machine) 
-							       --> folder name (SharedFolder) 
+                               --> folder path (path to a folder on Windows machine)
+							       --> folder name (SharedFolder)
 								   --> check these boxes (auto-mount && make-permanent)
 
  - For Guest Additions
