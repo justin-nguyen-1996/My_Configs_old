@@ -127,7 +127,7 @@ export DISPLAY
 
 # example of a spaced out version for clarity 
 # --> export PS1="\e[1;31m   \u   @   \h   :   \e[m   \e[1;33m   \w   \e[m   \n   $"
-export PS1="\e[1;31m\n\u@\h:\e[m\e[1;33m\w\e[m\n$ "
+export PS1="\e[1;31m\n\u:\e[m\e[1;33m\w\e[m\n$ "
 
 ########################################################################################################################
 
@@ -146,20 +146,20 @@ cd() { builtin cd "${1-$(echo ~)}" && ls -F; }
 if [ "$ENV_TYPE" == "ubuntu" ]; then function open() { gnome-open "$1" > /dev/null 2>&1 & } fi
 
 # map jupyter notebook to not output junk to stdout
-if [ "$ENV_TYPE" == "ubuntu" ]; then function jp() { jupyter notebook "$1" > /dev/null 2>&1 & } fi
+if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function jp() { jupyter notebook "$1" > /dev/null 2>&1 & } fi
 
 # make merging branches onto/from master easier
-if [ "$ENV_TYPE" == "ubuntu" ]; then function gm() { 
+if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function gm() { 
 	git checkout master && git merge "$1" && gp && git checkout "$1" && gb; 
 } fi
 
 # make merging branches onto/from master easier
-if [ "$ENV_TYPE" == "ubuntu" ]; then function gpm() { 
+if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function gpm() { 
 	git checkout master && git pull && git checkout "$1" && git merge master && gp && gb; 
 } fi
 
 # remove an Ubuntu package and its dependencies
-if [ "$ENV_TYPE" == "ubuntu" ]; then function remove() { 
+if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remove() { 
 	sudo apt-get remove --purge "$1"  &&  sudo apt-get autoremove;
 } fi
 
