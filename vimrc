@@ -331,8 +331,8 @@ vnoremap , ;
 nnoremap < ,
 
 " remap the normal paste to align the pasted block with the surrounded text
-nnoremap p ]p
-nnoremap P ]P
+" nnoremap p ]p
+" nnoremap P ]P
 
 " remap yb to not move the cursor backwards (repositioning the cursor was annoying)
 nnoremap yb ybw
@@ -418,7 +418,7 @@ inoremap <C-k> <C-x><C-f>
 vnoremap U ~
 
 " so that your default register won't be overwritten when you paste over stuff in visual mode
-xnoremap p "_dP
+" xnoremap p "_dP
 
 " to avoid triggering that stupidly annoying `man` lookup that is utterly and completely useless
 vnoremap K <NOP>
