@@ -294,10 +294,12 @@ if g:os =~ 'Linux'
 endif
 
 " make the clipboard the default register
-if has('unnamedplus')
-    set clipboard=unnamed,unnamedplus
-else
-	set clipboard=unnamed
+if $ENV_TYPE != 'wsl'
+	if has('unnamedplus')
+		set clipboard=unnamed,unnamedplus
+	else
+		set clipboard=unnamed
+	endif
 endif
 
 " ================================================================="
@@ -331,8 +333,8 @@ vnoremap , ;
 nnoremap < ,
 
 " remap the normal paste to align the pasted block with the surrounded text
-" nnoremap p ]p
-" nnoremap P ]P
+nnoremap p ]p
+nnoremap P ]P
 
 " remap yb to not move the cursor backwards (repositioning the cursor was annoying)
 nnoremap yb ybw
@@ -402,7 +404,11 @@ endif
 inoremap <C-c> l<BS><ESC>
 
 " remap the paste function in insert mode to Control-p
-inoremap <C-p> <C-R>*
+if $ENV_TYPE == 'wsl'
+	inoremap <C-p> <C-R>"
+else
+	inoremap <C-p> <C-R>*
+endif
 
 " remap the autocomplete feature in vim to only look in the current file
 inoremap <C-n> <C-x><C-n>
@@ -418,7 +424,7 @@ inoremap <C-k> <C-x><C-f>
 vnoremap U ~
 
 " so that your default register won't be overwritten when you paste over stuff in visual mode
-" xnoremap p "_dP
+xnoremap p "_dP
 
 " to avoid triggering that stupidly annoying `man` lookup that is utterly and completely useless
 vnoremap K <NOP>
@@ -533,17 +539,18 @@ function! Smart_Delete_dd()
 endfunction
 nnoremap <silent> dd :call Smart_Delete_dd()<CR>
 
-function! Smart_Delete_Vd() range
-	let temp = getreg('"', 1)
-	execute 'normal!' . (a:lastline - a:firstline + 1) . 'dd'
-	if matchstr(@", '\_s*') == @"    " if just whitespace
-		silent! call setreg('"', temp)
-		silent! call setreg('*', temp)
-		silent! call setreg('+', temp)
-		silent! call setreg('0', temp)
-	endif
-endfunction
-vnoremap <silent> d :call Smart_Delete_Vd()<CR>
+" NOTE: commented out because this affects visually selecting and deleting code folds
+" function! Smart_Delete_Vd() range
+" 	let temp = getreg('"', 1)
+" 	execute 'normal!' . (a:lastline - a:firstline + 1) . 'dd'
+" 	if matchstr(@", '\_s*') == @"    " if just whitespace
+" 		silent! call setreg('"', temp)
+" 		silent! call setreg('*', temp)
+" 		silent! call setreg('+', temp)
+" 		silent! call setreg('0', temp)
+" 	endif
+" endfunction
+" vnoremap <silent> d :call Smart_Delete_Vd()<CR>
 
 "=================================================================="
 
