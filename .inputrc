@@ -25,8 +25,9 @@
 ####################################################################################
 ####################################################################################
 
-# use bind -p on the command line to see what is available for mapping
+# use bind -p (piped to grep of course) on the command line to see what is available for mapping
 # make sure to insert these characters using 'Ctrl-v' and the key to map
+
 # Ctrl-d to delete a char at the cursor (closes the terminal if no text entered)
 # Ctrl-h to delete a word backwards
 # Ctrl-l to delete a word forwards
