@@ -22,6 +22,7 @@ Plugin 'Raimondi/delimitMate'             " auto close quotes, parentheses, brac
 Plugin 'tpope/vim-repeat'                 " extend the '.' feature to work with plugins
 "Plugin 'ctrlpvim/ctrlp.vim'               " fuzzy file finder
 "Plugin 'majutsushi/tagbar'                " displays outline of file structure (classes, functions, global variables)
+Plugin 'Valloric/YouCompleteMe'           " a code-completion engine with IDE-esque support for different languages
 Plugin 'ARM9/arm-syntax-vim'              " enable syntax highlighting for ARM assembly code (tbh this looks ok at best, not amazing)
 call vundle#end()
 filetype plugin indent on

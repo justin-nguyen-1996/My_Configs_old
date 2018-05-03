@@ -67,6 +67,7 @@ alias gp='git push'
 alias gb='git branch -v'
 alias gba='git branch -va'
 alias gco='git checkout'
+alias gitlog='git log --oneline -n 10'
 
 # jumping to git repos
 alias cdgit='cd ~/Github'
@@ -81,15 +82,15 @@ alias TAGS='ctags -R -f .tags .'
 alias ls='ls -hF --color=tty --hide=*.pyc --hide=*.uvgui.* --hide=*.uvopt --hide=*.bak --hide=*.htm --hide=*.dep --hide=*.lst'
 alias dir='ls --color=auto'
 alias la='ls -al'
+alias du='du -h'
+alias df='df -h'
 # alias grep='grep -ni --color --exclude tags     --exclude .tags       --exclude *.o        --exclude *justi\
 #                              --exclude *.bin    --exclude *.uvproj    --exclude *.uvopt'
 alias grep='grep -ni --color --exclude tags  --exclude .tags --exclude *.map'
 
-# alias tar='tar -xzvf'
-alias gitlog='git log --oneline -n 10'
-alias du='du -h'
-alias df='df -h'
-alias libreoffice='libreoffice > /dev/null 2>&1 &'
+# tar aliases and helpful info
+# alias tar='tar -cpzfv <folder_to_create.tar.gz> <folder_to_compress> --exclude=folder_name'
+# alias untar='tar -xpzfv <folder_to_untar.tar.gz> -C <folder_to_untar_into>'
 
 # lazy aliases and typos
 alias sl='ls'
@@ -148,6 +149,9 @@ if [ "$ENV_TYPE" == "ubuntu" ]; then function open() { gnome-open "$1" > /dev/nu
 # map jupyter notebook to not output junk to stdout
 if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function jp() { jupyter notebook "$1" > /dev/null 2>&1 & } fi
 
+# map libreoffice to not output junk to stdout
+if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function libreoffice() { libreoffice "$1" > /dev/null 2>&1 & } fi
+
 # make merging branches onto/from master easier
 if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function gm() { 
 	git checkout master && git merge "$1" && gp && git checkout "$1" && gb; 
@@ -176,6 +180,7 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 # mkdir -p /media/windows_temp/ && sudo mount -t ntfs-3g -o ro /dev/sda4 /media/windows_temp/
 # sudo umount /media/windows_temp/
 
+# `git reset HEAD~`                     --> undo previous commit that wasn't pushed (and also keep local changes)
 # `git reset <filename>`                --> remove from git add
 # `git reset HEAD <commit id>`          --> remove from git commit --> use `gitlog` to see git commit id's
 #      (shortcut: `git reset HEAD~#`    --> # is how many commits to go back --> e.g. `git reset HEAD~1` means undo latest commit)
