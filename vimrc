@@ -9,7 +9,6 @@ filetype off     " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'             " Vundle plugin manager
-Plugin 'vim-syntastic/syntastic'          " syntax checker
 Plugin 'luochen1990/rainbow'              " different colors for different levels of parentheses and braces
 Plugin 'godlygeek/tabular'                " easily align things
 Plugin 'garbas/vim-snipmate'              " snippets for easy code insertion
@@ -90,47 +89,10 @@ end
 
 " ================================================================="
 " ================================================================="
-" ============== Begin additions for Syntastic plugin ============="
-
-let &shellpipe = '2>&1| tee'
-let &shellredir = '>%s 2>&1'
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_enable_signs=1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_auto_jump = 1
-
-"let g:syntastic_auto_loc_list = 2
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-"let g:syntastic_enable_balloons = 0
-"let g:syntastic_error_symbol = '✗'
-"let g:syntastic_ignore_files = ['\.min\.js$', '\.min\.css$']
-"let g:syntastic_loc_list_height = 5
-"let g:syntastic_warning_symbol = '✗'
-"let g:syntastic_style_error_symbol = '∆'
-"let g:syntastic_style_warning_symbol = '∆'
-
-" shortcut command for toggling syntastic mode (useful for when I'm just writing test code)
-fun! s:toggle_syntastic()
-	call SyntasticToggleMode()
-endfun
-command! STM :call s:toggle_syntastic()
-
-" ================================================================="
-" ================================================================="
 " ========== Begin additions for YouCompleteMe plugin ============="
 
 "will put icons in Vim's gutter on lines that have a diagnostic set.
-"Turning this off will also turn off the YcmErrorLine and YcmWarningLine
-"highlighting
-let g:ycm_enable_diagnostic_highlighting = 0 " TODO: consider this
+let g:ycm_enable_diagnostic_highlighting = 0
 
 " ignore annoying extra confimation of using the .ycm_confirm_extra_conf file
 let g:ycm_confirm_extra_conf = 0
