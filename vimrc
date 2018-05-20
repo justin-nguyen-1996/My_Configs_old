@@ -153,6 +153,12 @@ fun! s:close_preview()
 endfun
 command! LC :call s:close_preview()
 
+" shortcut command for quickly getting the type of a function/variable
+fun! s:get_type()
+	execute ':YcmCompleter GetType'
+endfun
+command! TAYPE :call s:get_type()
+
 " ================================================================="
 " ================================================================="
 " =========== Begin additions for Rainbow_parens plugin ==========="
