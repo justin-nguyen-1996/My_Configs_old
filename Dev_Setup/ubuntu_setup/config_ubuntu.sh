@@ -126,7 +126,6 @@ rm -rf ~/.bashrc
 rm -rf ~/.inputrc
 rm -rf ~/.vimrc
 rm -rf ~/.tmux.conf
-rm -rf ~/snippets
 rm -rf ~/.vim/bundle/vim-snippets/snippets
 rm -rf ~/conda_packages
 rm -rf ~/.vim/after/syntax
@@ -136,6 +135,9 @@ rm -rf ~/.vim/bundle/vim-template/templates
 rm -rf ~/.ipython/profile_default/ipython_config.py
 rm -rf ~/.pdbrc
 
+# rename the original snippets folder to keep a copy of it
+mv ~/.vim/bundle/vim-snippets/snippets     ~/.vim/bundle/vim-snippets/snips_original
+
 # make symlinks
 ln -s ~/Github/My_Configs/.bashrc                   ~/.bashrc
 ln -s ~/Github/My_Configs/.inputrc                  ~/.inputrc
@@ -143,7 +145,6 @@ ln -s ~/Github/My_Configs/vimrc                     ~/.vimrc
 ln -s ~/Github/My_Configs/vimrc                     /etc/vim/vimrc
 ln -s ~/Github/My_Configs/.tmux.conf                ~/.tmux.conf
 ln -s ~/Github/My_Configs/snippets/                 ~/.vim/bundle/vim-snippets/snippets
-ln -s ~/.vim/bundle/vim-snippets/snippets           ~/snippets
 ln -s ~/miniconda2/lib/python2.7/site-packages/     ~/conda_packages
 ln -s ~/Github/My_Configs/syntax/                   ~/.vim/after/syntax
 ln -s ~/Github/My_Configs/ftplugin                  ~/.vim/after/ftplugin

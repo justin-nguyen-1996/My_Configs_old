@@ -11,16 +11,14 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'             " Vundle plugin manager
 Plugin 'luochen1990/rainbow'              " different colors for different levels of parentheses and braces
 Plugin 'godlygeek/tabular'                " easily align things
-Plugin 'garbas/vim-snipmate'              " snippets for easy code insertion
-	Plugin 'MarcWeber/vim-addon-mw-utils' " helper for snippets
-	Plugin 'tomtom/tlib_vim'              " helper for snippets
-	Plugin 'honza/vim-snippets'           " helper for snippets
+Plugin 'SirVer/ultisnips'                 " snippets for easy code insertion (snippet engine)
+Plugin 'honza/vim-snippets'               " helper for snippets (snippet database)
 Plugin 'aperezdc/vim-template'            " file templates (.c .py .java etc)
-"Plugin 'tpope/tpope-vim-abolish'          " correct typos in insert mode
+" Plugin 'tpope/tpope-vim-abolish'          " correct typos in insert mode
 Plugin 'Raimondi/delimitMate'             " auto close quotes, parentheses, braces, etc
 Plugin 'tpope/vim-repeat'                 " extend the '.' feature to work with plugins
-"Plugin 'ctrlpvim/ctrlp.vim'               " fuzzy file finder
-"Plugin 'majutsushi/tagbar'                " displays outline of file structure (classes, functions, global variables)
+" Plugin 'ctrlpvim/ctrlp.vim'               " fuzzy file finder
+" Plugin 'majutsushi/tagbar'                " displays outline of file structure (classes, functions, global variables)
 Plugin 'Valloric/YouCompleteMe'           " a code-completion engine with IDE-esque support for different languages
 Plugin 'ARM9/arm-syntax-vim'              " enable syntax highlighting for ARM assembly code (tbh this looks ok at best, not amazing)
 call vundle#end()
@@ -89,7 +87,29 @@ end
 
 " ================================================================="
 " ================================================================="
+" ========== Begin additions for Ultisnips plugin ============="
+
+" Snippet completion triggers
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" how `:UltiSnipsEdit` will split the window
+let g:UltiSnipsEditSplit="vertical"
+
+" tells `:UltiSnipsEdit` where to look for snippets
+let g:UltiSnipsSnippetDirectories=['~/.vim/bundle/vim-snippets/snippets']
+
+" ================================================================="
+" ================================================================="
 " ========== Begin additions for YouCompleteMe plugin ============="
+
+" uncomment to use Syntastic (gcc compiler) for detecting syntax errors
+" let g:ycm_show_diagnostics_ui = 0
+
+" change the keys that cycle forwards/backwards through the completion menu
+let g:ycm_key_list_select_completion = ['<Down>']
+let g:ycm_key_list_previous_completion = ['<Up>']
 
 "will put icons in Vim's gutter on lines that have a diagnostic set.
 let g:ycm_enable_diagnostic_highlighting = 0
@@ -100,11 +120,11 @@ let g:ycm_confirm_extra_conf = 0
 " uncomment to let YCM populate the location list
 let g:ycm_always_populate_location_list = 1
 
-" uncomment to use Syntastic (gcc compiler) for detecting syntax errors
-" let g:ycm_show_diagnostics_ui = 0
-
 " let YCM use the tags file for completion
 let g:ycm_collect_identifiers_from_tags_files = 1
+
+" don't let YCM include snippets in the completion menu
+let g:ycm_use_ultisnips_completer = 0
 
 " options for displaying the YCM preview window
 " if want to disable YCM preview window, add `set completeopt-=preview` to vimrc. Also add `let g:ycm_add_preview_to_completeopt = 0`
@@ -422,10 +442,10 @@ else
 	inoremap <C-p> <C-R>*
 endif
 
-" remap the autocomplete feature in vim to only look in the current file
-inoremap <C-n> <C-x><C-n>
+" remap the autocomplete feature in vim to only look in the current file (deprecated because of YouCompleteMe)
+" inoremap <C-n> <C-x><C-n>
 
-" remap the autocomplete feature for files to Control-m in insert mode
+" remap the autocomplete feature for files to Control-k in insert mode
 inoremap <C-k> <C-x><C-f>
 
 " ================================================================="
@@ -686,6 +706,22 @@ fun! s:convertC2H()
  	execute 'g/^\S.*{$/norm $h%s;'
 endfun
 command! ConvertC2H :call s:convertC2H()
+
+"=================================================================="
+
+" quickly open vimrc in a horizontal split
+fun! s:editVimrc()
+	execute ':split ~/.vimrc'
+endfun
+command! EV :call s:editVimrc()
+
+"=================================================================="
+
+" quickly open bashrc in a horizontal split
+fun! s:editBashrc()
+	execute ':split ~/.bashrc'
+endfun
+command! EA :call s:editBashrc()
 
 " ================================================================="
 " ================================================================="
