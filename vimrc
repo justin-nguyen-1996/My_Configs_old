@@ -104,6 +104,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs=1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_auto_jump = 1
 
 "let g:syntastic_auto_loc_list = 2
 "let g:syntastic_check_on_open = 1
@@ -121,6 +122,54 @@ fun! s:toggle_syntastic()
 	call SyntasticToggleMode()
 endfun
 command! STM :call s:toggle_syntastic()
+
+" ================================================================="
+" ================================================================="
+" ========== Begin additions for YouCompleteMe plugin ============="
+
+"will put icons in Vim's gutter on lines that have a diagnostic set.
+"Turning this off will also turn off the YcmErrorLine and YcmWarningLine
+"highlighting
+let g:ycm_enable_diagnostic_highlighting = 0 " TODO: consider this
+
+" ignore annoying extra confimation of using the .ycm_confirm_extra_conf file
+let g:ycm_confirm_extra_conf = 0
+
+" uncomment to let YCM populate the location list
+let g:ycm_always_populate_location_list = 1
+
+" uncomment to use Syntastic (gcc compiler) for detecting syntax errors
+" let g:ycm_show_diagnostics_ui = 0
+
+" let YCM use the tags file for completion
+let g:ycm_collect_identifiers_from_tags_files = 1
+
+" options for displaying the YCM preview window
+" if want to disable YCM preview window, add `set completeopt-=preview` to vimrc. Also add `let g:ycm_add_preview_to_completeopt = 0`
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
+" shortcut command for toggling YCM error checking (useful for when I'm just writing test code)
+fun! s:toggle_ycm()
+	if(g:ycm_show_diagnostics_ui == 1)
+		let g:ycm_show_diagnostics_ui = 0
+	elseif(g:ycm_show_diagnostics_ui == 0)
+		let g:ycm_show_diagnostics_ui = 1
+	endif
+endfun
+command! YTM :call s:toggle_ycm()
+
+" shortcut command for quickly opening the preview window in vim
+fun! s:open_preview()
+	execute ":lopen"
+endfun
+command! LO :call s:open_preview()
+
+" shortcut command for quickly closing the preview window in vim
+fun! s:close_preview()
+	execute ":lclose"
+endfun
+command! LC :call s:close_preview()
 
 " ================================================================="
 " ================================================================="

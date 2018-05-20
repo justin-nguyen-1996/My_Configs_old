@@ -48,6 +48,9 @@ Matplotlib GUI stuff
  - https://www.scivision.co/pyqtmatplotlib-in-windows-subsystem-for-linux/
  - make sure to always have an X11 server running for anything involving GUIs
 
+Help with installing the YouCompleteMe plugin
+ - https://github.com/hsab/WSL-config
+
 Cmder (a better console emulator)
  - download mini version from here --> http://cmder.net/
  - follow steps from here --> https://gingter.org/2016/11/16/running-windows-10-ubuntu-bash-in-cmder/
