@@ -143,13 +143,13 @@ command! YTM :call s:toggle_ycm()
 
 " shortcut command for quickly opening the preview window in vim
 fun! s:open_preview()
-	execute ":lopen"
+	execute ':YcmDiags'
 endfun
 command! LO :call s:open_preview()
 
 " shortcut command for quickly closing the preview window in vim
 fun! s:close_preview()
-	execute ":lclose"
+	execute ':lclose'
 endfun
 command! LC :call s:close_preview()
 
