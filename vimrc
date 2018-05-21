@@ -11,8 +11,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'             " Vundle plugin manager
 Plugin 'luochen1990/rainbow'              " different colors for different levels of parentheses and braces
 Plugin 'godlygeek/tabular'                " easily align things
-Plugin 'SirVer/ultisnips'                 " snippets for easy code insertion (snippet engine)
-Plugin 'honza/vim-snippets'               " helper for snippets (snippet database)
+Plugin 'SirVer/ultisnips'                 " snippets engine for easy code insertion
+Plugin 'honza/vim-snippets'               " snippets database
 Plugin 'aperezdc/vim-template'            " file templates (.c .py .java etc)
 " Plugin 'tpope/tpope-vim-abolish'          " correct typos in insert mode
 Plugin 'Raimondi/delimitMate'             " auto close quotes, parentheses, braces, etc
@@ -20,7 +20,8 @@ Plugin 'tpope/vim-repeat'                 " extend the '.' feature to work with 
 " Plugin 'ctrlpvim/ctrlp.vim'               " fuzzy file finder
 " Plugin 'majutsushi/tagbar'                " displays outline of file structure (classes, functions, global variables)
 Plugin 'Valloric/YouCompleteMe'           " a code-completion engine with IDE-esque support for different languages
-Plugin 'ARM9/arm-syntax-vim'              " enable syntax highlighting for ARM assembly code (tbh this looks ok at best, not amazing)
+Plugin 'davidhalter/jedi'                 " semantic-completion engine for Python
+" Plugin 'ARM9/arm-syntax-vim'              " enable syntax highlighting for ARM assembly code (tbh this looks ok at best, not amazing)
 call vundle#end()
 filetype plugin indent on
 
@@ -111,6 +112,9 @@ let g:UltiSnipsSnippetDirectories=['~/.vim/bundle/vim-snippets/snippets']
 let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_key_list_previous_completion = ['<Up>']
 
+" tell YCM which python binary to use
+let g:ycm_python_binary_path = 'python'
+
 "will put icons in Vim's gutter on lines that have a diagnostic set.
 let g:ycm_enable_diagnostic_highlighting = 0
 
@@ -150,14 +154,23 @@ command! LO :call s:open_preview()
 " shortcut command for quickly closing the preview window in vim
 fun! s:close_preview()
 	execute ':lclose'
+	execute ':pclose'
 endfun
 command! LC :call s:close_preview()
 
 " shortcut command for quickly getting the type of a function/variable
+" NOTE: not named TYPE because of command ordering
 fun! s:get_type()
 	execute ':YcmCompleter GetType'
 endfun
 command! TAYPE :call s:get_type()
+
+" shortcut command for quickly getting the documentation of a function/variable
+fun! s:get_doc()
+	execute ':YcmCompleter GetDoc'
+	execute 'normal!' 'j'
+endfun
+command! DOC :call s:get_doc()
 
 " ================================================================="
 " ================================================================="
