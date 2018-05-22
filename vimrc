@@ -248,9 +248,10 @@ set autowrite
 " Hide buffers when they are abandoned
 set hidden
 
-" set tab length, indentation length, auto indent
+" set tab length, indentation length, how much backspace deletes, auto indent
 set tabstop=4
 set shiftwidth=4
+set softtabstop=4
 set autoindent
 
 " no highlight search
