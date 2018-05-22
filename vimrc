@@ -37,7 +37,6 @@ set bs=indent,eol,start		" allow backspacing over everything in insert mode
 set ai			            " always set autoindenting on
 set viminfo='20,\"50	    " read/write a .viminfo file, don't store more than 50 lines of registers
 set history=50		        " keep 50 lines of command line history
-set ruler		            " show the cursor position all the time
 
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
@@ -192,12 +191,6 @@ vnoremap ;t :Tabularize /
 
 " ================================================================="
 " ================================================================="
-" =========== Begin additions for SnipMate plugin ==========="
-
-let g:snippet_version = 1
-
-" ================================================================="
-" ================================================================="
 " ============== Begin additions for Templates plugin ============="
 
 " see :h template.txt
@@ -307,6 +300,12 @@ set path+=**
 set wildmenu
 set wildignorecase
 
+" change the vertical split indicator
+set fillchars+=vert:│
+
+" change highlighting for vertical splits
+highlight VertSplit ctermfg=White ctermbg=DarkGray gui=none 
+
 " tweaks for file browsing
 let g:netrw_browse_split=4   " open in prior window
 let g:netrw_altv=1           " open splits to the right
@@ -352,6 +351,23 @@ if $ENV_TYPE != 'wsl'
 		set clipboard=unnamed
 	endif
 endif
+
+" ================================================================="
+" ================================================================="
+" ============== Changes to default vim status line ==============="
+
+" uncomment to make the status line always appear
+" set laststatus=2
+
+" customize what the status line shows
+set statusline=        " start with an empty status line
+set statusline+=%f     " show file name
+
+" better colors for the status line
+highlight StatusLine   ctermfg=White ctermbg=DarkGray gui=none
+highlight StatusLineNC ctermfg=White ctermbg=DarkGray gui=none
+" highlight StatusLine   ctermfg=White ctermbg=Blue gui=none
+" highlight StatusLineNC ctermfg=White ctermbg=Blue gui=none
 
 " ================================================================="
 " ================================================================="
@@ -435,6 +451,9 @@ nnoremap ) %a <ESC>h%i <ESC>l
 " move to next function in C
 nnoremap <silent> ]] :call search("^\\(\\w.*\\)\\?{")<CR>
 nnoremap <silent> [[ :call search("^\\(\\w.*\\)\\?{", "b")<CR>
+
+" make control-g display the absolute path to the file
+nnoremap <C-g> 1<C-g>
 
 " ================================================================="
 " ================================================================="
