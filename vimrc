@@ -73,8 +73,11 @@ if has("cscope") && filereadable("/usr/bin/cscope")
    set csverb
 endif
 
+" enable syntax checking
 syntax enable
-au BufNewFile,BufRead *.s,*.S set filetype=arm " arm = armv6/7
+
+" if a new or existing file is opened and has a .s or .S extension, set the filetype to ARM
+autocmd BufNewFile,BufRead *.s,*.S set filetype=arm " arm = armv6/7
 
 " WSL yank support
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " default location
@@ -761,6 +764,14 @@ fun! s:editBashrc()
 	execute ':split ~/.bashrc'
 endfun
 command! EA :call s:editBashrc()
+
+"=================================================================="
+
+" quickly change the working directory to the file's directory
+fun! s:CdHere()
+	execute ':cd %:h'
+endfun
+command! CdHere :call s:CdHere()
 
 " ================================================================="
 " ================================================================="
