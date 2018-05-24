@@ -9,19 +9,20 @@ filetype off     " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'             " Vundle plugin manager
-Plugin 'luochen1990/rainbow'              " different colors for different levels of parentheses and braces
 Plugin 'godlygeek/tabular'                " easily align things
 Plugin 'SirVer/ultisnips'                 " snippets engine for easy code insertion
 Plugin 'honza/vim-snippets'               " snippets database
-Plugin 'aperezdc/vim-template'            " file templates (.c .py .java etc)
-" Plugin 'tpope/tpope-vim-abolish'          " correct typos in insert mode
-Plugin 'Raimondi/delimitMate'             " auto close quotes, parentheses, braces, etc
-Plugin 'tpope/vim-repeat'                 " extend the '.' feature to work with plugins
-" Plugin 'ctrlpvim/ctrlp.vim'               " fuzzy file finder
-" Plugin 'majutsushi/tagbar'                " displays outline of file structure (classes, functions, global variables)
 Plugin 'Valloric/YouCompleteMe'           " a code-completion engine with IDE-esque support for different languages
 Plugin 'davidhalter/jedi'                 " semantic-completion engine for Python
+Plugin 'aperezdc/vim-template'            " file templates (.c .py .java etc)
+Plugin 'tpope/vim-repeat'                 " extend the '.' feature to work with plugins
+Plugin 'Raimondi/delimitMate'             " auto close quotes, parentheses, braces, etc
+Plugin 'luochen1990/rainbow'              " different colors for different levels of parentheses and braces
 " Plugin 'ARM9/arm-syntax-vim'              " enable syntax highlighting for ARM assembly code (tbh this looks ok at best, not amazing)
+" Plugin 'ctrlpvim/ctrlp.vim'               " fuzzy file finder
+" Plugin 'majutsushi/tagbar'                " displays outline of file structure (classes, functions, global variables)
+" Plugin 'tpope/tpope-vim-abolish'          " correct typos in insert mode
+" Plugin 'Yggdroot/indentLine'              " display indention levels with thin vertical lines
 call vundle#end()
 filetype plugin indent on
 
@@ -54,7 +55,7 @@ if has("autocmd")
   " start with spec file template
   autocmd BufNewFile *.spec 0r /usr/share/vim/vimfiles/template.spec
   " auto-source the vimrc upon writing to the file
-  autocmd bufwritepost vimrc source %
+  autocmd bufwritepost .vimrc source %
   augroup END
 endif
 
@@ -117,7 +118,7 @@ let g:ycm_key_list_previous_completion = ['<Up>']
 " tell YCM which python binary to use
 let g:ycm_python_binary_path = 'python'
 
-"will put icons in Vim's gutter on lines that have a diagnostic set.
+" disable syntax highlighting for error and warning messages
 let g:ycm_enable_diagnostic_highlighting = 0
 
 " ignore annoying extra confimation of using the .ycm_confirm_extra_conf file
@@ -136,16 +137,6 @@ let g:ycm_use_ultisnips_completer = 0
 " if want to disable YCM preview window, add `set completeopt-=preview` to vimrc. Also add `let g:ycm_add_preview_to_completeopt = 0`
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
-
-" shortcut command for toggling YCM error checking (useful for when I'm just writing test code)
-fun! s:toggle_ycm()
-	if(g:ycm_show_diagnostics_ui == 1)
-		let g:ycm_show_diagnostics_ui = 0
-	elseif(g:ycm_show_diagnostics_ui == 0)
-		let g:ycm_show_diagnostics_ui = 1
-	endif
-endfun
-command! YTM :call s:toggle_ycm()
 
 " shortcut command for quickly opening the preview window in vim
 fun! s:open_preview()
@@ -200,11 +191,11 @@ vnoremap ;t :Tabularize /
 " let g:templates_user_variables = [
 " 	\   ['FULLPATH', 'GetFullPath'],
 " 	\ ]
-" 
+"
 " function! GetFullPath()
 " 	return expand('%:p')
 " endfunction
- 
+
 " ================================================================="
 " ================================================================="
 " ============== Begin additions for Ctrl-P plugin ================"
@@ -259,6 +250,7 @@ set autoindent
 
 " no highlight search
 set nohlsearch
+" highlight Search cterm=underline ctermbg=None ctermfg=None " uncomment to make searches underlines instead of highlight words
 
 " disable swap file generation
 set noswapfile
@@ -285,6 +277,15 @@ set tags=.tags;/
 set fdm=manual
 set fml=1
 
+" first one is the default highlight settings for vim's visual mode
+" the second one is more readable though
+" highlight Visual cterm=reverse ctermfg=None ctermbg=DarkGray
+" highlight Visual cterm=None ctermfg=Black ctermbg=White
+
+" change the type of c-style comments (choose either Green or DarkGreen)
+highlight cCommentL ctermfg=DarkGreen
+highlight cComment  ctermfg=DarkGreen
+
 " fold method based on file syntax
 " fold level    = 2 for .java    = 1 for .c
 " min fold level = 0 for folding single lines
@@ -308,7 +309,7 @@ set wildignorecase
 set fillchars+=vert:│
 
 " change highlighting for vertical splits
-highlight VertSplit ctermfg=White ctermbg=DarkGray gui=none 
+highlight VertSplit ctermfg=White ctermbg=DarkGray gui=none
 
 " tweaks for file browsing
 let g:netrw_browse_split=4   " open in prior window
@@ -316,17 +317,17 @@ let g:netrw_altv=1           " open splits to the right
 let g:netrw_liststyle=3      " tree view
 
 " set matching parenthesis/brace/bracket to be underlined instead of highlight
-hi MatchParen cterm=underline ctermbg=none ctermfg=none
+highlight MatchParen cterm=underline ctermbg=none ctermfg=none
 
 " always show the tabline (tab header bar)
 set showtabline=2
 set tabpagemax=30
 
 " make the vim tab bar look prettier
-hi TabLineFill ctermfg=Black ctermbg=Black
-hi TabLine     ctermfg=Blue  ctermbg=Black
-hi TabLineSel  ctermfg=Black ctermbg=Yellow
-hi Title       ctermfg=Black ctermbg=Yellow
+highlight TabLineFill ctermfg=Black ctermbg=Black
+highlight TabLine     ctermfg=Blue  ctermbg=Black
+highlight TabLineSel  ctermfg=Black ctermbg=Yellow
+highlight Title       ctermfg=Black ctermbg=Yellow
 
 " set variable 'g:os' according to development environment
 if !exists('g:os')
@@ -438,7 +439,7 @@ nnoremap U ~
 " pressing Control-w then Control-c in split windows accidentally closes the window. I dislike this
 nnoremap <C-w><C-c> <ESC>
 
-" using 'x' will now put the 'cut' letter(s) in the black hole register "_ 
+" using 'x' will now put the 'cut' letter(s) in the black hole register "_
 nnoremap x "_x
 nnoremap X "_X
 
@@ -543,21 +544,21 @@ nnoremap ;" :call ToggleComment_Vimrc()<CR>
 
 " reformat multiline if-statements into single line if-statements
 fun! s:reformat(line1, line2)
-	
+
 	" Remember line locs and numbers (bookkeeping)
 	execute 'normal!' 'me'
 	let l:before = line('$')
-	
-	" Join the selected lines && put a newline before every 'else' 
-	execute 'normal!' . (a:line2 - a:line1 + 1) . 'J' 
+
+	" Join the selected lines && put a newline before every 'else'
+	execute 'normal!' . (a:line2 - a:line1 + 1) . 'J'
 	execute 's/else/\relse/g'
 
 	" Recalculate the range && run Tabular
 	let l:line2 = a:line2 - (l:before - line('$'))
 	execute 'normal!' "V'e="
 	execute 'normal!' 'f(i     '
-	execute a:line1 . ',' . l:line2 . 'Tabularize /{/' 
-	execute a:line1 . ',' . l:line2 . 'Tabularize /}/' 
+	execute a:line1 . ',' . l:line2 . 'Tabularize /{/'
+	execute a:line1 . ',' . l:line2 . 'Tabularize /}/'
 endfun
 command! -range Reformat :call s:reformat(<line1>, <line2>)
 
@@ -582,7 +583,7 @@ fun! s:unformat(line1, line2)
 
 	" Formatting to make the statements span multiple lines
 	execute 'normal!' "'e"
-	execute 'normal!' . (a:line2 - a:line1 + 1) . 'J' 
+	execute 'normal!' . (a:line2 - a:line1 + 1) . 'J'
 	execute 's/{ /{\r/g'
 	execute 'normal!' "'e"
 	let c = 0
@@ -600,7 +601,7 @@ command! -range Unformat :call s:unformat(<line1>, <line2>)
 " a smarter delete operation (does not copy whitespace into registers)
 " NOTE: this doesn't prevent copying whitespace using 'yy' or 'Vy'
 "       my assumption is that you wanted to copy the whitespace instead of deleting it
- 
+
 function! Smart_Delete_dd()
 	let temp = getreg('"', 1)
 	execute 'normal!' 'dd'
@@ -631,7 +632,7 @@ nnoremap <silent> dd :call Smart_Delete_dd()<CR>
 " make it easier to jump down to where you stopped the visual copy
 " --> visual copying always puts you back at the top line of the visual range
 "     (but what if you wanted to copy downwards and stay down there?)
- 
+
 " function! Visual_Copy_Hack() range
 " 	let l:lineDiff = a:lastline - a:firstline
 " 	execute a:firstline . ',' . a:lastline . 'y'
@@ -643,7 +644,7 @@ nnoremap <silent> dd :call Smart_Delete_dd()<CR>
 
 "=================================================================="
 
-" insert the full path of the current file 
+" insert the full path of the current file
 fun! s:fullpath()
 	:put =expand('%:p')
 endfun
@@ -707,7 +708,7 @@ fun! s:TabularEquals(line1, line2)
 	execute 'normal!' 'me'
 	let l:lineDiff = a:line2 - a:line1
 
-	" put the first argument on a new line and align it with the other arguments 
+	" put the first argument on a new line and align it with the other arguments
 	execute 'normal!' '0f=f=B'
 	let l:colNum = col('.')
 	execute 'normal!' 'i'
@@ -773,6 +774,15 @@ fun! s:CdHere()
 endfun
 command! CdHere :call s:CdHere()
 
+" Show syntax highlighting groups for word under cursor
+nmap <C-S-m> :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
 " ================================================================="
 " ================================================================="
 " ================= Begin my custom ';' commands =================="
@@ -787,7 +797,7 @@ function! FoldFunctions()
 	:silent! execute "%g/^int/normal! vf{%zf"
 	:silent! execute "%g/^double/normal! vf{%zf"
 	:silent! execute "%g/^void/normal! vf{%zf"
-	
+
 	" fold same types of functions but they're static equivalents
 	:silent! execute "%g/^static bool/normal! vf{%zf"
 	:silent! execute "%g/^static boolean/normal! vf{%zf"
@@ -799,7 +809,7 @@ function! FoldFunctions()
 	" fold functions of type (uint_t)
 	:silent! execute "%g/^uint/normal! vf{%zf"
 	:silent! execute "%g/^static uint/normal! vf{%zf"
-	
+
 	" fold same types of functions but they're pointer equivalents
 	:silent! execute "%g/^bool*/normal! vf{%zf"
 	:silent! execute "%g/^boolean*/normal! vf{%zf"
@@ -828,7 +838,7 @@ function! FoldFunctions()
 
 	" fold other types
 	:silent! execute "%g/^tid_t/normal! vf{%zf"
-	
+
 endfunc
 nnoremap ;zf zE :call FoldFunctions()<CR><ESC>
 
@@ -866,7 +876,7 @@ nnoremap ;l :e<CR>
 
 " use ;t and type a file name to open it in a VIM tab (:tabnew)
 " use ;T to open a file from the directory of the current open file
-nnoremap ;t :tabnew 
+nnoremap ;t :tabnew
 nnoremap ;T :tabnew %:p:h/
 
 " use ;m to run the Makefile in the current directory (:make)
@@ -916,7 +926,7 @@ nnoremap ;r I//<C-c>A // REMOVE<C-c>
 " zip -r file_name.zip *
 
 " specific things for filetypes --> actually don't do this --> see ~/.vim/after/ftplugin/
-" au FileType python 
+" au FileType python
 
 " Don't wake up system with blinking cursor:
 " http://www.linuxpowertop.org/known.php
