@@ -1,0 +1,7 @@
+[user]
+	name = Justin Nguyen
+	email = 2014justinnguyen@gmail.com
+[push]
+	default = simple
+[core]
+	autocrlf = false

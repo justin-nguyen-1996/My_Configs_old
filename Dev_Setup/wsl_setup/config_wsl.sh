@@ -123,6 +123,7 @@ vim -c ":q!" ~/.ipython/profile_default/
 mkdir -p ~/.ssh
 
 # remove old copies to make room for symlinks
+rm -rf ~/.gitconfig
 rm -rf ~/.bashrc
 rm -rf ~/.inputrc
 rm -rf ~/.vimrc
@@ -140,6 +141,7 @@ rm -rf ~/.pdbrc
 mv ~/.vim/bundle/vim-snippets/snippets     ~/.vim/bundle/vim-snippets/snips_original
 
 # make symlinks
+ln -s ~/Github/My_Configs/.gitconfig                ~/.gitconfig
 ln -s ~/Github/My_Configs/.bashrc                   ~/.bashrc
 ln -s ~/Github/My_Configs/.inputrc                  ~/.inputrc
 ln -s ~/Github/My_Configs/vimrc                     ~/.vimrc

@@ -17,7 +17,7 @@ Change the shortcut icon
  - open the properties of the shortcut and change the icon
  - point it to the ~/Github/My_Configs/Ubuntu.ico file
  - pin the shortcut to the taskbar
- 
+
 Disable touchscreen
  - open ~/Github/My_Configs/10-evdev.conf
  - open /usr/share/X11/xorg.conf.d/10-evdev.conf
@@ -45,6 +45,11 @@ Matplotlib GUI stuff
 
 Help with installing the YouCompleteMe plugin
  - https://github.com/hsab/WSL-config
+
+Cmder vs. Standard WSL Prompt
+ - Cmder lets you create multiple terminals in same session (i.e. equivalent of Ctrl-Shift-t in Ubuntu)
+ - Cmder gives a large block cursor that also blinks
+ - WSL lets you paste from the internet into vim and the command line
 
 Cmder (a better console emulator)
  - download mini version from here --> http://cmder.net/
