@@ -6,20 +6,18 @@ Increase sudo time with
  - Change the defaults line to become
    - Defaults        env_reset,timestamp_timeout=600
 
-System Settings (can search it or click the gear on the left side of the launcher)
- - Brightness & Lock --> change the time it takes to lock the screen (off and never)
- - Appearance --> change the desktop background
-
 Auto-maximized terminal
- - open a terminal --> go to the launcher --> right-click and choose "Lock to Launcher"
- - go to the edit bar (top of the screen) --> then profile preferences --> change initial terminal size to something really big
- - edit --> profile preferences --> colors --> background color : #020F18
-                                           --> text color       : #FFFFFF
-										   --> bold color       : same as text color
+ - create a shortcut for the WSL launcher
+ - right click on desktop --> new --> shortcut
+ - point the shortcut to `C:\Windows\System32\wsl.exe`
+ - change the `run` option to maximized
+ - change the font size to 20
 
-Reboot the computer after the script updates and upgrades packages
- - then set the zoom level to 120%
-
+Change the shortcut icon
+ - open the properties of the shortcut and change the icon
+ - point it to the ~/Github/My_Configs/Ubuntu.ico file
+ - pin the shortcut to the taskbar
+ 
 Disable touchscreen
  - open ~/Github/My_Configs/10-evdev.conf
  - open /usr/share/X11/xorg.conf.d/10-evdev.conf
@@ -34,9 +32,6 @@ Make the grub timeout longer
 
 Fix dual boot time issues (make Linux use 'local' time instead of a hardware clock to match Windows)
  - run `timedatectl set-local-rtc 1`
-
-Change terminal font size
- - edit --> profile preferences --> check 'custom font' --> Ubuntu Mono Regular, 14
 
 Change permissions on vim plugins
  - run `sudo chown -R justin:justin ~/.vim/bundle` --> obviously, change 'justin:justin' to 'username:username'

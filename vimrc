@@ -9,6 +9,7 @@ filetype off     " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'             " Vundle plugin manager
+Plugin 'tpope/vim-fugitive'               "	vim wrapper for git
 Plugin 'godlygeek/tabular'                " easily align things
 Plugin 'SirVer/ultisnips'                 " snippets engine for easy code insertion
 Plugin 'honza/vim-snippets'               " snippets database
@@ -324,10 +325,10 @@ set showtabline=2
 set tabpagemax=30
 
 " make the vim tab bar look prettier
-highlight TabLineFill ctermfg=Black ctermbg=Black
-highlight TabLine     ctermfg=Blue  ctermbg=Black
-highlight TabLineSel  ctermfg=Black ctermbg=Yellow
-highlight Title       ctermfg=Black ctermbg=Yellow
+highlight   TabLine       term=None   cterm=Underline   ctermfg=Blue    ctermbg=Black    gui=None " part of tabline that isn't selected
+highlight   TabLineSel    term=None   cterm=Reverse                                      gui=None " part of tabline that is highlighted
+highlight   TabLineFill   term=None   cterm=None        ctermfg=Black   ctermbg=Black    gui=None " the rest of the tabline
+highlight   Title         term=None   cterm=Bold        ctermfg=Black   ctermbg=Yellow   gui=None " title of the window
 
 " set variable 'g:os' according to development environment
 if !exists('g:os')
@@ -367,12 +368,20 @@ endif
 " customize what the status line shows
 set statusline=        " start with an empty status line
 set statusline+=%f     " show file name
+set statusline+=%m     " show modified flag
+set statusline+=%r     " show read-only flag
 
 " better colors for the status line
-highlight StatusLine   ctermfg=White ctermbg=DarkGray gui=none
-highlight StatusLineNC ctermfg=White ctermbg=DarkGray gui=none
-" highlight StatusLine   ctermfg=White ctermbg=Blue gui=none
-" highlight StatusLineNC ctermfg=White ctermbg=Blue gui=none
+highlight StatusLine     term=None   cterm=None   ctermfg=Black   ctermbg=Gray       gui=None
+highlight StatusLineNC   term=None   cterm=None   ctermfg=Black   ctermbg=DarkGray   gui=None
+
+" original status line colors
+" highlight StatusLine     term=None   cterm=Bold,Reverse   gui=None
+" highlight StatusLineNC   term=None   cterm=Reverse        gui=None
+
+" alternative status line colors
+" highlight StatusLine     term=None   cterm=Bold   ctermfg=White   ctermbg=Blue   gui=None
+" highlight StatusLineNC   term=None   cterm=None   ctermfg=White   ctermbg=Blue   gui=None
 
 " ================================================================="
 " ================================================================="
@@ -774,14 +783,16 @@ fun! s:CdHere()
 endfun
 command! CdHere :call s:CdHere()
 
+"=================================================================="
+
 " Show syntax highlighting groups for word under cursor
-nmap <C-S-m> :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
+" nmap <C-S-m> :call <SID>SynStack()<CR>
+" function! <SID>SynStack()
+"   if !exists("*synstack")
+"     return
+"   endif
+"   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+" endfunc
 
 " ================================================================="
 " ================================================================="
@@ -876,7 +887,7 @@ nnoremap ;l :e<CR>
 
 " use ;t and type a file name to open it in a VIM tab (:tabnew)
 " use ;T to open a file from the directory of the current open file
-nnoremap ;t :tabnew
+nnoremap ;t :tabnew<C-Space>
 nnoremap ;T :tabnew %:p:h/
 
 " use ;m to run the Makefile in the current directory (:make)
