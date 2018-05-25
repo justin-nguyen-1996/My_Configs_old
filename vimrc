@@ -3,7 +3,7 @@ filetype off     " required
 
 " ================================================================="
 " ================================================================="
-" ==================== Begin my added plugins ====================="
+" ==================== Begin added plugins ========================"
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -29,7 +29,7 @@ filetype plugin indent on
 
 " ================================================================="
 " ================================================================="
-" ===================== End my added plugins ======================"
+" ===================== End of plugins list ======================="
 
 if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
    set fileencodings=ucs-bom,utf-8,latin1
@@ -251,7 +251,6 @@ set autoindent
 
 " no highlight search
 set nohlsearch
-" highlight Search cterm=underline ctermbg=None ctermfg=None " uncomment to make searches underlines instead of highlight words
 
 " disable swap file generation
 set noswapfile
@@ -278,15 +277,6 @@ set tags=.tags;/
 set fdm=manual
 set fml=1
 
-" first one is the default highlight settings for vim's visual mode
-" the second one is more readable though
-" highlight Visual cterm=reverse ctermfg=None ctermbg=DarkGray
-" highlight Visual cterm=None ctermfg=Black ctermbg=White
-
-" change the type of c-style comments (choose either Green or DarkGreen)
-highlight cCommentL ctermfg=DarkGreen
-highlight cComment  ctermfg=DarkGreen
-
 " fold method based on file syntax
 " fold level    = 2 for .java    = 1 for .c
 " min fold level = 0 for folding single lines
@@ -309,26 +299,14 @@ set wildignorecase
 " change the vertical split indicator
 set fillchars+=vert:│
 
-" change highlighting for vertical splits
-highlight VertSplit ctermfg=White ctermbg=DarkGray gui=none
-
 " tweaks for file browsing
 let g:netrw_browse_split=4   " open in prior window
 let g:netrw_altv=1           " open splits to the right
 let g:netrw_liststyle=3      " tree view
 
-" set matching parenthesis/brace/bracket to be underlined instead of highlight
-highlight MatchParen cterm=underline ctermbg=none ctermfg=none
-
 " always show the tabline (tab header bar)
 set showtabline=2
 set tabpagemax=30
-
-" make the vim tab bar look prettier
-highlight   TabLine       term=None   cterm=Underline   ctermfg=Blue    ctermbg=Black    gui=None " part of tabline that isn't selected
-highlight   TabLineSel    term=None   cterm=Reverse                                      gui=None " part of tabline that is highlighted
-highlight   TabLineFill   term=None   cterm=None        ctermfg=Black   ctermbg=Black    gui=None " the rest of the tabline
-highlight   Title         term=None   cterm=Bold        ctermfg=Black   ctermbg=Yellow   gui=None " title of the window
 
 " set variable 'g:os' according to development environment
 if !exists('g:os')
@@ -360,6 +338,46 @@ endif
 
 " ================================================================="
 " ================================================================="
+" ================== Begin my 'highlight' things =================="
+
+" uncomment to make searches underline instead of highlight words
+" highlight Search cterm=underline ctermbg=None ctermfg=Red
+
+" First one is the default highlight settings for vim's visual mode. Second one is more readable though
+" highlight Visual cterm=reverse ctermfg=None ctermbg=DarkGray
+" highlight Visual cterm=None ctermfg=Black ctermbg=White
+
+" change highlighting for vertical splits
+highlight VertSplit ctermfg=White ctermbg=DarkGray gui=none
+
+" set matching parenthesis/brace/bracket to be underlined instead of highlight
+highlight MatchParen cterm=underline ctermbg=none ctermfg=none
+
+" make the vim tab bar look prettier
+highlight   TabLine       term=None   cterm=Underline   ctermfg=Blue    ctermbg=Black    gui=None " part of tabline that isn't selected
+highlight   TabLineSel    term=None   cterm=Reverse                                      gui=None " part of tabline that is highlighted
+highlight   TabLineFill   term=None   cterm=None        ctermfg=Black   ctermbg=Black    gui=None " the rest of the tabline
+highlight   Title         term=None   cterm=Bold        ctermfg=Black   ctermbg=Yellow   gui=None " title of the window
+
+" change the highlighting for c-style comments (e.g. Green or DarkGreen)
+highlight   cCommentL   ctermfg=DarkGreen
+highlight   cComment    ctermfg=DarkGreen
+
+" change highlighting for Fugitive Gstatus window
+highlight   gitcommitSelectedType    ctermfg=Green
+highlight   gitcommitSelectedFile    ctermfg=Green
+highlight   gitcommitDiscardedType   ctermfg=Red
+highlight   gitcommitDiscardedFile   ctermfg=Red
+highlight   gitcommitUntrackedFile   ctermfg=Red
+highlight   gitcommitOnBranch        ctermfg=White
+highlight   gitcommitBranch          ctermfg=White
+highlight   gitcommitDiscarded       ctermfg=White
+highlight   gitcommitComment         ctermfg=White
+highlight   gitcommitHead            ctermfg=White
+highlight   gitcommitHeader          ctermfg=White
+
+" ================================================================="
+" ================================================================="
 " ============== Changes to default vim status line ==============="
 
 " uncomment to make the status line always appear
@@ -385,7 +403,7 @@ highlight StatusLineNC   term=None   cterm=None   ctermfg=Black   ctermbg=DarkGr
 
 " ================================================================="
 " ================================================================="
-" =============== Begin my 'nnoremaps' vimrc things ==============="
+" =============== Begin my 'nnoremaps' things ====================="
 
 " typing '' now also centers the screen
 nnoremap '' ''zz
@@ -471,7 +489,7 @@ nnoremap <C-g> 1<C-g>
 
 " ================================================================="
 " ================================================================="
-" =============== Begin my 'inoremaps' vimrc things ==============="
+" =============== Begin my 'inoremaps' things ====================="
 
 " autocomplete for matching brace (activated upon pressing enter)
 if g:os =~ 'CYGWIN'
@@ -502,7 +520,7 @@ inoremap <C-k> <C-x><C-f>
 
 " ================================================================="
 " ================================================================="
-" =============== Begin my 'vnoremaps' vimrc things ==============="
+" =============== Begin my 'vnoremaps' things ====================="
 
 " easier uppercasing/lowercasing
 vnoremap U ~
@@ -515,7 +533,7 @@ vnoremap K <NOP>
 
 " ================================================================="
 " ================================================================="
-" ============== Begin some 'function' vimrc things ==============="
+" ============== Begin some 'function' things ====================="
 
 " now you can close the file, get back in, and still maintain the original undo tree
 if has('persistent_undo')
@@ -786,13 +804,13 @@ command! CdHere :call s:CdHere()
 "=================================================================="
 
 " Show syntax highlighting groups for word under cursor
-" nmap <C-S-m> :call <SID>SynStack()<CR>
-" function! <SID>SynStack()
-"   if !exists("*synstack")
-"     return
-"   endif
-"   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-" endfunc
+function! <SID>HighlightGroup()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+command! HighlightGroup :call s:HighlightGroup()
 
 " ================================================================="
 " ================================================================="
@@ -926,6 +944,9 @@ nnoremap ;v "*p
 " use ;r to comment out the current line and stick a REMOVE at the end
 nnoremap ;r I//<C-c>A // REMOVE<C-c>
 
+" Fugitive plugin mappings
+nnoremap ;gs :Gstatus<CR>
+
 " ================================================================="
 " ================================================================="
 " ================== Some nice things to remember ================="
@@ -937,7 +958,11 @@ nnoremap ;r I//<C-c>A // REMOVE<C-c>
 " zip -r file_name.zip *
 
 " specific things for filetypes --> actually don't do this --> see ~/.vim/after/ftplugin/
-" au FileType python
+" autocommand FileType python
+
+" check a window's vim filetype --> `:set ft?`
+
+" check available highlight colors --> `:h cterm`
 
 " Don't wake up system with blinking cursor:
 " http://www.linuxpowertop.org/known.php
