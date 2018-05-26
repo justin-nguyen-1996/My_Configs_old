@@ -44,42 +44,27 @@ set history=50		        " keep 50 lines of command line history
 if has("autocmd")
   augroup fedora
   autocmd!
-  " In text files, always limit the width of text to 78 characters
-  " autocmd BufRead *.txt set tw=78
+
   " When editing a file, always jump to the last cursor position
   autocmd BufReadPost *
   \ if line("'\"") > 0 && line ("'\"") <= line("$") |
   \   exe "normal! g'\"" |
   \ endif
+
   " don't write swapfile on most commonly used directories for NFS mounts or USB sticks
   autocmd BufNewFile,BufReadPre /media/*,/run/media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
-  " start with spec file template
-  autocmd BufNewFile *.spec 0r /usr/share/vim/vimfiles/template.spec
-  " auto-source the vimrc upon writing to the file
-  autocmd bufwritepost .vimrc source %
-  augroup END
-endif
 
-if has("cscope") && filereadable("/usr/bin/cscope")
-   set csprg=/usr/bin/cscope
-   set csto=0
-   set cst
-   set nocsverb
-   " add any database in current directory
-   if filereadable("cscope.out")
-      cs add $PWD/cscope.out
-   " else add database pointed to by environment
-   elseif $CSCOPE_DB != ""
-      cs add $CSCOPE_DB
-   endif
-   set csverb
+  " auto-source the vimrc upon writing to the file
+  autocmd BufWritePost .vimrc source %
+  
+  " if a new or existing file is opened and has a .s or .S extension, set the filetype to ARM
+"   autocmd BufNewFile,BufRead *.s,*.S set filetype=arm " arm = armv6/7
+
+  augroup END
 endif
 
 " enable syntax checking
 syntax enable
-
-" if a new or existing file is opened and has a .s or .S extension, set the filetype to ARM
-autocmd BufNewFile,BufRead *.s,*.S set filetype=arm " arm = armv6/7
 
 " WSL yank support
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " default location
@@ -89,6 +74,15 @@ if executable(s:clip)
         autocmd TextYankPost * call system('echo '.shellescape(join(v:event.regcontents, "\<CR>")).' | '.s:clip)
     augroup END
 end
+
+" ================================================================="
+" ================================================================="
+" ========== Begin additions for Fugitive plugin =================="
+
+augroup turbo_commit
+  autocmd!
+  autocmd BufEnter COMMIT_EDITMSG startinsert
+augroup END
 
 " ================================================================="
 " ================================================================="
@@ -292,6 +286,9 @@ set fml=1
 " provides tab-completion for all file-related tasks
 set path+=**
 
+" change vimdiff options so it uses filler lines and produces diff in a vertical split
+set diffopt=filler,vertical
+
 " display all matching files when you tab-complete
 set wildmenu
 set wildignorecase
@@ -359,11 +356,11 @@ highlight   TabLineSel    term=None   cterm=Reverse                             
 highlight   TabLineFill   term=None   cterm=None        ctermfg=Black   ctermbg=Black    gui=None " the rest of the tabline
 highlight   Title         term=None   cterm=Bold        ctermfg=Black   ctermbg=Yellow   gui=None " title of the window
 
-" change the highlighting for c-style comments (e.g. Green or DarkGreen)
+" change highlighting for c-style comments (e.g. Green or DarkGreen)
 highlight   cCommentL   ctermfg=DarkGreen
 highlight   cComment    ctermfg=DarkGreen
 
-" change highlighting for Fugitive Gstatus window
+" change highlighting for Fugitive's :Gstatus window
 highlight   gitcommitSelectedType    ctermfg=Green
 highlight   gitcommitSelectedFile    ctermfg=Green
 highlight   gitcommitDiscardedType   ctermfg=Red
@@ -376,18 +373,25 @@ highlight   gitcommitComment         ctermfg=White
 highlight   gitcommitHead            ctermfg=White
 highlight   gitcommitHeader          ctermfg=White
 
+" change highlighting for Fugitive's :Gdiff windows
+highlight   DiffAdd      term=None   cterm=None   ctermfg=White   ctermbg=DarkGreen " lines in this buffer that aren't in the other buffer
+highlight   DiffDelete   term=None   cterm=None   ctermfg=White   ctermbg=DarkRed   " indicates that the other buffer has content here
+highlight   DiffChange   term=None   cterm=None   ctermfg=White   ctermbg=Magenta   " lines that both buffers have but were changed
+highlight   DiffText     term=None   cterm=None   ctermfg=White   ctermbg=DarkGreen " the specific changed text in the changed lines
+
 " ================================================================="
 " ================================================================="
 " ============== Changes to default vim status line ==============="
 
-" uncomment to make the status line always appear
-" set laststatus=2
+" make the status line always appear
+set laststatus=2
 
 " customize what the status line shows
 set statusline=        " start with an empty status line
-set statusline+=%f     " show file name
-set statusline+=%m     " show modified flag
+set statusline+=%f\    " show file name
+set statusline+=%m\    " show modified flag
 set statusline+=%r     " show read-only flag
+set statusline+=[%{fugitive#head()}]    " show current git branch
 
 " better colors for the status line
 highlight StatusLine     term=None   cterm=None   ctermfg=Black   ctermbg=Gray       gui=None
@@ -803,14 +807,31 @@ command! CdHere :call s:CdHere()
 
 "=================================================================="
 
-" Show syntax highlighting groups for word under cursor
+" show syntax highlighting groups for word under cursor
 function! <SID>HighlightGroup()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+	if !exists("*synstack")
+		return
+	endif
+	echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 command! HighlightGroup :call s:HighlightGroup()
+
+"=================================================================="
+
+" quickly grab the dff contents of the specified buffer (by number) into the current buffer
+" in Fugitive with 2 buffers, use `:GG`
+" in Fugitive with 3 buffers (b/c of git merge), use `:GG 2` to grab the HEAD branch's contents
+" in Fugitive with 3 buffers (b/c of git merge), use `:GG 3` to grab the merge branch's contents
+function! s:GitDiffGet(...)
+	let l:num_args = a:0
+	if (l:num_args == 0)
+		execute ':diffget | diffupdate'
+	else
+		let l:buffer_num = a:1
+		execute ':diffget //' . l:buffer_num . ' | diffupdate'
+	endif
+endfunc
+command! -nargs=? GG :call s:GitDiffGet(<f-args>)
 
 " ================================================================="
 " ================================================================="
@@ -957,12 +978,13 @@ nnoremap ;gs :Gstatus<CR>
 " zipping files
 " zip -r file_name.zip *
 
-" specific things for filetypes --> actually don't do this --> see ~/.vim/after/ftplugin/
-" autocommand FileType python
-
 " check a window's vim filetype --> `:set ft?`
 
 " check available highlight colors --> `:h cterm`
+
+" check current highlight settings for all highlight groups --> `:highlight`
+
+" running :Gdiff is the same as running vimdiff with the file commited in Git (vimdiff is way better than diff)
 
 " Don't wake up system with blinking cursor:
 " http://www.linuxpowertop.org/known.php

@@ -19,4 +19,3 @@ function! ToggleComment()
 endfunction
 vnoremap <silent> ;/ :call ToggleComment()<CR>
 nnoremap <silent> ;/ :call ToggleComment()<CR>
-
