@@ -306,6 +306,9 @@ let g:netrw_liststyle=3      " tree view
 set showtabline=2
 set tabpagemax=30
 
+" show the absolute file path in the title of the window itself (e.g. WSL, Cygwin, etc.)
+set title
+
 " set variable 'g:os' according to development environment
 if !exists('g:os')
     if has('win32') || has('win16')
@@ -388,15 +391,25 @@ highlight   DiffText     term=None   cterm=None   ctermfg=White   ctermbg=DarkGr
 set laststatus=2
 
 " customize what the status line shows
+" let b:branch_name = '' " TODO
 function! s:load_my_statusline()
 	set statusline=                      " start with an empty status line
-	set statusline+=%f\                  " show file name
+	set statusline+=%F\                  " show file name
 	set statusline+=%m\                  " show modified flag
 	set statusline+=%r                   " show read-only flag
 	set statusline+=[%{fugitive#head()}] " show current git branch
+	let b:branch_name = fugitive#head() " TODO
+endfunction
+
+function! s:set_branch_name()
+	let b:branch_name = fugitive#head()
 endfunction
 
 " only load the status line upon entering vim
+augroup my_status_line2
+	autocmd!
+	autocmd BufNew,BufRead * call s:set_branch_name()
+augroup END
 augroup my_status_line
 	autocmd!
 	autocmd VimEnter * call s:load_my_statusline()
@@ -845,7 +858,7 @@ command! -nargs=? GG :call s:GitDiffGet(<f-args>)
 "=================================================================="
 
 " wrapper around :Gtabedit that names the buffer something more reasonable (<branch>:<file_path>)
-function! s:get_branch_name(file_name)
+function! s:get_branch_name(file_name) " TODO: remove
 	let l:tokens = split(a:file_name, ":")
 	let l:branch_name = l:tokens[0]
 	let l:file_path = l:tokens[1]
@@ -858,10 +871,10 @@ function! s:GTabEdit(file_name)
 	
 	let b:tokens = split(a:file_name, ":")
 	let b:branch_name = b:tokens[0]
-	let b:file_path = b:tokens[1]
+" 	let b:file_path = b:tokens[1] " TODO: use this?
 	
 	set statusline=                      " start with an empty status line
-	set statusline+=%f\                  " show file name
+	set statusline+=%F\                  " show full file name path
 	set statusline+=%m\                  " show modified flag
 	set statusline+=%r                   " show read-only flag
 " 	set statusline+=[%{fugitive#head()}] " show current git branch
@@ -1008,7 +1021,7 @@ nnoremap ;r I//<C-c>A // REMOVE<C-c>
 nnoremap ;gs  :Gstatus<CR>
 nnoremap ;gbb :Git branch -v<CR>
 nnoremap ;gba :Git branch -va<CR>
-nnoremap ;gt  :Gtabedit<C-Space>
+nnoremap ;gt  :GTabEdit<C-Space>
 
 " ================================================================="
 " ================================================================="
