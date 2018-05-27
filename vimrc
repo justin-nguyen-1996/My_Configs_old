@@ -8,13 +8,14 @@ filetype off     " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'             " Vundle plugin manager
+Plugin 'VundleVim/Vundle.vim'             " vundle plugin manager
 Plugin 'tpope/vim-fugitive'               "	vim wrapper for git
+Plugin 'tpope/vim-rhubarb'			      " allows :Gbrowse to open up Github URL
 Plugin 'godlygeek/tabular'                " easily align things
 Plugin 'SirVer/ultisnips'                 " snippets engine for easy code insertion
-Plugin 'honza/vim-snippets'               " snippets database
+Plugin 'honza/vim-snippets'			      " snippets database
 Plugin 'Valloric/YouCompleteMe'           " a code-completion engine with IDE-esque support for different languages
-Plugin 'davidhalter/jedi'                 " semantic-completion engine for Python
+Plugin 'davidhalter/jedi'			      " semantic-completion engine for Python
 Plugin 'aperezdc/vim-template'            " file templates (.c .py .java etc)
 Plugin 'tpope/vim-repeat'                 " extend the '.' feature to work with plugins
 Plugin 'Raimondi/delimitMate'             " auto close quotes, parentheses, braces, etc
@@ -134,30 +135,30 @@ let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " shortcut command for quickly opening the preview window in vim
-fun! s:open_preview()
+function! s:open_preview()
 	execute ':YcmDiags'
-endfun
+endfunction
 command! LO :call s:open_preview()
 
 " shortcut command for quickly closing the preview window in vim
-fun! s:close_preview()
+function! s:close_preview()
 	execute ':lclose'
 	execute ':pclose'
-endfun
+endfunction
 command! LC :call s:close_preview()
 
 " shortcut command for quickly getting the type of a function/variable
 " NOTE: not named TYPE because of command ordering
-fun! s:get_type()
+function! s:get_type()
 	execute ':YcmCompleter GetType'
-endfun
+endfunction
 command! TAYPE :call s:get_type()
 
 " shortcut command for quickly getting the documentation of a function/variable
-fun! s:get_doc()
+function! s:get_doc()
 	execute ':YcmCompleter GetDoc'
 	execute 'normal!' 'j'
-endfun
+endfunction
 command! DOC :call s:get_doc()
 
 " ================================================================="
@@ -387,11 +388,11 @@ highlight   DiffText     term=None   cterm=None   ctermfg=White   ctermbg=DarkGr
 set laststatus=2
 
 " customize what the status line shows
-set statusline=        " start with an empty status line
-set statusline+=%f\    " show file name
-set statusline+=%m\    " show modified flag
-set statusline+=%r     " show read-only flag
-set statusline+=[%{fugitive#head()}]    " show current git branch
+set statusline=                      " start with an empty status line
+set statusline+=%f\                  " show file name
+set statusline+=%m\                  " show modified flag
+set statusline+=%r                   " show read-only flag
+set statusline+=[%{fugitive#head()}] " show current git branch
 
 " better colors for the status line
 highlight StatusLine     term=None   cterm=None   ctermfg=Black   ctermbg=Gray       gui=None
@@ -574,7 +575,7 @@ nnoremap ;" :call ToggleComment_Vimrc()<CR>
 "=================================================================="
 
 " reformat multiline if-statements into single line if-statements
-fun! s:reformat(line1, line2)
+function! s:reformat(line1, line2)
 
 	" Remember line locs and numbers (bookkeeping)
 	execute 'normal!' 'me'
@@ -590,13 +591,13 @@ fun! s:reformat(line1, line2)
 	execute 'normal!' 'f(i     '
 	execute a:line1 . ',' . l:line2 . 'Tabularize /{/'
 	execute a:line1 . ',' . l:line2 . 'Tabularize /}/'
-endfun
+endfunction
 command! -range Reformat :call s:reformat(<line1>, <line2>)
 
 "=================================================================="
 
 " unformat single line if-statements into multiline if-statements
-fun! s:unformat(line1, line2)
+function! s:unformat(line1, line2)
 
 	" mark line one  &&  keep track of lines selected
 	execute 'normal!' 'me'
@@ -624,7 +625,7 @@ fun! s:unformat(line1, line2)
 		let c += 1
 	endwhile
 	execute 'normal!' "V'e="
-endfun
+endfunction
 command! -range Unformat :call s:unformat(<line1>, <line2>)
 
 "=================================================================="
@@ -676,9 +677,9 @@ nnoremap <silent> dd :call Smart_Delete_dd()<CR>
 "=================================================================="
 
 " insert the full path of the current file
-fun! s:fullpath()
+function! s:fullpath()
 	:put =expand('%:p')
-endfun
+endfunction
 command! FullPath :call s:fullpath()
 
 "=================================================================="
@@ -688,7 +689,7 @@ command! FullPath :call s:fullpath()
 " 1.  -->   2.
 " 1.        3.
 
-fun! s:AddToList(line1, line2)
+function! s:AddToList(line1, line2)
 
 	" mark line1  &&  keep track of lines selected
 	execute 'normal!' 'me'
@@ -716,7 +717,7 @@ fun! s:AddToList(line1, line2)
 	" return to the beginning of the list incrementation
 	execute 'normal!' '`e'
 
-endfun
+endfunction
 command! -range Add :call s:AddToList(<line1>, <line2>)
 
 "=================================================================="
@@ -733,7 +734,7 @@ command! -range Add :call s:AddToList(<line1>, <line2>)
 "             c_asdf     = asdf,
 "             d_asdfasdf = asdf )
 
-fun! s:TabularEquals(line1, line2)
+function! s:TabularEquals(line1, line2)
 
 	" mark line1  &&  keep track of lines selected
 	execute 'normal!' 'me'
@@ -768,41 +769,41 @@ fun! s:TabularEquals(line1, line2)
 	" put the aligned arguments back on the first line
 	execute 'normal!' '`eJJ'
 
-endfun
+endfunction
 command! -range TabE :call s:TabularEquals(<line1>, <line2>)
 
 "=================================================================="
 
 " convert a .c file to a .h file
-fun! s:convertC2H()
+function! s:convertC2H()
 	w %:r.h
 	tabe %:r.h
  	execute 'g/^\S.*{$/norm $h%s;'
-endfun
+endfunction
 command! ConvertC2H :call s:convertC2H()
 
 "=================================================================="
 
 " quickly open vimrc in a horizontal split
-fun! s:editVimrc()
+function! s:editVimrc()
 	execute ':split ~/.vimrc'
-endfun
+endfunction
 command! EV :call s:editVimrc()
 
 "=================================================================="
 
 " quickly open bashrc in a horizontal split
-fun! s:editBashrc()
+function! s:editBashrc()
 	execute ':split ~/.bashrc'
-endfun
+endfunction
 command! EA :call s:editBashrc()
 
 "=================================================================="
 
 " quickly change the working directory to the file's directory
-fun! s:CdHere()
+function! s:CdHere()
 	execute ':cd %:h'
-endfun
+endfunction
 command! CdHere :call s:CdHere()
 
 "=================================================================="
@@ -813,7 +814,7 @@ function! <SID>HighlightGroup()
 		return
 	endif
 	echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
+endfunction
 command! HighlightGroup :call s:HighlightGroup()
 
 "=================================================================="
@@ -830,8 +831,38 @@ function! s:GitDiffGet(...)
 		let l:buffer_num = a:1
 		execute ':diffget //' . l:buffer_num . ' | diffupdate'
 	endif
-endfunc
+endfunction
 command! -nargs=? GG :call s:GitDiffGet(<f-args>)
+
+"=================================================================="
+
+" wrapper around :Gtabedit that names the buffer something more reasonable (<branch>:<file_path>)
+function! s:get_branch_name(file_name)
+	let l:tokens = split(a:file_name, ":")
+	let l:branch_name = l:tokens[0]
+	let l:file_path = l:tokens[1]
+" 	return l:branch_name
+	return "hi"
+endfunction
+function! s:GTabEdit(file_name)
+	execute ':Gtabedit ' . a:file_name
+	execute ':file ' . a:file_name
+	
+	let b:tokens = split(a:file_name, ":")
+	let b:branch_name = b:tokens[0]
+	let b:file_path = b:tokens[1]
+	
+	set statusline=                      " start with an empty status line
+	set statusline+=%f\                  " show file name
+	set statusline+=%m\                  " show modified flag
+	set statusline+=%r                   " show read-only flag
+" 	set statusline+=[%{fugitive#head()}] " show current git branch
+" 	set statusline+=[%{g:branch_name}] " show current git branch
+	set statusline+=[%{b:branch_name}] " show current git branch
+" 	set statusline+=[%{get_branch_name()}] " show current git branch
+	
+endfunction
+command! -nargs=1 GTabEdit :call s:GTabEdit(<f-args>)
 
 " ================================================================="
 " ================================================================="
@@ -889,7 +920,7 @@ function! FoldFunctions()
 	" fold other types
 	:silent! execute "%g/^tid_t/normal! vf{%zf"
 
-endfunc
+endfunction
 nnoremap ;zf zE :call FoldFunctions()<CR><ESC>
 
 " use ;n to toggle between number mode and relative number mode
@@ -901,7 +932,7 @@ function! s:NumberToggle()
     set rnu
 	set nu
   endif
-endfunc
+endfunction
 command! NumberToggle :call s:NumberToggle()
 set rnu
 set nu
@@ -940,7 +971,7 @@ function! s:FormatToggle()
   execute "set expandtab!"
   execute "set expandtab?"
   execute 'normal!' "gg=G''"
-endfunc
+endfunction
 command! FormatToggle :call s:FormatToggle()
 
 " use ;d to put deleted stuff in the black hole register "_
@@ -966,7 +997,10 @@ nnoremap ;v "*p
 nnoremap ;r I//<C-c>A // REMOVE<C-c>
 
 " Fugitive plugin mappings
-nnoremap ;gs :Gstatus<CR>
+nnoremap ;gs  :Gstatus<CR>
+nnoremap ;gbb :Git branch -v<CR>
+nnoremap ;gba :Git branch -va<CR>
+nnoremap ;gt  :Gtabedit<C-Space>
 
 " ================================================================="
 " ================================================================="
