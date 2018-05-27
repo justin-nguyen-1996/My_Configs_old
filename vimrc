@@ -388,11 +388,19 @@ highlight   DiffText     term=None   cterm=None   ctermfg=White   ctermbg=DarkGr
 set laststatus=2
 
 " customize what the status line shows
-set statusline=                      " start with an empty status line
-set statusline+=%f\                  " show file name
-set statusline+=%m\                  " show modified flag
-set statusline+=%r                   " show read-only flag
-set statusline+=[%{fugitive#head()}] " show current git branch
+function! s:load_my_statusline()
+	set statusline=                      " start with an empty status line
+	set statusline+=%f\                  " show file name
+	set statusline+=%m\                  " show modified flag
+	set statusline+=%r                   " show read-only flag
+	set statusline+=[%{fugitive#head()}] " show current git branch
+endfunction
+
+" only load the status line upon entering vim
+augroup my_status_line
+	autocmd!
+	autocmd VimEnter * call s:load_my_statusline()
+augroup END
 
 " better colors for the status line
 highlight StatusLine     term=None   cterm=None   ctermfg=Black   ctermbg=Gray       gui=None
