@@ -391,25 +391,25 @@ highlight   DiffText     term=None   cterm=None   ctermfg=White   ctermbg=DarkGr
 set laststatus=2
 
 " customize what the status line shows
-" let b:branch_name = '' " TODO
 function! s:load_my_statusline()
 	set statusline=                      " start with an empty status line
 	set statusline+=%F\                  " show file name
 	set statusline+=%m\                  " show modified flag
 	set statusline+=%r                   " show read-only flag
 	set statusline+=[%{fugitive#head()}] " show current git branch
-	let b:branch_name = fugitive#head() " TODO
+	let b:branch_name = fugitive#head()  " set the b:branch_name variable so we don't get errors
 endfunction
 
+" set the b:branch_name variable so we don't get errors
 function! s:set_branch_name()
 	let b:branch_name = fugitive#head()
 endfunction
-
-" only load the status line upon entering vim
-augroup my_status_line2
+augroup temp_set_branch_name
 	autocmd!
 	autocmd BufNew,BufRead * call s:set_branch_name()
 augroup END
+
+" only load the status line upon entering vim
 augroup my_status_line
 	autocmd!
 	autocmd VimEnter * call s:load_my_statusline()
@@ -858,13 +858,6 @@ command! -nargs=? GG :call s:GitDiffGet(<f-args>)
 "=================================================================="
 
 " wrapper around :Gtabedit that names the buffer something more reasonable (<branch>:<file_path>)
-function! s:get_branch_name(file_name) " TODO: remove
-	let l:tokens = split(a:file_name, ":")
-	let l:branch_name = l:tokens[0]
-	let l:file_path = l:tokens[1]
-" 	return l:branch_name
-	return "hi"
-endfunction
 function! s:GTabEdit(file_name)
 	execute ':Gtabedit ' . a:file_name
 	execute ':file ' . a:file_name
@@ -880,7 +873,6 @@ function! s:GTabEdit(file_name)
 " 	set statusline+=[%{fugitive#head()}] " show current git branch
 " 	set statusline+=[%{g:branch_name}] " show current git branch
 	set statusline+=[%{b:branch_name}] " show current git branch
-" 	set statusline+=[%{get_branch_name()}] " show current git branch
 	
 endfunction
 command! -nargs=1 GTabEdit :call s:GTabEdit(<f-args>)
