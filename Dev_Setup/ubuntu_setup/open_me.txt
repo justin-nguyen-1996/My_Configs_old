@@ -42,6 +42,9 @@ Change permissions on vim plugins
 Change permissions on miniconda packages
  - run `sudo chown -R justin:justin ~/miniconda2/`
 
+Help with installing the YouCompleteMe plugin
+- https://github.com/hsab/WSL-config
+
 ====================================================================================================================
 
 Virtual Box

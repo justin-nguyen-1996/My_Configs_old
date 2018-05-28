@@ -2,6 +2,7 @@
 
 # update and install packages for command line
 printf "\n=========================\nadding apt repos \n=========================\n"    ; sudo add-apt-repository ppa:fontforge/fontforge
+printf "\n=========================\nadding apt repos \n=========================\n"    ; sudo apt-add-repository ppa:git-core/ppa
 printf "\n=========================\nupdating packages\n=========================\n"    ; yes yes Y | sudo apt-get update
 printf "\n=========================\ninstalling git\n=========================\n"       ; yes yes Y | sudo apt-get install git
 printf "\n=========================\ninstalling ctags\n=========================\n"     ; yes yes Y | sudo apt-get install exuberant-ctags
@@ -71,9 +72,6 @@ mkdir -p ~/.vim/bundle/
 mkdir -p ~/snippets
 mkdir -p ~/Github
 
-# install vim
-~/Github/My_Configs/Dev_Setup/ubuntu_setup/.install_vim.sh
-
 # get the Vundle plugin
 cd ~/  &&  git clone https://github.com/VundleVim/Vundle.vim.git
 mv ~/Vundle.vim ~/.vim/bundle/Vundle.vim
@@ -81,6 +79,12 @@ mv ~/Vundle.vim ~/.vim/bundle/Vundle.vim
 # get config directory from my repo
 cd ~/Github/
 ~/clone_my_configs.sh
+
+# copy git completion file to home directory
+cp ~/Github/My_Configs/.git-completion.bash ~/
+
+# install vim
+~/Github/My_Configs/Dev_Setup/ubuntu_setup/.install_vim.sh
 
 # take care of vimrc, plugin installation, and removing bad files
 sudo ln -s ~/Github/My_Configs/vimrc /etc/vim/

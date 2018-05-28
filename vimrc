@@ -392,22 +392,13 @@ set laststatus=2
 
 " customize what the status line shows
 function! s:load_my_statusline()
-	set statusline=                      " start with an empty status line
-	set statusline+=%F\                  " show file name
-	set statusline+=%m\                  " show modified flag
-	set statusline+=%r                   " show read-only flag
-	set statusline+=[%{fugitive#head()}] " show current git branch
-	let b:branch_name = fugitive#head()  " set the b:branch_name variable so we don't get errors
+	set statusline=                        " start with an empty status line
+	set statusline+=[%{fugitive#head()}]\  " show current git branch
+	set statusline+=%t\                    " show file name (f = relative file name, F = absolute path to file name)
+" 	set statusline+=[%n]\                  " show buffer number
+	set statusline+=%m\                    " show modified flag
+	set statusline+=%r\                    " show read-only flag
 endfunction
-
-" set the b:branch_name variable so we don't get errors
-function! s:set_branch_name()
-	let b:branch_name = fugitive#head()
-endfunction
-augroup temp_set_branch_name
-	autocmd!
-	autocmd BufNew,BufRead * call s:set_branch_name()
-augroup END
 
 " only load the status line upon entering vim
 augroup my_status_line
@@ -840,6 +831,14 @@ command! HighlightGroup :call s:HighlightGroup()
 
 "=================================================================="
 
+" wrapper around :only for quicker access
+function! s:Quick_Only(...)
+	execute ':only'
+endfunction
+command! O :call s:Quick_Only()
+
+"=================================================================="
+
 " quickly grab the dff contents of the specified buffer (by number) into the current buffer
 " in Fugitive with 2 buffers, use `:GG`
 " in Fugitive with 3 buffers (b/c of git merge), use `:GG 2` to grab the HEAD branch's contents
@@ -854,28 +853,6 @@ function! s:GitDiffGet(...)
 	endif
 endfunction
 command! -nargs=? GG :call s:GitDiffGet(<f-args>)
-
-"=================================================================="
-
-" wrapper around :Gtabedit that names the buffer something more reasonable (<branch>:<file_path>)
-function! s:GTabEdit(file_name)
-	execute ':Gtabedit ' . a:file_name
-	execute ':file ' . a:file_name
-	
-	let b:tokens = split(a:file_name, ":")
-	let b:branch_name = b:tokens[0]
-" 	let b:file_path = b:tokens[1] " TODO: use this?
-	
-	set statusline=                      " start with an empty status line
-	set statusline+=%F\                  " show full file name path
-	set statusline+=%m\                  " show modified flag
-	set statusline+=%r                   " show read-only flag
-" 	set statusline+=[%{fugitive#head()}] " show current git branch
-" 	set statusline+=[%{g:branch_name}] " show current git branch
-	set statusline+=[%{b:branch_name}] " show current git branch
-	
-endfunction
-command! -nargs=1 GTabEdit :call s:GTabEdit(<f-args>)
 
 " ================================================================="
 " ================================================================="
@@ -1014,6 +991,7 @@ nnoremap ;gs  :Gstatus<CR>
 nnoremap ;gbb :Git branch -v<CR>
 nnoremap ;gba :Git branch -va<CR>
 nnoremap ;gt  :GTabEdit<C-Space>
+nnoremap ;gd  :GDiff<C-Space>
 
 " ================================================================="
 " ================================================================="

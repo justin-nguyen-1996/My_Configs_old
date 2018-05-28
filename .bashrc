@@ -63,6 +63,7 @@ alias ga='git add .'
 alias ga..='git add ..'
 alias gs='git status'
 alias gc='git commit -a -m'
+alias gm='git merge'
 alias gp='git push'
 alias gb='git branch -v'
 alias gba='git branch -va'
@@ -179,6 +180,8 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 # sudo fdisk -l
 # mkdir -p /media/windows_temp/ && sudo mount -t ntfs-3g -o ro /dev/sda4 /media/windows_temp/
 # sudo umount /media/windows_temp/
+
+# list of apt libraries --> /etc/apt/sources.list
 
 # `git reset HEAD~`                     --> undo previous commit that wasn't pushed (and also keep local changes)
 # `git reset <filename>`                --> remove from git add
