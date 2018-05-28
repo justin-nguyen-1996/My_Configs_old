@@ -81,8 +81,8 @@ mv ~/Vundle.vim ~/.vim/bundle/Vundle.vim
 cd ~/Github/
 ~/clone_my_configs.sh
 
-# copy git completion file to home directory
-cp ~/Github/My_Configs/.git-completion.bash ~/
+# make a symlink for the git completion file
+ln -s ~/Github/My_Configs/.git-completion.bash ~/.git-completion.bash
 
 # install vim
 ~/Github/My_Configs/Dev_Setup/ubuntu_setup/.install_vim.sh

@@ -570,8 +570,8 @@ function! ToggleComment_Py()
 		   :execute "s:^\s*# ::"
 	endif
 endfunction
-vnoremap ;# :call ToggleComment_Py()<CR>
-nnoremap ;# :call ToggleComment_Py()<CR>
+vnoremap <silent> ;# :call ToggleComment_Py()<CR>
+nnoremap <silent> ;# :call ToggleComment_Py()<CR>
 
 " toggle commented lines for "-style comments
 function! ToggleComment_Vimrc()
@@ -581,8 +581,8 @@ function! ToggleComment_Vimrc()
 		   :execute 's:^\s*" ::'
 	endif
 endfunction
-vnoremap ;" :call ToggleComment_Vimrc()<CR>
-nnoremap ;" :call ToggleComment_Vimrc()<CR>
+vnoremap <silent> ;" :call ToggleComment_Vimrc()<CR>
+nnoremap <silent> ;" :call ToggleComment_Vimrc()<CR>
 
 "=================================================================="
 
