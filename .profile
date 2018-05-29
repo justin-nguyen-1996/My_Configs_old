@@ -35,6 +35,10 @@ export ENV_TYPE="wsl"
 # Set Github repo location
 export GIT=~/Github
 
+# Set default editor to vim
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
 # path to miniconda libraries
 if [ "$ENV_TYPE" == "cygwin" ]
 	then export PATH="$HOME/miniconda2/Scripts/:$HOME/miniconda2/:$PATH"
@@ -66,11 +70,16 @@ if [ "$ENV_TYPE" == "wsl" ]
 		export PATH="$PATH:$HOME/Github/My_Configs/"
 fi
 
-# change starting directory
-# cd _____
-
-# synclient VertScrollDelta=-150   # slow down vertical scrolling
-# synclient HorizTwoFingerScroll=0 # disable horizontal scrolling
+# git completion function for bash aliases
+if [ -f ~/.git-completion.bash ]; then
+	
+  . ~/.git-completion.bash
+  
+  __git_complete   gco   _git_checkout
+  __git_complete   gm    _git_merge
+  __git_complete   gb    _git_branch
+  __git_complete   gp    _git_push
+fi
 
 #######################################################################
 #######################################################################
@@ -83,7 +92,7 @@ if [ -f "${HOME}/.bashrc" ] ; then
   source "${HOME}/.bashrc"
 fi
 
-[[ -s ~/.bashrc ]] && source ~/.bashrc
+# [[ -s ~/.bashrc ]] && source ~/.bashrc
 
 # set PATH so it includes user's private bin directories
 if [ "$ENV_TYPE" == "ubuntu" ]
@@ -108,3 +117,7 @@ fi
 # if [ -d "${HOME}/info" ]; then
 #   INFOPATH="${HOME}/info:${INFOPATH}"
 # fi
+
+# change the starting directory to the $HOME directory and clear the screen
+cd ~/
+clear

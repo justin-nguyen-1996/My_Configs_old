@@ -455,12 +455,22 @@ nnoremap P ]P
 " remap yb to not move the cursor backwards (repositioning the cursor was annoying)
 nnoremap yb ybw
 
-" remap CTRL-n to move to the next line that has a compile error"
-nnoremap <C-n> :cn<CR>
-
-" remap CTRL-p to move to the previous line that has a compile error"
-" NOTE: can also map this to CTRL-N
-nnoremap <C-p> :cp<CR>
+" mappings for automatically jumping to the next/previous error
+" :cnext and :cprevious are for the quickfix list (e.g. for :make)
+" :lnext and :lprevious are for the location list (e.g. for YCM)
+function! s:my_jump_to_next_error()
+	if g:ycm_show_diagnostics_ui == 1
+		nnoremap <C-n> :lne<CR>
+		nnoremap <C-p> :lp<CR>
+	else
+		nnoremap <C-n> :cn<CR>
+		nnoremap <C-p> :cp<CR>
+	endif
+endfunction
+augroup my_error_jump
+	autocmd!
+	autocmd VimEnter * call s:my_jump_to_next_error()
+augroup END
 
 " mappings for easily deleting the surrounding brackets/parentheses
 " ==========================================================================================================
@@ -836,23 +846,6 @@ function! s:Quick_Only(...)
 	execute ':only'
 endfunction
 command! O :call s:Quick_Only()
-
-"=================================================================="
-
-" quickly grab the dff contents of the specified buffer (by number) into the current buffer
-" in Fugitive with 2 buffers, use `:GG`
-" in Fugitive with 3 buffers (b/c of git merge), use `:GG 2` to grab the HEAD branch's contents
-" in Fugitive with 3 buffers (b/c of git merge), use `:GG 3` to grab the merge branch's contents
-function! s:GitDiffGet(...)
-	let l:num_args = a:0
-	if (l:num_args == 0)
-		execute ':diffget | diffupdate'
-	else
-		let l:buffer_num = a:1
-		execute ':diffget //' . l:buffer_num . ' | diffupdate'
-	endif
-endfunction
-command! -nargs=? GG :call s:GitDiffGet(<f-args>)
 
 " ================================================================="
 " ================================================================="

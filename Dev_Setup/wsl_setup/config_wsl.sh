@@ -66,6 +66,7 @@ done
 echo
 
 # make directories
+mkdir -p ~/.vim/after/autoload/
 mkdir -p ~/.vim/after/syntax/
 mkdir -p ~/.vim/after/ftplugin/
 mkdir -p ~/.vim/after/plugin/
