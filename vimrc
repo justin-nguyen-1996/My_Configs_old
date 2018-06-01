@@ -57,7 +57,7 @@ if has("autocmd")
 
   " auto-source the vimrc upon writing to the file
   autocmd BufWritePost .vimrc source %
-  
+
   " if a new or existing file is opened and has a .s or .S extension, set the filetype to ARM
 "   autocmd BufNewFile,BufRead *.s,*.S set filetype=arm " arm = armv6/7
 
@@ -80,104 +80,117 @@ end
 " ================================================================="
 " ========== Begin additions for Fugitive plugin =================="
 
-augroup turbo_commit
-  autocmd!
-  autocmd BufEnter COMMIT_EDITMSG startinsert
-augroup END
+if !empty(glob("~/.vim/bundle/vim-fugitive/plugin/fugitive.vim"))
+	augroup turbo_commit
+	  autocmd!
+	  autocmd BufEnter COMMIT_EDITMSG startinsert
+	augroup END
+endif
 
 " ================================================================="
 " ================================================================="
 " ========== Begin additions for Ultisnips plugin ============="
 
-" Snippet completion triggers
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+if !empty(glob("~/.vim/bundle/ultisnips/plugin/UltiSnips.vim"))
 
-" how `:UltiSnipsEdit` will split the window
-let g:UltiSnipsEditSplit="vertical"
+	" Snippet completion triggers
+	let g:UltiSnipsExpandTrigger="<tab>"
+	let g:UltiSnipsJumpForwardTrigger="<tab>"
+	let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-" tells `:UltiSnipsEdit` where to look for snippets
-let g:UltiSnipsSnippetDirectories=['~/.vim/bundle/vim-snippets/snippets']
+	" how `:UltiSnipsEdit` will split the window
+	let g:UltiSnipsEditSplit="vertical"
+
+	" tells `:UltiSnipsEdit` where to look for snippets
+	let g:UltiSnipsSnippetDirectories=['~/.vim/bundle/vim-snippets/snippets']
+
+endif
 
 " ================================================================="
 " ================================================================="
 " ========== Begin additions for YouCompleteMe plugin ============="
 
-" uncomment to use Syntastic (gcc compiler) for detecting syntax errors
-" let g:ycm_show_diagnostics_ui = 0
+if !empty(glob("~/.vim/bundle/YouCompleteMe/plugin/youcompleteme.vim"))
+	
+	" uncomment to use Syntastic (gcc compiler) for detecting syntax errors
+	" let g:ycm_show_diagnostics_ui = 0
 
-" change the keys that cycle forwards/backwards through the completion menu
-let g:ycm_key_list_select_completion = ['<Down>']
-let g:ycm_key_list_previous_completion = ['<Up>']
+	" change the keys that cycle forwards/backwards through the completion menu
+	let g:ycm_key_list_select_completion = ['<Down>']
+	let g:ycm_key_list_previous_completion = ['<Up>']
 
-" tell YCM which python binary to use
-let g:ycm_python_binary_path = 'python'
+	" tell YCM which python binary to use
+	let g:ycm_python_binary_path = 'python'
 
-" disable syntax highlighting for error and warning messages
-let g:ycm_enable_diagnostic_highlighting = 0
+	" disable syntax highlighting for error and warning messages
+	let g:ycm_enable_diagnostic_highlighting = 0
 
-" ignore annoying extra confimation of using the .ycm_confirm_extra_conf file
-let g:ycm_confirm_extra_conf = 0
+	" ignore annoying extra confimation of using the .ycm_confirm_extra_conf file
+	let g:ycm_confirm_extra_conf = 0
 
-" uncomment to let YCM populate the location list
-let g:ycm_always_populate_location_list = 1
+	" uncomment to let YCM populate the location list
+	let g:ycm_always_populate_location_list = 1
 
-" let YCM use the tags file for completion
-let g:ycm_collect_identifiers_from_tags_files = 1
+	" let YCM use the tags file for completion
+	let g:ycm_collect_identifiers_from_tags_files = 1
 
-" don't let YCM include snippets in the completion menu
-let g:ycm_use_ultisnips_completer = 0
+	" don't let YCM include snippets in the completion menu
+	let g:ycm_use_ultisnips_completer = 0
 
-" options for displaying the YCM preview window
-" if want to disable YCM preview window, add `set completeopt-=preview` to vimrc. Also add `let g:ycm_add_preview_to_completeopt = 0`
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
+	" options for displaying the YCM preview window
+	" if want to disable YCM preview window, add `set completeopt-=preview` to vimrc. Also add `let g:ycm_add_preview_to_completeopt = 0`
+	let g:ycm_add_preview_to_completeopt = 1
+	let g:ycm_autoclose_preview_window_after_insertion = 1
 
-" shortcut command for quickly opening the preview window in vim
-function! s:open_preview()
-	execute ':YcmDiags'
-endfunction
-command! LO :call s:open_preview()
+	" shortcut command for quickly opening the preview window in vim
+	function! s:open_preview() abort
+		execute ':YcmDiags'
+	endfunction
+	command! LO :call s:open_preview()
 
-" shortcut command for quickly closing the preview window in vim
-function! s:close_preview()
-	execute ':lclose'
-	execute ':pclose'
-endfunction
-command! LC :call s:close_preview()
+	" shortcut command for quickly closing the preview window in vim
+	function! s:close_preview() abort
+		execute ':lclose'
+		execute ':pclose'
+	endfunction
+	command! LC :call s:close_preview()
 
-" shortcut command for quickly getting the type of a function/variable
-" NOTE: not named TYPE because of command ordering
-function! s:get_type()
-	execute ':YcmCompleter GetType'
-endfunction
-command! TAYPE :call s:get_type()
+	" shortcut command for quickly getting the type of a function/variable
+	" NOTE: not named TYPE because of command ordering
+	function! s:get_type() abort
+		execute ':YcmCompleter GetType'
+	endfunction
+	command! TAYPE :call s:get_type()
 
-" shortcut command for quickly getting the documentation of a function/variable
-function! s:get_doc()
-	execute ':YcmCompleter GetDoc'
-	execute 'normal!' 'j'
-endfunction
-command! DOC :call s:get_doc()
+	" shortcut command for quickly getting the documentation of a function/variable
+	function! s:get_doc() abort
+		execute ':YcmCompleter GetDoc'
+		execute 'normal!' 'j'
+	endfunction
+	command! DOC :call s:get_doc()
+endif
 
 " ================================================================="
 " ================================================================="
 " =========== Begin additions for Rainbow_parens plugin ==========="
 
-" set to zero and use :RainbowToggle to switch between modes
-let g:rainbow_active = 1
+if !empty(glob("~/.vim/bundle/rainbow/plugin/rainbow.vim"))
+	" set to zero and use :RainbowToggle to switch between modes
+	let g:rainbow_active = 1
 
-let g:rainbow_conf = {
-\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
-\}
+	let g:rainbow_conf = {
+	\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+	\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+	\}
+endif
 
 " ================================================================="
 " ================================================================="
 " =========== Begin additions for Tabular plugin ==========="
 
-vnoremap ;t :Tabularize /
+if !empty(glob("~/.vim/bundle/tabular/plugin/Tabular.vim"))
+	vnoremap ;t :Tabularize /
+endif
 
 " ================================================================="
 " ================================================================="
@@ -188,33 +201,42 @@ vnoremap ;t :Tabularize /
 " 	\   ['FULLPATH', 'GetFullPath'],
 " 	\ ]
 "
-" function! GetFullPath()
+" function! GetFullPath() abort
 " 	return expand('%:p')
 " endfunction
 
 " ================================================================="
 " ================================================================="
 " ============== Begin additions for Ctrl-P plugin ================"
-let g:ctrlp_map = '<c-\>'
-let g:ctrlp_cmd = 'CtrlP'
+
+" if !empty(glob("~/.vim/bundle/______"))
+	let g:ctrlp_map = '<c-\>'
+	let g:ctrlp_cmd = 'CtrlP'
+" endif
 
 " ================================================================="
 " ================================================================="
 " ============== Begin additions for pymode plugin ================"
-let g:pymode_warnings = 0
-let g:pymode_options_colorcolumn = 0
-let g:pymode_indent = 0
-let g:pymode_lint_on_fly = 0
-let g:pymode_syntax_indent_errors = 0
-let g:pymode_syntax_space_errors = 0
-let g:pymode_lint_checkers = ['pyflakes']
+
+" if !empty(glob("~/.vim/bundle/_____"))
+	let g:pymode_warnings = 0
+	let g:pymode_options_colorcolumn = 0
+	let g:pymode_indent = 0
+	let g:pymode_lint_on_fly = 0
+	let g:pymode_syntax_indent_errors = 0
+	let g:pymode_syntax_space_errors = 0
+	let g:pymode_lint_checkers = ['pyflakes']
+" endif
 
 " ================================================================="
 " ================================================================="
 " ============== Begin additions for tagbar plugin ================"
-nnoremap ;n :TagbarToggle<CR>
-let g:tagbar_show_linenumbers = 2
-let g:tagbar_sort = 0
+
+" if !empty(glob("~/.vim/bundle/_____"))
+	nnoremap ;n :TagbarToggle<CR>
+	let g:tagbar_show_linenumbers = 2
+	let g:tagbar_sort = 0
+" endif
 
 " ================================================================="
 " ================================================================="
@@ -391,7 +413,7 @@ highlight   DiffText     term=None   cterm=None   ctermfg=White   ctermbg=DarkGr
 set laststatus=2
 
 " customize what the status line shows
-function! s:load_my_statusline()
+function! s:load_my_statusline() abort
 	set statusline=                        " start with an empty status line
 	set statusline+=[%{fugitive#head()}]\  " show current git branch
 	set statusline+=%t\                    " show file name (f = relative file name, F = absolute path to file name)
@@ -458,8 +480,8 @@ nnoremap yb ybw
 " mappings for automatically jumping to the next/previous error
 " :cnext and :cprevious are for the quickfix list (e.g. for :make)
 " :lnext and :lprevious are for the location list (e.g. for YCM)
-function! s:my_jump_to_next_error()
-	if g:ycm_show_diagnostics_ui == 1
+function! s:my_jump_to_next_error() abort
+	if exists('g:ycm_show_diagnostics_ui')  &&  g:ycm_show_diagnostics_ui == 1
 		nnoremap <C-n> :lne<CR>
 		nnoremap <C-p> :lp<CR>
 	else
@@ -573,7 +595,7 @@ endif
 "=================================================================="
 
 " toggle commented lines for #-style comments
-function! ToggleComment_Py()
+function! ToggleComment_Py() abort
 	if matchstr(getline(line(".")),'^\s*\#.*$') == ''
 		   :execute "s:^:# :"
 	else
@@ -584,7 +606,7 @@ vnoremap <silent> ;# :call ToggleComment_Py()<CR>
 nnoremap <silent> ;# :call ToggleComment_Py()<CR>
 
 " toggle commented lines for "-style comments
-function! ToggleComment_Vimrc()
+function! ToggleComment_Vimrc() abort
 	if matchstr(getline(line(".")),'^\s*\".*$') == ''
 		   :execute 's:^:" :'
 	else
@@ -597,7 +619,7 @@ nnoremap <silent> ;" :call ToggleComment_Vimrc()<CR>
 "=================================================================="
 
 " reformat multiline if-statements into single line if-statements
-function! s:reformat(line1, line2)
+function! s:reformat(line1, line2) abort
 
 	" Remember line locs and numbers (bookkeeping)
 	execute 'normal!' 'me'
@@ -619,7 +641,7 @@ command! -range Reformat :call s:reformat(<line1>, <line2>)
 "=================================================================="
 
 " unformat single line if-statements into multiline if-statements
-function! s:unformat(line1, line2)
+function! s:unformat(line1, line2) abort
 
 	" mark line one  &&  keep track of lines selected
 	execute 'normal!' 'me'
@@ -656,7 +678,7 @@ command! -range Unformat :call s:unformat(<line1>, <line2>)
 " NOTE: this doesn't prevent copying whitespace using 'yy' or 'Vy'
 "       my assumption is that you wanted to copy the whitespace instead of deleting it
 
-function! Smart_Delete_dd()
+function! Smart_Delete_dd() abort
 	let temp = getreg('"', 1)
 	execute 'normal!' 'dd'
 	if matchstr(@", '\_s*') == @"    " if just whitespace
@@ -669,7 +691,7 @@ endfunction
 nnoremap <silent> dd :call Smart_Delete_dd()<CR>
 
 " NOTE: commented out because this affects visually selecting and deleting code folds
-" function! Smart_Delete_Vd() range
+" function! Smart_Delete_Vd() range abort
 " 	let temp = getreg('"', 1)
 " 	execute 'normal!' . (a:lastline - a:firstline + 1) . 'dd'
 " 	if matchstr(@", '\_s*') == @"    " if just whitespace
@@ -687,7 +709,7 @@ nnoremap <silent> dd :call Smart_Delete_dd()<CR>
 " --> visual copying always puts you back at the top line of the visual range
 "     (but what if you wanted to copy downwards and stay down there?)
 
-" function! Visual_Copy_Hack() range
+" function! Visual_Copy_Hack() range abort
 " 	let l:lineDiff = a:lastline - a:firstline
 " 	execute a:firstline . ',' . a:lastline . 'y'
 " 	execute 'normal!' l:lineDiff . 'j'
@@ -699,7 +721,7 @@ nnoremap <silent> dd :call Smart_Delete_dd()<CR>
 "=================================================================="
 
 " insert the full path of the current file
-function! s:fullpath()
+function! s:fullpath() abort
 	:put =expand('%:p')
 endfunction
 command! FullPath :call s:fullpath()
@@ -711,7 +733,7 @@ command! FullPath :call s:fullpath()
 " 1.  -->   2.
 " 1.        3.
 
-function! s:AddToList(line1, line2)
+function! s:AddToList(line1, line2) abort
 
 	" mark line1  &&  keep track of lines selected
 	execute 'normal!' 'me'
@@ -756,7 +778,7 @@ command! -range Add :call s:AddToList(<line1>, <line2>)
 "             c_asdf     = asdf,
 "             d_asdfasdf = asdf )
 
-function! s:TabularEquals(line1, line2)
+function! s:TabularEquals(line1, line2) abort
 
 	" mark line1  &&  keep track of lines selected
 	execute 'normal!' 'me'
@@ -797,7 +819,7 @@ command! -range TabE :call s:TabularEquals(<line1>, <line2>)
 "=================================================================="
 
 " convert a .c file to a .h file
-function! s:convertC2H()
+function! s:convertC2H() abort
 	w %:r.h
 	tabe %:r.h
  	execute 'g/^\S.*{$/norm $h%s;'
@@ -807,7 +829,7 @@ command! ConvertC2H :call s:convertC2H()
 "=================================================================="
 
 " quickly open vimrc in a horizontal split
-function! s:editVimrc()
+function! s:editVimrc() abort
 	execute ':split ~/.vimrc'
 endfunction
 command! EV :call s:editVimrc()
@@ -815,7 +837,7 @@ command! EV :call s:editVimrc()
 "=================================================================="
 
 " quickly open bashrc in a horizontal split
-function! s:editBashrc()
+function! s:editBashrc() abort
 	execute ':split ~/.bashrc'
 endfunction
 command! EA :call s:editBashrc()
@@ -823,7 +845,7 @@ command! EA :call s:editBashrc()
 "=================================================================="
 
 " quickly change the working directory to the file's directory
-function! s:CdHere()
+function! s:CdHere() abort
 	execute ':cd %:h'
 endfunction
 command! CdHere :call s:CdHere()
@@ -831,7 +853,7 @@ command! CdHere :call s:CdHere()
 "=================================================================="
 
 " show syntax highlighting groups for word under cursor
-function! <SID>HighlightGroup()
+function! <SID>HighlightGroup() abort
 	if !exists("*synstack")
 		return
 	endif
@@ -842,7 +864,7 @@ command! HighlightGroup :call s:HighlightGroup()
 "=================================================================="
 
 " wrapper around :only for quicker access
-function! s:Quick_Only(...)
+function! s:Quick_Only(...) abort
 	execute ':only'
 endfunction
 command! O :call s:Quick_Only()
@@ -852,7 +874,7 @@ command! O :call s:Quick_Only()
 " ================= Begin my custom ';' commands =================="
 
 " use ;zf to fold all functions (in C and C++ and Java)
-function! FoldFunctions()
+function! FoldFunctions() abort
 
 	" fold functions of type (bool, boolean, int, double, void)
 	:silent! execute "%g/^bool/normal! vf{%zf"
@@ -907,7 +929,7 @@ endfunction
 nnoremap ;zf zE :call FoldFunctions()<CR><ESC>
 
 " use ;n to toggle between number mode and relative number mode
-function! s:NumberToggle()
+function! s:NumberToggle() abort
   if(&relativenumber == 1)
     set nornu
 	set nonu
@@ -925,7 +947,7 @@ nnoremap ;p :set invpaste paste?<CR>
 set showmode
 
 " use ;w to remove trailing whitespace press ';w' (semicolon then 'w')
-function! TrimWhitespace()
+function! TrimWhitespace() abort
 	let l:save_cursor = getpos('.')
 	%s/\s\+$//e
 	call setpos('.', l:save_cursor)
@@ -950,7 +972,7 @@ nnoremap ;m :make<CR>
 nnoremap ;s :source ~/.vimrc<CR>
 
 " use ;f to format the file according to C++/Java style
-function! s:FormatToggle()
+function! s:FormatToggle() abort
   execute "set expandtab!"
   execute "set expandtab?"
   execute 'normal!' "gg=G''"

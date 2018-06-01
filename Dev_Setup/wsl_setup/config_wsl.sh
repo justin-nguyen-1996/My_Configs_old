@@ -146,6 +146,7 @@ rm -rf ~/.pdbrc
 mv ~/.vim/bundle/vim-snippets/snippets     ~/.vim/bundle/vim-snippets/snips_original
 
 # make symlinks
+ln -s ~/Github/My_Configs/.ycm_extra_conf.py        ~/.ycm_extra_conf.py
 ln -s ~/Github/My_Configs/.gitconfig                ~/.gitconfig
 ln -s ~/Github/My_Configs/.bashrc                   ~/.bashrc
 ln -s ~/Github/My_Configs/.inputrc                  ~/.inputrc
@@ -162,6 +163,12 @@ ln -s ~/Github/My_Configs/ipython_config.py         ~/.ipython/profile_default/i
 ln -s ~/Github/My_Configs/.pdbrc                    ~/.pdbrc
 ln -s ~/Github/My_Configs/ssh_config                ~/.ssh/config
 cp ~/Github/My_Configs/.profile ~/                  ##### NOTE: don't make a symlink for ~/.profile
+
+# change the $ENV_TYPE variable as appropriate
+vim -c ":execute 'normal' 'gg'" -c ":/ENV_TYPE" -c ":execute 'normal' 'n'" -c ":execute 'normal' 'wwcwwsl'" -c ":x" ~/.profile
+
+# copy over additions to the Fugitive plugin
+vim -c "execute 'normal' 'Go'" -c ":read ~/Github/My_Configs/.my_fugitive.vim" -c ":x" ~/.vim/bundle/vim-fugitive/plugin/fugitive.vim
 
 # source the ~/.profile  &&  ~/.inputrc
 source ~/.profile
