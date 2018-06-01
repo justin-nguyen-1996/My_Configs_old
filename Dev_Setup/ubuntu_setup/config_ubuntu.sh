@@ -65,7 +65,6 @@ done
 echo
 
 # make directories
-mkdir -p ~/.vim/after/autoload/
 mkdir -p ~/.vim/after/syntax/
 mkdir -p ~/.vim/after/ftplugin/
 mkdir -p ~/.vim/after/plugin/
@@ -154,6 +153,7 @@ ln -s ~/Github/My_Configs/vimrc                     /etc/vim/vimrc
 ln -s ~/Github/My_Configs/.tmux.conf                ~/.tmux.conf
 ln -s ~/Github/My_Configs/snippets/                 ~/.vim/bundle/vim-snippets/snippets
 ln -s ~/miniconda2/lib/python2.7/site-packages/     ~/conda_packages
+ln -s ~/Github/My_Configs/autoload/                 ~/.vim/after/autoload
 ln -s ~/Github/My_Configs/syntax/                   ~/.vim/after/syntax
 ln -s ~/Github/My_Configs/ftplugin                  ~/.vim/after/ftplugin
 ln -s ~/Github/My_Configs/plugin/                   ~/.vim/after/plugin
