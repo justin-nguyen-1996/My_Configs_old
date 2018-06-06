@@ -142,6 +142,14 @@ export LS_COLORS=$LS_COLORS:'ow=1;34;40:tw=1;34;40:'
 
 ########################################################################################################################
 
+# make the install alias still have autocomplete
+_apt_install_complete() { 
+    mapfile -t COMPREPLY < <(apt-cache --no-generate pkgnames "$2");
+}
+complete -F _apt_install_complete install
+
+########################################################################################################################
+
 # map cd to `cd && ls`
 cd() { builtin cd "${1-$(echo ~)}" && ls -F; }
 

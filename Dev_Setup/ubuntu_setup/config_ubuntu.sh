@@ -144,6 +144,7 @@ rm -rf ~/.pdbrc
 mv ~/.vim/bundle/vim-snippets/snippets     ~/.vim/bundle/vim-snippets/snips_original
 
 # make symlinks
+ln -s ~/Github/My_Configs/.bash_profile             ~/.bash_profile
 ln -s ~/Github/My_Configs/.ycm_extra_conf.py        ~/.ycm_extra_conf.py
 ln -s ~/Github/My_Configs/.gitconfig                ~/.gitconfig
 ln -s ~/Github/My_Configs/.bashrc                   ~/.bashrc
