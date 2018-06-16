@@ -16,6 +16,3 @@ let m = matchadd("WhiteOnMagenta", "DEBUG")
 
 hi BlackOnYellow term=standout,bold ctermfg=Black ctermbg=Yellow
 let m = matchadd("BlackOnYellow", "HERE")
-
-hi BlackOnYellow term=standout,bold ctermfg=Black ctermbg=Yellow
-let m = matchadd("BlackOnYellow", "DERP2")
