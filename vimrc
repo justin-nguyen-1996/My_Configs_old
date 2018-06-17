@@ -295,17 +295,6 @@ set fml=1
 set rnu
 set nu
 
-" fold method based on file syntax
-" fold level    = 2 for .java    = 1 for .c
-" min fold level = 0 for folding single lines
-"set fdm=syntax
-"set fml=0
-"if &filetype == 'java'
-"	set fdn=2
-"elseif &filetype == 'c'
-"	set fdn=1
-"endif
-
 " searches down into subfolders
 " provides tab-completion for all file-related tasks
 set path+=**
@@ -451,6 +440,14 @@ nnoremap '' ''zz
 " map the jump-to-mark command 'm so that the
 " command centers the screen upon jumping
 nnoremap 'm 'mzz
+
+" make jumping to previous/next location center the screen
+nnoremap <C-o> <C-o>zz
+nnoremap <C-i> <C-i>zz
+
+" make searching center the screen
+nnoremap n nzz
+nnoremap N Nzz
 
 "" press % to visually highlight in-between brace/bracket/parentheses
 noremap % v%
