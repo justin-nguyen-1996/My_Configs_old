@@ -192,18 +192,23 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 
 # list of apt libraries --> /etc/apt/sources.list
 
+# `git rebase -i <commit>^`             --> change the commit message of a commit that has already been pushed
+#                                           change 'pick' to 'reword', save and quit, new prompt comes up, change commit message
 # `git reset HEAD~`                     --> undo previous commit that wasn't pushed (and also keep local changes)
 # `git reset <filename>`                --> remove from git add
 # `git reset HEAD <commit id>`          --> remove from git commit --> use `gitlog` to see git commit id's
 #      (shortcut: `git reset HEAD~#`    --> # is how many commits to go back --> e.g. `git reset HEAD~1` means undo latest commit)
 # `git checkout`                        --> just quickly check something out and go back
-# `git push -f origin master:justin`    --> force push one branch onto another --> <remote> <new branch>:<branch you are pushing to> 
+# `git push -f origin master:justin`    --> force push one branch onto another --> <remote> <new branch>:<branch you are pushing to>
 # `git checkout otherbranch myfile.txt` --> copy a file from another branch onto the current branch
+# `git checkout otherbranch -- dir`     --> copy a directory from another branch onto the current branch (might need to merge though ...)
+# `git branch -m newbranch`             --> change current local branch name to a new name
 # `git branch -D justin`                --> delete local branch called justin
 # `git push --delete origin justin`     --> delete remote branch called justin
 # `git remote set-url origin <url>`     --> git remote set-url origin https://bitbucket.org/justins_stuff/college_senior_year
 # `git fetch <remote> <branch>`         --> pull a remote branch and check it out
 #  && `git checkout <branch>`
+
 
 # Put pintos in PATH
 alias pintos-gdb='GDBMACROS=/home/jhn545/Github/OS/Pintos/misc/gdb-macros pintos-gdb'
