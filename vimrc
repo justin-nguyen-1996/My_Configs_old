@@ -79,7 +79,7 @@ end
 " now you can close the file, get back in, and still maintain the original undo tree
 if has('persistent_undo')
 	set undolevels=5000
-	call system('mkdir -p ~/.vim/undo')
+	" call system('mkdir -p ~/.vim/undo')
 	set undodir=~/.vim/undo
 	set undofile
 endif
@@ -322,23 +322,23 @@ set tabpagemax=30
 set title
 
 " set variable 'g:os' according to development environment
-if !exists('g:os')
-    if has('win32') || has('win16')
-        let g:os = 'Windows'
-    else
-        let g:os = substitute(system('uname'), '\n', '', '')
-    endif
-endif
+" if !exists('g:os')
+"     if has('win32') || has('win16')
+"         let g:os = 'Windows'
+"     else
+"         let g:os = substitute(system('uname'), '\n', '', '')
+"     endif
+" endif
 
 " a godsend that disables that stupidly annoying beep/bell once and for all
-if g:os =~ 'CYGWIN'
-	set belloff=all
-endif
+" if g:os =~ 'CYGWIN'
+" 	set belloff=all
+" endif
 
 " prevent ubuntu from outputting garbage characters
-if g:os =~ 'Linux'
+" if g:os =~ 'Linux'
 	set t_RV=
-endif
+" endif
 
 " make the clipboard the default register
 if $ENV_TYPE != 'wsl'
@@ -539,11 +539,11 @@ nnoremap <C-g> 1<C-g>
 " =============== Begin my 'inoremaps' things ====================="
 
 " autocomplete for matching brace (activated upon pressing enter)
-if g:os =~ 'CYGWIN'
-	inoremap {<CR>  {<CR>}<Esc><Esc>O
-elseif g:os =~ 'Linux'
+" if g:os =~ 'CYGWIN'
+" 	inoremap {<CR>  {<CR>}<Esc><Esc>O
+" elseif g:os =~ 'Linux'
 	inoremap {<CR>  {<CR>}<ESC>O
-endif
+" endif
 
 " DUMBEST HACK EVER (but I'm so happy it works)
 " normally pressing CTRL-c undoes your auto-indent on a blank line

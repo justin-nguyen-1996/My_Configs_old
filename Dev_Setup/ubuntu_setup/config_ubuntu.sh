@@ -71,6 +71,8 @@ mkdir -p ~/.vim/after/plugin/
 mkdir -p ~/.vim/bundle/
 mkdir -p ~/snippets
 mkdir -p ~/Github
+mkdir -p ~/.vim/undo
+mkdir -p ~/.vim/view
 
 # get the Vundle plugin
 cd ~/  &&  git clone https://github.com/VundleVim/Vundle.vim.git
