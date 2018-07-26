@@ -687,7 +687,10 @@ nnoremap ;j <C-]>zz
 nnoremap T <C-t>zz
 
 " use ;y to copy the current text file into the clipboard
-nnoremap ;y myggvG$"*y'y
+" nnoremap ;y myggvG$"*y'y
+
+" use ;y to copy the current line, comment it out, then paste the line below
+nnoremap <silent> ;y yy:call ToggleComment()<CR>p
 
 " use ;v to paste from the clipboard
 nnoremap ;v "*p
