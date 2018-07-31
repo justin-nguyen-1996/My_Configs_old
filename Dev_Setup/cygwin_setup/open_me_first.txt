@@ -10,6 +10,8 @@ Install cygwin packages
  - ctags
  - tmux
  - make
+ - cmake
+ - tree
  - dos2unix
 
  - there are probably more, these were all that I could think of at the top of my head
