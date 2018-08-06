@@ -14,6 +14,7 @@ Plugin 'tpope/vim-rhubarb'			      " allows :Gbrowse to open up Github URL
 Plugin 'godlygeek/tabular'                " easily align things
 Plugin 'SirVer/ultisnips'                 " snippets engine for easy code insertion
 Plugin 'honza/vim-snippets'			      " snippets database
+Plugin 'nelstrom/vim-visual-star-search'  " allows use of * or # to search in visual mode
 Plugin 'Valloric/YouCompleteMe'           " a code-completion engine with IDE-esque support for different languages
 Plugin 'davidhalter/jedi'			      " semantic-completion engine for Python
 Plugin 'aperezdc/vim-template'            " file templates (.c .py .java etc)
