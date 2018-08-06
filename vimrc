@@ -406,7 +406,11 @@ set laststatus=2
 " customize what the status line shows
 function! s:load_my_statusline() abort
 	set statusline=                        " start with an empty status line
-	set statusline+=Justin_Is_The_Best
+	set statusline+=[%{fugitive#head()}]\  " show current git branch
+	set statusline+=%t\                    " show file name (f = relative file name, F = absolute path to file name)
+" 	set statusline+=[%n]\                  " show buffer number
+	set statusline+=%m\                    " show modified flag
+	set statusline+=%r\                    " show read-only flag
 endfunction
 
 " only load the status line upon entering vim
