@@ -724,7 +724,8 @@ nnoremap ;gd  :GDiff<C-Space>
 
 " running :Gdiff is the same as running vimdiff with the file commited in Git (vimdiff is way better than diff)
 
+" TODO: what does this do?
 " Don't wake up system with blinking cursor:
 " http://www.linuxpowertop.org/known.php
-let &guicursor = &guicursor . ",a:blinkon0"
+" let &guicursor = &guicursor . ",a:blinkon0"
 
