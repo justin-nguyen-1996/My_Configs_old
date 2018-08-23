@@ -555,7 +555,7 @@ inoremap <C-c> l<BS><ESC>
 
 " remap the paste function in insert mode to Control-p
 if $ENV_TYPE == 'wsl'
-	inoremap <C-p> <C-R>"
+	inoremap <C-p> <C-R>0
 else
 	inoremap <C-p> <C-R>*
 endif
@@ -574,7 +574,7 @@ inoremap <C-k> <C-x><C-f>
 vnoremap U ~
 
 " so that your default register won't be overwritten when you paste over stuff in visual mode
-xnoremap p "_dP
+vnoremap p "_dP
 
 " to avoid triggering that stupidly annoying `man` lookup that is utterly and completely useless
 vnoremap K <NOP>
