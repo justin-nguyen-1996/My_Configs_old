@@ -3,8 +3,7 @@
 alias ea='vim ~/.bashrc; source ~/.bashrc'
 
 # some silly things because I'm really lazy (basically one-shot commands to git commit/push vimrc and other config files)
-alias cpconfig_helper='touch a.c'
-alias cpconfig='builtin cd ~/Github/My_Configs  &&  cpconfig_helper  &&  ga  &&  gs  &&  gc "update"  &&  gp  && builtin cd -'
+alias cpconfig='builtin cd ~/Github/My_Configs  &&  ga  &&  gs  &&  gc "update"  &&  gp  && builtin cd -'
 
 # aliases for Ubuntu
 if [ "$ENV_TYPE" == "ubuntu" ]
