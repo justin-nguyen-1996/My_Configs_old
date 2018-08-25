@@ -70,14 +70,16 @@ fi
 
 # git completion function for bash aliases
 if [ -f ~/.git-completion.bash ]; then
-	
   . ~/.git-completion.bash
-  
   __git_complete   gco   _git_checkout
   __git_complete   gm    _git_merge
   __git_complete   gb    _git_branch
   __git_complete   gp    _git_push
 fi
+
+# scrolling preferences
+synclient VertScrollDelta=-150     # slow down vertical scrolling
+synclient HorizTwoFingerScroll=0   # disable horizontal scrolling
 
 #######################################################################
 #######################################################################
@@ -117,5 +119,5 @@ fi
 # fi
 
 # change the starting directory to the $HOME directory and clear the screen
-cd ~/
-clear
+# cd ~/
+# clear

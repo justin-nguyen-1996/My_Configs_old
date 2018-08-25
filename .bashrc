@@ -169,6 +169,9 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function jp()
 # map libreoffice to not output junk to stdout
 if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function libreoffice() { libreoffice "$1" > /dev/null 2>&1 & } fi
 
+# map xpad sticky notes to not output junk to stdout
+# if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function xpad() { xpad > /dev/null 2>&1 & } fi
+
 # make merging branches onto/from master easier
 if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function gm() {
 	git checkout master && git merge "$1" && gp && git checkout "$1" && gb;
