@@ -30,56 +30,35 @@
 #######################################################################
 
 # NOTE: Must set this appropriately for the current development environment
-export ENV_TYPE="wsl"
+export ENV_TYPE="ubuntu"
 
 # Set Github repo location
 export GIT=~/Github
-
-# Set default editor to vim
-export VISUAL=vim
-export EDITOR="$VISUAL"
 
 # path to miniconda libraries
 if [ "$ENV_TYPE" == "cygwin" ]
 	then export PATH="$HOME/miniconda2/Scripts/:$HOME/miniconda2/:$PATH"
 elif [ "$ENV_TYPE" == "ubuntu" ]
 	then export PATH="$HOME/miniconda2/bin:$PATH"
-elif [ "$ENV_TYPE" == "wsl" ]
-	then export PATH="$HOME/miniconda2/bin:$PATH"
 elif [ "$ENV_TYPE" == "redhat" ]
 	then export PATH="$HOME/miniconda2/bin:$PATH"
 fi
 
 # path to Pintos
-if [ "$ENV_TYPE" == "cygwin" ]
-	then export PATH="$HOME/Pintos/src/utils/:$PATH"
-elif [ "$ENV_TYPE" == "ubuntu" ]
+if [ "$ENV_TYPE" == "ubuntu" ]
 	then export PATH="$HOME/Github/OS/Pintos/utils/:$PATH"
-elif [ "$ENV_TYPE" == "redhat" ]
-	then export PATH="$HOME/Pintos/src/utils/:$PATH"
 fi
 
-# WSL stuff
-if [ "$ENV_TYPE" == "wsl" ]
-	then
-		export c="/mnt/c/"
-		export justin="/mnt/c/Users/Justin/"
-		export classes="/mnt/c/Users/Justin/UT/Classes/"
-		export ee445m="/mnt/c/Users/Justin/UT/Classes/4_Senior/2018_SpringSemester/EE445M_RTOS/"
-		export downloads="/mnt/c/Users/justi/Downloads/"
-		export PATH="$PATH:$HOME/Github/My_Configs/"
+# path to vivado
+if [ "$ENV_TYPE" == "ubuntu" ]
+	then export PATH="$HOME/Vivado/Vivado/2017.4/bin:$PATH"
 fi
 
-# git completion function for bash aliases
-if [ -f ~/.git-completion.bash ]; then
-	
-  . ~/.git-completion.bash
-  
-  __git_complete   gco   _git_checkout
-  __git_complete   gm    _git_merge
-  __git_complete   gb    _git_branch
-  __git_complete   gp    _git_push
-fi
+# change starting directory
+# cd _____
+
+synclient VertScrollDelta=-150     # slow down vertical scrolling
+synclient HorizTwoFingerScroll=0   # disable horizontal scrolling
 
 #######################################################################
 #######################################################################
@@ -92,12 +71,10 @@ if [ -f "${HOME}/.bashrc" ] ; then
   source "${HOME}/.bashrc"
 fi
 
-# [[ -s ~/.bashrc ]] && source ~/.bashrc
+[[ -s ~/.bashrc ]] && source ~/.bashrc
 
 # set PATH so it includes user's private bin directories
 if [ "$ENV_TYPE" == "ubuntu" ]
-	then PATH="$HOME/bin:$HOME/.local/bin:$PATH"
-elif [ "$ENV_TYPE" == "wsl" ]
 	then PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 elif [ "$ENV_TYPE" == "redhat" ]
 	then PATH="$HOME/bin:$HOME/.local/bin:$PATH"
@@ -117,7 +94,3 @@ fi
 # if [ -d "${HOME}/info" ]; then
 #   INFOPATH="${HOME}/info:${INFOPATH}"
 # fi
-
-# change the starting directory to the $HOME directory and clear the screen
-cd ~/
-clear
