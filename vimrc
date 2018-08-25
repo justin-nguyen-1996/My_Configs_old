@@ -10,21 +10,20 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'             " vundle plugin manager
 Plugin 'tpope/vim-fugitive'               "	vim wrapper for git
-Plugin 'tpope/vim-rhubarb'			      " allows :Gbrowse to open up Github URL
 Plugin 'godlygeek/tabular'                " easily align things
 Plugin 'SirVer/ultisnips'                 " snippets engine for easy code insertion
 Plugin 'honza/vim-snippets'			      " snippets database
 Plugin 'nelstrom/vim-visual-star-search'  " allows use of * or # to search in visual mode
-Plugin 'Valloric/YouCompleteMe'           " a code-completion engine with IDE-esque support for different languages
+" Plugin 'Valloric/YouCompleteMe'           " a code-completion engine with IDE-esque support for different languages
 Plugin 'davidhalter/jedi'			      " semantic-completion engine for Python
 Plugin 'aperezdc/vim-template'            " file templates (.c .py .java etc)
 Plugin 'tpope/vim-repeat'                 " extend the '.' feature to work with plugins
 Plugin 'Raimondi/delimitMate'             " auto close quotes, parentheses, braces, etc
 Plugin 'luochen1990/rainbow'              " different colors for different levels of parentheses and braces
-" Plugin 'ARM9/arm-syntax-vim'              " enable syntax highlighting for ARM assembly code (tbh this looks ok at best, not amazing)
+" Plugin 'ARM9/arm-syntax-vim'              " enable syntax highlighting for ARM assembly code (tbh this is not amazing)
 " Plugin 'ctrlpvim/ctrlp.vim'               " fuzzy file finder
 " Plugin 'majutsushi/tagbar'                " displays outline of file structure (classes, functions, global variables)
-" Plugin 'tpope/tpope-vim-abolish'          " correct typos in insert mode
+Plugin 'tpope/tpope-vim-abolish'          " correct typos in insert mode (among several other things)
 " Plugin 'Yggdroot/indentLine'              " display indention levels with thin vertical lines
 call vundle#end()
 filetype plugin indent on
@@ -56,11 +55,11 @@ if has("autocmd")
   " don't write swapfile on most commonly used directories for NFS mounts or USB sticks
   autocmd BufNewFile,BufReadPre /media/*,/run/media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
 
-  " auto-source the vimrc upon writing to the file
+  " after writing to the .vimrc file, auto-source it
   autocmd BufWritePost .vimrc source %
 
-  " if a new or existing file is opened and has a .s or .S extension, set the filetype to ARM
-"   autocmd BufNewFile,BufRead *.s,*.S set filetype=arm " arm = armv6/7
+  " after writing to a file, remove trailing and leading whitespace
+  autocmd BufWritePost * :silent call convenient#TrimWhitespace() 
 
   augroup END
 endif
@@ -721,11 +720,4 @@ nnoremap ;gd  :GDiff<C-Space>
 " check available highlight colors --> `:h cterm`
 
 " check current highlight settings for all highlight groups --> `:highlight`
-
-" running :Gdiff is the same as running vimdiff with the file commited in Git (vimdiff is way better than diff)
-
-" TODO: what does this do?
-" Don't wake up system with blinking cursor:
-" http://www.linuxpowertop.org/known.php
-" let &guicursor = &guicursor . ",a:blinkon0"
 

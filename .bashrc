@@ -3,7 +3,7 @@
 alias ea='vim ~/.bashrc; source ~/.bashrc'
 
 # some silly things because I'm really lazy (basically one-shot commands to git commit/push vimrc and other config files)
-alias cpconfig_helper='cp ~/.profile ~/Github/My_Configs'
+alias cpconfig_helper='touch a.c'
 alias cpconfig='builtin cd ~/Github/My_Configs  &&  cpconfig_helper  &&  ga  &&  gs  &&  gc "update"  &&  gp  && builtin cd -'
 
 # aliases for Ubuntu
@@ -110,6 +110,10 @@ alias josb='jobs'
 alias more='less'
 alias sp='source ~/.profile'
 
+# I can never remember the order of `ln -s` so this command repeats
+# the previous `ln -s` command with the last two arguments swapped
+alias LN='$(history -p !:0 !:1 !:3 !:2)'
+
 # enable extglob (useful for something like rm !(temp.c))
 shopt -s extglob
 
@@ -119,7 +123,7 @@ export DISPLAY
 
 ########################################################################################################################
 
-# set the command line prompt to red and yellow  -->  '1;31m' is red  
+# set the command line prompt to red and yellow  -->  '1;31m' is red
 # change '#' in '1;3#m' to set the color         -->  '3#m' for fainter color (basically just remove the '1;' in front)
 #   \e[1;3#m  -->  start color sequence
 #   \n        -->  new line
@@ -132,7 +136,7 @@ export DISPLAY
 #   \n        -->  new line
 #   $         -->  just a '$' symbol
 
-# example of a spaced out version for clarity 
+# example of a spaced out version for clarity
 # --> export PS1="\e[1;31m   \u   @   \h   :   \e[m   \e[1;33m   \w   \e[m   \n   $"
 export PS1="\e[1;31m\n\u:\e[m\e[1;33m\w\e[m\n$ "
 
@@ -147,7 +151,7 @@ export LS_COLORS=$LS_COLORS:'ow=1;34;40:tw=1;34;40:'
 ########################################################################################################################
 
 # make the install alias still have autocomplete
-_apt_install_complete() { 
+_apt_install_complete() {
     mapfile -t COMPREPLY < <(apt-cache --no-generate pkgnames "$2");
 }
 complete -F _apt_install_complete install
@@ -167,17 +171,17 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function jp()
 if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function libreoffice() { libreoffice "$1" > /dev/null 2>&1 & } fi
 
 # make merging branches onto/from master easier
-if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function gm() { 
-	git checkout master && git merge "$1" && gp && git checkout "$1" && gb; 
+if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function gm() {
+	git checkout master && git merge "$1" && gp && git checkout "$1" && gb;
 } fi
 
 # make merging branches onto/from master easier
-if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function gpm() { 
-	git checkout master && git pull && git checkout "$1" && git merge master && gp && gb; 
+if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function gpm() {
+	git checkout master && git pull && git checkout "$1" && git merge master && gp && gb;
 } fi
 
 # remove an Ubuntu package and its dependencies
-if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remove() { 
+if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remove() {
 	sudo apt-get remove --purge "$1"  &&  sudo apt-get autoremove;
 } fi
 

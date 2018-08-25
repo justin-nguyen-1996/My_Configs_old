@@ -1,17 +1,41 @@
 # config_ubuntu.sh
 
 # update and install packages for command line
-printf "\n=========================\nadding apt repos \n=========================\n"    ; sudo add-apt-repository ppa:fontforge/fontforge
-printf "\n=========================\nadding apt repos \n=========================\n"    ; sudo apt-add-repository ppa:git-core/ppa
-printf "\n=========================\nupdating packages\n=========================\n"    ; yes yes Y | sudo apt-get update
-printf "\n=========================\ninstalling git\n=========================\n"       ; yes yes Y | sudo apt-get install git
-printf "\n=========================\ninstalling ctags\n=========================\n"     ; yes yes Y | sudo apt-get install exuberant-ctags
-printf "\n=========================\ninstalling tmux\n=========================\n"      ; yes yes Y | sudo apt-get install tmux
-printf "\n=========================\ninstalling dos2unix\n=========================\n"  ; yes yes Y | sudo apt-get install dos2unix
-printf "\n=========================\ninstalling libgnome\n=========================\n"  ; yes yes Y | sudo apt-get install libgnome2-bin
-printf "\n=========================\ninstalling xclip\n=========================\n"     ; yes yes Y | sudo apt-get install xclip
-printf "\n=========================\ninstalling expect\n=========================\n"    ; yes yes Y | sudo apt-get install expect
-printf "\n=========================\ninstalling fontforge\n=========================\n" ; yes yes Y | sudo apt-get install fontforge
+printf "\n=========================\nadding apt repos \n=========================\n"
+sudo add-apt-repository ppa:fontforge/fontforge
+
+printf "\n=========================\nadding apt repos \n=========================\n"
+sudo apt-add-repository ppa:git-core/ppa
+
+printf "\n=========================\nupdating packages\n=========================\n"
+yes yes Y | sudo apt-get update
+
+printf "\n=========================\ninstalling git\n=========================\n"
+yes yes Y | sudo apt-get install git
+
+printf "\n=========================\ninstalling ctags\n=========================\n"
+yes yes Y | sudo apt-get install exuberant-ctags
+
+printf "\n=========================\ninstalling tmux\n=========================\n"
+yes yes Y | sudo apt-get install tmux
+
+printf "\n=========================\ninstalling dos2unix\n=========================\n"
+yes yes Y | sudo apt-get install dos2unix
+
+printf "\n=========================\ninstalling libgnome\n=========================\n"
+yes yes Y | sudo apt-get install libgnome2-bin
+
+printf "\n=========================\ninstalling xclip\n=========================\n"
+yes yes Y | sudo apt-get install xclip
+
+printf "\n=========================\ninstalling expect\n=========================\n"
+yes yes Y | sudo apt-get install expect
+
+printf "\n=========================\ninstalling fontforge\n=========================\n"
+yes yes Y | sudo apt-get install fontforge
+
+printf "\n=========================\ninstalling fontforge\n=========================\n"
+yes yes Y | sudo apt-get install libqtgui4
 
 # generate and save the new ssh key
 printf "\n====================================================================\n"    
@@ -164,7 +188,7 @@ ln -s ~/Github/My_Configs/templates/                ~/.vim/bundle/vim-template/t
 ln -s ~/Github/My_Configs/ipython_config.py         ~/.ipython/profile_default/ipython_config.py
 ln -s ~/Github/My_Configs/.pdbrc                    ~/.pdbrc
 ln -s ~/Github/My_Configs/ssh_config                ~/.ssh/config
-cp ~/Github/My_Configs/.profile ~/                  ##### NOTE: don't make a symlink for ~/.profile
+ln -s ~/Github/My_Configs/.profile                  ~/.profile
 
 # change the $ENV_TYPE variable as appropriate
 vim -c ":execute 'normal' 'gg'" -c ":/ENV_TYPE" -c ":execute 'normal' 'n'" -c ":execute 'normal' 'wwcwubuntu'" -c ":x" ~/.profile
