@@ -445,10 +445,6 @@ nnoremap 'm 'mzz
 nnoremap <C-o> <C-o>zz
 nnoremap <C-i> <C-i>zz
 
-" make searching center the screen
-nnoremap n nzz
-nnoremap N Nzz
-
 "" press % to visually highlight in-between brace/bracket/parentheses
 noremap % v%
 
