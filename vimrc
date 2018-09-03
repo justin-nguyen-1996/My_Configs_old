@@ -19,6 +19,7 @@ Plugin 'davidhalter/jedi'			      " semantic-completion engine for Python
 Plugin 'aperezdc/vim-template'            " file templates (.c .py .java etc)
 Plugin 'tpope/vim-repeat'                 " extend the '.' feature to work with plugins
 Plugin 'Raimondi/delimitMate'             " auto close quotes, parentheses, braces, etc
+Plugin 'tommcdo/vim-exchange'             " easily exchange regions of text
 Plugin 'luochen1990/rainbow'              " different colors for different levels of parentheses and braces
 " Plugin 'ARM9/arm-syntax-vim'              " enable syntax highlighting for ARM assembly code (tbh this is not amazing)
 " Plugin 'ctrlpvim/ctrlp.vim'               " fuzzy file finder
@@ -231,6 +232,12 @@ endif
 	let g:tagbar_show_linenumbers = 2
 	let g:tagbar_sort = 0
 " endif
+
+" ================================================================="
+" ================================================================="
+" ============ Begin additions for exchange plugin ================"
+
+vmap cxx <Plug>(Exchange)
 
 " ================================================================="
 " ================================================================="
@@ -489,6 +496,7 @@ augroup my_error_jump
 augroup END
 
 " mappings for easily deleting the surrounding brackets/parentheses
+" TODO: I think the vim plugin creator kana has a plugin that fixes this
 " ==========================================================================================================
 nnoremap <silent> <Plug>Map_df( dt(me%x`ex:silent! call repeat#set("\<plug>Map_df(", v:count)<cr>
 nmap df( <Plug>Map_df(
