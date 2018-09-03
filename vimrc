@@ -237,7 +237,9 @@ endif
 " ================================================================="
 " ============ Begin additions for exchange plugin ================"
 
-vmap cxx <Plug>(Exchange)
+" X in visual mode triggers the exchange plugin
+" Uncomment this to have cxx trigger it instead
+" vmap cxx <Plug>(Exchange)
 
 " ================================================================="
 " ================================================================="
