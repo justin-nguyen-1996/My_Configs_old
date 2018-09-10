@@ -14,10 +14,10 @@ snippet prs
 
 snippet docs
 	# Notes:  ${1}
-	# Return: 
-	# Params: 
+	# Return:
+	# Params:
 	${0}
-	
+
 snippet as
 	assert 3>4 # TEMP
 
@@ -99,8 +99,8 @@ snippet property
 	$1 = property(**$1())
 # Ifs
 snippet if
-	if ${1:condition}:
-		${0:${VISUAL}}
+	if ${1}:
+		${2}${VISUAL}
 snippet el
 	else:
 		${0:${VISUAL}}
@@ -110,7 +110,7 @@ snippet ei
 # For
 snippet for
 	for ${1:item} in ${2:items}:
-		${0}
+		${3}${VISUAL}
 # Encodes
 snippet cutf8
 	# -*- coding: utf-8 -*-
