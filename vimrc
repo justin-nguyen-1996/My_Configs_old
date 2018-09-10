@@ -268,6 +268,8 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set autoindent
+set smartindent
+set textwidth=100
 
 " indicate which vim mode you're currently in (INSERT, VISUAL, etc)
 set showmode
@@ -726,4 +728,8 @@ nnoremap ;gd  :GDiff<C-Space>
 " check available highlight colors --> `:h cterm`
 
 " check current highlight settings for all highlight groups --> `:highlight`
+
+" activate Exchange.vim with cx<motion>
+
+" don't forget about 'cgn'
 
