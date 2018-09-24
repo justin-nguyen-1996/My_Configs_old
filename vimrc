@@ -259,6 +259,8 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set autoindent
+set smarttab
+set textwidth=100
 
 " indicate which vim mode you're currently in (INSERT, VISUAL, etc)
 set showmode
@@ -573,6 +575,10 @@ vnoremap p "_dP
 
 " to avoid triggering that stupidly annoying `man` lookup that is utterly and completely useless
 vnoremap K <NOP>
+
+" visually select up to (instead of including) the next white line
+vnoremap } }k
+vnoremap { {j
 
 " ================================================================="
 " ================================================================="

@@ -1,9 +1,9 @@
-# To the extent possible under law, the author(s) have dedicated all 
-# copyright and related and neighboring rights to this software to the 
-# public domain worldwide. This software is distributed without any warranty. 
-# You should have received a copy of the CC0 Public Domain Dedication along 
-# with this software. 
-# If not, see <http://creativecommons.org/publicdomain/zero/1.0/>. 
+# To the extent possible under law, the author(s) have dedicated all
+# copyright and related and neighboring rights to this software to the
+# public domain worldwide. This software is distributed without any warranty.
+# You should have received a copy of the CC0 Public Domain Dedication along
+# with this software.
+# If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 
 # base-files version 4.2-4
 
@@ -30,7 +30,7 @@
 #######################################################################
 
 # NOTE: Must set this appropriately for the current development environment
-export ENV_TYPE="wsl"
+export ENV_TYPE="ubuntu"
 
 # Set Github repo location
 export GIT=~/Github
@@ -52,9 +52,9 @@ fi
 
 # path to Pintos
 if [ "$ENV_TYPE" == "cygwin" ]
-	then export PATH="$HOME/Pintos/src/utils/:$PATH"
+	then export PATH="$HOME/Github/Pintos_Labs/utils:$PATH"
 elif [ "$ENV_TYPE" == "ubuntu" ]
-	then export PATH="$HOME/Github/OS/Pintos/utils/:$PATH"
+	then export PATH="$HOME/Github/Pintos_Labs/utils:$PATH"
 fi
 
 # WSL stuff
@@ -78,8 +78,8 @@ if [ -f ~/.git-completion.bash ]; then
 fi
 
 # scrolling preferences
-synclient VertScrollDelta=-150     # slow down vertical scrolling
-synclient HorizTwoFingerScroll=0   # disable horizontal scrolling
+# synclient VertScrollDelta=-150     # slow down vertical scrolling
+# synclient HorizTwoFingerScroll=0   # disable horizontal scrolling
 
 #######################################################################
 #######################################################################

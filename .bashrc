@@ -106,6 +106,7 @@ alias gdb='gdbtui'
 alias job='jobs'
 alias jbos='jobs'
 alias josb='jobs'
+alias mkae='make'
 alias more='less'
 alias sp='source ~/.profile'
 
@@ -221,5 +222,9 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 
 
 # Put pintos in PATH
-alias pintos-gdb='GDBMACROS=/home/jhn545/Github/OS/Pintos/misc/gdb-macros pintos-gdb'
+# alias pintos-gdb='GDBMACROS=/home/jhn545/Github/OS/Pintos/misc/gdb-macros pintos-gdb'
 
+# TODO
+# Put pintos in PATH
+# source /home/justin/Github/Pintos_Labs/.PINTOS_PATH
+alias pintos-gdb='GDBMACROS=/home/justin/Github/Pintos_Labs/misc/gdb-macros pintos-gdb'
