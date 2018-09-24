@@ -101,6 +101,7 @@ alias grep='grep -ni --color --exclude tags  --exclude .tags --exclude *.map'
 alias sl='ls'
 alias l='ls'
 alias ch='chmod 755'
+alias chall='chmod 755 -R *'
 alias dos='dos2unix'
 alias gdb='gdbtui'
 alias job='jobs'
@@ -219,7 +220,7 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 # `git remote set-url origin <url>`     --> git remote set-url origin https://bitbucket.org/justins_stuff/college_senior_year
 # `git fetch <remote> <branch>`         --> pull a remote branch and check it out
 #  && `git checkout <branch>`
-
+# `git clean -df`                       --> remove untracked files
 
 # Put pintos in PATH
 # alias pintos-gdb='GDBMACROS=/home/jhn545/Github/OS/Pintos/misc/gdb-macros pintos-gdb'
