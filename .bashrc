@@ -14,6 +14,7 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 		 alias p='ipython -i'
 		 alias ip='ipython --pylab='auto' -i'
 		 alias ev='vim ~/.vimrc'
+		 alias ep='vim ~/.profile'
 		 alias vim='vim -p'
 		 #alias rm='sudo rm'
 fi
@@ -27,6 +28,7 @@ if [ "$ENV_TYPE" == "wsl" ]
 		 alias p='ipython -i'
 		 alias ip='ipython --pylab='auto' -i'
 		 alias ev='vim ~/.vimrc'
+		 alias ep='vim ~/.profile'
 		 alias vim='vim -p'
 		 alias open='wsl-open'
 		 #alias rm='sudo rm'
@@ -46,6 +48,7 @@ if [ "$ENV_TYPE" == "redhat" ]
 		 alias p='ipython -i'
 		 alias ip='ipython --pylab='auto' -i'
 		 alias ev='sudo vim ~/.vimrc'
+		 alias ep='vim ~/.profile'
 		 alias vim='sudo vim -p'
 fi
 
@@ -55,6 +58,7 @@ if [ "$ENV_TYPE" == "cygwin" ]
 		 alias p='python -i'
 		 alias python='python -i'
 		 alias ev='vim ~/.vimrc'
+		 alias ep='vim ~/.profile'
 		 alias vim='vim -p'
 fi
 
@@ -91,17 +95,21 @@ alias du='du -h'
 alias df='df -h'
 # alias grep='grep -ni --color --exclude tags     --exclude .tags       --exclude *.o        --exclude *justi\
 #                              --exclude *.bin    --exclude *.uvproj    --exclude *.uvopt'
-alias grep='grep -ni --color --exclude tags  --exclude .tags --exclude *.map'
+alias grep='grep -niI --color --exclude tags  --exclude .tags --exclude *.map'
 
 # tar aliases and helpful info
 # alias tar='tar -cpzfv <folder_to_create.tar.gz> <folder_to_compress> --exclude=folder_name'
 # alias untar='tar -xpzfv <folder_to_untar.tar.gz> -C <folder_to_untar_into>'
 
+# powering off and restarting from command line
+alias powerdown='poweroff'
+alias shutdown='poweroff'
+alias restart='reboot'
+
 # lazy aliases and typos
 alias sl='ls'
 alias l='ls'
 alias ch='chmod 755'
-alias chall='chmod 755 -R *'
 alias dos='dos2unix'
 alias gdb='gdbtui'
 alias job='jobs'
@@ -110,6 +118,11 @@ alias josb='jobs'
 alias mkae='make'
 alias more='less'
 alias sp='source ~/.profile'
+alias sb='source ~/.bashrc'
+alias path='sed "s/:/\n/g" <<< "$PATH"'
+alias kill='kill -9'
+alias psa='ps -a'
+alias ss='synclient VertScrollDelta=-150; synclient HorizTwoFingerScroll=0'
 
 # I can never remember the order of `ln -s` so this command repeats
 # the previous `ln -s` command with the last two arguments swapped
@@ -204,6 +217,9 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 
 # list of apt libraries --> /etc/apt/sources.list
 
+# add ssh-key (must already exist)
+# ssh-add ~/.ssh/id_rsa_pintos
+
 # `git rebase -i <commit>^`             --> change the commit message of a commit that has already been pushed
 #                                           change 'pick' to 'reword', save and quit, new prompt comes up, change commit message
 # `git reset HEAD~`                     --> undo previous commit that wasn't pushed (and also keep local changes)
@@ -220,12 +236,7 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 # `git remote set-url origin <url>`     --> git remote set-url origin https://bitbucket.org/justins_stuff/college_senior_year
 # `git fetch <remote> <branch>`         --> pull a remote branch and check it out
 #  && `git checkout <branch>`
-# `git clean -df`                       --> remove untracked files
+# `git clean -f`                        --> remove all untracked files
 
 # Put pintos in PATH
-# alias pintos-gdb='GDBMACROS=/home/jhn545/Github/OS/Pintos/misc/gdb-macros pintos-gdb'
-
-# TODO
-# Put pintos in PATH
-# source /home/justin/Github/Pintos_Labs/.PINTOS_PATH
-alias pintos-gdb='GDBMACROS=/home/justin/Github/Pintos_Labs/misc/gdb-macros pintos-gdb'
+alias pintos-gdb='GDBMACROS=/home/justin/Github/Pintos_Starter/misc/gdb-macros pintos-gdb'
