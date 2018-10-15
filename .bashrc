@@ -220,7 +220,12 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 # `git fetch <remote> <branch>`         --> pull a remote branch and check it out
 #  && `git checkout <branch>`
 # `git clean -df`                       --> remove untracked files
+# `git diff -- . ':(exclude).tags')`    --> exclude files from the git diff
 
 # Put pintos in PATH
-alias pintos-gdb='GDBMACROS=/home/jhn545/Github/OS/Pintos/misc/gdb-macros pintos-gdb'
+alias pintos-gdb='GDBMACROS=/home/justin/Github/Pintos_Labs/misc/gdb-macros pintos-gdb'
 
+
+# Put pintos in PATH
+# source /home/justin/Github/Pintos_Labs/.PINTOS_PATH
+# alias pintos-gdb='GDBMACROS=/home/justin/Github/Pintos_Labs/misc/gdb-macros pintos-gdb'
