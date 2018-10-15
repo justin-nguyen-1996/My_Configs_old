@@ -6,27 +6,6 @@ filetype off     " required
 " ==================== Begin added plugins ========================"
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'             " vundle plugin manager
-Plugin 'tpope/vim-fugitive'               "	vim wrapper for git
-Plugin 'godlygeek/tabular'                " easily align things
-Plugin 'SirVer/ultisnips'                 " snippets engine for easy code insertion
-Plugin 'honza/vim-snippets'			      " snippets database
-Plugin 'nelstrom/vim-visual-star-search'  " allows use of * or # to search in visual mode
-" Plugin 'Valloric/YouCompleteMe'           " a code-completion engine with IDE-esque support for different languages
-" Plugin 'davidhalter/jedi'			      " semantic-completion engine for Python
-Plugin 'aperezdc/vim-template'            " file templates (.c .py .java etc)
-" Plugin 'tpope/vim-repeat'                 " extend the '.' feature to work with plugins
-Plugin 'Raimondi/delimitMate'             " auto close quotes, parentheses, braces, etc
-Plugin 'tommcdo/vim-exchange'             " easily exchange regions of text
-" Plugin 'luochen1990/rainbow'              " different colors for different levels of parentheses and braces
-" Plugin 'ARM9/arm-syntax-vim'              " enable syntax highlighting for ARM assembly code (tbh this is not amazing)
-" Plugin 'ctrlpvim/ctrlp.vim'               " fuzzy file finder
-" Plugin 'majutsushi/tagbar'                " displays outline of file structure (classes, functions, global variables)
-" Plugin 'tpope/tpope-vim-abolish'          " correct typos in insert mode (among several other things)
-" Plugin 'Yggdroot/indentLine'              " display indention levels with thin vertical lines
-call vundle#end()
 filetype plugin indent on
 
 " ================================================================="
@@ -87,162 +66,6 @@ endif
 
 " ================================================================="
 " ================================================================="
-" ========== Begin additions for Fugitive plugin =================="
-
-if !empty(glob("~/.vim/bundle/vim-fugitive/plugin/fugitive.vim"))
-	augroup turbo_commit
-	  autocmd!
-	  autocmd BufEnter COMMIT_EDITMSG startinsert
-	augroup END
-endif
-
-" ================================================================="
-" ================================================================="
-" ========== Begin additions for Ultisnips plugin ============="
-
-if !empty(glob("~/.vim/bundle/ultisnips/plugin/UltiSnips.vim"))
-
-	" Snippet completion triggers
-	let g:UltiSnipsExpandTrigger="<tab>"
-	let g:UltiSnipsJumpForwardTrigger="<tab>"
-	let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-	" how `:UltiSnipsEdit` will split the window
-	let g:UltiSnipsEditSplit="vertical"
-
-	" tells `:UltiSnipsEdit` where to look for snippets
-	let g:UltiSnipsSnippetDirectories=['~/.vim/bundle/vim-snippets/snippets']
-
-endif
-
-" ================================================================="
-" ================================================================="
-" ========== Begin additions for YouCompleteMe plugin ============="
-
-if !empty(glob("~/.vim/bundle/YouCompleteMe/plugin/youcompleteme.vim"))
-	
-	" uncomment to use Syntastic (gcc compiler) for detecting syntax errors
-	" let g:ycm_show_diagnostics_ui = 0
-
-	" change the keys that cycle forwards/backwards through the completion menu
-	let g:ycm_key_list_select_completion = ['<Down>']
-	let g:ycm_key_list_previous_completion = ['<Up>']
-
-	" tell YCM which python binary to use
-	let g:ycm_python_binary_path = 'python'
-
-	" disable syntax highlighting for error and warning messages
-	let g:ycm_enable_diagnostic_highlighting = 0
-
-	" ignore annoying extra confimation of using the .ycm_confirm_extra_conf file
-	let g:ycm_confirm_extra_conf = 0
-
-	" uncomment to let YCM populate the location list
-	let g:ycm_always_populate_location_list = 1
-
-	" let YCM use the tags file for completion
-	let g:ycm_collect_identifiers_from_tags_files = 1
-
-	" don't let YCM include snippets in the completion menu
-	let g:ycm_use_ultisnips_completer = 0
-
-	" options for displaying the YCM preview window
-	" if want to disable YCM preview window, add `set completeopt-=preview` to vimrc. Also add `let g:ycm_add_preview_to_completeopt = 0`
-	let g:ycm_add_preview_to_completeopt = 1
-	let g:ycm_autoclose_preview_window_after_insertion = 1
-
-	" shortcut command for quickly opening the preview window in vim
-	command! LO :call ycm#OpenPreview()
-
-	" shortcut command for quickly closing the preview window in vim
-	command! LC :call ycm#ClosePreview()
-
-	" shortcut command for quickly getting the type of a function/variable under the cursor
-	" NOTE: not named TYPE because of command ordering
-	command! TAYPE :call ycm#GetType()
-
-	" shortcut command for quickly getting the documentation of a function/variable under the cursor
-	command! DOC :call ycm#GetDoc()
-endif
-
-" ================================================================="
-" ================================================================="
-" =========== Begin additions for Rainbow_parens plugin ==========="
-
-if !empty(glob("~/.vim/bundle/rainbow/plugin/rainbow.vim"))
-	" set to zero and use :RainbowToggle to switch between modes
-	let g:rainbow_active = 1
-
-	let g:rainbow_conf = {
-	\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-	\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
-	\}
-endif
-
-" ================================================================="
-" ================================================================="
-" =========== Begin additions for Tabular plugin ==========="
-
-if !empty(glob("~/.vim/bundle/tabular/plugin/Tabular.vim"))
-	vnoremap ;t :Tabularize /
-endif
-
-" ================================================================="
-" ================================================================="
-" ============== Begin additions for Templates plugin ============="
-
-" see :h template.txt
-" let g:templates_user_variables = [
-" 	\   ['FULLPATH', 'GetFullPath'],
-" 	\ ]
-"
-" function! GetFullPath() abort
-" 	return expand('%:p')
-" endfunction
-
-" ================================================================="
-" ================================================================="
-" ============== Begin additions for Ctrl-P plugin ================"
-
-" if !empty(glob("~/.vim/bundle/______"))
-	let g:ctrlp_map = '<c-\>'
-	let g:ctrlp_cmd = 'CtrlP'
-" endif
-
-" ================================================================="
-" ================================================================="
-" ============== Begin additions for pymode plugin ================"
-
-" if !empty(glob("~/.vim/bundle/_____"))
-	let g:pymode_warnings = 0
-	let g:pymode_options_colorcolumn = 0
-	let g:pymode_indent = 0
-	let g:pymode_lint_on_fly = 0
-	let g:pymode_syntax_indent_errors = 0
-	let g:pymode_syntax_space_errors = 0
-	let g:pymode_lint_checkers = ['pyflakes']
-" endif
-
-" ================================================================="
-" ================================================================="
-" ============== Begin additions for tagbar plugin ================"
-
-" if !empty(glob("~/.vim/bundle/_____"))
-	nnoremap ;n :TagbarToggle<CR>
-	let g:tagbar_show_linenumbers = 2
-	let g:tagbar_sort = 0
-" endif
-
-" ================================================================="
-" ================================================================="
-" ============ Begin additions for exchange plugin ================"
-
-" X in visual mode triggers the exchange plugin
-" Uncomment this to have cxx trigger it instead
-" vmap cxx <Plug>(Exchange)
-
-" ================================================================="
-" ================================================================="
 " ================== Begin my 'set' vimrc things =================="
 
 " Show (partial) command in status line
@@ -268,7 +91,6 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set autoindent
-set smarttab
 set smartindent
 set textwidth=100
 
@@ -388,25 +210,6 @@ highlight   Title         term=None   cterm=Bold        ctermfg=Black   ctermbg=
 highlight   cCommentL   ctermfg=DarkGreen
 highlight   cComment    ctermfg=DarkGreen
 
-" change highlighting for Fugitive's :Gstatus window
-highlight   gitcommitSelectedType    ctermfg=Green
-highlight   gitcommitSelectedFile    ctermfg=Green
-highlight   gitcommitDiscardedType   ctermfg=Red
-highlight   gitcommitDiscardedFile   ctermfg=Red
-highlight   gitcommitUntrackedFile   ctermfg=Red
-highlight   gitcommitOnBranch        ctermfg=White
-highlight   gitcommitBranch          ctermfg=White
-highlight   gitcommitDiscarded       ctermfg=White
-highlight   gitcommitComment         ctermfg=White
-highlight   gitcommitHead            ctermfg=White
-highlight   gitcommitHeader          ctermfg=White
-
-" change highlighting for Fugitive's :Gdiff windows
-highlight   DiffAdd      term=None   cterm=None   ctermfg=White   ctermbg=DarkGreen " lines in this buffer that aren't in the other buffer
-highlight   DiffDelete   term=None   cterm=None   ctermfg=White   ctermbg=DarkRed   " indicates that the other buffer has content here
-highlight   DiffChange   term=None   cterm=None   ctermfg=White   ctermbg=Magenta   " lines that both buffers have but were changed
-highlight   DiffText     term=None   cterm=None   ctermfg=White   ctermbg=DarkGreen " the specific changed text in the changed lines
-
 " ================================================================="
 " ================================================================="
 " ============== Changes to default vim status line ==============="
@@ -417,7 +220,6 @@ set laststatus=2
 " customize what the status line shows
 function! s:load_my_statusline() abort
 	set statusline=                        " start with an empty status line
-	set statusline+=[%{fugitive#head()}]\  " show current git branch
 	set statusline+=%t\                    " show file name (f = relative file name, F = absolute path to file name)
 " 	set statusline+=[%n]\                  " show buffer number
 	set statusline+=%m\                    " show modified flag
@@ -587,10 +389,6 @@ vnoremap p "_dP
 " to avoid triggering that stupidly annoying `man` lookup that is utterly and completely useless
 vnoremap K <NOP>
 
-" visually select up to (instead of including) the next white line
-vnoremap } }k
-vnoremap { {j
-
 " ================================================================="
 " ================================================================="
 " ========= Begin some 'function/command' things =================="
@@ -710,13 +508,6 @@ nnoremap ;v "*p
 
 " use ;r to comment out the current line and stick a REMOVE at the end
 nnoremap ;r I//<C-c>A // REMOVE<C-c>
-
-" Fugitive plugin mappings
-nnoremap ;gs  :Gstatus<CR>
-nnoremap ;gbb :Git branch -v<CR>
-nnoremap ;gba :Git branch -va<CR>
-nnoremap ;gt  :GTabEdit<C-Space>
-nnoremap ;gd  :GDiff<C-Space>
 
 " ================================================================="
 " ================================================================="
