@@ -25,7 +25,7 @@ if [ "$ENV_TYPE" == "wsl" ]
 		 alias chown='sudo chown'
 		 alias install='sudo apt-get install'
 		 alias search='sudo apt-cache search'
-		 alias p='ipython -i'
+		 alias p='python'
 		 alias ip='ipython --pylab='auto' -i'
 		 alias ev='vim ~/.vimrc'
 		 alias ep='vim ~/.profile'
@@ -69,10 +69,12 @@ alias gs='git status'
 alias gc='git commit -a -m'
 alias gm='git merge'
 alias gl='git log --oneline -n 10'
+alias gll='git log --oneline -n 30'
 alias gd='git log -1 --format=%ai'
 alias gp='git push -u'
+alias gr='git reset'
 alias grs='git reset --soft'
-alias grh='git reset --soft'
+alias grh='git reset --hard'
 alias gb='git branch -v'
 alias gba='git branch -va'
 alias gco='git checkout'
@@ -224,8 +226,6 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 # add ssh-key (must already exist)
 # ssh-add ~/.ssh/id_rsa_pintos
 
-# `git rebase -i <commit>^`             --> change the commit message of a commit that has already been pushed
-#                                           change 'pick' to 'reword', save and quit, new prompt comes up, change commit message
 # `git reset HEAD~`                     --> undo previous commit that wasn't pushed (and also keep local changes)
 # `git reset <filename>`                --> remove from git add
 # `git reset HEAD <commit id>`          --> remove from git commit --> use `gitlog` to see git commit id's
@@ -242,6 +242,9 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 #  && `git checkout <branch>`
 # `git clean -df`                       --> remove untracked files
 # `git diff -- . ':(exclude).tags')`    --> exclude files from the git diff
+# `git reset --soft HEAD~#`             --> move head back # commits, change the commit message (useful for changing # commits
+#                                           into one commit), commit, push. If the commits you're changing have already been 
+#                                           pushed then you need to do git push -f
 
 # Put pintos in PATH
 alias pintos-gdb='GDBMACROS=/home/justin/Github/Pintos_Labs/misc/gdb-macros pintos-gdb'
