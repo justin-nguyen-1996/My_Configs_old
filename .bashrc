@@ -130,6 +130,9 @@ alias kill='kill -9'
 alias psa='ps -a'
 alias ss='synclient VertScrollDelta=-150; synclient HorizTwoFingerScroll=0'
 
+# Add pintos ssh key
+alias addkey='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa_pintos'
+
 # I can never remember the order of `ln -s` so this command repeats
 # the previous `ln -s` command with the last two arguments swapped
 alias LN='$(history -p !:0 !:1 !:3 !:2)'
