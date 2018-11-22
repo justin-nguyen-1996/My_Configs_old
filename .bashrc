@@ -133,6 +133,9 @@ alias ss='synclient VertScrollDelta=-150; synclient HorizTwoFingerScroll=0'
 # Add pintos ssh key
 alias addkey='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa_pintos'
 
+# TODO: prism model checker stuff
+alias xpg='~/Downloads/prism-games-2.0.beta3-linux64/bin/xprism'
+
 # I can never remember the order of `ln -s` so this command repeats
 # the previous `ln -s` command with the last two arguments swapped
 alias LN='$(history -p !:0 !:1 !:3 !:2)'
@@ -185,7 +188,8 @@ complete -F _apt_install_complete install
 cd() { builtin cd "${1-$(echo ~)}" && ls -F; }
 
 # map open to not output junk to stdout (ubuntu)
-if [ "$ENV_TYPE" == "ubuntu" ]; then function open() { gnome-open "$1" > /dev/null 2>&1 & } fi
+# if [ "$ENV_TYPE" == "ubuntu" ]; then function open() { gnome-open "$1" > /dev/null 2>&1 & } fi
+if [ "$ENV_TYPE" == "ubuntu" ]; then function open() { qpdfview --unique "$1" > /dev/null 2>&1 & } fi
 
 # map jupyter notebook to not output junk to stdout
 if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function jp() { jupyter notebook "$1" > /dev/null 2>&1 & } fi
