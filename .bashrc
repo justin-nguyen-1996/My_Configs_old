@@ -11,7 +11,8 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 		 alias chown='sudo chown'
 		 alias install='sudo apt-get install'
 		 alias search='sudo apt-cache search'
-		 alias p='ipython -i'
+		 #alias p='ipython -i'
+		 alias p='python -i'
 		 alias ip='ipython --pylab='auto' -i'
 		 alias ev='vim ~/.vimrc'
 		 alias ep='vim ~/.profile'
@@ -110,6 +111,8 @@ alias grep='grep -niI --color --exclude tags  --exclude .tags --exclude *.map'
 alias powerdown='poweroff'
 alias shutdown='poweroff'
 alias restart='reboot'
+alias logout='gnome-session-quit --logout --no-prompt'
+alias sleep='systemctl suspend'
 
 # lazy aliases and typos
 alias sl='ls'
@@ -129,6 +132,9 @@ alias path='sed "s/:/\n/g" <<< "$PATH"'
 alias kill='kill -9'
 alias psa='ps -a'
 alias ss='synclient VertScrollDelta=-150; synclient HorizTwoFingerScroll=0'
+
+# Get the ubuntu version
+alias ubversion='lsb_release -a'
 
 # Add pintos ssh key
 alias addkey='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa_pintos'
@@ -221,7 +227,7 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 # echo() { builtin echo -e "\x1B[31m ${1} \x1B[0m"; }
 
 # ~- means the previous directory
-# !$ means the last argument in the command line
+# !$ means the last argument in the command line (same as holding alt then pressing the . key)
 
 # mount and unmount temporary windows filesystem
 # sudo fdisk -l
@@ -232,6 +238,10 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 
 # add ssh-key (must already exist)
 # ssh-add ~/.ssh/id_rsa_pintos
+
+# print environment variables --> printenv
+
+########################################################################################################################
 
 # `git reset HEAD~`                     --> undo previous commit that wasn't pushed (and also keep local changes)
 # `git reset <filename>`                --> remove from git add
@@ -250,8 +260,18 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 # `git clean -df`                       --> remove untracked files
 # `git diff -- . ':(exclude).tags')`    --> exclude files from the git diff
 # `git reset --soft HEAD~#`             --> move head back # commits, change the commit message (useful for changing # commits
-#                                           into one commit), commit, push. If the commits you're changing have already been 
+#                                           into one commit), commit, push. If the commits you're changing have already been
 #                                           pushed then you need to do git push -f
 
-# Put pintos in PATH
+########################################################################################################################
+
+# Configure pintos-gdb path
 alias pintos-gdb='GDBMACROS=/home/justin/Github/Pintos_Labs/misc/gdb-macros pintos-gdb'
+
+# Setup ROS environment variables
+if [ "$ENV_TYPE" == "ubuntu" ]; then
+	source /opt/ros/kinetic/setup.bash
+    source ~/Github/ROS_Tutorials/devel/setup.bash # Change this depending on the current ROS project
+fi
+
+# source /opt/ros/kinetic/setup.bash

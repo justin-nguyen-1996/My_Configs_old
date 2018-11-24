@@ -61,6 +61,9 @@ if has("autocmd")
 
   " after writing to a file, remove trailing and leading whitespace
   autocmd BufWritePost * :silent call convenient#TrimWhitespace() 
+  
+  " set syntax highlighting for ROS's .launch files to be that of XML
+  autocmd BufNewFile,BufRead *.launch set filetype=xml
 
   augroup END
 endif
@@ -271,6 +274,9 @@ set autoindent
 set smarttab
 set smartindent
 set textwidth=100
+
+" use spaces instead of tabs
+set expandtab
 
 " indicate which vim mode you're currently in (INSERT, VISUAL, etc)
 set showmode
