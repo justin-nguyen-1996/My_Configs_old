@@ -30,6 +30,11 @@ Make the grub timeout longer
  - compare the two and change the 'GRUB_HIDDEN_TIMEOUT_QUIET'  &&  'GRUB_TIMEOUT' values
  - run `sudo update-grub`
 
+Set the default pdf viewer (TODO: change the script to auto-install qpdfview)
+ - vim /etc/gnome/defaults.list
+ - search for pdf (should say evince.application)
+ - change the line to this 'application/pdf=qpdfview.desktop'
+
 Fix dual boot time issues (make Linux use 'local' time instead of a hardware clock to match Windows)
  - run `timedatectl set-local-rtc 1`
 

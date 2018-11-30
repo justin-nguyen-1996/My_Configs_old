@@ -645,7 +645,7 @@ command! EA :call editing#EditBashrc()
 "=================================================================="
 
 " quickly change the working directory to the file's directory
-command! CdHere :call shell#CdHere()
+command! CD :call shell#CdHere()
 
 "=================================================================="
 

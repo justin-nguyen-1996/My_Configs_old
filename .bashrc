@@ -84,6 +84,12 @@ alias gss='git stash'
 alias gsp='git stash pop'
 alias gitlog='git log --oneline -n 10'
 
+# ROS aliases and tab completion support
+#   - see https://unix.stackexchange.com/questions/224227/how-do-you-make-an-alias-or-function-that-retains-tab-completion
+alias r='rosed'
+complete -F _roscomplete_file r
+alias ccmake='catkin_make'
+
 # jumping to git repos
 alias cdgit='cd ~/Github'
 
@@ -194,8 +200,7 @@ complete -F _apt_install_complete install
 cd() { builtin cd "${1-$(echo ~)}" && ls -F; }
 
 # map open to not output junk to stdout (ubuntu)
-# if [ "$ENV_TYPE" == "ubuntu" ]; then function open() { gnome-open "$1" > /dev/null 2>&1 & } fi
-if [ "$ENV_TYPE" == "ubuntu" ]; then function open() { qpdfview --unique "$1" > /dev/null 2>&1 & } fi
+if [ "$ENV_TYPE" == "ubuntu" ]; then function open() { gnome-open "$1" > /dev/null 2>&1 & } fi
 
 # map jupyter notebook to not output junk to stdout
 if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function jp() { jupyter notebook "$1" > /dev/null 2>&1 & } fi
@@ -273,5 +278,3 @@ if [ "$ENV_TYPE" == "ubuntu" ]; then
 	source /opt/ros/kinetic/setup.bash
     source ~/Github/ROS_Tutorials/devel/setup.bash # Change this depending on the current ROS project
 fi
-
-# source /opt/ros/kinetic/setup.bash
