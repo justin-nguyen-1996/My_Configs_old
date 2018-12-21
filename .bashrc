@@ -73,7 +73,6 @@ alias gl='git log --oneline -n 10'
 alias gll='git log --oneline -n 30'
 alias gd='git log -1 --format=%ai'
 alias gp='git push -u'
-alias gr='git reset'
 alias grs='git reset --soft'
 alias grh='git reset --hard'
 alias gb='git branch -v'
@@ -82,7 +81,6 @@ alias gco='git checkout'
 alias gsl='git stash list'
 alias gss='git stash'
 alias gsp='git stash pop'
-alias gitlog='git log --oneline -n 10'
 
 # ROS aliases and tab completion support
 #   - see https://unix.stackexchange.com/questions/224227/how-do-you-make-an-alias-or-function-that-retains-tab-completion
@@ -144,9 +142,6 @@ alias ubversion='lsb_release -a'
 
 # Add pintos ssh key
 alias addkey='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa_pintos'
-
-# TODO: prism model checker stuff
-alias xpg='~/Downloads/prism-games-2.0.beta3-linux64/bin/xprism'
 
 # I can never remember the order of `ln -s` so this command repeats
 # the previous `ln -s` command with the last two arguments swapped
@@ -228,7 +223,7 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 
 ########################################################################################################################
 
-# cool but useless 'red' echo
+# cool but useless red echo
 # echo() { builtin echo -e "\x1B[31m ${1} \x1B[0m"; }
 
 # ~- means the previous directory
@@ -240,9 +235,6 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 # sudo umount /media/windows_temp/
 
 # list of apt libraries --> /etc/apt/sources.list
-
-# add ssh-key (must already exist)
-# ssh-add ~/.ssh/id_rsa_pintos
 
 # print environment variables --> printenv
 
@@ -259,13 +251,13 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 # `git branch -m newbranch`             --> change current local branch name to a new name
 # `git branch -D justin`                --> delete local branch called justin
 # `git push --delete origin justin`     --> delete remote branch called justin
-# `git remote set-url origin <url>`     --> git remote set-url origin https://bitbucket.org/justins_stuff/college_senior_year
-# `git fetch <remote> <branch>`         --> pull a remote branch and check it out
-#  && `git checkout <branch>`
+# `git remote set-url origin <url>`     --> set url origin
 # `git clean -df`                       --> remove untracked files
 # `git diff -- . ':(exclude).tags')`    --> exclude files from the git diff
-# `git reset --soft HEAD~#`             --> move head back # commits, change the commit message (useful for changing # commits
-#                                           into one commit), commit, push. If the commits you're changing have already been
+# `git rm -r --cached .`                --> remove untracked files after .gitignore update (then git add, commit, and push)
+# `git reset --soft HEAD~#`             --> move head back # commits, change the commit message
+#                                           (useful for changing # commits into one commit), commit, push.
+#                                           If the commits you're changing have already been
 #                                           pushed then you need to do git push -f
 
 ########################################################################################################################
@@ -276,5 +268,5 @@ alias pintos-gdb='GDBMACROS=/home/justin/Github/Pintos_Labs/misc/gdb-macros pint
 # Setup ROS environment variables
 if [ "$ENV_TYPE" == "ubuntu" ]; then
 	source /opt/ros/kinetic/setup.bash
-    source ~/Github/ROS_Tutorials/devel/setup.bash # Change this depending on the current ROS project
+    source ~/Github/ROS_Tutorials/devel/setup.bash # NOTE: Change this depending on the current ROS project
 fi
