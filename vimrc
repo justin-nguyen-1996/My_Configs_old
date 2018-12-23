@@ -273,7 +273,7 @@ set softtabstop=4
 set autoindent
 set smarttab
 set smartindent
-set textwidth=100
+set textwidth=117
 
 " use spaces instead of tabs
 set expandtab

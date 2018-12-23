@@ -87,9 +87,7 @@ alias gsp='git stash pop'
 alias r='rosed'
 complete -F _roscomplete_file r
 alias ccmake='catkin_make'
-
-# jumping to git repos
-alias cdgit='cd ~/Github'
+alias roscd..='roscd > /dev/null && cd ..'
 
 # create the ctags file
 alias CT='ctags -R -f .tags *'
@@ -237,6 +235,12 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 # list of apt libraries --> /etc/apt/sources.list
 
 # print environment variables --> printenv
+
+# grep -r "search_string" *
+# find . -name "search_file"
+
+# search for an apt-get package
+# apt-cache search keyword
 
 ########################################################################################################################
 
