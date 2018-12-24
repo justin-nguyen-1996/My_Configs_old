@@ -66,6 +66,7 @@ fi
 # git aliases
 alias ga='git add .'
 alias ga..='git add ..'
+alias ga...='git add ../..'
 alias gs='git status'
 alias gc='git commit -a -m'
 alias gm='git merge'
@@ -73,6 +74,7 @@ alias gl='git log --oneline -n 10'
 alias gll='git log --oneline -n 30'
 alias gd='git log -1 --format=%ai'
 alias gp='git push -u'
+alias gr='git reset'
 alias grs='git reset --soft'
 alias grh='git reset --hard'
 alias gb='git branch -v'
@@ -86,7 +88,9 @@ alias gsp='git stash pop'
 #   - see https://unix.stackexchange.com/questions/224227/how-do-you-make-an-alias-or-function-that-retains-tab-completion
 alias r='rosed'
 complete -F _roscomplete_file r
-alias ccmake='catkin_make'
+alias rl='roslaunch'
+complete -o filenames -F _roscomplete_launch rl
+alias ccmake='pushd . > /dev/null; roscd > /dev/null; cd .. > /dev/null; catkin_make; popd >/dev/null'
 alias roscd..='roscd > /dev/null && cd ..'
 
 # create the ctags file
@@ -241,6 +245,8 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 
 # search for an apt-get package
 # apt-cache search keyword
+
+# video player is `vlc`
 
 ########################################################################################################################
 
