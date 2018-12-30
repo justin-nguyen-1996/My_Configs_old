@@ -93,6 +93,7 @@ complete -F _roscomplete_file r
 alias rl='roslaunch'
 complete -o filenames -F _roscomplete_launch rl
 alias ccmake='pushd . > /dev/null; roscd > /dev/null; cd .. > /dev/null; catkin_make; popd >/dev/null'
+alias ccbuild='catkin build && temp_ros_setup_bash=`catkin locate -d` && source $temp_ros_setup_bash/setup.bash'
 alias roscd..='roscd > /dev/null && cd ..'
 
 # create the ctags file
@@ -279,6 +280,6 @@ alias pintos-gdb='GDBMACROS=/home/justin/Github/Pintos_Labs/misc/gdb-macros pint
 
 # Setup ROS environment variables
 if [ "$ENV_TYPE" == "ubuntu" ]; then
-	source /opt/ros/kinetic/setup.bash
+    source /opt/ros/kinetic/setup.bash
     source ~/Github/ROS_Tutorials/devel/setup.bash # NOTE: Change this depending on the current ROS project
 fi
