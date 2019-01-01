@@ -92,7 +92,7 @@ alias r='rosed'
 complete -F _roscomplete_file r
 alias rl='roslaunch'
 complete -o filenames -F _roscomplete_launch rl
-alias ccmake='pushd . > /dev/null; roscd > /dev/null; cd .. > /dev/null; catkin_make; popd >/dev/null'
+# alias ccmake='pushd . > /dev/null; roscd > /dev/null; cd .. > /dev/null; catkin_make; popd >/dev/null'
 alias ccbuild='catkin build && temp_ros_setup_bash=`catkin locate -d` && source $temp_ros_setup_bash/setup.bash'
 alias roscd..='roscd > /dev/null && cd ..'
 
