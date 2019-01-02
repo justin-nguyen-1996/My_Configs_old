@@ -421,14 +421,16 @@ highlight   DiffText     term=None   cterm=None   ctermfg=White   ctermbg=DarkGr
 " make the status line always appear
 set laststatus=2
 
-" customize what the status line shows
+" customize what the status line (status bar) shows
 function! s:load_my_statusline() abort
 	set statusline=                        " start with an empty status line
 	set statusline+=[%{fugitive#head()}]\  " show current git branch
-	set statusline+=%t\                    " show file name (f = relative file name, F = absolute path to file name)
+	set statusline+=%t\                    " show file name (t = just the file name)
+" 	set statusline+=%F\                    " show file name (f = relative file name, F = absolute path to file name)
 " 	set statusline+=[%n]\                  " show buffer number
 	set statusline+=%m\                    " show modified flag
 	set statusline+=%r\                    " show read-only flag
+    set statusline+=%=col:\ %c\ \          " show column number
 endfunction
 
 " only load the status line upon entering vim
