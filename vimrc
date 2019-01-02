@@ -430,7 +430,7 @@ function! s:load_my_statusline() abort
 " 	set statusline+=[%n]\                  " show buffer number
 	set statusline+=%m\                    " show modified flag
 	set statusline+=%r\                    " show read-only flag
-    set statusline+=%=col:\ %c\ \          " show column number
+    set statusline+=%=col:\ %c\ \ \ \ \ \  " show column number
 endfunction
 
 " only load the status line upon entering vim

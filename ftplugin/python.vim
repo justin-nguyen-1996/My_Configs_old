@@ -11,41 +11,41 @@ vnoremap ;f >O<BS>for :<ESC><ESC>i
 
 " toggle commented lines for Python-style comments
 function! ToggleComment()
-	if matchstr(getline(line(".")),'^\s*\#.*$') == ''
-		   :execute "s:^:# :"
-	else
-		   :execute "s:^\s*# ::"
-	endif
+    if matchstr(getline(line(".")),'^\s*\#.*$') == ''
+        execute 'normal!' 'I# '
+    else
+        execute 'normal!' '^xx'
+    endif
 endfunction
-vnoremap ;/ :call ToggleComment()<CR>
-nnoremap ;/ :call ToggleComment()<CR>
+vnoremap <silent> ;/ :call ToggleComment()<CR>
+nnoremap <silent> ;/ :call ToggleComment()<CR>
 
 " easily wrap the selected text in a time.time() statement for quick timing
 fun! s:PythonTiming(line1, line2)
 
-	" mark line one  &&  keep track of lines selected
-	execute 'normal!' 'me'
-	let l:numDiff = a:line2 - a:line1
+    " mark line one  &&  keep track of lines selected
+    execute 'normal!' 'me'
+    let l:numDiff = a:line2 - a:line1
 
-	" start timing
-	execute 'normal!' 'Ostart = time.time()'
+    " start timing
+    execute 'normal!' 'Ostart = time.time()'
 
-	" end timing
-	while line('.') < a:line2 + 1
-		execute 'normal!' 'j'
-	endwhile
-	execute 'normal!' 'oend = time.time()'
-	execute 'normal!' 'oprint; print("end - start: "); print(end - start)'
+    " end timing
+    while line('.') < a:line2 + 1
+        execute 'normal!' 'j'
+    endwhile
+    execute 'normal!' 'oend = time.time()'
+    execute 'normal!' 'oprint; print("end - start: "); print(end - start)'
 
-	" add the `import time` statement if not already imported
-	let match = search('import time', 'nw')
-	if match == 0
-		silent! execute 'normal!' 'gg/import/'
-		execute 'normal!' 'oimport time'
-	endif
+    " add the `import time` statement if not already imported
+    let match = search('import time', 'nw')
+    if match == 0
+        silent! execute 'normal!' 'gg/import/'
+        execute 'normal!' 'oimport time'
+    endif
 
-	" go back to the initial mark
-	execute 'normal!' '`e'
+    " go back to the initial mark
+    execute 'normal!' '`e'
 
 endfun
 command! -range Time :call s:PythonTiming(<line1>, <line2>)
