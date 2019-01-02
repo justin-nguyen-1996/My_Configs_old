@@ -274,6 +274,7 @@ set autoindent
 set smarttab
 set smartindent
 set textwidth=117
+" set cindent " TODO: c-indentation??? --> if so put in the .c and .cpp related ~/.vim file
 
 " use spaces instead of tabs
 set expandtab
@@ -709,7 +710,9 @@ nnoremap T <C-t>zz
 " nnoremap ;y myggvG$"*y'y
 
 " use ;y to copy the current line, comment it out, then paste the line below
-nnoremap <silent> ;y yy:call ToggleComment()<CR>p
+" nnoremap <silent> ;y yy:call ToggleComment()<CR>p
+nnoremap <silent> yc yy:call ToggleComment()<CR>p
+" TODO: make a vnoremap for this too (might have to be a function? idk)
 
 " use ;v to paste from the clipboard
 nnoremap ;v "*p
