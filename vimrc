@@ -713,7 +713,7 @@ nnoremap T <C-t>zz
 
 " use ;y to copy the current line, comment it out, then paste the line below
 " nnoremap <silent> ;y yy:call ToggleComment()<CR>p
-nnoremap <silent> yc yy:call ToggleComment()<CR>p
+nnoremap <silent> yc meyy:call ToggleComment()<CR>p`ej
 " TODO: make a vnoremap for this too (might have to be a function? idk)
 
 " use ;v to paste from the clipboard

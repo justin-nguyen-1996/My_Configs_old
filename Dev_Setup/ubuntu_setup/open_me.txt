@@ -48,7 +48,15 @@ Change permissions on miniconda packages
  - run `sudo chown -R justin:justin ~/miniconda2/`
 
 Help with installing the YouCompleteMe plugin
-- https://github.com/hsab/WSL-config
+ - https://github.com/hsab/WSL-config
+
+Firefox plugins
+ - https://addons.mozilla.org/en-US/firefox/addon/adblock-plus/
+ - https://addons.mozilla.org/en-US/firefox/addon/default-bookmark-folder/
+   - Change the "Firefox built-in bookmarking" and "Quick bookmarking" tabs to always add the bookmark to 
+     "Bookmarks Toolbar"
+   - Ctrl-d to change name and add
+   - Alt-Shift-d to add without changing default bookmark name OR remove existing bookmark
 
 ====================================================================================================================
 
