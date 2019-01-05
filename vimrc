@@ -273,8 +273,13 @@ set softtabstop=4
 set autoindent
 set smarttab
 set smartindent
-set textwidth=117
+set textwidth=120
 " set cindent " TODO: c-indentation??? --> if so put in the .c and .cpp related ~/.vim file
+
+" (for ROS) set tab length, indentation length, how much backspace deletes, auto indent
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 
 " use spaces instead of tabs
 set expandtab
@@ -666,7 +671,7 @@ command! O :call buffers#QuickOnly()
 command! NumberToggle :call convenient#NumberToggle()
 
 " format the file according to C++/Java style
-command! FormatToggle :call formatting#FormatToggle()
+command! FormatAll :call formatting#FormatAll()
 
 " ================================================================="
 " ================================================================="

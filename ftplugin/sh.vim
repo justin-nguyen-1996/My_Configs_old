@@ -1,8 +1,8 @@
 
-" toggle commented lines for vimrc
+" toggle commented lines for bash-style comments
 function! ToggleComment()
-    if matchstr(getline(line(".")),'^\s*\".*$') == ''
-        execute 'normal!' 'I" '
+    if matchstr(getline(line(".")),'^\s*\#.*$') == ''
+        execute 'normal!' 'I# '
     else
         execute 'normal!' '^xx'
     endif

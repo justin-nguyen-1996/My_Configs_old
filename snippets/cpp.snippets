@@ -67,7 +67,7 @@ snippet cl
 			$1(${2});
 
 		protected:
-			m_${5}; 
+			m_${5};
 	};
 
 ## namespace
@@ -111,10 +111,11 @@ snippet itera
 ## snippets exception
 snippet try
 	try {
-		
+
 	}catch(${1}) {
-		
+
 	}
 
-
-
+## doxygen class member brief description
+snippet /**<
+	/**< @brief ${0} */

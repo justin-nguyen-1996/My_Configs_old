@@ -50,8 +50,8 @@ function! formatting#Unformat(line1, line2) abort
 endfunction
 
 " format the file according to C++/Java style
-function! formatting#FormatToggle() abort
-  execute "set expandtab!"
-  execute "set expandtab?"
+" NOTE: Run this on the terminal to format all the files in the vim arglist: 
+"       vim * -c ':argdo FormatAll' -c ':wa' -c ':qa'
+function! formatting#FormatAll() abort
   execute 'normal!' "gg=G''"
 endfunction

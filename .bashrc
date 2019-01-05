@@ -69,7 +69,7 @@ alias ga='git add .'
 alias ga..='git add ..'
 alias ga...='git add ../..'
 alias gs='git status'
-alias gc='git commit -a -m'
+alias gc='git commit -m'
 alias gm='git merge'
 alias gl='git log --oneline -n 10'
 alias gll='git log --oneline -n 30'
@@ -98,6 +98,7 @@ alias ccbuild='catkin build && temp_ros_setup_bash=`catkin locate -d` && source 
 alias cclean='catkin clean --yes'
 alias roscd..='roscd > /dev/null && cd ..'
 alias view_frames='rosrun tf view_frames && open frames.pdf'
+alias rqt_tree='rosrun rqt_tf_tree rqt_tf_tree'
 
 # create the ctags file
 alias CT='ctags -R -f .tags *'
@@ -255,6 +256,8 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 
 # video player is `vlc`
 
+# vim * -c ':argdo FormatAll' -c ':wa' -c ':qa'
+
 ########################################################################################################################
 
 # `git reset HEAD~`                     --> undo previous commit that wasn't pushed (and also keep local changes)
@@ -284,6 +287,7 @@ alias pintos-gdb='GDBMACROS=/home/justin/Github/Pintos_Labs/misc/gdb-macros pint
 
 # Setup ROS environment variables
 if [ "$ENV_TYPE" == "ubuntu" ]; then
-    source ~/Github/ROS_Tutorials/devel/setup.bash # NOTE: Change this depending on the current ROS project
-#     source /opt/ros/kinetic/setup.bash
+    # NOTE: Change this depending on the current ROS project
+    source ~/Github/maidbot_workspace/devel/setup.bash
+    source ~/Github/ROS_Tutorials/devel/setup.bash
 fi
