@@ -2,9 +2,9 @@
 " toggle a comment for the current line using XML-style comments
 function! ToggleCommentLine()
     if matchstr(getline(line(".")),'^\s*<!--.*$') == ''
-        execute 'normal!' "I<!-- A -->0w"
+        execute 'normal' "I<!-- A -->0w"
     else
-        execute 'normal!' "^dw$xxxx"
+        execute 'normal' "^dw$xxxx"
     endif
 endfunction
 nnoremap <silent> ;/ :call ToggleCommentLine()<CR>
@@ -16,9 +16,9 @@ nnoremap <silent> ;/ :call ToggleCommentLine()<CR>
 " toggle comments for the selected block of code using XML-style comments
 function! ToggleCommentBlock()
     if matchstr(getline(line(".")),'^\s*<!--.*$') == ''
-        execute 'normal!' "I<!-- A -->0w"
+        execute 'normal' "I<!-- A -->0w"
     else
-        execute 'normal!' "^dw$xxxx"
+        execute 'normal' "^dw$xxxx"
     endif
 endfunction
 vnoremap <silent> ;/ :call ToggleCommentBlock()<CR>

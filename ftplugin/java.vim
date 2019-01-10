@@ -12,9 +12,9 @@ vnoremap ;f dOfor () {<CR>}<ESC><ESC>kp>i{?(<CR>
 " toggle commented lines for C-style comments
 function! ToggleComment()
     if matchstr(getline(line(".")),'^\s*\/\/.*$') == ''
-        execute 'normal!' 'I// '
+        execute 'normal' 'I// '
     else
-        execute 'normal!' '^xxx'
+        execute 'normal' '^xxx'
     endif
 endfunction
 vnoremap <silent> ;/ :call ToggleComment()<CR>

@@ -12,9 +12,9 @@ vnoremap ;f >O<BS>for :<ESC><ESC>i
 " toggle commented lines for Python-style comments
 function! ToggleComment()
     if matchstr(getline(line(".")),'^\s*\#.*$') == ''
-        execute 'normal!' 'I# '
+        execute 'normal' 'I# '
     else
-        execute 'normal!' '^xx'
+        execute 'normal' '^xx'
     endif
 endfunction
 vnoremap <silent> ;/ :call ToggleComment()<CR>
@@ -24,28 +24,28 @@ nnoremap <silent> ;/ :call ToggleComment()<CR>
 fun! s:PythonTiming(line1, line2)
 
     " mark line one  &&  keep track of lines selected
-    execute 'normal!' 'me'
+    execute 'normal' 'me'
     let l:numDiff = a:line2 - a:line1
 
     " start timing
-    execute 'normal!' 'Ostart = time.time()'
+    execute 'normal' 'Ostart = time.time()'
 
     " end timing
     while line('.') < a:line2 + 1
-        execute 'normal!' 'j'
+        execute 'normal' 'j'
     endwhile
-    execute 'normal!' 'oend = time.time()'
-    execute 'normal!' 'oprint; print("end - start: "); print(end - start)'
+    execute 'normal' 'oend = time.time()'
+    execute 'normal' 'oprint; print("end - start: "); print(end - start)'
 
     " add the `import time` statement if not already imported
     let match = search('import time', 'nw')
     if match == 0
-        silent! execute 'normal!' 'gg/import/'
-        execute 'normal!' 'oimport time'
+        silent! execute 'normal' 'gg/import/'
+        execute 'normal' 'oimport time'
     endif
 
     " go back to the initial mark
-    execute 'normal!' '`e'
+    execute 'normal' '`e'
 
 endfun
 command! -range Time :call s:PythonTiming(<line1>, <line2>)
