@@ -16,7 +16,7 @@ endfunction
 " NOTE: commented out because this affects visually selecting and deleting code folds
 " function! Smart_Delete_Vd() range abort
 " 	let temp = getreg('"', 1)
-" 	execute 'normal!' . (a:lastline - a:firstline + 1) . 'dd'
+" 	execute 'normal' . (a:lastline - a:firstline + 1) . 'dd'
 " 	if matchstr(@", '\_s*') == @"    " if just whitespace
 " 		silent! call setreg('"', temp)
 " 		silent! call setreg('*', temp)

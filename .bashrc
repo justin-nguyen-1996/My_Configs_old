@@ -146,6 +146,7 @@ alias path='sed "s/:/\n/g" <<< "$PATH"'
 alias kill='kill -9'
 alias psa='ps -a'
 alias ss='synclient VertScrollDelta=-150; synclient HorizTwoFingerScroll=0'
+alias ake='make'
 
 # Get the ubuntu version
 alias ubversion='lsb_release -a'
