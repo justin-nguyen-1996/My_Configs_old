@@ -234,30 +234,35 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 
 ########################################################################################################################
 
-# cool but useless red echo
+### Cool but useless red echo
 # echo() { builtin echo -e "\x1B[31m ${1} \x1B[0m"; }
 
+### Some obscure linux shortcuts
 # ~- means the previous directory
 # !$ means the last argument in the command line (same as holding alt then pressing the . key)
 
-# mount and unmount temporary windows filesystem
+### Mount and unmount temporary windows filesystem
 # sudo fdisk -l
 # mkdir -p /media/windows_temp/ && sudo mount -t ntfs-3g -o ro /dev/sda4 /media/windows_temp/
 # sudo umount /media/windows_temp/
 
-# list of apt libraries --> /etc/apt/sources.list
+### List of apt libraries --> /etc/apt/sources.list
 
-# print environment variables --> printenv
+### print environment variables --> printenv
 
+### Grep vs. Find
 # grep -r "search_string" *
 # find . -name "search_file"
 
-# search for an apt-get package
-# apt-cache search keyword
+### Search for an apt-get package --> apt-cache search keyword
 
-# video player is `vlc`
+### A good video player is `vlc`
 
+### Use vim to edit all desired files and use the formatting provided in the .vimrc to format all files
 # vim * -c ':argdo FormatAll' -c ':wa' -c ':qa'
+
+### Remove all files extracted from a .tar.gz file (useful when the files weren't extracted into a folder as expected)
+# tar tfz archive.tar.gz | xargs rm -rf
 
 ########################################################################################################################
 
