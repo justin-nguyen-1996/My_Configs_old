@@ -109,6 +109,8 @@ alias TAGS='ctags -R -f .tags .'
 # nicer & easier aliases
 alias ls='ls -hF --color=tty --hide=*.pyc --hide=*.uvgui.* --hide=*.uvopt --hide=*.bak --hide=*.htm --hide=*.dep --hide=*.lst'
 alias dir='ls --color=auto'
+alias cdp='cd "$(pwd -P)"'     # 1st cd to the symlink folder then run this to get to the symlink's true location
+alias cdp..='cd "$(pwd -P)/.."'
 alias la='ls -al'
 alias du='du -h'
 alias df='df -h'
@@ -263,6 +265,16 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 
 ### Remove all files extracted from a .tar.gz file (useful when the files weren't extracted into a folder as expected)
 # tar tfz archive.tar.gz | xargs rm -rf
+
+### fatal: bad config line 1 in file .git/config
+### `gba` --> warning: ignoring broken ref refs/remotes/origin/HEAD
+# This most likely means that git crashed while it was trying to push some code and now the .git/ folder is corrupted.
+# The hacky way to fix this is to go to the Github repo and clone a 2nd copy to your machine.
+# Then copy the entire .git/ folder of the 2nd repo to your original repo.
+# This will fix the .git/config file.
+# However, it will not fix the 2nd error above about the "broken refs".
+# You need to push the code in the now "fixed" 1st repo to Github and then clone a 3rd copy to your machine (again).
+# You can then remove the 1st and 2nd copies. The 3rd copy should work just fine.
 
 ########################################################################################################################
 
