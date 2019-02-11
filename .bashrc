@@ -206,6 +206,7 @@ cd() { builtin cd "${1-$(echo ~)}" && ls -F; }
 
 # map open to not output junk to stdout (ubuntu)
 if [ "$ENV_TYPE" == "ubuntu" ]; then function open() { gnome-open "$1" > /dev/null 2>&1 & } fi
+if [ "$ENV_TYPE" == "ubuntu" ]; then function oepn() { gnome-open "$1" > /dev/null 2>&1 & } fi
 
 # map jupyter notebook to not output junk to stdout
 if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function jp() { jupyter notebook "$1" > /dev/null 2>&1 & } fi
@@ -289,5 +290,5 @@ alias pintos-gdb='GDBMACROS=/home/justin/Github/Pintos_Labs/misc/gdb-macros pint
 if [ "$ENV_TYPE" == "ubuntu" ]; then
     # NOTE: Change this depending on the current ROS project
     source ~/Github/maidbot_workspace/devel/setup.bash
-    source ~/Github/ROS_Tutorials/devel/setup.bash
+    # source ~/Github/ROS_Tutorials/devel/setup.bash
 fi
