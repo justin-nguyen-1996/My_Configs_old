@@ -109,6 +109,8 @@ alias TAGS='ctags -R -f .tags .'
 # nicer & easier aliases
 alias ls='ls -hF --color=tty --hide=*.pyc --hide=*.uvgui.* --hide=*.uvopt --hide=*.bak --hide=*.htm --hide=*.dep --hide=*.lst'
 alias dir='ls --color=auto'
+alias cdp='cd "$(pwd -P)"'     # 1st cd to the symlink folder then run this to get to the symlink's true location
+alias cdp..='cd "$(pwd -P)/.."'
 alias la='ls -al'
 alias du='du -h'
 alias df='df -h'
@@ -146,6 +148,7 @@ alias path='sed "s/:/\n/g" <<< "$PATH"'
 alias kill='kill -9'
 alias psa='ps -a'
 alias ss='synclient VertScrollDelta=-150; synclient HorizTwoFingerScroll=0'
+alias ake='make'
 
 # Get the ubuntu version
 alias ubversion='lsb_release -a'
@@ -234,30 +237,45 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 
 ########################################################################################################################
 
-# cool but useless red echo
+### Cool but useless red echo
 # echo() { builtin echo -e "\x1B[31m ${1} \x1B[0m"; }
 
+### Some obscure linux shortcuts
 # ~- means the previous directory
 # !$ means the last argument in the command line (same as holding alt then pressing the . key)
 
-# mount and unmount temporary windows filesystem
+### Mount and unmount temporary windows filesystem
 # sudo fdisk -l
 # mkdir -p /media/windows_temp/ && sudo mount -t ntfs-3g -o ro /dev/sda4 /media/windows_temp/
 # sudo umount /media/windows_temp/
 
-# list of apt libraries --> /etc/apt/sources.list
+### List of apt libraries --> /etc/apt/sources.list
 
-# print environment variables --> printenv
+### print environment variables --> printenv
 
+### Grep vs. Find
 # grep -r "search_string" *
 # find . -name "search_file"
 
-# search for an apt-get package
-# apt-cache search keyword
+### Search for an apt-get package --> apt-cache search keyword
 
-# video player is `vlc`
+### A good video player is `vlc`
 
+### Use vim to edit all desired files and use the formatting provided in the .vimrc to format all files
 # vim * -c ':argdo FormatAll' -c ':wa' -c ':qa'
+
+### Remove all files extracted from a .tar.gz file (useful when the files weren't extracted into a folder as expected)
+# tar tfz archive.tar.gz | xargs rm -rf
+
+### fatal: bad config line 1 in file .git/config
+### `gba` --> warning: ignoring broken ref refs/remotes/origin/HEAD
+# This most likely means that git crashed while it was trying to push some code and now the .git/ folder is corrupted.
+# The hacky way to fix this is to go to the Github repo and clone a 2nd copy to your machine.
+# Then copy the entire .git/ folder of the 2nd repo to your original repo.
+# This will fix the .git/config file.
+# However, it will not fix the 2nd error above about the "broken refs".
+# You need to push the code in the now "fixed" 1st repo to Github and then clone a 3rd copy to your machine (again).
+# You can then remove the 1st and 2nd copies. The 3rd copy should work just fine.
 
 ########################################################################################################################
 

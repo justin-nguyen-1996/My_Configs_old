@@ -19,5 +19,5 @@ endfunction
 " shortcut command for quickly getting the documentation of a function/variable under the cursor
 function! ycm#GetDoc() abort
 	execute ':YcmCompleter GetDoc'
-	execute 'normal!' 'j'
+	execute 'normal' 'j'
 endfunction

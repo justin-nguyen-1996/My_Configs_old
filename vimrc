@@ -50,7 +50,7 @@ if has("autocmd")
   " When editing a file, always jump to the last cursor position
   autocmd BufReadPost *
   \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-  \   exe "normal! g'\"" |
+  \   exe "normal g'\"" |
   \ endif
 
   " don't write swapfile on most commonly used directories for NFS mounts or USB sticks
@@ -277,9 +277,9 @@ set textwidth=120
 " set cindent " TODO: c-indentation??? --> if so put in the .c and .cpp related ~/.vim file
 
 " (for ROS) set tab length, indentation length, how much backspace deletes, auto indent
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+" set tabstop=2
+" set shiftwidth=2
+" set softtabstop=2
 
 " use spaces instead of tabs
 set expandtab
