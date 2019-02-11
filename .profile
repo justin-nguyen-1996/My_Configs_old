@@ -39,12 +39,15 @@ export GIT=~/Github
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+# Gets rid of the matplotlib.plt warning "GLib-GIO-Message: Using the 'memory' GSettings backend ..."
+export GIO_EXTRA_MODULES=/usr/lib/x86_64-linux-gnu/gio/modules/
+
 # path to miniconda libraries
 # NOTE: removed miniconda version of python from path since ROS doesn't support it
 if [ "$ENV_TYPE" == "cygwin" ]
 	then export PATH="$HOME/miniconda2/Scripts/:$HOME/miniconda2/:$PATH"
-# elif [ "$ENV_TYPE" == "ubuntu" ]
-# 	then export PATH="$HOME/miniconda2/bin:$PATH"
+elif [ "$ENV_TYPE" == "ubuntu" ]
+	then export PATH="$HOME/miniconda2/bin:$PATH"
 elif [ "$ENV_TYPE" == "wsl" ]
 	then export PATH="$HOME/miniconda2/bin:$PATH"
 elif [ "$ENV_TYPE" == "redhat" ]
@@ -79,8 +82,8 @@ if [ -f ~/.git-completion.bash ]; then
 fi
 
 # scrolling preferences
-#synclient VertScrollDelta=-150     # slow down vertical scrolling
-#synclient HorizTwoFingerScroll=0   # disable horizontal scrolling
+synclient VertScrollDelta=-150     # slow down vertical scrolling
+synclient HorizTwoFingerScroll=0   # disable horizontal scrolling
 
 #######################################################################
 #######################################################################

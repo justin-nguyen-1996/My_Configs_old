@@ -248,6 +248,8 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 # sudo fdisk -l
 # mkdir -p /media/windows_temp/ && sudo mount -t ntfs-3g -o ro /dev/sda4 /media/windows_temp/
 # sudo umount /media/windows_temp/
+# TODO: make an alias for this? e.g. 'mount_wsl'?
+# TODO: check if the symlinks in ~/Windows/ are correct
 
 ### List of apt libraries --> /etc/apt/sources.list
 
@@ -305,8 +307,8 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 alias pintos-gdb='GDBMACROS=/home/justin/Github/Pintos_Labs/misc/gdb-macros pintos-gdb'
 
 # Setup ROS environment variables
-if [ "$ENV_TYPE" == "ubuntu" ]; then
+# if [ "$ENV_TYPE" == "ubuntu" ]; then
     # NOTE: Change this depending on the current ROS project
-    source ~/Github/maidbot_workspace/devel/setup.bash
+    # source ~/Github/maidbot_workspace/devel/setup.bash
     # source ~/Github/ROS_Tutorials/devel/setup.bash
-fi
+# fi
