@@ -109,8 +109,8 @@ alias TAGS='ctags -R -f .tags .'
 # nicer & easier aliases
 alias ls='ls -hF --color=tty --hide=*.pyc --hide=*.uvgui.* --hide=*.uvopt --hide=*.bak --hide=*.htm --hide=*.dep --hide=*.lst'
 alias dir='ls --color=auto'
-alias cdp='cd "$(pwd -P)"'     # 1st cd to the symlink folder then run this to get to the symlink's true location
-alias cdp..='cd "$(pwd -P)/.."'
+alias cdp='cd "$(pwd -P)"'       # 1st cd to the symlink folder then run this to get to the symlink's true location
+alias cdp..='cd "$(pwd -P)/.."'  # Same as `cdp` except it goes one folder up
 alias la='ls -al'
 alias du='du -h'
 alias df='df -h'
