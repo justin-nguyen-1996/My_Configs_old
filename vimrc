@@ -575,12 +575,13 @@ nnoremap <C-g> 1<C-g>
 " so, that's exactly what this hack does
 inoremap <C-c> l<BS><ESC>
 
-" remap the paste function in insert mode to Control-p
-if $ENV_TYPE == 'wsl'
-	inoremap <C-p> <C-R>0
-else
-	inoremap <C-p> <C-R>*
-endif
+" Remap the paste function in insert mode to Control-p
+" Commented out because it prevents using Control-p in autocomplete mode
+" if $ENV_TYPE == 'wsl'
+	" inoremap <C-p> <C-R>0
+" else
+	" inoremap <C-p> <C-R>*
+" endif
 
 " remap the autocomplete feature in vim to only look in the current file (deprecated because of YouCompleteMe)
 " inoremap <C-n> <C-x><C-n>
