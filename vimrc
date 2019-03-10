@@ -330,6 +330,10 @@ set diffopt=filler,vertical
 set wildmenu
 set wildignorecase
 
+" vimdiff ignore whitespace
+set diffopt+=iwhite
+set diffexpr=diff#IgnoreWhitespace()
+
 " change the vertical split indicator
 set fillchars+=vert:│
 
