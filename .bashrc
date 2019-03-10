@@ -25,7 +25,7 @@ fi
 if [ "$ENV_TYPE" == "wsl" ]
 	then alias chmod='sudo chmod'
 		 alias chown='sudo chown'
-		 alias install='sudo apt-get install'
+		 # alias install='sudo apt-get install'
 		 alias search='sudo apt-cache search'
 		 alias p='python'
 		 alias ip='ipython --pylab='auto' -i'
@@ -198,11 +198,17 @@ export LS_COLORS=$LS_COLORS:'ow=1;34;40:tw=1;34;40:'
 
 ########################################################################################################################
 
+# TODO: if complete_alias works (like it does on WSL), remove this and other complete things (do a search)
+# TODO: also remove old aliases
 # make the install alias still have autocomplete
-_apt_install_complete() {
-    mapfile -t COMPREPLY < <(apt-cache --no-generate pkgnames "$2");
-}
-complete -F _apt_install_complete install
+# _apt_install_complete() {
+    # mapfile -t COMPREPLY < <(apt-cache --no-generate pkgnames "$2");
+# }
+# complete -F _apt_install_complete install
+
+# https://github.com/cykerway/complete-alias
+alias install='sudo apt-get install'
+complete -F _complete_alias install
 
 ########################################################################################################################
 
