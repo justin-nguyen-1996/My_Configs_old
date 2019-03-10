@@ -42,34 +42,40 @@ export EDITOR="$VISUAL"
 # Gets rid of the matplotlib.plt warning "GLib-GIO-Message: Using the 'memory' GSettings backend ..."
 export GIO_EXTRA_MODULES=/usr/lib/x86_64-linux-gnu/gio/modules/
 
-# path to miniconda libraries
+# Run this script when launching a Python REPL (e.g. auto import numpy as np)
+export PYTHONSTARTUP=$HOME/.python_startup.py
+
+# Cygwin
+if [ "$ENV_TYPE" == "cygwin" ]
+	then 
+        export PATH="$HOME/miniconda2/Scripts/:$HOME/miniconda2/:$PATH"
+        export PATH="$HOME/Github/Pintos_Labs/utils:$PATH"
+fi
+	
+# Ubuntu
 # NOTE: removed miniconda version of python from path since ROS doesn't support it
-if [ "$ENV_TYPE" == "cygwin" ]
-	then export PATH="$HOME/miniconda2/Scripts/:$HOME/miniconda2/:$PATH"
-elif [ "$ENV_TYPE" == "ubuntu" ]
-	then export PATH="$HOME/miniconda2/bin:$PATH"
-elif [ "$ENV_TYPE" == "wsl" ]
-	then export PATH="$HOME/miniconda2/bin:$PATH"
-elif [ "$ENV_TYPE" == "redhat" ]
-	then export PATH="$HOME/miniconda2/bin:$PATH"
+if [ "$ENV_TYPE" == "ubuntu" ]
+	then 
+        export PATH="$HOME/Github/Pintos_Labs/utils:$PATH"
+        export PATH="$HOME/miniconda2/bin:$PATH"
 fi
 
-# path to Pintos
-if [ "$ENV_TYPE" == "cygwin" ]
-	then export PATH="$HOME/Github/Pintos_Labs/utils:$PATH"
-elif [ "$ENV_TYPE" == "ubuntu" ]
-	then export PATH="$HOME/Github/Pintos_Labs/utils:$PATH"
-fi
-
-# WSL stuff
+# WSL
 if [ "$ENV_TYPE" == "wsl" ]
 	then
+        export PATH="$HOME/miniconda2/bin:$PATH"
 		export c="/mnt/c/"
 		export justin="/mnt/c/Users/Justin/"
 		export classes="/mnt/c/Users/Justin/UT/Classes/"
 		export ee445m="/mnt/c/Users/Justin/UT/Classes/4_Senior/2018_SpringSemester/EE445M_RTOS/"
 		export downloads="/mnt/c/Users/justi/Downloads/"
 		export PATH="$PATH:$HOME/Github/My_Configs/"
+fi
+
+# path to Pintos
+if [ "$ENV_TYPE" == "redhat" ]
+    then 
+        export PATH="$HOME/miniconda2/bin:$PATH"
 fi
 
 # git completion function for bash aliases

@@ -149,6 +149,8 @@ alias kill='kill -9'
 alias psa='ps -a'
 alias ss='synclient VertScrollDelta=-150; synclient HorizTwoFingerScroll=0'
 alias ake='make'
+alias mount_windows='mkdir -p /media/windows_temp/ && sudo mount -t ntfs-3g -o rw /dev/sda4 /media/windows_temp/'
+alias umount_windows='sudo umount /media/windows_temp/'
 
 # Get the ubuntu version
 alias ubversion='lsb_release -a'
@@ -246,10 +248,8 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remo
 
 ### Mount and unmount temporary windows filesystem
 # sudo fdisk -l
-# mkdir -p /media/windows_temp/ && sudo mount -t ntfs-3g -o ro /dev/sda4 /media/windows_temp/
+# mkdir -p /media/windows_temp/ && sudo mount -t ntfs-3g -o rw /dev/sda4 /media/windows_temp/
 # sudo umount /media/windows_temp/
-# TODO: make an alias for this? e.g. 'mount_wsl'?
-# TODO: check if the symlinks in ~/Windows/ are correct
 
 ### List of apt libraries --> /etc/apt/sources.list
 

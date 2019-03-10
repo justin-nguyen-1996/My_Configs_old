@@ -189,6 +189,7 @@ ln -s ~/Github/My_Configs/ipython_config.py         ~/.ipython/profile_default/i
 ln -s ~/Github/My_Configs/.pdbrc                    ~/.pdbrc
 ln -s ~/Github/My_Configs/ssh_config                ~/.ssh/config
 ln -s ~/Github/My_Configs/.profile                  ~/.profile
+ln -s ~/Github/My_Configs/.python_startup.py        ~/.python_startup.py
 
 # change the $ENV_TYPE variable as appropriate
 vim -c ":execute 'normal' 'gg'" -c ":/ENV_TYPE" -c ":execute 'normal' 'n'" -c ":execute 'normal' 'wwcwubuntu'" -c ":x" ~/.profile
