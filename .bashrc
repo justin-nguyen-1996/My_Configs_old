@@ -91,9 +91,7 @@ alias gsp='git stash pop'
 #   - see https://unix.stackexchange.com/questions/224227/how-do-you-make-an-alias-or-function-that-retains-tab-completion
 # alias ccmake='pushd . > /dev/null; roscd > /dev/null; cd .. > /dev/null; catkin_make; popd >/dev/null'
 alias r='rosed'
-complete -F _roscomplete_file r
 alias rl='roslaunch'
-complete -o filenames -F _roscomplete_launch rl
 alias ccbuild='catkin build && temp_ros_setup_bash=`catkin locate -d` && source $temp_ros_setup_bash/setup.bash'
 alias cclean='catkin clean --yes'
 alias roscd..='roscd > /dev/null && cd ..'
@@ -198,11 +196,15 @@ export LS_COLORS=$LS_COLORS:'ow=1;34;40:tw=1;34;40:'
 
 ########################################################################################################################
 
-# make the install alias still have autocomplete
-_apt_install_complete() {
-    mapfile -t COMPREPLY < <(apt-cache --no-generate pkgnames "$2");
-}
-complete -F _apt_install_complete install
+# Retain autocompletion of bash commands using the complete-alias function from
+# https://github.com/cykerway/complete-alias
+
+# Have to source the script that complete-alias depends on
+source /usr/share/bash-completion/bash_completion
+
+complete -F _complete_alias install
+# complete -F _roscomplete_file r  # TODO
+# complete -o filenames -F _roscomplete_launch rl # TODO
 
 ########################################################################################################################
 
@@ -212,6 +214,10 @@ cd() { builtin cd "${1-$(echo ~)}" && ls -F; }
 # map open to not output junk to stdout (ubuntu)
 if [ "$ENV_TYPE" == "ubuntu" ]; then function open() { gnome-open "$1" > /dev/null 2>&1 & } fi
 if [ "$ENV_TYPE" == "ubuntu" ]; then function oepn() { gnome-open "$1" > /dev/null 2>&1 & } fi
+
+# TODO: xnview
+if [ "$ENV_TYPE" == "ubuntu" ]; then function xn() { xnview "$1" > /dev/null 2>&1 & } fi
+# alias xnview='xnview > /dev/null 2>&1 &'
 
 # map jupyter notebook to not output junk to stdout
 if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function jp() { jupyter notebook "$1" > /dev/null 2>&1 & } fi
@@ -235,6 +241,9 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function gpm(
 # remove an Ubuntu package and its dependencies
 if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function remove() {
 	sudo apt-get remove --purge "$1"  &&  sudo apt-get autoremove;
+} fi
+if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function uninstall() {
+    sudo apt-get remove --purge "$1"  &&  sudo apt-get autoremove;
 } fi
 
 ########################################################################################################################
