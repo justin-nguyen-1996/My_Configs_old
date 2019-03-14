@@ -25,7 +25,7 @@ fi
 if [ "$ENV_TYPE" == "wsl" ]
 	then alias chmod='sudo chmod'
 		 alias chown='sudo chown'
-		 alias install='sudo apt-get install'
+		 # alias install='sudo apt-get install'
 		 alias search='sudo apt-cache search'
 		 alias p='python'
 		 alias ip='ipython --pylab='auto' -i'
