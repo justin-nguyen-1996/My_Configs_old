@@ -675,8 +675,15 @@ command! O :call buffers#QuickOnly()
 " toggle between number mode and relative number mode
 command! NumberToggle :call convenient#NumberToggle()
 
+"=================================================================="
+
 " format the file according to C++/Java style
 command! FormatAll :call formatting#FormatAll()
+
+"=================================================================="
+
+" run ctags while still in vim
+command! CT :silent call convenient#Ctags()
 
 " ================================================================="
 " ================================================================="

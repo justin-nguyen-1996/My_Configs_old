@@ -16,3 +16,9 @@ function! convenient#TrimWhitespace() abort
 	%s/\s\+$//e
 	call setpos('.', l:save_cursor)
 endfunction
+
+" run ctags while still in vim
+function! convenient#Ctags() abort
+    execute '!ctags -R -f .tags .'
+    execute 'redraw!'
+endfunction
