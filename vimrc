@@ -471,6 +471,14 @@ nnoremap '' ''zz
 " command centers the screen upon jumping
 nnoremap 'm 'mzz
 
+" make it easier to jump to beginning and end of visual selects
+nnoremap gk g'<
+nnoremap gj g'>
+
+" remap the ability to move to next line if the line is wrapped
+nnoremap g'k gk
+nnoremap g'j gj
+
 " make jumping to previous/next location center the screen
 nnoremap <C-o> <C-o>zz
 nnoremap <C-i> <C-i>zz
