@@ -14,6 +14,7 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 		 #alias p='ipython -i'
 		 alias p='python -i'
          alias p3='python3 -i'
+         alias pdb='python3 -i -m pdb'
 		 alias ip='ipython --pylab='auto' -i'
 		 alias ev='vim ~/.vimrc'
 		 alias ep='vim ~/.profile'
@@ -287,6 +288,9 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function unin
 # However, it will not fix the 2nd error above about the "broken refs".
 # You need to push the code in the now "fixed" 1st repo to Github and then clone a 3rd copy to your machine (again).
 # You can then remove the 1st and 2nd copies. The 3rd copy should work just fine.
+
+# If pdb can't find an import but you have it, try this
+# python -m pdb yourscript.py
 
 ########################################################################################################################
 
