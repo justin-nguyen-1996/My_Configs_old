@@ -479,11 +479,14 @@ nnoremap gj g'>
 nnoremap g'k gk
 nnoremap g'j gj
 
+" d/ already has the ability to delete up to a certain word but I always forget so make dt/ do the same thing
+nnoremap dt/ d/
+
 " make jumping to previous/next location center the screen
 nnoremap <C-o> <C-o>zz
 nnoremap <C-i> <C-i>zz
 
-"" press % to visually highlight in-between brace/bracket/parentheses
+" press % to visually highlight in-between brace/bracket/parentheses
 noremap % v%
 
 " press CTRL-j/CTRL-k to go down/up half a page, respectively
