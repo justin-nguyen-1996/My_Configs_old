@@ -9,6 +9,7 @@ function! folding#FoldFunctions() abort
 	:silent! execute "%g/^int/normal f{%zf"
 	:silent! execute "%g/^double/normal f{%zf"
 	:silent! execute "%g/^void/normal f{%zf"
+    :silent! execute "%g/^float/normal f{%zf"
 
 	" fold same types of functions but they're static equivalents
 	:silent! execute "%g/^static bool/normal f{%zf"
@@ -17,6 +18,7 @@ function! folding#FoldFunctions() abort
 	:silent! execute "%g/^static int/normal f{%zf"
 	:silent! execute "%g/^static double/normal f{%zf"
 	:silent! execute "%g/^static void/normal f{%zf"
+    :silent! execute "%g/^static float/normal f{%zf"
 
 	" fold functions of type (uint_t)
 	:silent! execute "%g/^uint/normal f{%zf"

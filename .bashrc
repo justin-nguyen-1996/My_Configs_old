@@ -29,6 +29,7 @@ if [ "$ENV_TYPE" == "wsl" ]
 		 # alias install='sudo apt-get install'
 		 alias search='sudo apt-cache search'
 		 alias p='python -i'
+         alias p3='python3 -i'
          alias pdb='python -m pdb'
 		 alias ip='ipython --pylab='auto' -i'
 		 alias ev='vim ~/.vimrc'
