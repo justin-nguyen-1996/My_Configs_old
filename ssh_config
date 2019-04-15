@@ -12,4 +12,7 @@ Host yoshi
 Host toad
 	User jnguyen10
 	HostName toad.ece.utexas.edu
+Host kamek
+    User jnguyen10
+    HostName kamek.ece.utexas.edu
 
