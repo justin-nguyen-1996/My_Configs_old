@@ -471,13 +471,16 @@ nnoremap '' ''zz
 " command centers the screen upon jumping
 nnoremap 'm 'mzz
 
+" easier remapping of cgn to find and replace the word at the cursor
+nnoremap cgn *Ncgn
+
 " make it easier to jump to beginning and end of visual selects
 nnoremap gk g'<
 nnoremap gj g'>
 
 " remap the ability to move to next line if the line is wrapped
-nnoremap g'k gk
-nnoremap g'j gj
+nnoremap gK gk
+nnoremap gJ gj
 
 " d/ already has the ability to delete up to a certain word but I always forget so make dt/ do the same thing
 nnoremap dt/ d/
@@ -776,4 +779,5 @@ nnoremap ;gd  :GDiff<C-Space>
 " activate Exchange.vim with cx<motion>
 
 " don't forget about 'cgn'
+" don't forget about 'ctrl-v gctrl-a'
 
