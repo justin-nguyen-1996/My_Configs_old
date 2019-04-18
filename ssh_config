@@ -16,3 +16,14 @@ Host kamek
     User jnguyen10
     HostName kamek.ece.utexas.edu
 
+# justin-nguyen-1996
+Host github.com-justin-nguyen-1996
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa
+
+# justintemp
+Host github.com-justintemp
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa_pintos

@@ -38,14 +38,14 @@ printf "\n=========================\ninstalling fontforge\n=====================
 yes yes Y | sudo apt-get install libqtgui4
 
 # generate and save the new ssh key
-printf "\n====================================================================\n"    
+printf "\n====================================================================\n"
 echo | ssh-keygen -t rsa -b 4096 -C "2014justinnguyen@gmail.com"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 xclip -sel clip < ~/.ssh/id_rsa.pub
 
 # interactive sript with directions for installing the ssh key
-printf "\n====================================================================\n"    
+printf "\n====================================================================\n"
 echo "Just copied the ~/.ssh/id_rsa.pub file into the clipboard. So don't try to copy anything (i.e. don't use Ctrl-c)"
 echo "A hyperlink will open soon. After it does, go back to these instructions (more will pop up after the link is opened)"
 
@@ -146,7 +146,7 @@ conda config --add channels conda-forge
 
 # copy over the ipython config file
 cp ~/Github/My_Configs/ipython_config.py ~/.ipython/profile_default/
-vim -c ":q!" ~/.ipython/profile_default/ 
+vim -c ":q!" ~/.ipython/profile_default/
 
 # make sure the ~/.ssh folder exists
 mkdir -p ~/.ssh
@@ -196,7 +196,7 @@ ln -s ~/Github/My_Configs/.bash_completion          ~/.bash_completion
 vim -c ":execute 'normal' 'gg'" -c ":/ENV_TYPE" -c ":execute 'normal' 'n'" -c ":execute 'normal' 'wwcwubuntu'" -c ":x" ~/.profile
 
 # copy over additions to the Fugitive plugin
-vim -c "execute 'normal' 'Go'" -c ":read ~/Github/My_Configs/.my_fugitive.vim" -c ":x" ~/.vim/bundle/vim-fugitive/plugin/fugitive.vim
+vim -c "execute 'normal' 'Go'" -c ":read ~/Github/My_Configs/.my_fugitive.vim" -c ":x" ~/.vim/bundle/vim-fugitive/autoload/fugitive.vim
 
 # source the ~/.profile  &&  ~/.inputrc
 source ~/.profile
