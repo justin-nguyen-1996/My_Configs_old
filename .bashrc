@@ -218,7 +218,7 @@ cd() { builtin cd "${1-$(echo ~)}" && ls -F; }
 if [ "$ENV_TYPE" == "ubuntu" ]; then function open() { gnome-open "$1" > /dev/null 2>&1 & } fi
 if [ "$ENV_TYPE" == "ubuntu" ]; then function oepn() { gnome-open "$1" > /dev/null 2>&1 & } fi
 
-# TODO: xnview
+# TODO: xnview (image viewing software)
 if [ "$ENV_TYPE" == "ubuntu" ]; then function xn() { xnview "$1" > /dev/null 2>&1 & } fi
 # alias xnview='xnview > /dev/null 2>&1 &'
 
@@ -274,6 +274,7 @@ if [ "$ENV_TYPE" == "ubuntu" ]  ||  [ "$ENV_TYPE" == "wsl" ]; then function unin
 ### Search for an apt-get package --> apt-cache search keyword
 
 ### A good video player is `vlc`
+### A good image editor is `gimp`
 
 ### Use vim to edit all desired files and use the formatting provided in the .vimrc to format all files
 # vim * -c ':argdo FormatAll' -c ':wa' -c ':qa'

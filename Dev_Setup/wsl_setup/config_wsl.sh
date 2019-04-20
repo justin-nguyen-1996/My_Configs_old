@@ -194,7 +194,7 @@ ln -s ~/Github/My_Configs/.bash_completion          ~/.bash_completion
 vim -c ":execute 'normal' 'gg'" -c ":/ENV_TYPE" -c ":execute 'normal' 'n'" -c ":execute 'normal' 'wwcwwsl'" -c ":x" ~/.profile
 
 # copy over additions to the Fugitive plugin
-vim -c "execute 'normal' 'Go'" -c ":read ~/Github/My_Configs/.my_fugitive.vim" -c ":x" ~/.vim/bundle/vim-fugitive/plugin/fugitive.vim
+vim -c "execute 'normal' 'Go'" -c ":read ~/Github/My_Configs/.my_fugitive.vim" -c ":x" ~/.vim/bundle/vim-fugitive/autoload/fugitive.vim
 
 # source the ~/.profile  &&  ~/.inputrc
 source ~/.profile
