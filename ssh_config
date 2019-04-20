@@ -1,5 +1,5 @@
 
-# UT Austin LRC Machines
+## UT Austin LRC Machines
 Host mario
     User jnguyen10
     HostName mario.ece.utexas.edu
@@ -34,8 +34,8 @@ Host github.com-justin-nguyen-1996
     User git
     IdentityFile ~/.ssh/id_rsa
 
-## justintemp
-#Host github.com-justintemp
-#    HostName github.com
-#    User git
-#    IdentityFile ~/.ssh/id_rsa_pintos
+# justintemp
+Host github.com-justintemp
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa_pintos
