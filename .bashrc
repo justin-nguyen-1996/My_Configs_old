@@ -15,7 +15,7 @@ if [ "$ENV_TYPE" == "ubuntu" ]
 		 alias p='python -i'
          alias p3='python3 -i'
          alias pdb='python3 -i -m pdb'
-		 alias ip='ipython --pylab='auto' -i'
+		 alias ip='ipython --pylab='auto' -i' # TODO: ipython is supposed to be better, use this if can fix loading latency
 		 alias ev='vim ~/.vimrc'
 		 alias ep='vim ~/.profile'
 		 alias vim='vim -p'
@@ -30,7 +30,7 @@ if [ "$ENV_TYPE" == "wsl" ]
 		 alias search='sudo apt-cache search'
 		 alias p='python -i'
          alias p3='python3 -i'
-         alias pdb='python3 -m pdb'
+         alias pdb='python3 -m pdb -c c'
 		 alias ip='ipython --pylab='auto' -i'
 		 alias ev='vim ~/.vimrc'
 		 alias ep='vim ~/.profile'
