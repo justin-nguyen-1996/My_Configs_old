@@ -15,4 +15,15 @@ Host toad
 Host kamek
     User jnguyen10
     HostName kamek.ece.utexas.edu
-
+Host daisy
+    User jnguyen10
+    HostName daisy.ece.utexas.edu
+Host koopa
+    User jnguyen10
+    HostName koopa.ece.utexas.edu
+Host luigi
+    User jnguyen10
+    HostName luigi.ece.utexas.edu
+Host wario
+    User jnguyen10
+    HostName wario.ece.utexas.edu
