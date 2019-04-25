@@ -765,7 +765,8 @@ nnoremap ;gd  :GDiff<C-Space>
 " ================== Some nice things to remember ================="
 
 " restore color scheme --> this is not actually mapped to something
-" set filetype=____   (e.g. :set filetype=cpp)
+" 
+" set filetype=____   (e.g. :set ft=cpp)
 
 " zipping files
 " zip -r file_name.zip *
@@ -778,6 +779,9 @@ nnoremap ;gd  :GDiff<C-Space>
 
 " activate Exchange.vim with cx<motion>
 
-" don't forget about 'cgn'
-" don't forget about 'ctrl-v gctrl-a'
+" to search within visual selection --> visual select the region, exit visual mode, then do `/\%Vsearchpattern`
+
+" don't forget about `cgn`
+" don't forget about `ctrl-v gctrl-a`
+" don't forget about `gk` and `gj` mappings to move to beginning/end of last visual select
 
