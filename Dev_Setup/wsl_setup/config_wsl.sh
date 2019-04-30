@@ -125,22 +125,13 @@ git config --global push.default simple
 git config --global core.autocrlf false
 git config http.postBuffer 52428800
 
-# grab miniconda script file
-cd ~/  &&  wget -c http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh --no-check-certificate
-sudo chmod 755 ~/Miniconda-latest-Linux-x86_64.sh
-~/Miniconda-latest-Linux-x86_64.sh -b -p $HOME/miniconda2
-
-# source the ~/.profile so that the shell recognizes conda  &&  set the dev env var
+# source the ~/.profile to set the dev env var
 cp ~/Github/My_Configs/.profile ~/
 vim -c ":silent! %s/ENV_TYPE=\"cygwin\"/ENV_TYPE=\"ubuntu\"/g" -c ":xa" ~/.profile
 source ~/.profile
 
-# do some conda configuration
-conda config --set ssl_verify false
-conda config --add channels conda-forge
-
-# install the python libraries through conda
-~/Github/My_Configs/Dev_Setup/ubuntu_setup/.install_conda_libs.sh
+# install the python libraries
+~/Github/My_Configs/Dev_Setup/ubuntu_setup/.install_python_libs.sh
 
 # copy over the ipython config file
 cp ~/Github/My_Configs/ipython_config.py ~/.ipython/profile_default/
@@ -156,7 +147,6 @@ rm -rf ~/.inputrc
 rm -rf ~/.vimrc
 rm -rf ~/.tmux.conf
 rm -rf ~/.vim/bundle/vim-snippets/snippets
-rm -rf ~/conda_packages
 rm -rf ~/.vim/after/syntax
 rm -rf ~/.vim/after/ftplugin
 rm -rf ~/.vim/after/plugin
@@ -177,7 +167,6 @@ ln -s ~/Github/My_Configs/vimrc                     ~/.vimrc
 ln -s ~/Github/My_Configs/vimrc                     /etc/vim/vimrc
 ln -s ~/Github/My_Configs/.tmux.conf                ~/.tmux.conf
 ln -s ~/Github/My_Configs/snippets/                 ~/.vim/bundle/vim-snippets/snippets
-ln -s ~/miniconda2/lib/python2.7/site-packages/     ~/conda_packages
 ln -s ~/Github/My_Configs/autoload/                 ~/.vim/after/autoload
 ln -s ~/Github/My_Configs/syntax/                   ~/.vim/after/syntax
 ln -s ~/Github/My_Configs/ftplugin                  ~/.vim/after/ftplugin
@@ -208,7 +197,6 @@ rm -rf ~/Public/
 rm -rf ~/Templates/
 rm -rf ~/Videos/
 rm -rf ~/examples.desktop
-rm -rf ~/Miniconda-latest-Linux-x86_64.sh
 
 # update and upgrade existing packages
 sudo apt-get update

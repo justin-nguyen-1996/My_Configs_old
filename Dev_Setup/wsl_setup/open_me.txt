@@ -36,9 +36,6 @@ Fix dual boot time issues (make Linux use 'local' time instead of a hardware clo
 Change permissions on vim plugins
  - run `sudo chown -R justin:justin ~/.vim/bundle` --> obviously, change 'justin:justin' to 'username:username'
 
-Change permissions on miniconda packages
- - run `sudo chown -R justin:justin ~/miniconda2/`
-
 Matplotlib GUI stuff
  - https://www.scivision.co/pyqtmatplotlib-in-windows-subsystem-for-linux/
  - make sure to always have an X11 server running for anything involving GUIs

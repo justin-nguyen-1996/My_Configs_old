@@ -44,9 +44,6 @@ Change terminal font size
 Change permissions on vim plugins
  - run `sudo chown -R justin:justin ~/.vim/bundle` --> obviously, change 'justin:justin' to 'username:username'
 
-Change permissions on miniconda packages
- - run `sudo chown -R justin:justin ~/miniconda2/`
-
 Help with installing the YouCompleteMe plugin
  - https://github.com/hsab/WSL-config
 
